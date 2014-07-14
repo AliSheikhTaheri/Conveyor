@@ -1,0 +1,3 @@
+2014-06-24 09:39:49,958 [42] INFO  Umbraco.Core.PluginManager - [Thread 41] Starting resolution types of Umbraco.Core.Persistence.Mappers.BaseMapper
+2014-06-24 09:39:50,336 [42] INFO  Umbraco.Core.PluginManager - [Thread 41] Completed resolution of types of Umbraco.Core.Persistence.Mappers.BaseMapper, found 17 (took 378ms)
+2014-06-24 18:20:48,051 [42] INFO  umbraco.BusinessLogic.Log - [Thread 61] Log scrubbed.  Removed all items older than 2014-04-25 18:20:48

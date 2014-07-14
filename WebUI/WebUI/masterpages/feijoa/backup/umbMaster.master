@@ -1,0 +1,42 @@
+<%@ Master Language="C#" MasterPageFile="~/umbraco/masterpages/default.master" AutoEventWireup="true" %>
+<asp:Content ContentPlaceHolderID="ContentPlaceHolderDefault" runat="server">
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"[]> 
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head id="head" runat="server">
+    
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title><asp:placeholder runat="server"><umbraco:Item runat="server" field="pageName" /> - <umbraco:Item runat="server" field="siteName" recursive="true" /></asp:placeholder></title>
+    
+  <link rel="stylesheet" type="text/css" href="/css/Starterkit.css" /> 
+  
+  <umbraco:Macro Alias="BlogRssFeedLink" runat="server"></umbraco:Macro>
+    
+  <asp:contentplaceholder id="cp_head" runat="server" />
+</head>
+  <body>    
+    <div id="main">
+      
+      <asp:contentplaceholder id="cp_top" runat="server">
+        <div id="top">
+          <h1 id="siteName"><a href="/"><umbraco:Item runat="server" field="siteName" recursive="true" /></a></h1>
+          <h2 id="siteDescription"><umbraco:Item runat="server" field="siteDescription" recursive="true" /></h2>
+        
+          <umbraco:Macro Alias="umbTopNavigation" runat="server" />
+        </div>
+      </asp:contentplaceholder>
+            
+      <div id="body" class="clearfix">
+          <form id="RunwayMasterForm" runat="server">
+            <asp:ContentPlaceHolder ID="cp_content" runat="server"></asp:ContentPlaceHolder>
+          </form>
+      </div> 
+      
+      <asp:contentplaceholder id="cp_footer" runat="server">
+        <div id="footer"></div>
+      </asp:contentplaceholder>
+    </div>
+  </body>
+</html> 
+</asp:content>
