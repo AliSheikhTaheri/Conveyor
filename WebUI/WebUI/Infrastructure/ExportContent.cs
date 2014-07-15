@@ -69,13 +69,16 @@
                         {
                             if (property.Value != null && !string.IsNullOrWhiteSpace(property.Value.ToString()))
                             {
+                                tag.Value = string.Empty;
+
                                 var media = ms.GetById((int)property.Value);
-                                var mediaFile = media.GetValue<string>("umbracoFile");
-
-                                tag.Add(new XAttribute("filePath", mediaFile));
+                                var umbracoFile = media.GetValue<string>("umbracoFile");
                                 tag.Add(new XAttribute("name", media.Name));
-
-                                tag.Value = media.Key.ToString();
+                                tag.Add(new XAttribute("nodeTypeAlias", media.ContentType.Alias));
+                                tag.Add(new XAttribute("guid", media.Key));
+                                tag.Add(new XAttribute("parentGuid", media.Parent() == null ? "-1" : media.Parent().Key.ToString()));
+                                tag.Add(new XAttribute("umbracoFile", umbracoFile));
+                                tag.Add(new XAttribute("fileName", umbracoFile.Split('/').Last()));
                             }
                         }
 
@@ -98,8 +101,8 @@
         public IEnumerable<string> GetListOfAssets(XDocument xdoc)
         {
             return xdoc.Descendants()
-                .Where(x => x.Attribute("file") != null && !string.IsNullOrWhiteSpace(x.Attribute("file").Value))
-                .Select(x => x.Attribute("file").Value);
+                .Where(x => x.Attribute("umbracoFile") != null && !string.IsNullOrWhiteSpace(x.Attribute("umbracoFile").Value))
+                .Select(x => x.Attribute("umbracoFile").Value);
         }
 
         #endregion

@@ -92,33 +92,49 @@
                 content.ExpireDate = newContent.ExpireDate;
             }
 
-            foreach (var property in node.Elements())
+            foreach (var propertyTag in node.Elements())
             {
-                var dataTypeGuid = new Guid(property.Attribute("dataTypeGuid").Value);
+                var dataTypeGuid = new Guid(propertyTag.Attribute("dataTypeGuid").Value);
 
-                if (IsSpecialProperty(dataTypeGuid) && !string.IsNullOrWhiteSpace(property.Value))
+                if (IsSpecialProperty(dataTypeGuid) && !string.IsNullOrWhiteSpace(propertyTag.Attribute("guid").Value))
                 {
-                    var propGuid = new Guid(property.Value);
+                    var propGuid = new Guid(propertyTag.Attribute("guid").Value);
                     var media = ms.GetById(propGuid);
 
                     if (media != null)
                     {
-                        content.SetValue(property.Name.ToString(), media.Id.ToString());
+                        content.SetValue(propertyTag.Name.ToString(), media.Id.ToString());
                     }
                     else
                     {
                         // create media and assign it.
+                        var name = propertyTag.Attribute("name").Value;
+                        var nodeTypeAlias = propertyTag.Attribute("nodeTypeAlias").Value;
+                        var fileName = propertyTag.Attribute("fileName").Value;
+                        var parent = propertyTag.Attribute("parentGuid").Value == "-1"
+                            ? -1
+                            : ms.GetById(new Guid(propertyTag.Attribute("parentGuid").Value)).Id;
 
-                        var name = property.Attribute("name").Value;
 
+                        var mediaNode = ms.CreateMedia(name, parent, nodeTypeAlias);
 
-                        ms.CreateMedia(name,-1,
+                        var memoryStream = new MemoryStream();
 
+                        var zipEntry = zip.Entries.SingleOrDefault(x => x.FileName == fileName);
+                        zipEntry.Extract(memoryStream);
+
+                        memoryStream.Seek(0, SeekOrigin.Begin);
+
+                        mediaNode.SetValue("umbracoFile", fileName, memoryStream);
+
+                        ms.Save(mediaNode);
+
+                        content.SetValue(propertyTag.Name.ToString(), mediaNode.Id);
                     }
                 }
                 else
                 {
-                    content.SetValue(property.Name.ToString(), property.Value);
+                    content.SetValue(propertyTag.Name.ToString(), propertyTag.Value);
                 }
             }
 
