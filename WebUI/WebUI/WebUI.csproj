@@ -228,7 +228,10 @@
     <Compile Include="DotMailer\ApiContactOptInTypes.cs" />
     <Compile Include="Infrastructure\Content.cs" />
     <Compile Include="Infrastructure\ExportContent.cs" />
+    <Compile Include="Infrastructure\IDataTypeConverter.cs" />
     <Compile Include="Infrastructure\ImportContent.cs" />
+    <Compile Include="Infrastructure\LoadConfig.cs" />
+    <Compile Include="Infrastructure\MediaPickerDataTypeConverter.cs" />
     <Compile Include="Infrastructure\ZipFileResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -365,6 +368,7 @@
     <Content Include="css\skin-win8\ui.fancytree-w.less" />
     <Content Include="css\skin-win8\ui.fancytree.less" />
     <Content Include="css\skin-xp\ui.fancytree.less" />
+    <Content Include="config\ContentPackage.config" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

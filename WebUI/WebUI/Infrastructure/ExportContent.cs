@@ -7,6 +7,7 @@
     using System.Xml.Linq;
     using Umbraco.Core;
     using Umbraco.Core.Models;
+    using Umbraco.Core.Services;
 
     public class ExportContent
     {
@@ -19,7 +20,8 @@
                 var services = ApplicationContext.Current.Services;
 
                 var cs = services.ContentService;
-                var ms = services.MediaService;
+
+                var dataTypes = new Config().GetDataTypes();
 
                 var nodes = ids.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -65,21 +67,11 @@
                         var tag = property.ToXml();
                         tag.Add(new XAttribute("dataTypeGuid", propertyTypes.ElementAt(count).DataTypeId));
 
-                        if (SpecialDataType(propertyTypes.ElementAt(count).DataTypeId))
-                        {
-                            if (property.Value != null && !string.IsNullOrWhiteSpace(property.Value.ToString()))
-                            {
-                                tag.Value = string.Empty;
+                        var guid = propertyTypes.ElementAt(count).DataTypeId;
 
-                                var media = ms.GetById((int)property.Value);
-                                var umbracoFile = media.GetValue<string>("umbracoFile");
-                                tag.Add(new XAttribute("name", media.Name));
-                                tag.Add(new XAttribute("nodeTypeAlias", media.ContentType.Alias));
-                                tag.Add(new XAttribute("guid", media.Key));
-                                tag.Add(new XAttribute("parentGuid", media.Parent() == null ? "-1" : media.Parent().Key.ToString()));
-                                tag.Add(new XAttribute("umbracoFile", umbracoFile));
-                                tag.Add(new XAttribute("fileName", umbracoFile.Split('/').Last()));
-                            }
+                        if (dataTypes.ContainsKey(guid))
+                        {
+                            DataTableConverter(property, services, tag, dataTypes[guid]);
                         }
 
                         currentContent.Add(tag);
@@ -98,20 +90,18 @@
             return null;
         }
 
+        private void DataTableConverter(Property property, ServiceContext services, XElement propertyTag, string type)
+        {
+            var t = (IDataTypeConverter)Activator.CreateInstance(Type.GetType(type));
+
+            t.Export(property, services, propertyTag);
+        }
+
         public IEnumerable<string> GetListOfAssets(XDocument xdoc)
         {
             return xdoc.Descendants()
                 .Where(x => x.Attribute("umbracoFile") != null && !string.IsNullOrWhiteSpace(x.Attribute("umbracoFile").Value))
                 .Select(x => x.Attribute("umbracoFile").Value);
-        }
-
-        #endregion
-
-        #region Helpers
-
-        private bool SpecialDataType(Guid guid)
-        {
-            return guid.Equals(new Guid("ead69342-f06d-4253-83ac-28000225583b"));
         }
 
         #endregion
