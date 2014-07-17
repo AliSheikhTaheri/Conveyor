@@ -73,8 +73,8 @@
 
         private void UpdateContent(XElement node, IContent content, Content newContent, ServiceContext services, ZipFile zip)
         {
-            var ms = services.MediaService;
             var cs = services.ContentService;
+            var dataTypes = new Config().GetDataTypes();
 
             content.Name = newContent.Name;
             content.CreatorId = User.GetCurrent().Id;
@@ -96,41 +96,9 @@
             {
                 var dataTypeGuid = new Guid(propertyTag.Attribute("dataTypeGuid").Value);
 
-                if (IsSpecialProperty(dataTypeGuid) && !string.IsNullOrWhiteSpace(propertyTag.Attribute("guid").Value))
+                if (dataTypes.ContainsKey(dataTypeGuid) && !string.IsNullOrWhiteSpace(propertyTag.Attribute("guid").Value))
                 {
-                    var propGuid = new Guid(propertyTag.Attribute("guid").Value);
-                    var media = ms.GetById(propGuid);
-
-                    if (media != null)
-                    {
-                        content.SetValue(propertyTag.Name.ToString(), media.Id.ToString());
-                    }
-                    else
-                    {
-                        // create media and assign it.
-                        var name = propertyTag.Attribute("name").Value;
-                        var nodeTypeAlias = propertyTag.Attribute("nodeTypeAlias").Value;
-                        var fileName = propertyTag.Attribute("fileName").Value;
-                        var parent = propertyTag.Attribute("parentGuid").Value == "-1"
-                            ? -1
-                            : ms.GetById(new Guid(propertyTag.Attribute("parentGuid").Value)).Id;
-
-
-                        var mediaNode = ms.CreateMedia(name, parent, nodeTypeAlias);
-
-                        var memoryStream = new MemoryStream();
-
-                        var zipEntry = zip.Entries.SingleOrDefault(x => x.FileName == fileName);
-                        zipEntry.Extract(memoryStream);
-
-                        memoryStream.Seek(0, SeekOrigin.Begin);
-
-                        mediaNode.SetValue("umbracoFile", fileName, memoryStream);
-
-                        ms.Save(mediaNode);
-
-                        content.SetValue(propertyTag.Name.ToString(), mediaNode.Id);
-                    }
+                    DataTypeConverterImport(services, propertyTag, content, zip, dataTypes[dataTypeGuid]);
                 }
                 else
                 {
@@ -144,6 +112,13 @@
         public bool IsSpecialProperty(Guid guid)
         {
             return guid.Equals(new Guid("ead69342-f06d-4253-83ac-28000225583b"));
+        }
+
+        private void DataTypeConverterImport(ServiceContext services, XElement propertyTag, IContent content, ZipFile zip, string type)
+        {
+            var t = (IDataTypeConverter)Activator.CreateInstance(Type.GetType(type));
+
+            t.Import(services, propertyTag, content, zip);
         }
     }
 }

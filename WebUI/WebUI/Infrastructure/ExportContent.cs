@@ -71,7 +71,7 @@
 
                         if (dataTypes.ContainsKey(guid))
                         {
-                            DataTableConverter(property, services, tag, dataTypes[guid]);
+                            DataTypeConverterExport(property, services, tag, dataTypes[guid]);
                         }
 
                         currentContent.Add(tag);
@@ -90,7 +90,7 @@
             return null;
         }
 
-        private void DataTableConverter(Property property, ServiceContext services, XElement propertyTag, string type)
+        private void DataTypeConverterExport(Property property, ServiceContext services, XElement propertyTag, string type)
         {
             var t = (IDataTypeConverter)Activator.CreateInstance(Type.GetType(type));
 
