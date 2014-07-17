@@ -109,11 +109,6 @@
             cs.Save(content);
         }
 
-        public bool IsSpecialProperty(Guid guid)
-        {
-            return guid.Equals(new Guid("ead69342-f06d-4253-83ac-28000225583b"));
-        }
-
         private void DataTypeConverterImport(ServiceContext services, XElement propertyTag, IContent content, ZipFile zip, string type)
         {
             var t = (IDataTypeConverter)Activator.CreateInstance(Type.GetType(type));
