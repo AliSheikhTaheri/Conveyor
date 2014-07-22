@@ -227,11 +227,14 @@
     <Compile Include="DotMailer\ApiContactEmailTypes.cs" />
     <Compile Include="DotMailer\ApiContactOptInTypes.cs" />
     <Compile Include="Infrastructure\Content.cs" />
+    <Compile Include="Infrastructure\BaseContentManagement.cs" />
+    <Compile Include="Infrastructure\ContentPickerDataTypeConverter.cs" />
     <Compile Include="Infrastructure\ExportContent.cs" />
     <Compile Include="Infrastructure\IDataTypeConverter.cs" />
     <Compile Include="Infrastructure\ImportContent.cs" />
     <Compile Include="Infrastructure\Config.cs" />
     <Compile Include="Infrastructure\MediaPickerDataTypeConverter.cs" />
+    <Compile Include="Infrastructure\MultiNodeTreePickerDataTypeConverter.cs" />
     <Compile Include="Infrastructure\ZipFileResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

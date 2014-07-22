@@ -1,5 +1,7 @@
 ﻿namespace WebUI.Infrastructure
 {
+    using System;
+    using System.Collections.Generic;
     using System.Xml.Linq;
     using Ionic.Zip;
     using Umbraco.Core.Models;
@@ -7,8 +9,8 @@
 
     public interface IDataTypeConverter
     {
-        void Export(Property property, ServiceContext services, XElement propertyTag);
+        void Export(Property property, XElement propertyTag, Dictionary<Guid, UmbracoObjectTypes> dependantNodes);
 
-        void Import(ServiceContext services, XElement propertyTag, IContent content, ZipFile zip);
+        string Import(XElement propertyTag);
     }
 }

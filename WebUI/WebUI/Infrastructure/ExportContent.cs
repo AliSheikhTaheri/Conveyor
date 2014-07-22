@@ -9,7 +9,7 @@
     using Umbraco.Core.Models;
     using Umbraco.Core.Services;
 
-    public class ExportContent
+    public class ExportContent : BaseContentManagement
     {
         #region Methods
 
@@ -17,84 +17,43 @@
         {
             if (ids.Length > 0)
             {
-                var services = ApplicationContext.Current.Services;
-
-                var cs = services.ContentService;
-
-                var dataTypes = new Config().GetDataTypes();
-
                 var nodes = ids.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
 
+                var xdocument = new XDocument(new XDeclaration("1.0", "utf-8", "yes"));
+
                 var xml = new XElement("Root");
+
+                var dependentNodes = new Dictionary<Guid, UmbracoObjectTypes>();
 
                 foreach (var node in nodes)
                 {
                     var id = int.Parse(node);
 
-                    var content = cs.GetById(id);
-                    var nodeName = content.ContentType.Alias.ToSafeAliasWithForcingCheck();
+                    var content = Services.ContentService.GetById(id);
 
-                    var currentContent = new XElement(nodeName,
-                        new XAttribute("nodeName", content.Name),
-                        new XAttribute("nodeType", content.ContentType.Id),
-                        new XAttribute("creatorName", content.GetCreatorProfile().Name),
-                        new XAttribute("writerName", content.GetWriterProfile().Name),
-                        new XAttribute("writerID", content.WriterId),
-                        new XAttribute("templateID", content.Template == null ? "0" : content.Template.Id.ToString(CultureInfo.InvariantCulture)),
-                        new XAttribute("nodeTypeAlias", content.ContentType.Alias),
+                    var currentContentTag = SerialiseContent(content, dependentNodes);
 
-                        new XAttribute("id", content.Id),
-                        new XAttribute("parentID", content.Level > 1 ? content.ParentId : -1),
-                        new XAttribute("level", content.Level),
-                        new XAttribute("creatorID", content.CreatorId),
-                        new XAttribute("sortOrder", content.SortOrder),
-                        new XAttribute("createDate", content.CreateDate.ToString("s")),
-                        new XAttribute("updateDate", content.UpdateDate.ToString("s")),
-                        new XAttribute("path", content.Path),
-                        new XAttribute("isDoc", string.Empty),
-
-                        new XAttribute("releaseDate", content.ReleaseDate != null ? content.ReleaseDate.Value.ToString("s") : DateTime.MinValue.ToString("s")),
-                        new XAttribute("expireDate", content.ExpireDate != null ? content.ExpireDate.Value.ToString("s") : DateTime.MinValue.ToString("s")),
-
-                        new XAttribute("parentGuid", content.Level > 1 ? content.Parent().Key.ToString() : string.Empty),
-                        new XAttribute("guid", content.Key));
-
-                    var propertyTypes = content.PropertyTypes.ToArray();
-                    var count = 0;
-
-                    foreach (var property in content.Properties)
-                    {
-                        var tag = property.ToXml();
-                        tag.Add(new XAttribute("dataTypeGuid", propertyTypes.ElementAt(count).DataTypeId));
-
-                        var guid = propertyTypes.ElementAt(count).DataTypeId;
-
-                        if (dataTypes.ContainsKey(guid))
-                        {
-                            DataTypeConverterExport(property, services, tag, dataTypes[guid]);
-                        }
-
-                        currentContent.Add(tag);
-                        count++;
-                    }
-
-                    xml.Add(currentContent);
+                    xml.Add(currentContentTag);
                 }
 
-                var xdocument = new XDocument(new XDeclaration("1.0", "utf-8", "yes"));
+                foreach (var node in dependentNodes)
+                {
+                    if (node.Value == UmbracoObjectTypes.Document)
+                    {
+                        xml.Add(SerialiseContent(Services.ContentService.GetById(node.Key)));
+                    }
+                    else if (node.Value == UmbracoObjectTypes.Media)
+                    {
+                        xml.Add(SerialiseMedia(Services.MediaService.GetById(node.Key)));
+                    }
+                }
+
                 xdocument.Add(xml);
 
                 return xdocument;
             }
 
             return null;
-        }
-
-        private void DataTypeConverterExport(Property property, ServiceContext services, XElement propertyTag, string type)
-        {
-            var t = (IDataTypeConverter)Activator.CreateInstance(Type.GetType(type));
-
-            t.Export(property, services, propertyTag);
         }
 
         public IEnumerable<string> GetListOfAssets(XDocument xdoc)

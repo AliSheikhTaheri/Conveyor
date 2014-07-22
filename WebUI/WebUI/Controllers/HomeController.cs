@@ -39,9 +39,9 @@
 
             using (var zip = new ZipFile())
             {
-                foreach (var f in files)
+                foreach (var f in files.Distinct())
                 {
-                    zip.AddFile(HostingEnvironment.MapPath(f), string.Empty);
+                    zip.AddFile(HostingEnvironment.MapPath(f), f.Replace(f.Split('/').Last(), string.Empty));
                 }
 
                 xdoc.Save(msXml);

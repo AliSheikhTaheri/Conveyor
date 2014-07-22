@@ -3,20 +3,22 @@
     using System;
     using System.Collections.Generic;
     using System.Xml.Linq;
+    using Ionic.Zip;
     using Umbraco.Core.Models;
+    using Umbraco.Core.Services;
 
-    public class MediaPickerDataTypeConverter : BaseContentManagement, IDataTypeConverter
+    public class ContentPickerDataTypeConverter : BaseContentManagement, IDataTypeConverter
     {
         public void Export(Property property, XElement propertyTag, Dictionary<Guid, UmbracoObjectTypes> dependantNodes)
         {
             if (property.Value != null && !string.IsNullOrWhiteSpace(property.Value.ToString()))
             {
-                var media = Services.MediaService.GetById((int)property.Value);
-                propertyTag.Value = media.Key.ToString();
+                var content = Services.ContentService.GetById((int)property.Value);
+                propertyTag.Value = content.Key.ToString();
 
-                if (!dependantNodes.ContainsKey(media.Key))
+                if (!dependantNodes.ContainsKey(content.Key))
                 {
-                    dependantNodes.Add(media.Key, UmbracoObjectTypes.Media);
+                    dependantNodes.Add(content.Key, UmbracoObjectTypes.Document);
                 }
             }
         }
@@ -24,8 +26,9 @@
         public string Import(XElement propertyTag)
         {
             var guid = new Guid(propertyTag.Value);
-            var id = Services.MediaService.GetById(guid);
-            return id.ToString(); 
+            var id = Services.ContentService.GetById(guid).Id;
+
+            return id.ToString();
         }
     }
 }
