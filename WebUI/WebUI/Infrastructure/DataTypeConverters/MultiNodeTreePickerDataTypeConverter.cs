@@ -4,15 +4,13 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Xml.Linq;
-    using Ionic.Zip;
     using umbraco;
     using Umbraco.Core;
     using Umbraco.Core.Models;
-    using Umbraco.Core.Services;
 
     public class MultiNodeTreePickerDataTypeConverter : BaseContentManagement, IDataTypeConverter
     {
-        public void Export(Property property, XElement propertyTag, Dictionary<Guid, UmbracoObjectTypes> dependantNodes)
+        public void Export(Property property, XElement propertyTag, Dictionary<int, ObjectTypes> dependantNodes)
         {
             if (property.Value != null && !string.IsNullOrWhiteSpace(property.Value.ToString()))
             {
@@ -29,32 +27,32 @@
 
                 if (nodeIds.Length > 0)
                 {
-                    var nodeType = uQuery.GetUmbracoObjectType(nodeIds[0]);
+                    var nodeType = uQuery.GetUmbracoObjectType(nodeIds[0]).ToString();
 
-                    propertyTag.Add(new XAttribute("umbracoObjectType", nodeType));
+                    propertyTag.Add(new XAttribute("objectType", nodeType));
 
                     var guidList = new List<Guid>();
 
                     foreach (var id in nodeIds)
                     {
-                        if (nodeType == uQuery.UmbracoObjectType.Document)
+                        if (nodeType == ObjectTypes.Document.ToString())
                         {
                             var guid = Services.ContentService.GetById(id).Key;
 
                             guidList.Add(guid);
-                            if (!dependantNodes.ContainsKey(guid))
+                            if (!dependantNodes.ContainsKey(id))
                             {
-                                dependantNodes.Add(guid, UmbracoObjectTypes.Document);
+                                dependantNodes.Add(id, ObjectTypes.Document);
                             }
                         }
-                        else if (nodeType == uQuery.UmbracoObjectType.Media)
+                        else if (nodeType == ObjectTypes.Media.ToString())
                         {
                             var guid = Services.MediaService.GetById(id).Key;
                             guidList.Add(guid);
-                            
-                            if (!dependantNodes.ContainsKey(guid))
+
+                            if (!dependantNodes.ContainsKey(id))
                             {
-                                dependantNodes.Add(guid, UmbracoObjectTypes.Media);
+                                dependantNodes.Add(id, ObjectTypes.Media);
                             }
                         }
                     }
@@ -66,7 +64,31 @@
 
         public string Import(XElement propertyTag)
         {
-            return string.Empty;
+            var result = string.Empty;
+
+            if (!string.IsNullOrWhiteSpace(propertyTag.Value))
+            {
+                var listOfGuid = propertyTag.Value.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                var objectType = propertyTag.Attribute("objectType").Value;
+
+                var listOfIds = new List<int>();
+
+                foreach (var guid in listOfGuid)
+                {
+                    if (objectType == ObjectTypes.Document.ToString())
+                    {
+                        listOfIds.Add(Services.ContentService.GetById(new Guid(guid)).Id);
+                    }
+                    else if (objectType == ObjectTypes.Media.ToString())
+                    {
+                        listOfIds.Add(Services.MediaService.GetById(new Guid(guid)).Id);
+                    }
+                }
+
+                result = string.Join(",", listOfIds);
+            }
+
+            return result;
         }
     }
 }

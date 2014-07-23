@@ -23,7 +23,7 @@
 
                 var xml = new XElement("Root");
 
-                var dependentNodes = new Dictionary<Guid, UmbracoObjectTypes>();
+                var dependentNodes = new Dictionary<int, ObjectTypes>();
 
                 foreach (var node in nodes)
                 {
@@ -36,15 +36,15 @@
                     xml.Add(currentContentTag);
                 }
 
-                foreach (var node in dependentNodes)
+                foreach (var node in dependentNodes.Where(x => !nodes.Contains(x.Key.ToString())))
                 {
-                    if (node.Value == UmbracoObjectTypes.Document)
+                    if (node.Value == ObjectTypes.Document)
                     {
                         xml.Add(SerialiseContent(Services.ContentService.GetById(node.Key)));
                     }
-                    else if (node.Value == UmbracoObjectTypes.Media)
+                    else if (node.Value == ObjectTypes.Media)
                     {
-                        xml.Add(SerialiseMedia(Services.MediaService.GetById(node.Key)));
+                        xml.Add(SerialiseMedia(Services.MediaService.GetById(node.Key), dependentNodes));
                     }
                 }
 
