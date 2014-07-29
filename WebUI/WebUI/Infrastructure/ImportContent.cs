@@ -1,9 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using System.Web.Services.Description;
-using umbraco;
-using umbraco.presentation.webservices;
-
-namespace WebUI.Infrastructure
+﻿namespace WebUI.Infrastructure
 {
     using System;
     using System.IO;
@@ -13,9 +8,7 @@ namespace WebUI.Infrastructure
     using System.Xml.Serialization;
     using Ionic.Zip;
     using umbraco.BusinessLogic;
-    using Umbraco.Core;
     using Umbraco.Core.Models;
-    using Umbraco.Core.Services;
 
     internal class ImportContent : BaseContentManagement
     {
@@ -27,7 +20,7 @@ namespace WebUI.Infrastructure
                 {
                     XDocument xdoc;
 
-                    var contentXmlZipEntry = zip.Entries.FirstOrDefault(x => x.FileName == "content.xml");
+                    var contentXmlZipEntry = zip.Entries.FirstOrDefault(x => x.FileName == Constants.ContentFileName);
 
                     using (var ms = new MemoryStream())
                     {
@@ -41,13 +34,169 @@ namespace WebUI.Infrastructure
             }
         }
 
-        internal void ImportNodes(XDocument xml, ZipFile zipFile)
+        #region Content
+        private void CreateOrUpdateContent(ZipFile zipFile, Guid key, XmlSerializer xmlSerialiser, XElement node)
+        {
+            var content = Services.ContentService.GetById(key);
+            var newContent = (Content)xmlSerialiser.Deserialize(node.CreateReader());
+            if (content != null)
+            {
+                SaveContent(node, content, newContent, zipFile);
+            }
+            else
+            {
+                var parentId = GetContentParentId(newContent);
+
+                var newNode = Services.ContentService.CreateContent(newContent.Name, parentId, newContent.ContentTypeAlias,
+                    User.GetCurrent().Id);
+                newNode.Key = newContent.Key;
+                SaveContent(node, newNode, newContent, zipFile);
+            }
+        }
+
+        private void CreateOrUpdateMedia(ZipFile zipFile, Guid key, XElement node)
+        {
+            var media = Services.MediaService.GetById(key);
+
+            if (media != null)
+            {
+                SaveMedia(node, media, zipFile);
+            }
+            else
+            {
+                var name = node.Attribute("name").Value;
+                var parentId = GetMediaParentId(node);
+
+                var newMedia = Services.MediaService.CreateMedia(name, parentId, node.Name.ToString());
+
+                SaveMedia(node, newMedia, zipFile);
+            }
+        }
+
+        private void SaveContent(XElement node, IContent content, Content newContent, ZipFile zip)
+        {
+            var cs = Services.ContentService;
+            var dataTypes = new Config().GetDataTypes();
+
+            content.Name = newContent.Name;
+            content.CreatorId = User.GetCurrent().Id;
+            content.SortOrder = newContent.SortOrder;
+            content.WriterId = User.GetCurrent().Id;
+            content.Template.Id = newContent.TemplateId;
+
+            if (newContent.ReleaseDate != DateTime.MinValue)
+            {
+                content.ReleaseDate = newContent.ReleaseDate;
+            }
+
+            if (newContent.ExpireDate != DateTime.MinValue)
+            {
+                content.ExpireDate = newContent.ExpireDate;
+            }
+
+            foreach (var propertyTag in node.Elements())
+            {
+                var dataTypeGuid = new Guid(propertyTag.Attribute("dataTypeGuid").Value);
+
+                var value = propertyTag.Value;
+                if (dataTypeGuid == new Guid("5032a6e6-69e3-491d-bb28-cd31cd11086c"))
+                {
+                    var fileName = propertyTag.Attribute("fileName").Value;
+                    var umbracoFile = propertyTag.Attribute("umbracoFile").Value;
+
+                    if (!string.IsNullOrWhiteSpace(umbracoFile))
+                    {
+                        content.SetValue(propertyTag.Name.ToString(), fileName, GetFileStream(umbracoFile, zip));
+                    }
+                    else
+                    {
+                        content.SetValue(propertyTag.Name.ToString(), string.Empty);
+                    }
+                }
+                else if (!dataTypes.ContainsKey(dataTypeGuid))
+                {
+                    content.SetValue(propertyTag.Name.ToString(), value);
+                }
+            }
+
+            cs.SaveAndPublish(content);
+        }
+        #endregion
+
+        #region Media
+
+        private int GetContentParentId(Content content)
+        {
+            var parentId = content.ParentId == -1 ? -1 : 0;
+
+            if (parentId == 0)
+            {
+                var m = Services.ContentService.GetById(new Guid(content.ParentGuid));
+
+                parentId = m != null ? m.Id : -1;
+            }
+
+            return parentId;
+        }
+
+        private void SaveMedia(XElement node, IMedia media, ZipFile zip)
+        {
+            media.Name = node.Attribute("name").Value;
+            media.ParentId = GetMediaParentId(node);
+            media.Key = new Guid(node.Attribute("guid").Value);
+
+            foreach (var propertyTag in node.Elements())
+            {
+                var dataTypeGuid = new Guid(propertyTag.Attribute("dataTypeGuid").Value);
+
+                if (dataTypeGuid == new Guid("5032a6e6-69e3-491d-bb28-cd31cd11086c"))
+                {
+                    var fileName = propertyTag.Attribute("fileName").Value;
+                    var umbracoFile = propertyTag.Attribute("umbracoFile").Value;
+
+                    if (!string.IsNullOrWhiteSpace(umbracoFile))
+                    {
+                        media.SetValue(propertyTag.Name.ToString(), fileName, GetFileStream(umbracoFile, zip));
+                    }
+                    else
+                    {
+                        media.SetValue(propertyTag.Name.ToString(), string.Empty);
+                    }
+                }
+                else if (!SpecialDataTypes.ContainsKey(dataTypeGuid))
+                {
+                    media.SetValue(propertyTag.Name.ToString(), propertyTag.Value);
+                }
+            }
+
+            Services.MediaService.Save(media);
+        }
+
+        private int GetMediaParentId(XElement node)
+        {
+            var parentId = node.Attribute("parentGuid").Value == "-1" ? -1 : 0;
+
+            if (parentId == 0)
+            {
+                var m = Services.MediaService.GetById(new Guid(node.Attribute("parentGuid").Value));
+
+                parentId = m != null ? m.Id : -1;
+            }
+
+            return parentId;
+        }
+
+        #endregion
+
+        #region Helpers
+
+        private void ImportNodes(XDocument xml, ZipFile zipFile)
         {
             var root = xml.Root;
 
             if (root != null)
             {
-                foreach (var node in root.Elements())
+                foreach (var node in root.Elements().OrderBy(x => int.Parse(x.Attribute("level").Value)))
                 {
                     var key = new Guid(node.Attribute("guid").Value);
                     var nodeType = node.Attribute("objectType").Value;
@@ -86,76 +235,10 @@ namespace WebUI.Infrastructure
                         var value = DataTypeConverterImport(prop, dataTypeGuid);
                         iContent.SetValue(prop.Name.ToString(), value);
                     }
-                    
+
                     Services.ContentService.SaveAndPublish(iContent);
                 }
             }
-        }
-
-        private void CreateOrUpdateMedia(ZipFile zipFile, Guid key, XElement node)
-        {
-            var media = Services.MediaService.GetById(key);
-
-            if (media != null)
-            {
-                UpdateMedia(node, media, zipFile);
-            }
-            else
-            {
-                var name = node.Attribute("name").Value;
-                var parentId = GetMediaParentId(node);
-
-                var newMedia = Services.MediaService.CreateMedia(name, parentId, node.Name.ToString());
-
-                UpdateMedia(node, newMedia, zipFile);
-            }
-        }
-
-        private void CreateOrUpdateContent(ZipFile zipFile, Guid key, XmlSerializer xmlSerialiser, XElement node)
-        {
-            var content = Services.ContentService.GetById(key);
-            var newContent = (Content)xmlSerialiser.Deserialize(node.CreateReader());
-            if (content != null)
-            {
-                UpdateContent(node, content, newContent, zipFile);
-            }
-            else
-            {
-                var parentId = newContent.ParentId == -1
-                    ? -1
-                    : Services.ContentService.GetById(new Guid(newContent.ParentGuid)).Id;
-
-                var newNode = Services.ContentService.CreateContent(newContent.Name, parentId, newContent.ContentTypeAlias,
-                    User.GetCurrent().Id);
-                newNode.Key = newContent.Key;
-                UpdateContent(node, newNode, newContent, zipFile);
-            }
-        }
-
-        private void UpdateMedia(XElement node, IMedia media, ZipFile zip)
-        {
-            media.Name = node.Attribute("name").Value;
-            media.ParentId = GetMediaParentId(node);
-            media.Key = new Guid(node.Attribute("guid").Value);
-
-            foreach (var propertyTag in node.Elements())
-            {
-                var dataTypeGuid = new Guid(propertyTag.Attribute("dataTypeGuid").Value);
-
-                if (dataTypeGuid == new Guid("5032a6e6-69e3-491d-bb28-cd31cd11086c"))
-                {
-                    var fileName = propertyTag.Attribute("fileName").Value;
-                    var umbracoFile = propertyTag.Attribute("umbracoFile").Value;
-
-                    media.SetValue(propertyTag.Name.ToString(), fileName, GetFileStream(umbracoFile, zip));
-                }
-                else if (!SpecialDataTypes.ContainsKey(dataTypeGuid))
-                {
-                    media.SetValue(propertyTag.Name.ToString(), propertyTag.Value);
-                }
-            }
-
-            Services.MediaService.Save(media);
         }
 
         private MemoryStream GetFileStream(string umbracoFile, ZipFile zip)
@@ -172,61 +255,6 @@ namespace WebUI.Infrastructure
             return memoryStream;
         }
 
-        private int GetMediaParentId(XElement node)
-        {
-            var parentId = node.Attribute("parentGuid").Value == "-1" ? -1 : 0;
-
-            if (parentId == 0)
-            {
-                var m = Services.MediaService.GetById(new Guid(node.Attribute("parentGuid").Value));
-
-                parentId = m != null ? m.Id : -1;
-            }
-            return parentId;
-        }
-
-        private void UpdateContent(XElement node, IContent content, Content newContent, ZipFile zip)
-        {
-            var cs = Services.ContentService;
-            var dataTypes = new Config().GetDataTypes();
-
-            content.Name = newContent.Name;
-            content.CreatorId = User.GetCurrent().Id;
-            content.SortOrder = newContent.SortOrder;
-            content.WriterId = User.GetCurrent().Id;
-            content.Template.Id = newContent.TemplateId;
-
-            if (newContent.ReleaseDate != DateTime.MinValue)
-            {
-                content.ReleaseDate = newContent.ReleaseDate;
-            }
-
-            if (newContent.ExpireDate != DateTime.MinValue)
-            {
-                content.ExpireDate = newContent.ExpireDate;
-            }
-
-            foreach (var propertyTag in node.Elements())
-            {
-                var dataTypeGuid = new Guid(propertyTag.Attribute("dataTypeGuid").Value);
-
-                var value = propertyTag.Value;
-                if (dataTypeGuid == new Guid("5032a6e6-69e3-491d-bb28-cd31cd11086c"))
-                {
-                    var fileName = propertyTag.Attribute("fileName").Value;
-                    var umbracoFile = propertyTag.Attribute("umbracoFile").Value;
-
-                    content.SetValue(propertyTag.Name.ToString(), fileName, GetFileStream(umbracoFile, zip));
-                }
-                else if (!dataTypes.ContainsKey(dataTypeGuid))
-                {
-                    content.SetValue(propertyTag.Name.ToString(), value);
-                }
-            }
-
-            cs.SaveAndPublish(content);
-        }
-
         private string DataTypeConverterImport(XElement propertyTag, Guid guid)
         {
             var type = SpecialDataTypes[guid];
@@ -235,5 +263,7 @@ namespace WebUI.Infrastructure
 
             return dataTypeConverter.Import(propertyTag);
         }
+
+        #endregion
     }
 }

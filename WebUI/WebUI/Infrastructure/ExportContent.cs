@@ -2,12 +2,9 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Globalization;
     using System.Linq;
     using System.Xml.Linq;
-    using Umbraco.Core;
     using Umbraco.Core.Models;
-    using Umbraco.Core.Services;
 
     public class ExportContent : BaseContentManagement
     {
@@ -44,7 +41,14 @@
                     }
                     else if (node.Value == ObjectTypes.Media)
                     {
-                        xml.Add(SerialiseMedia(Services.MediaService.GetById(node.Key), dependentNodes));
+                        var media = Services.MediaService.GetById(node.Key);
+                        
+                        do
+                        {
+                            xml.Add(SerialiseMedia(media, dependentNodes));
+                            media = media.Parent();
+                        }
+                        while (media != null);
                     }
                 }
 

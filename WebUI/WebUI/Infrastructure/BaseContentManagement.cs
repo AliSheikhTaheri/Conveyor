@@ -95,13 +95,14 @@
                 new XAttribute("nodeTypeAlias", media.ContentType.Alias),
                 new XAttribute("guid", media.Key),
                 new XAttribute("parentGuid", media.Parent() == null ? "-1" : media.Parent().Key.ToString()),
+                new XAttribute("level", media.Level),
                 new XAttribute("objectType", ObjectTypes.Media));
 
 
-            var propertyTypes = media.PropertyTypes.Where(x => !(new[] { "umbracoWidth", "umbracoHeight", "umbracoBytes", "umbracoExtension" }).Contains(x.Alias)).ToArray();
+            var propertyTypes = media.PropertyTypes.Where(x => !Constants.MediaDefaultProperties.Contains(x.Alias)).ToArray();
             var count = 0;
 
-            foreach (var property in media.Properties.Where(x => !(new[] { "umbracoWidth", "umbracoHeight", "umbracoBytes", "umbracoExtension" }).Contains(x.Alias)))
+            foreach (var property in media.Properties.Where(x => !Constants.MediaDefaultProperties.Contains(x.Alias)))
             {
                 var tag = property.ToXml();
                 tag.Add(new XAttribute("dataTypeGuid", propertyTypes.ElementAt(count).DataTypeId));
