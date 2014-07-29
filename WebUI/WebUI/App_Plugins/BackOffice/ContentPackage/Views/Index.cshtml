@@ -1,25 +1,21 @@
-﻿<html>
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
-    <title>Fancytree - Example: Select</title>
+﻿@{
+    Layout = "_Layout.cshtml";
+}
 
+@section PageHeader
+{
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js" type="text/javascript"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js" type="text/javascript"></script>
 
-    <link href="/css/skin-win7/ui.fancytree.css" rel="stylesheet" type="text/css">
-    <script src="/css/jquery.fancytree.js" type="text/javascript"></script>
-
-    <!-- (Irrelevant source removed.) -->
-
-    <style type="text/css">
-    </style>
+    <link href="/App_Plugins/BackOffice/ContentPackage/Style/FancyTree/skin-win7/ui.fancytree.css" rel="stylesheet" type="text/css">
+    <script src="/App_Plugins/BackOffice/ContentPackage/Style/FancyTree/jquery.fancytree.js" type="text/javascript"></script>
 
     <script type="text/javascript">
 
 
-        $(function () {
+        $(function() {
 
-            $.getJSON("/App_Plugins/BackOffice/ContentPackage/ContentTreeAsJsonResult", function (json) {
+            $.getJSON("/App_Plugins/BackOffice/ContentPackage/ContentTreeAsJsonResult", function(json) {
                 //console.log("data = " + json);
                 myfunction(JSON.parse(json));
             });
@@ -34,11 +30,11 @@
                     checkbox: true,
                     selectMode: 2,
                     source: jsondata,
-                    select: function (event, data) {
+                    select: function(event, data) {
                         // Display list of selected nodes
                         var selNodes = data.tree.getSelectedNodes();
                         // convert to title/key array
-                        var selKeys = $.map(selNodes, function (node) {
+                        var selKeys = $.map(selNodes, function(node) {
                             return node.key;
                         });
                         $("#echoSelection2").text(selKeys.join(","));
@@ -47,14 +43,14 @@
 
                         $("input[name='ids']").val(selectedIds);
                     },
-                    click: function (event, data) {
+                    click: function(event, data) {
                         // We should not toggle, if target was "checkbox", because this
                         // would result in double-toggle (i.e. no toggle)
                         if ($.ui.fancytree.getEventTargetType(event) === "title") {
                             data.node.toggleSelected();
                         }
                     },
-                    keydown: function (event, data) {
+                    keydown: function(event, data) {
                         if (event.which === 32) {
                             data.node.toggleSelected();
                             return false;
@@ -65,55 +61,71 @@
                     idPrefix: "fancytree-Cb2-"
                 });
 
-                //$("#btnToggleSelect").click(function () {
-                //    $("#tree2").fancytree("getRootNode").visit(function (node) {
-                //        node.toggleSelected();
-                //    });
-                //    return false;
-                //});
-                //$("#btnDeselectAll").click(function () {
-                //    $("#tree2").fancytree("getTree").visit(function (node) {
-                //        node.setSelected(false);
-                //    });
-                //    return false;
-                //});
-                //$("#btnSelectAll").click(function () {
-                //    $("#tree2").fancytree("getTree").visit(function (node) {
-                //        node.setSelected(true);
-                //    });
-                //    return false;
-                //});
+                $("#btnToggleSelect").click(function () {
+                    $("#tree2").fancytree("getRootNode").visit(function (node) {
+                        node.toggleSelected();
+                    });
+                    return false;
+                });
+                $("#btnDeselectAll").click(function () {
+                    $("#tree2").fancytree("getTree").visit(function (node) {
+                        node.setSelected(false);
+                    });
+                    return false;
+                });
+                $("#btnSelectAll").click(function () {
+                    $("#tree2").fancytree("getTree").visit(function (node) {
+                        node.setSelected(true);
+                    });
+                    return false;
+                });
             };
 
 
         });
     </script>
-</head>
-<body class="example">
-    <p>
-        <a href="#" id="btnSelectAll">Select all</a> -
-        <a href="#" id="btnDeselectAll">Deselect all</a> -
-        <a href="#" id="btnToggleSelect">Toggle select</a>
-    </p>
-    <div id="tree2"></div>
-    @*<div>Selected keys: <span id="echoSelection2">-</span></div>*@
-    
-    @using(Html.BeginForm("ExportContent", "ContentPackage"))
-    {
-        <input type="hidden" name="ids" id="ids" />
 
-        @Html.ValidationMessage("error")
+}
+<div class="boxbody">
 
-        <input type="submit" />
-    }
+    <div id="body_UmbracoPanel_content" class="content">
+        <div class="innerContent" id="body_UmbracoPanel_innerContent">
+            <h2 class="propertypaneTitel">Content Package Export</h2>
 
+            <div class="propertypane">
+                <p>
+                    <a href="#" id="btnSelectAll">Select all</a> -
+                    <a href="#" id="btnDeselectAll">Deselect all</a> -
+                    <a href="#" id="btnToggleSelect">Toggle select</a>
+                </p>
+                <div id="tree2"></div>
+                @*<div>Selected keys: <span id="echoSelection2">-</span></div>*@
 
+                @using (Html.BeginForm("ExportContent", "ContentPackage"))
+                {
+                    <input type="hidden" name="ids" id="ids" />
+                    @Html.ValidationMessage("error")
+                    <input type="submit" />
+                }
 
-    @using(Html.BeginForm("ImportContent", "ContentPackage"))
-    {
-        <input type="file" name="file" id="file" />
+            </div>
 
-        <input type="submit" />
-    }
-</body>
-</html>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
+            <h2 class="propertypaneTitel">Content Package Import</h2>
+
+            <div class="propertypane">
+                @using (Html.BeginForm("ImportContent", "ContentPackage"))
+                {
+                    <input type="file" name="file" id="file" />
+
+                    <input type="submit" />
+                }
+            </div>
+        </div>
+    </div>
+</div>

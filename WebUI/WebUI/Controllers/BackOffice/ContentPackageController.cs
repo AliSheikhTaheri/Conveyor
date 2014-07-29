@@ -77,7 +77,8 @@
                 active = true,
                 key = "-1",
                 folder = true,
-                hideCheckbox = true
+                hideCheckbox = true,
+                expanded = true,
             };
 
             var nodes = new[] { node };
@@ -136,6 +137,8 @@
             public bool hideCheckbox { get; set; }
 
             public bool active { get; set; }
+
+            public bool expanded { get; set; }
         }
 
         #endregion
