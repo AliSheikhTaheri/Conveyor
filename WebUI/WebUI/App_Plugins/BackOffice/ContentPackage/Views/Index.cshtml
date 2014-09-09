@@ -119,12 +119,21 @@
             <h2 class="propertypaneTitel">Content Package Import</h2>
 
             <div class="propertypane">
-                @using (Html.BeginForm("ImportContent", "ContentPackage",FormMethod.Post, new { enctype = "multipart/form-data" }))
+                @using (Html.BeginForm("ImportContent", "ContentPackage", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     <input type="file" name="file" id="file" />
 
                     <input type="submit" />
                 }
+            </div>
+
+            <div class="propertypane">
+
+                @using (Html.BeginForm("CheckCompatibility", "ContentPackage"))
+                {
+                    <input type="submit" value="Check Compatibility" />
+                }
+
             </div>
         </div>
     </div>

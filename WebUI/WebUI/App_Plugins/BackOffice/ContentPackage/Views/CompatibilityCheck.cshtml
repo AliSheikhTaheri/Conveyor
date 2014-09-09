@@ -1,0 +1,34 @@
+﻿@model System.Collections.Generic.IEnumerable<umbraco.interfaces.IDataType>
+@{
+    Layout = "_Layout.cshtml";
+}
+
+@section PageHeader
+{
+
+}
+
+<div class="boxbody">
+
+    <div id="body_UmbracoPanel_content" class="content">
+        <div class="innerContent" id="body_UmbracoPanel_innerContent">
+            <h2 class="propertypaneTitel"></h2>
+
+            @{
+                foreach (var item in Model)
+                {
+                    <div class="propertypane">
+                        <div>
+                            <div class="propertyItem">
+                                <div class="propertyItemheader">@item.DataTypeName </div>
+                                <div class="propertyItemContent">@item.Id</div>
+                            </div>
+                            <div class="propertyPaneFooter">-</div>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+</div>

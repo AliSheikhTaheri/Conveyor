@@ -14,6 +14,8 @@
 
     public class ContentPackageController : UmbracoAuthorizedController
     {
+        private const string ViewsFolder = "~/App_Plugins/BackOffice/ContentPackage/Views/{0}.cshtml";
+
         #region Actions
 
         public ActionResult Index()
@@ -26,7 +28,7 @@
             if (string.IsNullOrEmpty(ids))
             {
                 ModelState.AddModelError("error", "please select at least one node to export");
-                return View("~/App_Plugins/BackOffice/ContentPackage/Views/Index.cshtml");
+                return View(string.Format(ViewsFolder, "Index"));
             }
 
             var export = new ExportContent();
@@ -60,7 +62,24 @@
 
             ic.Import(file);
 
-            return View("~/App_Plugins/BackOffice/ContentPackage/Views/Index.cshtml");
+            return View(string.Format(ViewsFolder, "Index"));
+        }
+
+        public ActionResult CheckCompatibility()
+        {
+            var dts = Services.DataTypeService;
+
+            var allDataType = dts.GetAllDataTypes();
+
+            //var xx = IDataType
+
+            var config = new Config();
+            var compatibleDataTypes = config.GetSpecialDataTypes().Select(x => x.Key).ToList();
+            compatibleDataTypes.AddRange(config.GetOtherDataTypes().Keys);
+
+            var notCompatibleDataTypes = allDataType.Where(x => !compatibleDataTypes.Contains(x.Id));
+
+            return View(string.Format(ViewsFolder, "CompatibilityCheck"), notCompatibleDataTypes);
         }
 
         #endregion

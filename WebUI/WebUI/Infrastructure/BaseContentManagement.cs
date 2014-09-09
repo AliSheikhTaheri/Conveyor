@@ -14,7 +14,7 @@
     {
         protected BaseContentManagement()
         {
-            SpecialDataTypes = new Config().GetDataTypes();
+            SpecialDataTypes = new Config().GetSpecialDataTypes();
             Services = ApplicationContext.Current.Services;
         }
 

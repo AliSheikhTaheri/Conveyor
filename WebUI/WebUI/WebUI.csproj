@@ -385,6 +385,7 @@
     <Content Include="config\applications.config" />
     <Content Include="config\trees.config" />
     <Content Include="App_Plugins\BackOffice\ContentPackage\Views\_Layout.cshtml" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Views\CompatibilityCheck.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

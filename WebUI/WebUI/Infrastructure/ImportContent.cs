@@ -76,7 +76,7 @@
         private void SaveContent(XElement node, IContent content, Content newContent, ZipFile zip)
         {
             var cs = Services.ContentService;
-            var dataTypes = new Config().GetDataTypes();
+            var dataTypes = new Config().GetSpecialDataTypes();
 
             content.Name = newContent.Name;
             content.CreatorId = User.GetCurrent().Id;
