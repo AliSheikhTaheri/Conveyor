@@ -13,9 +13,9 @@
     <script type="text/javascript">
 
 
-        $(function() {
+        $(function () {
 
-            $.getJSON("/App_Plugins/BackOffice/ContentPackage/ContentTreeAsJsonResult", function(json) {
+            $.getJSON("/App_Plugins/BackOffice/ContentPackage/ContentTreeAsJsonResult", function (json) {
                 //console.log("data = " + json);
                 myfunction(JSON.parse(json));
             });
@@ -30,11 +30,11 @@
                     checkbox: true,
                     selectMode: 2,
                     source: jsondata,
-                    select: function(event, data) {
+                    select: function (event, data) {
                         // Display list of selected nodes
                         var selNodes = data.tree.getSelectedNodes();
                         // convert to title/key array
-                        var selKeys = $.map(selNodes, function(node) {
+                        var selKeys = $.map(selNodes, function (node) {
                             return node.key;
                         });
                         $("#echoSelection2").text(selKeys.join(","));
@@ -43,14 +43,14 @@
 
                         $("input[name='ids']").val(selectedIds);
                     },
-                    click: function(event, data) {
+                    click: function (event, data) {
                         // We should not toggle, if target was "checkbox", because this
                         // would result in double-toggle (i.e. no toggle)
                         if ($.ui.fancytree.getEventTargetType(event) === "title") {
                             data.node.toggleSelected();
                         }
                     },
-                    keydown: function(event, data) {
+                    keydown: function (event, data) {
                         if (event.which === 32) {
                             data.node.toggleSelected();
                             return false;
@@ -119,7 +119,7 @@
             <h2 class="propertypaneTitel">Content Package Import</h2>
 
             <div class="propertypane">
-                @using (Html.BeginForm("ImportContent", "ContentPackage"))
+                @using (Html.BeginForm("ImportContent", "ContentPackage",FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     <input type="file" name="file" id="file" />
 
