@@ -17,19 +17,27 @@
 
             $.getJSON("/App_Plugins/BackOffice/ContentPackage/ContentTreeAsJsonResult", function (json) {
                 //console.log("data = " + json);
-                myfunction(JSON.parse(json));
+                myfunction(json);
             });
 
             //console.log("outside  = " + data);
 
             function myfunction(jsondata) {
-                console.log("outside  = ", jsondata);
+                //console.log("outside  = ", jsondata);
 
                 $("#tree2").fancytree({
                     //      extensions: ["select"],
                     checkbox: true,
                     selectMode: 2,
                     source: jsondata,
+                    lazyLoad: function (event, ctx) {
+
+                        console.log('ctx=' + ctx);
+                        console.log('this=' + this);
+                        console.log('event=' + event);
+
+                        ctx.result = { url: '/App_Plugins/BackOffice/ContentPackage/ContentTreeAsJsonResult/' + ctx.node.key, debugDelay: 1000 };
+                    },
                     select: function (event, data) {
                         // Display list of selected nodes
                         var selNodes = data.tree.getSelectedNodes();

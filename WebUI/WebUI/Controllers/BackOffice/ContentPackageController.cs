@@ -86,59 +86,70 @@
 
         #region Ajax Actions
 
-        public JsonResult ContentTreeAsJsonResult()
+        public JsonResult ContentTreeAsJsonResult(int id = 0)
         {
-            var ser = new JavaScriptSerializer();
-
-            var node = new Node
+            if (id == 0)
             {
-                title = "Content",
-                active = true,
-                key = "-1",
-                folder = true,
-                hideCheckbox = true,
-                expanded = true,
-            };
+                var node = new Node
+                {
+                    title = "Content",
+                    active = true,
+                    key = "-1",
+                    folder = true,
+                    hideCheckbox = true,
+                    expanded = true,
+                };
 
-            var nodes = new[] { node };
+                node.children = new List<Node>();
 
-            node.children = new List<Node>();
+                var contentAtRoot = Services.ContentService.GetRootContent();
 
-            foreach (var n in Services.ContentService.GetRootContent())
-            {
-                node.children.Add(GenerateJsonForTree(n.Id));
+                foreach (var n in contentAtRoot)
+                {
+                    node.children.Add(GenerateJsonForTree(n));
+                }
+
+                return Json(node, JsonRequestBehavior.AllowGet);
             }
 
-            var json = ser.Serialize(nodes);
+            var children = Services.ContentService.GetChildren(id);
+            var nodes = new List<Node>();
 
-            return Json(json, JsonRequestBehavior.AllowGet);
+            foreach (var n in children)
+            {
+                nodes.Add(GenerateJsonForTree(n));
+            }
+
+
+            return Json(nodes, JsonRequestBehavior.AllowGet);
         }
 
         #endregion
 
         #region Helpers
 
-        private Node GenerateJsonForTree(int id)
+        private Node GenerateJsonForTree(IContent content)
         {
-            var currentNode = Services.ContentService.GetById(id);
+            var isFolder = content.Children().Any();
 
             var temp = new Node
             {
-                title = currentNode.Name,
-                key = currentNode.Id.ToString(),
-                folder = currentNode.Children().Any(),
+                title = content.Name,
+                key = content.Id.ToString(),
+                folder = isFolder,
+                lazy = isFolder
             };
 
-            if (currentNode.Children() != null && currentNode.Children().Any())
-            {
-                temp.children = new List<Node>();
-                foreach (var c in currentNode.Children())
-                {
-                    var t = GenerateJsonForTree(c.Id);
+            //if (currentNode.Children() != null && currentNode.Children().Any())
+            //{
+            //    temp.children = new List<Node>();
+            //    foreach (var c in currentNode.Children())
+            //    {
+            //        var t = GenerateJsonForTree(c.Id);
 
-                    temp.children.Add(t);
-                }
-            }
+            //        temp.children.Add(t);
+            //    }
+            //}
 
             return temp;
         }
@@ -152,6 +163,8 @@
             public List<Node> children { get; set; }
 
             public bool folder { get; set; }
+
+            public bool lazy { get; set; }
 
             public bool hideCheckbox { get; set; }
 
