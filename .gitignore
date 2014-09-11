@@ -54,3 +54,9 @@ WebUI/dist/styles/css/
 # JavaScript
 Website/dist/
 Website/src/scripts/modernizr.js
+WebUI/WebUI/App_Data/Logs/*
+WebUI/WebUI/App_Data/Logs/*
+WebUI/WebUI/App_Data/TEMP/PluginCache/
+WebUI/WebUI/App_Data/Logs/
+WebUI/WebUI/App_Data/umbraco.config
+WebUI/WebUI/media/

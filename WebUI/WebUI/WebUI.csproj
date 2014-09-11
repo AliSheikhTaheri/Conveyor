@@ -58,6 +58,18 @@
     <Reference Include="CookComputing.XmlRpcV2">
       <HintPath>..\packages\xmlrpcnet.2.5.0\lib\net20\CookComputing.XmlRpcV2.dll</HintPath>
     </Reference>
+    <Reference Include="DAMP.PropertyEditorValueConverter, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\DAMP.PropertyEditorValueConverter.dll</HintPath>
+    </Reference>
+    <Reference Include="DigibizAdvancedMediaPicker, Version=2.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\DigibizAdvancedMediaPicker.dll</HintPath>
+    </Reference>
+    <Reference Include="DigibizTree, Version=2.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\DigibizTree.dll</HintPath>
+    </Reference>
     <Reference Include="Examine">
       <HintPath>..\packages\UmbracoCms.Core.6.1.6\lib\Examine.dll</HintPath>
     </Reference>
@@ -232,6 +244,7 @@
     <Compile Include="Infrastructure\BaseContentManagement.cs" />
     <Compile Include="Infrastructure\ContentPackageApplication.cs" />
     <Compile Include="Infrastructure\DataTypeConverters\ContentPickerDataTypeConverter.cs" />
+    <Compile Include="Infrastructure\DataTypeConverters\DampDataTypeConverter.cs" />
     <Compile Include="Infrastructure\ExportContent.cs" />
     <Compile Include="Infrastructure\IDataTypeConverter.cs" />
     <Compile Include="Infrastructure\ImportContent.cs" />
