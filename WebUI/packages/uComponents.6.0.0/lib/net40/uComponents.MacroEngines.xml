@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>uComponents.MacroEngines</name>
+    </assembly>
+    <members>
+        <member name="T:uComponents.MacroEngines.Extensions.ObjectExtensions">
+            <summary>
+            Extension methods for <c>System.Object</c>.
+            </summary>
+        </member>
+        <member name="M:uComponents.MacroEngines.Extensions.ObjectExtensions.ToDictionary``1(System.Object,System.String[])">
+            <summary>
+            Converts an <c>System.Object</c> to a <c>System.Collections.Generic.Dictionary</c>.
+            </summary>
+            <typeparam name="TVal">The type of the value.</typeparam>
+            <param name="o">The <c>System.Object</c>.</param>
+            <param name="ignoreProperties">The properties to ignore.</param>
+            <returns>
+            Returns a <c>System.Collections.Generic.Dictionary</c> representaiton of the <c>System.Object</c>.
+            </returns>
+        </member>
+        <member name="T:uComponents.MacroEngines.Extensions.UmbracoHelperExtensions">
+            <summary>
+            Extension methods for <c>Umbraco.Web.UmbracoHelper</c>.
+            </summary>
+        </member>
+        <member name="M:uComponents.MacroEngines.Extensions.UmbracoHelperExtensions.RenderMacroScript(Umbraco.Web.UmbracoHelper,System.String,System.String)">
+            <summary>
+            Renders the macro script.
+            </summary>
+            <param name="helper">The helper.</param>
+            <param name="language">The language.</param>
+            <param name="fileLocation">The file location.</param>
+            <returns></returns>
+        </member>
+        <member name="M:uComponents.MacroEngines.Extensions.UmbracoHelperExtensions.RenderMacroScript(Umbraco.Web.UmbracoHelper,System.String,System.String,System.Object)">
+            <summary>
+            Renders the macro script.
+            </summary>
+            <param name="helper">The helper.</param>
+            <param name="language">The language.</param>
+            <param name="fileLocation">The file location.</param>
+            <param name="parameters">The parameters.</param>
+            <returns></returns>
+        </member>
+        <member name="M:uComponents.MacroEngines.Extensions.UmbracoHelperExtensions.RenderMacroScript(Umbraco.Web.UmbracoHelper,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Renders the macro script.
+            </summary>
+            <param name="helper">The helper.</param>
+            <param name="language">The language.</param>
+            <param name="fileLocation">The file location.</param>
+            <param name="parameters">The parameters.</param>
+            <returns></returns>
+        </member>
+        <member name="T:uComponents.MacroEngines.StaticFileMacroEngine">
+            <summary>
+            Static File Macro Engine
+            </summary>
+        </member>
+        <member name="M:uComponents.MacroEngines.StaticFileMacroEngine.Validate(System.String,System.String,umbraco.interfaces.INode,System.String@)">
+            <summary>
+            Validates the specified code.
+            </summary>
+            <param name="code">The code.</param>
+            <param name="tempFileName">Name of the temp file.</param>
+            <param name="currentPage">The current page.</param>
+            <param name="errorMessage">The error message.</param>
+            <returns>Always returns <c>true</c>, as no validation is required.</returns>
+        </member>
+        <member name="M:uComponents.MacroEngines.StaticFileMacroEngine.Execute(umbraco.cms.businesslogic.macro.MacroModel,umbraco.interfaces.INode)">
+            <summary>
+            Executes the specified macro.
+            </summary>
+            <param name="macro">The macro.</param>
+            <param name="currentPage">The current page.</param>
+            <returns>Returns a string of the executed macro text/HTML.</returns>
+        </member>
+        <member name="P:uComponents.MacroEngines.StaticFileMacroEngine.Name">
+            <summary>
+            Gets the name of the macro engine.
+            </summary>
+            <value>The name of the macro engine.</value>
+        </member>
+        <member name="P:uComponents.MacroEngines.StaticFileMacroEngine.SupportedExtensions">
+            <summary>
+            Gets the supported extensions.
+            </summary>
+            <value>The supported extensions.</value>
+        </member>
+        <member name="P:uComponents.MacroEngines.StaticFileMacroEngine.SupportedUIExtensions">
+            <summary>
+            Gets the supported UI extensions.
+            </summary>
+            <value>The supported UI extensions.</value>
+        </member>
+        <member name="P:uComponents.MacroEngines.StaticFileMacroEngine.SupportedProperties">
+            <summary>
+            Gets the supported properties.
+            </summary>
+            <value>The supported properties.</value>
+            <remarks>Not Implemented.</remarks>
+        </member>
+        <member name="P:uComponents.MacroEngines.StaticFileMacroEngine.ResultException">
+            <summary>
+            Gets or sets the result exception.
+            </summary>
+            <value>
+            The result exception.
+            </value>
+        </member>
+        <member name="P:uComponents.MacroEngines.StaticFileMacroEngine.Success">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:uComponents.MacroEngines.StaticFileMacroEngine"/> is success.
+            </summary>
+            <value>
+              <c>true</c> if success; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="T:uComponents.MacroEngines.XsltMacroEngine">
+            <summary>
+            XSLT Macro Engine
+            </summary>
+        </member>
+        <member name="M:uComponents.MacroEngines.XsltMacroEngine.Validate(System.String,System.String,umbraco.interfaces.INode,System.String@)">
+            <summary>
+            Validates the specified code.
+            </summary>
+            <param name="code">The code.</param>
+            <param name="tempFileName">Name of the temp file.</param>
+            <param name="currentPage">The current page.</param>
+            <param name="errorMessage">The error message.</param>
+            <returns></returns>
+            <remarks>Not Implemented.</remarks>
+        </member>
+        <member name="M:uComponents.MacroEngines.XsltMacroEngine.Execute(umbraco.cms.businesslogic.macro.MacroModel,umbraco.interfaces.INode)">
+            <summary>
+            Executes the specified macro.
+            </summary>
+            <param name="macro">The macro.</param>
+            <param name="currentPage">The current page.</param>
+            <returns>Returns a string of the executed macro XSLT.</returns>
+        </member>
+        <member name="M:uComponents.MacroEngines.XsltMacroEngine.CheckXsltFragment(System.String)">
+            <summary>
+            Checks if the XSLT is a fragment, if so, then builds up the full XSLT document (with headers).
+            </summary>
+            <param name="xslt">The contents of the XSLT.</param>
+            <returns>Returns a full XSLT document.</returns>
+        </member>
+        <member name="M:uComponents.MacroEngines.XsltMacroEngine.CreateTemporaryFile(System.String,System.String,System.Boolean)">
+            <summary>
+            Creates the temporary file.
+            </summary>
+            <param name="xslt">The contents of the XSLT.</param>
+            <param name="filename">The filename.</param>
+            <param name="skipExists">if set to <c>true</c> [skip exists].</param>
+            <returns>Returns the filepath of the temporary file.</returns>
+        </member>
+        <member name="P:uComponents.MacroEngines.XsltMacroEngine.Name">
+            <summary>
+            Gets the name of the macro engine.
+            </summary>
+            <value>The name of the macro engine.</value>
+        </member>
+        <member name="P:uComponents.MacroEngines.XsltMacroEngine.XsltTempDirectory">
+            <summary>
+            Gets the XSLT temp directory.
+            </summary>
+            <value>The XSLT temp directory.</value>
+        </member>
+        <member name="P:uComponents.MacroEngines.XsltMacroEngine.SupportedExtensions">
+            <summary>
+            Gets the supported extensions.
+            </summary>
+            <value>The supported extensions.</value>
+        </member>
+        <member name="P:uComponents.MacroEngines.XsltMacroEngine.SupportedUIExtensions">
+            <summary>
+            Gets the supported UI extensions.
+            </summary>
+            <value>The supported UI extensions.</value>
+        </member>
+        <member name="P:uComponents.MacroEngines.XsltMacroEngine.SupportedProperties">
+            <summary>
+            Gets the supported properties.
+            </summary>
+            <value>The supported properties.</value>
+            <remarks>Not Implemented.</remarks>
+        </member>
+        <member name="P:uComponents.MacroEngines.XsltMacroEngine.ResultException">
+            <summary>
+            Gets or sets the result exception.
+            </summary>
+            <value>
+            The result exception.
+            </value>
+        </member>
+        <member name="P:uComponents.MacroEngines.XsltMacroEngine.Success">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:uComponents.MacroEngines.XsltMacroEngine"/> is success.
+            </summary>
+            <value>
+              <c>true</c> if success; otherwise, <c>false</c>.
+            </value>
+        </member>
+    </members>
+</doc>

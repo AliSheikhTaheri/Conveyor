@@ -82,7 +82,11 @@
             content.CreatorId = User.GetCurrent().Id;
             content.SortOrder = newContent.SortOrder;
             content.WriterId = User.GetCurrent().Id;
-            content.Template.Id = newContent.TemplateId;
+            
+            if (content.Template != null)
+            {
+                content.Template.Id = newContent.TemplateId;
+            }
 
             if (newContent.ReleaseDate != DateTime.MinValue)
             {

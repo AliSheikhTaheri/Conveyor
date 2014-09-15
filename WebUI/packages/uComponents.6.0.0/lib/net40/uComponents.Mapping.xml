@@ -1,0 +1,1355 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>uComponents.Mapping</name>
+    </assembly>
+    <members>
+        <member name="T:uComponents.Mapping.DefaultCacheProvider">
+            <summary>
+            Cache provider for the <c>System.Web.Caching.Cache</c>.
+            </summary>
+        </member>
+        <member name="T:uComponents.Mapping.ICacheProvider">
+            <summary>
+            A cache provider which satisfies the caching requirements of uMapper.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.ICacheProvider.Insert(System.String,System.Object)">
+            <summary>
+            Inserts an object into the cache, replacing an existing object
+            if one already exists with the same <paramref name="key"/>.
+            </summary>
+            <param name="key">A key to store the value against.</param>
+            <param name="value">
+            The value to set. If <c>null</c>, the inserted value should be
+            retrievable as <c>null</c>, and return true for <see cref="M:uComponents.Mapping.ICacheProvider.ContainsKey(System.String)"/>.
+            </param>
+        </member>
+        <member name="M:uComponents.Mapping.ICacheProvider.Get(System.String)">
+            <summary>
+            Gets an object from the cache.
+            </summary>
+            <param name="key">The key</param>
+            <returns>
+            If the value for <paramref name="key"/> is <c>null</c>, returns <c>null</c>.
+            Also, returns <c>null</c> if <paramref name="key"/> has no value.
+            </returns>
+        </member>
+        <member name="M:uComponents.Mapping.ICacheProvider.ContainsKey(System.String)">
+            <summary>
+            Checks if the cache contains a value for the key.
+            </summary>
+            <param name="key">The key</param>
+        </member>
+        <member name="M:uComponents.Mapping.ICacheProvider.Clear">
+            <summary>
+            Clears the cache.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.DefaultCacheProvider.#ctor(System.Web.Caching.Cache,System.Nullable{System.TimeSpan})">
+            <summary>
+            Instantiates a new cache provider using the default ASP.NET cache
+            (get it from <c>HttpContext.Current.Cache</c>).
+            </summary>
+            <param name="cache">The cache.  Cannot be null.</param>
+            <param name="slidingExpiration">
+            Optional override for the sliding expiration period
+            of values added to the cache.
+            </param>
+        </member>
+        <member name="M:uComponents.Mapping.DefaultCacheProvider.Insert(System.String,System.Object)">
+            <see cref="M:uComponents.Mapping.ICacheProvider.Insert(System.String,System.Object)"/>
+        </member>
+        <member name="M:uComponents.Mapping.DefaultCacheProvider.Get(System.String)">
+            <see cref="M:uComponents.Mapping.ICacheProvider.Get(System.String)"/>
+        </member>
+        <member name="M:uComponents.Mapping.DefaultCacheProvider.ContainsKey(System.String)">
+            <see cref="M:uComponents.Mapping.ICacheProvider.ContainsKey(System.String)"/>
+        </member>
+        <member name="M:uComponents.Mapping.DefaultCacheProvider.Clear">
+            <summary>
+            Removes all cache items added by this cache provider.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.DefaultCacheProvider.GetQualifiedKey(System.String)">
+            <summary>
+            Constructs a cache key specific to this cache provider.
+            </summary>
+            <param name="key">The key to qualify.</param>
+        </member>
+        <member name="T:uComponents.Mapping.CacheProviderExtensions">
+            <summary>
+            Convenience methods for the <see cref="T:uComponents.Mapping.ICacheProvider"/>, as required
+            by <see cref="T:uComponents.Mapping.INodeMappingEngine"/>.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.CacheProviderExtensions.InsertPropertyValue(uComponents.Mapping.ICacheProvider,System.Int32,System.String,System.Object)">
+            <summary>
+            Inserts a node's property value into the cache.
+            </summary>
+            <param name="cache">The cache to use</param>
+            <param name="id">The ID of the node</param>
+            <param name="propertyName">The destination property name</param>
+            <param name="value">The mapped value of the property</param>
+        </member>
+        <member name="M:uComponents.Mapping.CacheProviderExtensions.InsertAlias(uComponents.Mapping.ICacheProvider,System.Int32,System.String)">
+            <summary>
+            Inserts a node's alias into the cache.
+            </summary>
+            <param name="cache">The cache to use</param>
+            <param name="id">The ID of the node</param>
+            <param name="alias">The node's document type alias</param>
+        </member>
+        <member name="M:uComponents.Mapping.CacheProviderExtensions.GetPropertyValue(uComponents.Mapping.ICacheProvider,System.Int32,System.String)">
+            <summary>
+            Gets a model's cached property value.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.CacheProviderExtensions.GetAlias(uComponents.Mapping.ICacheProvider,System.Int32)">
+            <summary>
+            Gets a node's cached alias.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.CacheProviderExtensions.ContainsPropertyValue(uComponents.Mapping.ICacheProvider,System.Int32,System.String)">
+            <summary>
+            Check's if a model's property value is cached.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.CacheProviderExtensions.ContainsAlias(uComponents.Mapping.ICacheProvider,System.Int32)">
+            <summary>
+            Check's if a node's alias is cached.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.ExpressionExtensions.TryParsePath(System.Linq.Expressions.Expression,System.String@)">
+            <summary>
+            Taken from <c>System.Data.Entity.Internal.DbHelpers</c>:
+            
+            Called recursively to parse an expression tree representing a property path..
+            This involves parsing simple property accesses like o =&gt; o.Products as well as calls to Select like
+            o =&gt; o.Products.Select(p =&gt; p.OrderLines).
+            </summary>
+            <param name="expression"> The expression to parse. </param>
+            <param name="path"> The expression parsed into an include path, or null if the expression did not match. </param>
+            <returns> True if matching succeeded; false if the expression could not be parsed. </returns>
+        </member>
+        <member name="M:uComponents.Mapping.ExpressionExtensions.RemoveConvert(System.Linq.Expressions.Expression)">
+            <summary>
+            Removes boxing on the expression.
+            
+            Taken from <c>System.Data.Entity.Utilities.ExpressionExtensions</c>.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.ExpressionExtensions.GetPropertyInfo(System.Linq.Expressions.LambdaExpression)">
+            <summary>
+            Gets property info from a lambda expression.
+            </summary>
+            <param name="expression">The expression indicating the property.</param>
+            <returns>The property info.</returns>
+        </member>
+        <member name="T:uComponents.Mapping.INodeMappingEngine">
+            <summary>
+            Handles the creation of map and the mapping of Umbraco <c>Node</c>s to strongly typed
+            models.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.INodeMappingEngine.CreateMap``1">
+            <summary>
+            Creates a map to a strong type from an Umbraco document type
+            using the unqualified class name of <typeparamref name="TDestination"/> 
+            as the document type alias.
+            </summary>
+            <typeparam name="TDestination">The type to map to.</typeparam>
+            <returns>Further mapping configuration</returns>
+        </member>
+        <member name="M:uComponents.Mapping.INodeMappingEngine.CreateMap``1(System.String)">
+            <summary>
+            Creates a map to a strong type from an Umbraco document type.
+            </summary>
+            <typeparam name="TDestination">The type to map to.</typeparam>
+            <param name="documentTypeAlias">The document type alias to map from.</param>
+            <returns>Further mapping configuration</returns>
+        </member>
+        <member name="M:uComponents.Mapping.INodeMappingEngine.SetCacheProvider(uComponents.Mapping.ICacheProvider)">
+            <summary>
+            Sets the cache provider for the engine to use. This will clear any existing
+            cache provider.  Set as null to disable caching.
+            
+            You probably want to use an instance of <see cref="T:uComponents.Mapping.DefaultCacheProvider"/>.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.INodeMappingEngine.Map``1(umbraco.NodeFactory.Node,System.String[])">
+            <summary>
+            Gets an Umbraco <c>Node</c> as a <typeparamref name="TDestination"/>, only including 
+            specified relationship paths.
+            </summary>
+            <typeparam name="TDestination">
+            The type of object that <paramref name="sourceNode"/> maps to.
+            </typeparam>
+            <param name="sourceNode">The <c>Node</c> to map from.</param>
+            <param name="paths">The relationship paths to include.</param>
+            <returns><c>null</c> if the node does not exist.</returns>
+        </member>
+        <member name="M:uComponents.Mapping.INodeMappingEngine.Query``1">
+            <summary>
+            Gets a query for nodes which map to <typeparamref name="TDestination"/>.
+            </summary>
+            <typeparam name="TDestination">The type to map to.</typeparam>
+            <returns>A fluent configuration for the query.</returns>
+        </member>
+        <member name="M:uComponents.Mapping.INodeMappingEngine.Map``1(umbraco.NodeFactory.Node,System.Boolean)">
+            <summary>
+            Obsolete mapping method.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.INodeMappingEngine.Map``1(umbraco.NodeFactory.Node,System.Linq.Expressions.Expression{System.Func{``0,System.Object}}[])">
+            <summary>
+            Obsolete mapping method.
+            </summary>
+        </member>
+        <member name="P:uComponents.Mapping.INodeMappingEngine.IsCachingEnabled">
+            <summary>
+            True if the engine is in possession of an <see cref="T:uComponents.Mapping.ICacheProvider"/>.
+            </summary>
+        </member>
+        <member name="T:uComponents.Mapping.INodeMappingExpression`1">
+            <summary>
+            Fluent configuration for an <see cref="T:uComponents.Mapping.INodeMappingEngine"/> mapping
+            </summary>
+            <typeparam name="TDestination">The destination model type.</typeparam>
+        </member>
+        <member name="M:uComponents.Mapping.INodeMappingExpression`1.DefaultProperty``2(System.Linq.Expressions.Expression{System.Func{`0,``1}},System.Linq.Expressions.Expression{System.Func{umbraco.NodeFactory.Node,``0}},System.Func{``0,``1})">
+            <summary>
+            Sets a mapping for a default <c>Node</c> property (such as "Name" or "CreateDate").
+            </summary>
+            <typeparam name="TSourceProperty">
+            The type of the source property.  For instance, "Name" will be a <c>string</c>,
+            and "CreateDate" will be a <c>DateTime</c>.
+            </typeparam>
+            <typeparam name="TDestinationProperty">
+            The type of the destination property.  This should be assignable to
+            <typeparamref name="TSourceProperty"/>.
+            </typeparam>
+            <param name="destinationProperty">The property to map to.</param>
+            <param name="nodeProperty">The node property to map from.</param>
+            <param name="mapping">
+            A simple mapping for the source property value, e.g. x => x.Trim()
+            </param>
+        </member>
+        <member name="M:uComponents.Mapping.INodeMappingExpression`1.BasicProperty(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.String)">
+            <summary>
+            Sets the node property alias to be used for a non-relational model
+            property, using the default mapping.  This property will not require an include.
+            
+            Use this method only for properties mapped from a property alias - use
+            <see cref="M:uComponents.Mapping.INodeMappingExpression`1.DefaultProperty``2(System.Linq.Expressions.Expression{System.Func{`0,``1}},System.Linq.Expressions.Expression{System.Func{umbraco.NodeFactory.Node,``0}},System.Func{``0,``1})"/> for a default <c>Node</c> property.
+            </summary>
+            <param name="destinationProperty">The property to map to.</param>
+            <param name="propertyAlias">The new property alias to use.</param>
+        </member>
+        <member name="M:uComponents.Mapping.INodeMappingExpression`1.BasicProperty``1(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},uComponents.Mapping.Property.BasicPropertyMapping{``0},System.String)">
+            <summary>
+            Sets a non-relational mapping for a model property.  This property
+            will not require an include.
+            </summary>
+            <typeparam name="TSourceProperty">
+            The desired type to inject into <paramref name="mapping"/> (will be 
+            converted if necessary).  This should be a simple type like <c>string</c>, 
+            <c>int?</c> or an enum.
+            </typeparam>
+            <param name="destinationProperty">The property to map to.</param>
+            <param name="mapping">
+            Maps the node property to the model property.
+            </param>
+            <param name="propertyAlias">The property alias to map from.  Optional.</param>
+            <example>
+            <code>
+            uMapper.CreateMap{Dog}()
+                .BasicProperty{string}(
+                    x => x.CollarId,
+                    collarId => collarId.Trim() // trim whitespace
+                    );
+                    
+            Simply trims the source property value
+            </code>
+            </example>
+        </member>
+        <member name="M:uComponents.Mapping.INodeMappingExpression`1.SingleProperty(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.String)">
+            <summary>
+            Sets the node property alias to be used for a single relationship
+            property, using the default mapping.  This property will require an include.
+            </summary>
+            <param name="destinationProperty">The property to map to.</param>
+            <param name="propertyAlias">The new property alias to use.</param>
+        </member>
+        <member name="M:uComponents.Mapping.INodeMappingExpression`1.SingleProperty(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Func{System.Int32,System.Nullable{System.Int32}})">
+            <summary>
+            Sets a mapping for a single node to be used for the model
+            property, based on the identity of the node being mapped.  
+            This property will require an include.
+            </summary>
+            <param name="destinationProperty">The property to map to.</param>
+            <param name="mapping">
+            A mapping which take the ID of the node being mapped, and returns 
+            the ID of the node to map to the property.
+            </param>
+        </member>
+        <member name="M:uComponents.Mapping.INodeMappingExpression`1.SingleProperty``1(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},uComponents.Mapping.Property.SinglePropertyMapping{``0},System.String)">
+            <summary>
+            Sets a mapping for a single node to be used for the model
+            property, based on the value of a node property.  
+            This property will require an include.
+            </summary>
+            <typeparam name="TSourceProperty">
+            The desired type to inject into <paramref name="mapping"/> (will be 
+            converted if necessary).  This should be a simple type like <c>string</c> or 
+            <c>int?</c>.
+            </typeparam>
+            <param name="destinationProperty">The property to map to.</param>
+            <param name="mapping">
+            A mapping which takes the value of a node property, and returns 
+            the ID of the node to map to the property.
+            </param>
+            <param name="propertyAlias">
+            An optional node property alias override.
+            </param>
+            <example>
+            <code>
+            // "SearchAllDogsForId" is an external method which searches through all 
+            // dogs based on a name property.
+            
+            uMapper.CreateMap{Dog}()
+                .SingleProperty{string}(
+                    x => x.BestFriend,
+                    name => SearchAllDogsForId(name), // must return an `int?`
+                    "bestFriendName" // required as "BestFriend" !~ "bestFriendName"
+                    );
+                    
+            </code>
+            </example>
+        </member>
+        <member name="M:uComponents.Mapping.INodeMappingExpression`1.CollectionProperty(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.String)">
+            <summary>
+            Sets the node property alias to be used for a collection relationship
+            property, using the default mapping.  This property will require an include.
+            </summary>
+            <param name="destinationProperty">The property to map to.</param>
+            <param name="propertyAlias">The new property alias to use.</param>
+        </member>
+        <member name="M:uComponents.Mapping.INodeMappingExpression`1.CollectionProperty(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Func{System.Int32,System.Collections.Generic.IEnumerable{System.Int32}})">
+            <summary>
+            Sets a mapping for a collection node to be used for the model
+            property, based on the identity of the node being mapped.  
+            This property will require an include.
+            </summary>
+            <param name="destinationProperty">The property to map to.</param>
+            <param name="mapping">
+            A mapping which take the ID of the node being mapped, and returns 
+            the collection of IDs.
+            </param>
+        </member>
+        <member name="M:uComponents.Mapping.INodeMappingExpression`1.CollectionProperty``1(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},uComponents.Mapping.Property.CollectionPropertyMapping{``0},System.String)">
+            <summary>
+            Sets a mapping for a collection to be used for the model
+            property.  This property will require an include.
+            </summary>
+            <typeparam name="TSourceProperty">
+            The desired type to inject into <paramref name="mapping"/> (will be 
+            converted if necessary).  This should be a simple type like <c>string</c>, 
+            <c>int?</c> or <c>int[]</c>.
+            </typeparam>
+            <param name="destinationProperty">The property to map to.</param>
+            <param name="mapping">
+            A mapping which retrieves the IDs of the items in the collection.
+            </param>
+            <param name="propertyAlias">
+            An optional node property alias override.
+            </param>
+            <example>
+            <code>
+            // This will restrict the number of favourite treats mapped to 3.
+            
+            uMapper.CreateMap{Dog}()
+                .CollectionProperty{int[]}(
+                    x => x.FavouriteTreats,
+                    ids => ids.Take(3)
+                    );
+            </code>
+            </example>
+        </member>
+        <member name="M:uComponents.Mapping.INodeMappingExpression`1.CustomProperty(System.Linq.Expressions.Expression{System.Func{`0,System.Object}},uComponents.Mapping.Property.CustomPropertyMapping,System.Boolean,System.Boolean)">
+            <summary>
+            Sets a custom mapping to be used for a model property.
+            </summary>
+            <param name="destinationProperty">The property to map to.</param>
+            <param name="mapping">
+            A mapping which retrieves the value of the property.
+            </param>
+            <param name="requiresInclude">
+            Whether the property requires an explicit include.
+            </param>
+            <param name="allowCaching">
+            If set to true, the result of <paramref name="mapping"/> will be cached.
+            While caching is disabled on the <see cref="T:uComponents.Mapping.INodeMappingEngine"/>, no caching will occur.
+            </param>
+        </member>
+        <member name="M:uComponents.Mapping.INodeMappingExpression`1.RemoveMappingForProperty(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+            <summary>
+            Removes the mapping for a property, if any exists.
+            </summary>
+            <param name="destinationProperty">The property on the model to NOT map to</param>
+        </member>
+        <member name="M:uComponents.Mapping.INodeMappingExpression`1.ForProperty``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Func{umbraco.NodeFactory.Node,System.String[],System.Object},System.Boolean)">
+            <summary>
+            Sets a custom mapping to be used for a the model property.
+            </summary>
+            <param name="destinationProperty">The member of the destination model
+            to map to.</param>
+            <param name="propertyMapping">
+            The new mapping function.  Arguments are the node being mapped, 
+            and an array of paths relative to the property being mapped
+            (when mapping a relationship).
+            </param>
+            <param name="requiresInclude">
+            Whether the property requires an explicit include to be mapped.
+            </param>
+        </member>
+        <member name="M:uComponents.Mapping.INodeMappingExpression`1.ForProperty``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Func{umbraco.NodeFactory.Node,System.Object},System.Boolean)">
+            <summary>
+            Sets a custom mapping to be used for a the model property.
+            </summary>
+            <param name="destinationProperty">The member of the destination model
+            to map to.</param>
+            <param name="propertyMapping">
+            The new mapping function.
+            </param>
+            <param name="isRelationship">Whether the property should be deemed a relationship
+            or not.</param>
+        </member>
+        <member name="M:uComponents.Mapping.INodeMappingExpression`1.ForProperty``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.String)">
+            <summary>
+            Sets a custom property alias to be set for a the model property.
+            </summary>
+            <param name="destinationProperty">The member of the destination model
+            to map to.</param>
+            <param name="nodeTypeAlias">The property alias to map from.</param>
+        </member>
+        <member name="T:uComponents.Mapping.INodeQuery`1">
+            <summary>
+            Represents a query for mapped Umbraco nodes.  Enumerating the
+            query gets mapped instances of every node which can be mapped to 
+            <typeparamref name="TDestination"/>. 
+            </summary>
+            <typeparam name="TDestination">
+            The type which queried nodes will be mapped to.
+            </typeparam>
+        </member>
+        <member name="M:uComponents.Mapping.INodeQuery`1.Include(System.String)">
+            <summary>
+            Includes a relationship path in the node query.
+            </summary>
+            <param name="path">
+            The path of the relationship to include, 
+            e.g. "Employers.Employees.GoldStars"
+            </param>
+            <example>
+            <code>
+            // If querying on a set of companies,
+            var myQuery = uMapper.Set&lt;Company&gt;()
+                .Include("Employers.Employees.GoldStars")
+                .Include("Employers.Employees.FavouriteMeals");
+            </code>
+            </example>
+        </member>
+        <member name="M:uComponents.Mapping.INodeQuery`1.Include(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+            <summary>
+            Includes a relationship path in the node query.
+            </summary>
+            <remarks>
+            Remarks from <c>System.Data.Entity.IQueryableExtensions.Include`2</c>:
+            
+            The path expression must be composed of simple property access expressions together with calls to Select for
+            composing additional includes after including a collection proprty.  Examples of possible include paths are:
+            To include a single reference: query.Include(e => e.Level1Reference)
+            To include a single collection: query.Include(e => e.Level1Collection)
+            To include a reference and then a reference one level down: query.Include(e => e.Level1Reference.Level2Reference)
+            To include a reference and then a collection one level down: query.Include(e => e.Level1Reference.Level2Collection)
+            To include a collection and then a reference one level down: query.Include(e => e.Level1Collection.Select(l1 => l1.Level2Reference))
+            To include a collection and then a collection one level down: query.Include(e => e.Level1Collection.Select(l1 => l1.Level2Collection))
+            To include a collection and then a reference one level down: query.Include(e => e.Level1Collection.Select(l1 => l1.Level2Reference))
+            To include a collection and then a collection one level down: query.Include(e => e.Level1Collection.Select(l1 => l1.Level2Collection))
+            To include a collection, a reference, and a reference two levels down: query.Include(e => e.Level1Collection.Select(l1 => l1.Level2Reference.Level3Reference))
+            To include a collection, a collection, and a reference two levels down: query.Include(e => e.Level1Collection.Select(l1 => l1.Level2Collection.Select(l2 => l2.Level3Reference)))
+            </remarks>
+            <param name="path">
+            The path of the relationship to include, defined using
+            a lambda expression.
+            </param>
+        </member>
+        <member name="M:uComponents.Mapping.INodeQuery`1.IncludeMany(System.String[])">
+            <summary>
+            Includes many relationship paths in the node query
+            </summary>
+            <seealso>IncludeMany(string)</seealso>
+        </member>
+        <member name="M:uComponents.Mapping.INodeQuery`1.IncludeMany(System.Linq.Expressions.Expression{System.Func{`0,System.Object}}[])">
+            <summary>
+            Includes many relationship paths in the node query
+            </summary>
+            <seealso>IncludeMany(Expression)</seealso>
+        </member>
+        <member name="M:uComponents.Mapping.INodeQuery`1.Explicit">
+            <summary>
+            Filters the results to only include nodes which were mapped to
+            <typeparamref name="TDestination"/> using 
+            <see cref="M:uComponents.Mapping.INodeMappingEngine.CreateMap``1"/>.
+            
+            In other words, does not include nodes which map to a type
+            derived from <typeparamref name="TDestination"/>.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.INodeQuery`1.WhereProperty``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Func{``0,System.Boolean})">
+            <summary>
+            Filters the results of a node query based a property.
+            </summary>
+            <typeparam name="TProperty">The property type.</typeparam>
+            <param name="property">The property to run the predicate on.</param>
+            <param name="predicate">
+            Predicate on the property for which elements should be included in
+            the result.
+            </param>
+        </member>
+        <member name="M:uComponents.Mapping.INodeQuery`1.Map(umbraco.NodeFactory.Node)">
+            <summary>
+            Gets a mapped instance of a specific instance of a <c>Node</c>.
+            </summary>
+            <param name="node">The node to map from.</param>
+            <returns>
+            the mapped node, or null if <paramref name="node"/> is
+            the 'empty' node or null.
+            </returns>
+        </member>
+        <member name="M:uComponents.Mapping.INodeQuery`1.Single(System.Int32)">
+            <summary>
+            Gets a mapped instance of a node by it's ID.
+            </summary>
+            <param name="id">The ID of the node to map.</param>
+            <returns>The mapped node, or null if it does not exist.</returns>
+        </member>
+        <member name="M:uComponents.Mapping.INodeQuery`1.Find(System.Int32)">
+            <summary>
+            Gets a mapped instance of a node by it's ID.
+            </summary>
+            <param name="id">The ID of the node to map.</param>
+            <returns>The mapped node, or null if it does not exist.</returns>
+        </member>
+        <member name="M:uComponents.Mapping.INodeQuery`1.Many(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            Gets mapped instances of nodes by their ID.
+            </summary>
+            <param name="ids">The IDs of the nodes to map.</param>
+            <returns>
+            A one-to-one collection of mapped nodes to node IDs
+            (there will be holes in the collection if some nodes
+            do not exist).
+            </returns>
+        </member>
+        <member name="M:uComponents.Mapping.INodeQuery`1.Many(System.Collections.Generic.IEnumerable{umbraco.NodeFactory.Node})">
+            <summary>
+            Gets mapped instances of <c>Node</c>s.
+            </summary>
+            <param name="nodes">The nodes to map.</param>
+            <returns>
+            A one-to-one collection of mapped nodes to nodes
+            (there will be holes in the collection if some nodes
+            do not exist).
+            </returns>
+        </member>
+        <member name="M:uComponents.Mapping.INodeQuery`1.Current">
+            <summary>
+            Gets a mapped instance of the current node.
+            </summary>
+            <returns>
+            The mapped node, or null if there is no
+            current node.
+            </returns>
+        </member>
+        <member name="M:uComponents.Mapping.INodeQuery`1.SelectProperty``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Gets the specified property from each element in the result set.
+            </summary>
+            <typeparam name="TProperty">The property type.</typeparam>
+            <param name="property">The property to select.</param>
+            <returns>A collection of the selected properties.</returns>
+        </member>
+        <member name="P:uComponents.Mapping.INodeQuery`1.Engine">
+            <summary>
+            Exposes the engine being used under the hood.  Useful if you want to
+            write extension methods for <see cref="T:uComponents.Mapping.INodeQuery`1"/>.
+            </summary>
+        </member>
+        <member name="T:uComponents.Mapping.NodeMappingContext">
+            <summary>
+            Provides a context for a stack of mapping operations.  Lifetime should complete
+            once the bottom mapping operation is completed.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.NodeMappingContext.GetNode">
+            <summary>
+            Gets the node being mapped.
+            </summary>
+        </member>
+        <member name="F:uComponents.Mapping.NodeMappingContext._nodeCache">
+            <summary>
+            Stores the nodes which have been cached during this operation.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.NodeMappingContext.GetNodeFromContextCache(System.Int32)">
+            <summary>
+            Looks for a <c>Node</c> in the context tree.
+            </summary>
+            <param name="id">The ID of the node.</param>
+            <returns>The node, or null if not found.</returns>
+        </member>
+        <member name="M:uComponents.Mapping.NodeMappingContext.AddNodeToContextCache(umbraco.NodeFactory.Node)">
+            <summary>
+            Adds a node to the context cache.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.NodeMappingContext.AddNodesToContextCache(System.Collections.Generic.IEnumerable{umbraco.NodeFactory.Node})">
+            <summary>
+            Adds a collection of nodes to the context cache.
+            </summary>
+        </member>
+        <member name="P:uComponents.Mapping.NodeMappingContext.Id">
+            <summary>
+            The ID of the node being mapped.
+            </summary>
+        </member>
+        <member name="P:uComponents.Mapping.NodeMappingContext.Paths">
+            <summary>
+            The paths to be mapped.
+            </summary>
+        </member>
+        <member name="P:uComponents.Mapping.NodeMappingContext.ParentContext">
+            <summary>
+            The context which spawned this context
+            </summary>
+        </member>
+        <member name="T:uComponents.Mapping.Property.PropertyMapperBase">
+            <summary>
+            An immutable mapper for Umbraco Node properties to strongly typed model properties
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.Property.PropertyMapperBase.#ctor(uComponents.Mapping.NodeMapper,System.Reflection.PropertyInfo)">
+            <param name="destinationProperty">
+            Describes the model property being mapped to.
+            </param>
+            <param name="nodeMapper">
+            The node mapper using this property mapper.
+            </param>
+        </member>
+        <member name="M:uComponents.Mapping.Property.PropertyMapperBase.MapProperty(uComponents.Mapping.NodeMappingContext)">
+            <summary>
+            Maps a node property.
+            </summary>
+            <param name="context">The context describing the mapping.</param>
+            <returns>The strongly typed, mapped property.</returns>
+        </member>
+        <member name="M:uComponents.Mapping.Property.PropertyMapperBase.GetNextLevelPaths(System.String[])">
+            <summary>
+            Gets the paths relative to the property being mapped.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.Property.PropertyMapperBase.GetSourcePropertyValue(umbraco.NodeFactory.Node,System.Type)">
+            <summary>
+            Gets a Node's property as a certain type.
+            </summary>
+            <param name="sourcePropertyType">The type to get the property as (should be a system type or enum)</param>
+            <param name="node">The node to get the property value of</param>
+        </member>
+        <member name="M:uComponents.Mapping.Property.PropertyMapperBase.GetSourcePropertyValue``1(umbraco.NodeFactory.Node)">
+            <summary>
+            Shorthand for <see cref="M:uComponents.Mapping.Property.PropertyMapperBase.GetSourcePropertyValue(umbraco.NodeFactory.Node,System.Type)"/>
+            </summary>
+        </member>
+        <member name="P:uComponents.Mapping.Property.PropertyMapperBase.AllowCaching">
+            <summary>
+            Whether the property mapper should allow its mapped value to be cached.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.Property.BasicPropertyMapper.#ctor(System.Func{System.Object,System.Object},System.Type,uComponents.Mapping.NodeMapper,System.Reflection.PropertyInfo,System.String)">
+            <summary>
+            Maps a basic property value.
+            </summary>
+            <param name="mapping">
+            The mapping for the property value.  Cannot be null.
+            </param>
+            <param name="sourcePropertyType">
+            The type of the first parameter being supplied to <paramref name="mapping"/>.
+            Cannot be <c>null</c>.
+            </param>
+            <param name="sourcePropertyAlias">
+            The alias of the node property to map from.  Required.
+            </param>
+            <param name="nodeMapper"></param>
+            <param name="destinationProperty"></param>
+        </member>
+        <member name="M:uComponents.Mapping.Property.CollectionPropertyMapper.#ctor(System.Func{uComponents.Mapping.NodeMappingContext,System.Object,System.Collections.Generic.IEnumerable{System.Int32}},System.Type,uComponents.Mapping.NodeMapper,System.Reflection.PropertyInfo,System.String)">
+            <summary>
+            Maps a collection relationship.
+            </summary>
+            <param name="mapping">
+            Mapping to a collection of node IDs.  Takes the context and source property value
+            as parameters.  If <c>null</c>, the mapping will be deduced from 
+            the other parameters.
+            </param>
+            <param name="sourcePropertyType">
+            The type of object being supplied to <paramref name="mapping"/>.
+            Will be set to <c>IEnumerable{int}</c> if <paramref name="mapping"/> is specified.
+            </param>
+            <param name="sourcePropertyAlias">
+            The alias of the node property to map from.  If null, descendants of
+            the node which are compatible with <paramref name="destinationProperty"/>
+            will be mapped instead.
+            </param>
+            <param name="nodeMapper"></param>
+            <param name="destinationProperty"></param>
+        </member>
+        <member name="M:uComponents.Mapping.Property.CollectionPropertyMapper.CheckCollectionCanBeAssigned(System.Type,System.Type)">
+            <summary>
+            Checks collection assignment and instantation
+            </summary>
+            <param name="destinationCollectionType">The type of the collection to populate</param>
+            <param name="sourceCollectionType">The type of collection the items are coming from</param>
+            <returns>True if the collection can be directly assigned,
+            False if the collection needs to be instatiated.</returns>
+            <exception cref="T:uComponents.Mapping.CollectionTypeNotSupportedException">The collection type cannot be 
+            instatiated or assigned.</exception>
+        </member>
+        <member name="M:uComponents.Mapping.Property.CustomPropertyMapper.#ctor(uComponents.Mapping.Property.CustomPropertyMapping,System.Boolean,System.Boolean,uComponents.Mapping.NodeMapper,System.Reflection.PropertyInfo)">
+            <summary>
+            Maps a custom property not covered by the other derivations
+            of <see cref="T:uComponents.Mapping.Property.PropertyMapperBase"/>.
+            </summary>
+            <param name="mapping">
+            The custom mapping.
+            </param>
+            <param name="allowCaching">
+            Whether the property should allow its mapped value to be cached
+            and reused.
+            </param>
+            <param name="requiresInclude"></param>
+            <param name="destinationProperty"></param>
+            <param name="nodeMapper"></param>
+        </member>
+        <member name="M:uComponents.Mapping.Property.DefaultPropertyMapper.GetDefaultMappingForName(System.Reflection.PropertyInfo)">
+            <summary>
+            Given a model property name, returns the node property info if
+            there is a match again the properties of <c>Node</c>.
+            
+            Checks whether the node's property is assignable to the destination
+            property.
+            </summary>
+            <param name="destinationProperty">The model property.</param>
+            <returns>The property or <c>null</c> if no match was found.</returns>
+        </member>
+        <member name="T:uComponents.Mapping.Property.BasicPropertyMapping`1">
+            <summary>
+            A delegate signature for mapping a non-relational property.
+            </summary>
+            <typeparam name="TSource">
+            The type of sourceValue (will be converted if necessary).
+            This should be a simple type like <c>string</c>, <c>int?</c> or an enum.
+            </typeparam>
+            <param name="sourceValue">
+            The value of the property, taken from the <c>Node</c> being mapped.
+            </param>
+            <returns>The mapped property value.</returns>
+        </member>
+        <member name="T:uComponents.Mapping.Property.SinglePropertyMapping`1">
+            <summary>
+            A delegate signature for mapping a single-relationship based on a node
+            property value.
+            </summary>
+            <typeparam name="TSource">
+            The desired type of the sourceValue (will be converted if necessary).
+            This should be a system type like <c>string</c> or <c>int?</c>.
+            </typeparam>
+            <param name="sourceValue">
+            The value of the property, taken from the <c>Node</c> being mapped.
+            </param>
+            <returns>
+            The ID of the node which will be mapped to the model's property,
+            or null if it should not be mapped (i.e. it doesn't exist).
+            </returns>
+        </member>
+        <member name="T:uComponents.Mapping.Property.CollectionPropertyMapping`1">
+            <summary>
+            A delegate signature for mapping a collection-relationship based on a node
+            property value.
+            </summary>
+            <typeparam name="TSource">
+            The desired type of the sourceValue (will be converted if necessary).
+            This should be a system type like <c>string</c>.
+            </typeparam>
+            <param name="sourceValue">
+            The value of the property, taken from the <c>Node</c> being mapped.
+            </param>
+            <returns>A collection of node IDs which will be mapped to the model's property.</returns>
+        </member>
+        <member name="T:uComponents.Mapping.Property.CustomPropertyMapping">
+            <summary>
+            A delegate signature for mapping a custom property.
+            </summary>
+            <param name="nodeId">
+            The ID of the node whose property is being mapped.  You have to retrieve the
+            node property value yourself, using the relevant Umbraco API calls.
+            </param>
+            <param name="paths">
+            The paths of the mapping, relative to the property
+            being mapped.  This should be used if this delegate maps
+            out child relationships.
+            </param>
+            <param name="cache">
+            A cache to optionally use while mapping the property.  Will be <c>null</c> if
+            caching is disabled on the <see cref="T:uComponents.Mapping.INodeMappingEngine"/>.
+            </param>
+            <returns>The mapped property value.</returns>
+        </member>
+        <member name="T:uComponents.Mapping.NodeMapper">
+            <summary>
+            Mapper which maps from Umbraco Node properties to strongly typed model properties
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.NodeMapper.GetImmediateProperties(System.Type,System.String[])">
+            <summary>
+            Gets the properties of <paramref name="type"/> which are defined
+            by <paramref name="paths"/>.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.NodeMapper.GetPropertyAlias(System.Reflection.PropertyInfo)">
+            <summary>
+            Finds the corresponding property alias for a model's property.
+            </summary>
+            <returns><c>null</c> if not found.</returns>
+        </member>
+        <member name="M:uComponents.Mapping.NodeMapper.InsertPropertyMapper(uComponents.Mapping.Property.PropertyMapperBase)">
+            <summary>
+            Inserts a property mapper, 
+            </summary>
+            <param name="propertyMapper"></param>
+        </member>
+        <member name="T:uComponents.Mapping.InvalidPathException">
+            <summary>
+            Thrown when a path does not match up with the model graph.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.InvalidPathException.#ctor(System.String)">
+            <summary>
+            Basic constructor for path exceptions
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.InvalidPathException.#ctor(System.Type,System.String,System.String)">
+            <param name="type">The type where the segment was expected to correspond
+            to a relationship.</param>
+            <param name="path">The remaining path.</param>
+            <param name="segment">The segment of the path which could to be matched up
+            to the type.</param>
+        </member>
+        <member name="T:uComponents.Mapping.NodeMappingEngine">
+            <summary>
+            Handles the creation of map and the mapping of Umbraco <c>Node</c>s to strongly typed
+            models.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.NodeMappingEngine.#ctor">
+            <summary>
+            Instantiates a new NodeMappingEngine
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.NodeMappingEngine.#ctor(System.Web.Caching.Cache)">
+            <summary>
+            Instantiates a new NodeMappingEngine using a web cache.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">
+            If <paramref name="cache"/> is null.
+            </exception>
+        </member>
+        <member name="M:uComponents.Mapping.NodeMappingEngine.SetCacheProvider(uComponents.Mapping.ICacheProvider)">
+            <see cref="M:uComponents.Mapping.INodeMappingEngine.SetCacheProvider(uComponents.Mapping.ICacheProvider)"/>
+        </member>
+        <member name="M:uComponents.Mapping.NodeMappingEngine.CreateMap``1">
+            <summary>
+            Creates a map to a strong type from an Umbraco document type
+            using the unqualified class name of <typeparamref name="TDestination"/> 
+            as the document type alias.
+            </summary>
+            <typeparam name="TDestination">The type to map to.</typeparam>
+            <returns>Further mapping configuration</returns>
+            <exception cref="T:uComponents.Mapping.DocumentTypeNotFoundException">
+            If the document type with an alias of <typeparamref name="TDestination"/>'s
+            class name could not be found
+            </exception>
+        </member>
+        <member name="M:uComponents.Mapping.NodeMappingEngine.CreateMap``1(System.String)">
+            <summary>
+            Creates a map to a strong type from an Umbraco document type.
+            </summary>
+            <typeparam name="TDestination">The type to map to.</typeparam>
+            <param name="documentTypeAlias">The document type alias to map from.</param>
+            <returns>Further mapping configuration</returns>
+            <exception cref="T:uComponents.Mapping.DocumentTypeNotFoundException">
+            If the <paramref name="documentTypeAlias"/> could not be found
+            </exception>
+        </member>
+        <member name="M:uComponents.Mapping.NodeMappingEngine.Map(umbraco.NodeFactory.Node,System.Type,System.String[])">
+            <summary>
+            Gets an Umbraco <c>Node</c> as a <paramref name="destinationType"/>, only including 
+            specified relationship paths.
+            </summary>
+            <param name="sourceNode">The <c>Node</c> to map from.</param>
+            <param name="destinationType">The type to map to.</param>
+            <param name="paths">The relationship paths to include, or null to include
+            all relationship paths at the top level and none below.</param>
+            <returns>
+            <c>null</c> if the node does not exist or does not map to <paramref name="destinationType"/>.
+            </returns>
+            <exception cref="T:uComponents.Mapping.MapNotFoundException">If a suitable map for <paramref name="destinationType"/> has not 
+            been created with <see cref="M:uComponents.Mapping.NodeMappingEngine.CreateMap``1"/>.</exception>
+        </member>
+        <member name="M:uComponents.Mapping.NodeMappingEngine.Map``1(umbraco.NodeFactory.Node,System.String[])">
+            <summary>
+            Gets an Umbraco <c>Node</c> as a <typeparamref name="TDestination"/>, only including 
+            specified relationship paths.
+            </summary>
+            <typeparam name="TDestination">
+            The type of object that <paramref name="sourceNode"/> maps to.
+            </typeparam>
+            <param name="sourceNode">The <c>Node</c> to map from.</param>
+            <param name="paths">The relationship paths to include.</param>
+            <returns><c>null</c> if the node does not exist.</returns>
+        </member>
+        <member name="M:uComponents.Mapping.NodeMappingEngine.Map(uComponents.Mapping.NodeMappingContext,System.Type)">
+            <summary>
+            Maps a node based on the <paramref name="context"/>.
+            </summary>
+            <param name="context">The context which describes the node mapping.</param>
+            <param name="destinationType">The type to map to.</param>
+            <returns><c>null</c> if the node does not exist.</returns>
+        </member>
+        <member name="M:uComponents.Mapping.NodeMappingEngine.GetBaseNodeMapperForType(System.Type)">
+            <summary>
+            Examines the engine's <see cref="P:uComponents.Mapping.NodeMappingEngine.NodeMappers"/> and returns node mapper
+            which maps to the closest base class of <paramref name="type"/>.
+            </summary>
+            <returns>
+            <c>null</c>  if there are no mappers which map to a base class of 
+            <paramref name="type"/>.
+            </returns>
+        </member>
+        <member name="M:uComponents.Mapping.NodeMappingEngine.GetMapper(System.String,System.Type)">
+            <summary>
+            Gets a node mapper which maps from <paramref name="sourceNodeTypeAlias"/>
+            to <paramref name="destinationType"/> or some class derived from 
+            <paramref name="destinationType"/>.
+            </summary>
+            <param name="sourceNodeTypeAlias">Node type alias to map from.</param>
+            <param name="destinationType">The type which the mapped model must
+            cast to.</param>
+            <returns>The node mapper, or null if a suitable mapper could not be found</returns>
+        </member>
+        <member name="M:uComponents.Mapping.NodeMappingEngine.GetCompatibleNodeTypeAliases(System.Type)">
+            <summary>
+            Gets all node type aliases which can map to <paramref name="destinationType"/>.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.NodeMappingEngine.Query``1">
+            <summary>
+            Gets a query for nodes which map to <typeparamref name="TDestination"/>.
+            </summary>
+            <typeparam name="TDestination">The type to map to.</typeparam>
+            <returns>A fluent configuration for the query.</returns>
+            <exception cref="T:uComponents.Mapping.MapNotFoundException">If a suitable map for <typeparamref name="TDestination"/> has not 
+            been created with <see cref="M:uComponents.Mapping.NodeMappingEngine.CreateMap``1"/>.</exception>
+        </member>
+        <member name="M:uComponents.Mapping.NodeMappingEngine.Map(umbraco.NodeFactory.Node,System.Type,System.Reflection.PropertyInfo[])">
+            <summary>
+            Maps an Umbraco <c>Node</c> as a strongly typed object.
+            </summary>
+            <param name="sourceNode">The <c>Node</c> to map from.</param>
+            <param name="destinationType">The type to map to.</param>
+            <param name="includedRelationships">The relationship properties to include, or <c>null</c> to 
+            include all relationships.</param>
+            <returns>
+            <c>null</c> if the node does not exis or does not map to <paramref name="destinationType"/>.
+            </returns>
+            <exception cref="T:uComponents.Mapping.MapNotFoundException">If a suitable map for <paramref name="destinationType"/> has not 
+            been created with <see cref="M:uComponents.Mapping.NodeMappingEngine.CreateMap``1"/>.</exception>
+        </member>
+        <member name="M:uComponents.Mapping.NodeMappingEngine.Map``1(umbraco.NodeFactory.Node,System.Boolean)">
+            <summary>
+            Gets an Umbraco <c>Node</c> as a <typeparamref name="TDestination"/>.
+            </summary>
+            <typeparam name="TDestination">
+            The type of object that <paramref name="sourceNode"/> maps to.
+            </typeparam>
+            <param name="sourceNode">The <c>Node</c> to map from.</param>
+            <param name="includeRelationships">Whether to include the <c>Node</c>'s relationships</param>
+            <returns>
+            <c>null</c> if the <c>Node</c> does not exist or does not map to 
+            <typeparamref name="TDestination"/>.
+            </returns>
+            <exception cref="T:uComponents.Mapping.MapNotFoundException">If a suitable map for <typeparamref name="TDestination"/> has not 
+            been created with <see cref="M:uComponents.Mapping.NodeMappingEngine.CreateMap``1"/>.</exception>
+        </member>
+        <member name="M:uComponents.Mapping.NodeMappingEngine.Map``1(umbraco.NodeFactory.Node,System.Linq.Expressions.Expression{System.Func{``0,System.Object}}[])">
+            <summary>
+            Gets an Umbraco <c>Node</c> as a <typeparamref name="TDestination"/>, only including 
+            specified relationships.
+            </summary>
+            <typeparam name="TDestination">
+            The type of object that <paramref name="sourceNode"/> maps to.
+            </typeparam>
+            <param name="sourceNode">The <c>Node</c> to map from.</param>
+            <param name="includedRelationships">The relationship properties to include.</param>
+            <returns>
+            <c>null</c> if the node does not exist or does not map to 
+            <typeparamref name="TDestination"/>.
+            </returns>
+            <exception cref="T:uComponents.Mapping.MapNotFoundException">If a suitable map for <typeparamref name="TDestination"/> has not 
+            been created with <see cref="M:uComponents.Mapping.NodeMappingEngine.CreateMap``1"/>.</exception>
+        </member>
+        <member name="P:uComponents.Mapping.NodeMappingEngine.IsCachingEnabled">
+            <see cref="P:uComponents.Mapping.INodeMappingEngine.IsCachingEnabled"/>
+        </member>
+        <member name="T:uComponents.Mapping.DocumentTypeNotFoundException">
+            <summary>
+            The node type alias was not found in the current Umbraco instance.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.DocumentTypeNotFoundException.#ctor(System.String)">
+            <param name="nodeTypeAlias">The node type alias requested and not found</param>
+        </member>
+        <member name="T:uComponents.Mapping.MapNotFoundException">
+            <summary>
+            No map exists for this engine for the destination type
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.MapNotFoundException.#ctor(System.Type)">
+            <param name="destinationType">The requested and unfound destination type</param>
+        </member>
+        <member name="T:uComponents.Mapping.CollectionTypeNotSupportedException">
+            <summary>
+            A collection which cannot be instiatated/populated by the mapping engine
+            is used.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.CollectionTypeNotSupportedException.#ctor(System.Type)">
+            <param name="type">The unsupported collection type.</param>
+        </member>
+        <member name="T:uComponents.Mapping.NodeMappingExpression`1">
+            <summary>
+            Fluent configuration for a NodeMap.
+            </summary>
+            <typeparam name="TDestination">The destination model type</typeparam>
+        </member>
+        <member name="M:uComponents.Mapping.NodeMappingExpression`1.RemoveMappingForProperty(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+            <summary>
+            Removes the mapping for a property, if any exists.
+            </summary>
+            <param name="destinationProperty">The property on the model to NOT map to</param>
+            <exception cref="T:System.ArgumentNullException">If destinationProperty is null</exception>
+        </member>
+        <member name="M:uComponents.Mapping.NodeMappingExpression`1.ForProperty``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Func{umbraco.NodeFactory.Node,System.String[],System.Object},System.Boolean)">
+            <summary>
+            See <c>INodeMappingExpression.ForProperty()</c>
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.NodeMappingExpression`1.ForProperty``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Func{umbraco.NodeFactory.Node,System.Object},System.Boolean)">
+            <summary>
+            See <c>INodeMappingExpression.ForProperty()</c>
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.NodeMappingExpression`1.ForProperty``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.String)">
+            <summary>
+            See <c>INodeMappingExpression.ForProperty()</c>
+            </summary>
+        </member>
+        <member name="T:uComponents.Mapping.PropertyAliasNotFoundException">
+            <summary>
+            Thrown when a model property could not be mapped to a document type property.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.PropertyAliasNotFoundException.#ctor(System.Type,System.Reflection.PropertyInfo,System.String)">
+            <summary>
+            Instantiates the exception.
+            </summary>
+        </member>
+        <member name="T:uComponents.Mapping.DefaultPropertyTypeException">
+            <summary>
+            Thrown when a model property could not be mapped to a default Node property.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.DefaultPropertyTypeException.#ctor(System.Type,System.Reflection.PropertyInfo,System.Reflection.PropertyInfo)">
+            <summary>
+            Instantiates the exception.
+            </summary>
+        </member>
+        <member name="T:uComponents.Mapping.Property.RelationPropertyFormatNotSupportedException">
+            <summary>
+            The value of a node property which is being mapped by the mapping engine
+            cannot be parsed to IDs.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.Property.RelationPropertyFormatNotSupportedException.#ctor(System.String,System.Type)">
+            <param name="propertyValue">The unsupported value of the property.</param>
+            <param name="destinationPropertyType">The destination property type.</param>
+        </member>
+        <member name="T:uComponents.Mapping.Property.PropertyNotMappedException">
+            <summary>
+            A property was not mapped, but was assumed to be.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.Property.PropertyNotMappedException.#ctor(System.Type,System.String)">
+            <param name="type">The model type being mapped to</param>
+            <param name="propertyName">The name of the property which is not mapped.</param>
+        </member>
+        <member name="M:uComponents.Mapping.Property.TypeExtensions.GetMappedPropertyType(System.Type)">
+            <summary>
+            Gets the classification for a mapped property type as far is mapping is concerted.
+            </summary>
+        </member>
+        <member name="T:uComponents.Mapping.NodeQuery`1">
+            <summary>
+            Represents a query for mapped Umbraco nodes.  Enumerating the
+            query gets mapped instances of every node which can be mapped to 
+            <typeparamref name="TDestination"/>. 
+            </summary>
+            <typeparam name="TDestination">
+            The type which queried nodes will be mapped to.
+            </typeparam>
+        </member>
+        <member name="M:uComponents.Mapping.NodeQuery`1.FilterSet(System.Collections.Generic.IEnumerable{uComponents.Mapping.NodeMappingContext})">
+            <summary>
+            Filters a collection of mapping contexts based on the predicates in <see cref="F:uComponents.Mapping.NodeQuery`1._propertyFilters"/>.
+            </summary>
+            <param name="contexts">The mapping contexts to filter</param>
+            <returns>The filtered subset of <paramref name="contexts"/>.</returns>
+        </member>
+        <member name="M:uComponents.Mapping.NodeQuery`1.Many(System.Collections.Generic.IEnumerable{uComponents.Mapping.NodeMappingContext})">
+            <summary>
+            Maps a collection of contexts to <typeparamref name="TDestination"/>.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.NodeQuery`1.EvaluateSourceSet">
+            <summary>
+            Gets an enumerable representing the current source set of the query.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.NodeQuery`1.GetEnumerator">
+            <summary>
+            Gets and enumerator of mapped instances of every node which 
+            can be mapped to <typeparamref name="TDestination"/>. 
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.Property.SinglePropertyMapper.#ctor(System.Func{uComponents.Mapping.NodeMappingContext,System.Object,System.Nullable{System.Int32}},System.Type,uComponents.Mapping.NodeMapper,System.Reflection.PropertyInfo,System.String)">
+            <summary>
+            Maps a single relationship.
+            </summary>
+            <param name="mapping">
+            Mapping to a nullable node ID.  Takes the context and source property value
+            as parameters.
+            If <c>null</c>, the mapping will be deduced from the other parameters.
+            </param>
+            <param name="sourcePropertyType">
+            The type of object being supplied to <paramref name="mapping"/>.
+            Will be set to <c>int?</c> if <paramref name="mapping"/> is specified.
+            </param>
+            <param name="sourcePropertyAlias">
+            The alias of the node property to map from.  If null, the closest ancestor which is 
+            compatible with <paramref name="destinationProperty"/> will be mapped instead.
+            </param>
+            <param name="nodeMapper"></param>
+            <param name="destinationProperty"></param>
+        </member>
+        <member name="T:uComponents.Mapping.uMapper">
+            <summary>
+            Maps Umbraco <c>Node</c>s to strongly typed models.
+            </summary>
+            <remarks>
+            This is a static convenience class which wraps single instance of a <c>NodeMappingEngine</c>.
+            See http://ucomponents.org/umapper/ for usage examples and pretty pictures.
+            </remarks>
+        </member>
+        <member name="M:uComponents.Mapping.uMapper.CreateMap``1">
+            <summary>
+            Creates a map to <typeparamref name="TDestination"/> from an Umbraco document type, 
+            which must have the same alias as the unqualified class name of 
+            <typeparamref name="TDestination"/>.
+            </summary>
+            <typeparam name="TDestination">The type to map to.</typeparam>
+            <returns>Fluent configuration for the newly created mapping.</returns>
+            <exception cref="T:uComponents.Mapping.DocumentTypeNotFoundException">If a suitable document type could not be found</exception>
+        </member>
+        <member name="M:uComponents.Mapping.uMapper.CreateMap``1(System.String)">
+            <summary>
+            Creates a map to <typeparamref name="TDestination"/> from an Umbraco document type,
+            specifying the document type alias.
+            </summary>
+            <typeparam name="TDestination">The type to map to.</typeparam>
+            <param name="documentTypeAlias">The document type alias to map from.</param>
+            <returns>Fluent configuration for the newly created mapping.</returns>
+            <exception cref="T:uComponents.Mapping.DocumentTypeNotFoundException">If the document type could not be found.</exception>
+        </member>
+        <member name="M:uComponents.Mapping.uMapper.Map``1(umbraco.NodeFactory.Node,System.Boolean)">
+            <summary>
+            Maps an Umbraco <c>Node</c> to a new instance of <typeparamref name="TDestination"/>.
+            </summary>
+            <typeparam name="TDestination">The type to map to.</typeparam>
+            <param name="sourceNode">The <c>Node</c> to map from.</param>
+            <param name="includeRelationships">Whether to load relationships.</param>
+            <returns>
+            A new instance of <typeparamref name="TDestination"/>, or <c>null</c> if 
+            <paramref name="sourceNode"/> is <c>null</c> or does not map to 
+            <typeparamref name="TDestination"/>.
+            </returns>
+            <exception cref="T:uComponents.Mapping.MapNotFoundException">
+            If a map for <typeparamref name="TDestination"/> has not 
+            been created with <see cref="M:uComponents.Mapping.uMapper.CreateMap``1"/>.
+            </exception>
+        </member>
+        <member name="M:uComponents.Mapping.uMapper.Find``1(System.Int32,System.Boolean)">
+            <summary>
+            Gets an Umbraco <c>Node</c> as a new instance of <typeparamref name="TDestination"/>.
+            </summary>
+            <typeparam name="TDestination">The type that the <c>Node</c> maps to.</typeparam>
+            <param name="id">The ID of the <c>Node</c></param>
+            <param name="includeRelationships">Whether to load all the <c>Node</c>'s relationships</param>
+            <returns>
+            <c>null</c> if the <c>Node</c> does not exist or does not map to 
+            <typeparamref name="TDestination"/>.
+            </returns>
+            <exception cref="T:uComponents.Mapping.MapNotFoundException">
+            If a map for <typeparamref name="TDestination"/> has not 
+            been created with <see cref="M:uComponents.Mapping.uMapper.CreateMap``1"/>.
+            </exception>
+        </member>
+        <member name="M:uComponents.Mapping.uMapper.GetCurrent``1(System.Boolean)">
+            <summary>
+            Gets the current Umbraco <c>Node</c> as a new instance of <typeparamref name="TDestination"/>.
+            </summary>
+            <typeparam name="TDestination">The type that the current <c>Node</c> maps to.</typeparam>
+            <param name="includeRelationships">Whether to load all the <c>Node</c>'s relationships</param>
+            <returns>
+            <c>null</c> if there is no current <c>Node</c> or it does not map to 
+            <typeparamref name="TDestination"/>.
+            </returns>
+            <exception cref="T:uComponents.Mapping.MapNotFoundException">
+            If a map for <typeparamref name="TDestination"/> has not 
+            been created with <see cref="M:uComponents.Mapping.uMapper.CreateMap``1"/>.
+            </exception>
+            <seealso cref="M:uComponents.Mapping.uMapper.GetSingle``1(System.Int32,System.Boolean)"/>
+        </member>
+        <member name="M:uComponents.Mapping.uMapper.GetAll``1(System.Boolean)">
+            <summary>
+            Gets all Umbraco <c>Node</c>s which map to <typeparamref name="TDestination"/> (including nodes which
+            map to a class which derives from <typeparamref name="TDestination"/>).
+            </summary>
+            <typeparam name="TDestination">The type for the <c>Node</c>s to map to.</typeparam>
+            <param name="includeRelationships">Whether to load all the <c>Node</c>s' relationships</param>
+            <exception cref="T:uComponents.Mapping.MapNotFoundException">
+            If a map for <typeparamref name="TDestination"/> has not 
+            been created with <see cref="M:uComponents.Mapping.uMapper.CreateMap``1"/>.
+            </exception>
+        </member>
+        <member name="M:uComponents.Mapping.uMapper.Query``1">
+            <summary>
+            Gets a query for nodes which map to <typeparamref name="TDestination"/>.
+            </summary>
+            <typeparam name="TDestination">The type to map to.</typeparam>
+            <returns>A fluent configuration for the query.</returns>
+            <exception cref="T:uComponents.Mapping.MapNotFoundException">
+            If a suitable map for <typeparamref name="TDestination"/> has not 
+            been created with <see cref="M:uComponents.Mapping.uMapper.CreateMap``1"/>.
+            </exception>
+        </member>
+        <member name="M:uComponents.Mapping.uMapper.GetSingle``1(System.Int32,System.Boolean)">
+            <summary>
+            Use <c>Find()</c> instead.
+            </summary>
+        </member>
+        <member name="M:uComponents.Mapping.uMapper.GetSingle``1(System.Int32,System.Linq.Expressions.Expression{System.Func{``0,System.Object}}[])">
+            <summary>
+            Gets an Umbraco <c>Node</c> as a new instance of <typeparamref name="TDestination"/>,
+            only including the specified relationships.
+            </summary>
+            <typeparam name="TDestination">The type that the <c>Node</c> maps to.</typeparam>
+            <param name="id">The ID of the <c>Node</c></param>
+            <param name="includedRelationships">
+            The relationships to populate <typeparamref name="TDestination"/> with.
+            </param>
+            <returns>
+            <c>null</c> if the <c>Node</c> does not exist or does not map to 
+            <typeparamref name="TDestination"/>.
+            </returns>
+            <exception cref="T:uComponents.Mapping.MapNotFoundException">
+            If a map for <typeparamref name="TDestination"/> has not 
+            been created with <see cref="M:uComponents.Mapping.uMapper.CreateMap``1"/>.
+            </exception>
+            <example>
+            <code>
+            var person = uMapper.GetSingle(1234, x =&gt; x.Friends, x =&gt; x.Parent);
+            person.Name; // not a relationship and not null
+            person.Friends; // not null
+            person.Parent; // not null
+            person.Colleagues; // null
+            </code>
+            </example>
+        </member>
+        <member name="M:uComponents.Mapping.uMapper.GetCurrent``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}}[])">
+            <summary>
+            Gets the current Umbraco <c>Node</c> as a new instance of <typeparamref name="TDestination"/>,
+            only including the specified relationships.
+            </summary>
+            <typeparam name="TDestination">The type that the current <c>Node</c> maps to.</typeparam>
+            <param name="includedRelationships">
+            The relationships to populate <typeparamref name="TDestination"/> with.
+            </param>
+            <returns>
+            <c>null</c> if there is no current <c>Node</c> or it does not map to 
+            <typeparamref name="TDestination"/>.
+            </returns>
+        </member>
+        <member name="M:uComponents.Mapping.uMapper.GetAll``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}}[])">
+            <summary>
+            Gets all Umbraco <c>Node</c>s which map to <typeparamref name="TDestination"/> (including nodes which
+            map to a class which derives from <typeparamref name="TDestination"/>),
+            only including the specified relationships.
+            </summary>
+            <typeparam name="TDestination">The type for the <c>Node</c>s to map to.</typeparam>
+            <param name="includedRelationships">
+            The relationships to populate the <typeparamref name="TDestination"/>s with.
+            </param>
+            <exception cref="T:uComponents.Mapping.MapNotFoundException">
+            If a map for <typeparamref name="TDestination"/> has not 
+            been created with <see cref="M:uComponents.Mapping.uMapper.CreateMap``1"/>.
+            </exception>
+        </member>
+        <member name="P:uComponents.Mapping.uMapper.Engine">
+            <summary>
+            Gets the <c>INodeMappingEngine</c> being used by uMapper.
+            </summary>
+        </member>
+        <member name="P:uComponents.Mapping.uMapper.CachingEnabled">
+            <summary>
+            Enables or disables caching, using the <c>HttpContext.Current.Cache</c>
+            object.
+            
+            Caching is disabled by default.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">
+            If <c>HttpContext.Current</c> is not set.
+            </exception>
+        </member>
+    </members>
+</doc>

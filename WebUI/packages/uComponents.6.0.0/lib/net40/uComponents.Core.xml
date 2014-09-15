@@ -1,0 +1,566 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>uComponents.Core</name>
+    </assembly>
+    <members>
+        <member name="T:uComponents.Core.Abstractions.UmbracoLibraryWrapper">
+            <summary>
+            A wrapper class for the <c>umbraco.library</c> methods.
+            </summary>
+            <remarks>
+            This wrapper class is used in order to easily switch during unit-testing.
+            </remarks>
+        </member>
+        <member name="T:uComponents.Core.Interfaces.IUmbracoLibrary">
+            <summary>
+            Interface for exposing methods used from <c>umbraco.library</c>.
+            </summary>
+        </member>
+        <member name="M:uComponents.Core.Interfaces.IUmbracoLibrary.NiceUrl(System.Int32)">
+            <summary>
+            Exposes the <c>umbraco.library.NiceUrl</c> method.
+            </summary>
+            <param name="nodeId">The node id.</param>
+            <returns>Returns the nice URL for the node Id.</returns>
+        </member>
+        <member name="M:uComponents.Core.Interfaces.IUmbracoLibrary.GetRandom">
+            <summary>
+            Exposes the <c>umbraco.library.GetRandom</c> method.
+            </summary>
+            <returns>Returns a <c>Random</c> object.</returns>
+        </member>
+        <member name="M:uComponents.Core.Interfaces.IUmbracoLibrary.GetRandom(System.Int32)">
+            <summary>
+            Exposes the <c>umbraco.library.GetRandom</c> method.
+            </summary>
+            <param name="seed">The seed.</param>
+            <returns>Returns a seeded <c>Random</c> object.</returns>
+        </member>
+        <member name="M:uComponents.Core.Abstractions.UmbracoLibraryWrapper.NiceUrl(System.Int32)">
+            <summary>
+            Gets the NiceUrl.
+            </summary>
+            <param name="nodeId">The node id.</param>
+            <returns></returns>
+        </member>
+        <member name="M:uComponents.Core.Abstractions.UmbracoLibraryWrapper.GetRandom">
+            <summary>
+            Gets the random.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:uComponents.Core.Abstractions.UmbracoLibraryWrapper.GetRandom(System.Int32)">
+            <summary>
+            Gets the random.
+            </summary>
+            <param name="seed">The seed.</param>
+            <returns></returns>
+        </member>
+        <member name="T:uComponents.Core.Extensions.ControlExtensions">
+            <summary>
+            Extension methods for System.Web.UI.Control
+            </summary>
+        </member>
+        <member name="M:uComponents.Core.Extensions.ControlExtensions.RenderToString(System.Web.UI.Control)">
+            <summary>
+            Renders the control.
+            </summary>
+            <param name="ctrl">The control to render.</param>
+            <returns>
+            Returns a string of the rendered control.
+            </returns>
+        </member>
+        <member name="T:uComponents.Core.Helper">
+            <summary>
+            Generic helper methods
+            </summary>
+            <summary>
+            Generic helper methods
+            </summary>
+            <summary>
+            Generic helper methods
+            </summary>
+            <summary>
+            Generic helper methods
+            </summary>
+            <summary>
+            Generic helper methods
+            </summary>
+            <summary>
+            Generic helper methods
+            </summary>
+        </member>
+        <member name="T:uComponents.Core.Helper.Dictionary">
+            <summary>
+            Dictionary helpers
+            </summary>
+        </member>
+        <member name="M:uComponents.Core.Helper.Dictionary.GetDictionaryItem(System.String,System.String)">
+            <summary>
+            Gets the dictionary item with uComponents prefix ("uComponents.")
+            </summary>
+            <param name="key">The dictionary item key.</param>
+            <param name="fallback">The fallback text.</param>
+            <returns>The dictionary item value as a string.</returns>
+        </member>
+        <member name="T:uComponents.Core.Helper.Log">
+            <summary>
+            Log helper
+            </summary>
+        </member>
+        <member name="M:uComponents.Core.Helper.Log.Error``1(System.String,System.Exception)">
+            <summary>
+            Adds an error log entry.
+            </summary>
+            <typeparam name="T">The datatype.</typeparam>
+            <param name="message">The message.</param>
+            <param name="ex">The exception.</param>
+        </member>
+        <member name="M:uComponents.Core.Helper.Log.Warn``1(System.String)">
+            <summary>
+            Adds a warning log entry.
+            </summary>
+            <typeparam name="T">The datatype.</typeparam>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:uComponents.Core.Helper.Log.Debug``1(System.String)">
+            <summary>
+            Adds a debug log entry.
+            </summary>
+            <typeparam name="T">The datatype.</typeparam>
+            <param name="message">The message.</param>
+        </member>
+        <member name="T:uComponents.Core.Helper.Resolvers">
+            <summary>
+            IO helpers
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Helper.Resolvers.propertyValueConverters">
+            <summary>
+            The property value converters
+            </summary>
+        </member>
+        <member name="M:uComponents.Core.Helper.Resolvers.GetPropertyValueConverters">
+            <summary>
+            Gets the property value converters.
+            </summary>
+            <returns>A list of property value converters.</returns>
+        </member>
+        <member name="M:uComponents.Core.Helper.Resolvers.GetPropertyValueConverter(umbraco.interfaces.IDataType)">
+            <summary>
+            Gets the property value converter for the specified datatype.
+            </summary>
+            <param name="dataType">The datatype.</param>
+            <returns>A property value converter.</returns>
+        </member>
+        <member name="T:uComponents.Core.Helper.IO">
+            <summary>
+            IO helpers
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Helper.IO.Locker">
+            <summary>
+            The locker object
+            </summary>
+        </member>
+        <member name="M:uComponents.Core.Helper.IO.GetAssemblyNames">
+            <summary>
+            Gets the names of all loaded assemblies.
+            </summary>
+            <returns>A list of assembly names.</returns>
+        </member>
+        <member name="M:uComponents.Core.Helper.IO.GetAssembly(System.String)">
+            <summary>
+            Gets the <see cref="T:System.Reflection.Assembly"/> with the specified name.
+            </summary>
+            <remarks>Works in Medium Trust.</remarks>
+            <param name="assemblyName">The <see cref="T:System.Reflection.Assembly"/> name.</param>
+            <returns>The <see cref="T:System.Reflection.Assembly"/>.</returns>
+        </member>
+        <member name="M:uComponents.Core.Helper.IO.GetAssemblyInformationalVersion(System.String)">
+            <summary>
+            Gets the assembly informational version.
+            </summary>
+            <param name="assemblyName">Name of the assembly.</param>
+            <returns>The value of the informational version.</returns>
+        </member>
+        <member name="M:uComponents.Core.Helper.IO.GetAssemblyInformationalVersion(System.Reflection.Assembly)">
+            <summary>
+            Gets the assembly informational version.
+            </summary>
+            <param name="assembly">The assembly.</param>
+            <returns>The value of the informational version.</returns>
+        </member>
+        <member name="M:uComponents.Core.Helper.IO.EnsureFolderExists(System.String)">
+            <summary>
+            Ensures the folder exists.
+            </summary>
+            <param name="path">The path.</param>
+            <returns>The folder info.</returns>
+        </member>
+        <member name="M:uComponents.Core.Helper.IO.EnsureFileExists(System.String,System.String)">
+            <summary>
+            Ensures the file exists.
+            </summary>
+            <param name="path">The path.</param>
+            <param name="content">The content.</param>
+            <returns>The file info.</returns>
+        </member>
+        <member name="M:uComponents.Core.Helper.IO.OnCurrentDomainReflectionOnlyAssemblyResolve(System.Object,System.ResolveEventArgs)">
+            <summary>
+            Called when [current domain assembly is resolved].
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="args">The <see cref="T:System.ResolveEventArgs"/> instance containing the event data.</param>
+            <returns>The resolved <see cref="T:System.Reflection.Assembly"/>.</returns>
+        </member>
+        <member name="T:uComponents.Core.Helper.Xml">
+            <summary>
+            Xml helper
+            </summary>
+        </member>
+        <member name="M:uComponents.Core.Helper.Xml.CouldItBeXml(System.String)">
+            <summary>
+            Determines whether the specified string appears to be XML.
+            </summary>
+            <param name="xml">The XML string.</param>
+            <returns>
+            	<c>true</c> if the specified string appears to be XML; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:uComponents.Core.Helper.Xml.Split(System.String,System.String[],System.String,System.String)">
+            <summary>
+            Splits the specified delimited string into an XML document.
+            </summary>
+            <param name="data">The data.</param>
+            <param name="separator">The separator.</param>
+            <param name="rootName">Name of the root.</param>
+            <param name="elementName">Name of the element.</param>
+            <returns>Returns an <c>System.Xml.XmlDocument</c> representation of the delimited string data.</returns>
+        </member>
+        <member name="M:uComponents.Core.Helper.Xml.Split(System.Xml.XmlDocument,System.String,System.String[],System.String,System.String)">
+            <summary>
+            Splits the specified delimited string into an XML document.
+            </summary>
+            <param name="xml">The XML document.</param>
+            <param name="data">The delimited string data.</param>
+            <param name="separator">The separator.</param>
+            <param name="rootName">Name of the root node.</param>
+            <param name="elementName">Name of the element node.</param>
+            <returns>Returns an <c>System.Xml.XmlDocument</c> representation of the delimited string data.</returns>
+        </member>
+        <member name="T:uComponents.Core.Constants">
+            <summary>
+            Constants class for uComponent specific values.
+            </summary>
+            <summary>
+            Constants class for uComponent specific values.
+            </summary>
+            <summary>
+            Constants class for uComponent specific values.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.ApplicationName">
+            <summary>
+            Name of the application.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.AppKey_DragAndDrop">
+            <summary>
+            AppSettings key for UI Modules' drag-n-drop.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.AppKey_KeyboardShortcuts">
+            <summary>
+            AppSettings key for UI Modules' keyboard shortcuts.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.AppKey_RazorModelBinding">
+            <summary>
+            AppSettings key to disable Razor model binding for data-types.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.AppKey_TrayPeek">
+            <summary>
+            AppSettings key for UI Modules' tray peek.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.DocumentationUrl">
+            <summary>
+            The documentation URL
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.FaviconResourcePath">
+            <summary>
+            The resource path for the favicon.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.IconResourcePath">
+            <summary>
+            The resource path for the favicon.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.PrevalueEditorCssResourcePath">
+            <summary>
+            The resource path for the Prevalue Editor stylesheet.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.uQueryLegacyObsoleteMessage">
+            <summary>
+            Message for legacy usage of the uQuery extension methods.
+            </summary>
+        </member>
+        <member name="T:uComponents.Core.Constants.Common">
+            <summary>
+            Constants for commonly used characters and strings.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Common.COMMA">
+            <summary>
+            A comma (char).
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Common.DOT">
+            <summary>
+            A dot / full-stop / period (char).
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Common.DOTASPX">
+            <summary>
+            File extension for ASP.NET webpages.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Common.HASH">
+            <summary>
+            A hash (string).
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Common.HTTP">
+            <summary>
+            HTTP protocol/prefix.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Common.HTTPS">
+            <summary>
+            HTTPS protocol/prefix.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Common.SLASH">
+            <summary>
+            A forward-slash (char).
+            </summary>
+        </member>
+        <member name="T:uComponents.Core.Constants.Umbraco">
+            <summary>
+            Constants for Umbraco property aliases.
+            </summary>
+        </member>
+        <member name="T:uComponents.Core.Constants.Umbraco.Content">
+            <summary>
+            Constants for Umbraco Content property aliases.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Umbraco.Content.InternalRedirectId">
+            <summary>
+            Property alias for the Content's Url (internal) redirect.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Umbraco.Content.NaviHide">
+            <summary>
+            Property alias for the Content's navigational hide, (not actually used in core code).
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Umbraco.Content.Redirect">
+            <summary>
+            Property alias for the Content's Url redirect.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Umbraco.Content.UrlAlias">
+            <summary>
+            Property alias for the Content's Url alias.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Umbraco.Content.UrlName">
+            <summary>
+            Property alias for the Content's Url name.
+            </summary>
+        </member>
+        <member name="T:uComponents.Core.Constants.Umbraco.Media">
+            <summary>
+            Constants for Umbraco Media property aliases.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Umbraco.Media.File">
+            <summary>
+            Property alias for the Media's file name.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Umbraco.Media.Width">
+            <summary>
+            Property alias for the Media's width.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Umbraco.Media.Height">
+            <summary>
+            Property alias for the Media's height.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Umbraco.Media.Bytes">
+            <summary>
+            Property alias for the Media's file size (in bytes).
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Umbraco.Media.Extension">
+            <summary>
+            Property alias for the Media's file extension.
+            </summary>
+        </member>
+        <member name="T:uComponents.Core.Constants.Umbraco.ObjectTypes">
+            <summary>
+            Constants for Umbraco ObjectTypes Guids.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Umbraco.ObjectTypes.ContentItemType">
+            <summary>
+            Guid for the ContentItemType object-type.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Umbraco.ObjectTypes.ROOT">
+            <summary>
+            Guid for the ROOT object-type.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Umbraco.ObjectTypes.Document">
+            <summary>
+            Guid for the Document object-type.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Umbraco.ObjectTypes.Media">
+            <summary>
+            Guid for the Media object-type.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Umbraco.ObjectTypes.MemberType">
+            <summary>
+            Guid for the MemberType object-type.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Umbraco.ObjectTypes.Template">
+            <summary>
+            Guid for the Template object-type.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Umbraco.ObjectTypes.MemberGroup">
+            <summary>
+            Guid for the MemberGroup object-type.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Umbraco.ObjectTypes.ContentItem">
+            <summary>
+            Guid for the ContentItem object-type.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Umbraco.ObjectTypes.MediaType">
+            <summary>
+            Guid for the MediaType object-type.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Umbraco.ObjectTypes.DocumentType">
+            <summary>
+            Guid for the DocumentType object-type.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Umbraco.ObjectTypes.RecycleBin">
+            <summary>
+            Guid for the RecycleBin object-type.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Umbraco.ObjectTypes.Stylesheet">
+            <summary>
+            Guid for the Stylesheet object-type.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Umbraco.ObjectTypes.Member">
+            <summary>
+            Guid for the Member object-type.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Umbraco.ObjectTypes.DataType">
+            <summary>
+            Guid for the DataType object-type.
+            </summary>
+        </member>
+        <member name="T:uComponents.Core.Constants.Umbraco.Url">
+            <summary>
+            Constants for Umbraco URLs/Querystrings.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.Umbraco.Url.AltTemplate">
+            <summary>
+            Querystring parameter name used for Umbraco's alternative template functionality.
+            </summary>
+        </member>
+        <member name="T:uComponents.Core.Constants.MediaTypeNames">
+            <summary>
+            Container class for MIME types.
+            </summary>
+            <remarks>Idea based on the <c>System.Net.Mime.MediaTypeNames</c> class.</remarks>
+        </member>
+        <member name="T:uComponents.Core.Constants.MediaTypeNames.Application">
+            <summary>
+            Class containing MIME type constants for application files.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.MediaTypeNames.Application.JavaScript">
+            <summary>
+            MIME type for JavaScript files/scripts.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.MediaTypeNames.Application.Json">
+            <summary>
+            MIME type for JSON text.
+            </summary>
+        </member>
+        <member name="T:uComponents.Core.Constants.MediaTypeNames.Image">
+            <summary>
+            Class containing MIME type constants for image files.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.MediaTypeNames.Image.Gif">
+            <summary>
+            MIME type for GIF images.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.MediaTypeNames.Image.Ico">
+            <summary>
+            MIME type for ICO images/icons.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.MediaTypeNames.Image.Jpeg">
+            <summary>
+            MIME type for JPEG images.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.MediaTypeNames.Image.Png">
+            <summary>
+            MIME type for PNG images.
+            </summary>
+        </member>
+        <member name="T:uComponents.Core.Constants.MediaTypeNames.Text">
+            <summary>
+            Class containing MIME type constants for text files.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.MediaTypeNames.Text.Css">
+            <summary>
+            MIME type for Cascading StyleSheet files.
+            </summary>
+        </member>
+        <member name="F:uComponents.Core.Constants.MediaTypeNames.Text.JavaScript">
+            <summary>
+            MIME type for JavaScript files.
+            </summary>
+        </member>
+    </members>
+</doc>
