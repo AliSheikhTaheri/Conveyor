@@ -77,15 +77,28 @@
                 {
                     if (objectType == ObjectTypes.Document.ToString())
                     {
-                        listOfIds.Add(Services.ContentService.GetById(new Guid(guid)).Id);
+                        var content = Services.ContentService.GetById(new Guid(guid));
+
+                        if (content != null)
+                        {
+                            listOfIds.Add(content.Id);
+                        }
                     }
                     else if (objectType == ObjectTypes.Media.ToString())
                     {
-                        listOfIds.Add(Services.MediaService.GetById(new Guid(guid)).Id);
+                        var media = Services.MediaService.GetById(new Guid(guid));
+                        
+                        if (media != null)
+                        {
+                            listOfIds.Add(media.Id);
+                        }
                     }
                 }
 
-                result = string.Join(",", listOfIds);
+                if (listOfIds.Any())
+                {
+                    result = string.Join(",", listOfIds);
+                }
             }
 
             return result;

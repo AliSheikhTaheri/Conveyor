@@ -279,6 +279,7 @@
     <Compile Include="Infrastructure\Content.cs" />
     <Compile Include="Infrastructure\BaseContentManagement.cs" />
     <Compile Include="Infrastructure\ContentPackageApplication.cs" />
+    <Compile Include="Infrastructure\DataTypeConverters\DropdownListDataTypeConverter.cs" />
     <Compile Include="Infrastructure\DataTypeConverters\EmbeddedContentDataTypeConverter.cs" />
     <Compile Include="Infrastructure\DataTypeConverters\ContentPickerDataTypeConverter.cs" />
     <Compile Include="Infrastructure\DataTypeConverters\DampDataTypeConverter.cs" />
@@ -1121,6 +1122,7 @@
     <Content Include="umbraco\Webservices\TreeDataService.ashx" />
     <Content Include="umbraco\Webservices\UltimatePickerAutoCompleteHandler.ashx" />
     <Content Include="umbraco\Xslt\Web.config" />
+    <Content Include="App_Data\umbraco.config" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

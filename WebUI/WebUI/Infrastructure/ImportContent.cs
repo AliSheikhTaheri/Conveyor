@@ -78,9 +78,10 @@
             var cs = Services.ContentService;
             var dataTypes = new Config().GetSpecialDataTypes();
 
+            content.ParentId = GetContentParentId(newContent);
+            content.SortOrder = newContent.SortOrder;
             content.Name = newContent.Name;
             content.CreatorId = User.GetCurrent().Id;
-            content.SortOrder = newContent.SortOrder;
             content.WriterId = User.GetCurrent().Id;
             
             if (content.Template != null)
@@ -148,6 +149,12 @@
             media.Name = node.Attribute("name").Value;
             media.ParentId = GetMediaParentId(node);
             media.Key = new Guid(node.Attribute("guid").Value);
+            
+            int sortOrder;
+            if (int.TryParse(node.Attribute("sortOrder").Value, out sortOrder))
+            {
+                media.SortOrder = sortOrder;
+            }
 
             foreach (var propertyTag in node.Elements())
             {

@@ -1,4 +1,6 @@
-﻿namespace WebUI.Infrastructure
+﻿using System.Web.Services.Description;
+
+namespace WebUI.Infrastructure
 {
     using System;
     using System.Collections.Generic;
@@ -62,7 +64,9 @@
             foreach (var property in content.Properties)
             {
                 var tag = property.ToXml();
-                tag.Add(new XAttribute("dataTypeGuid", propertyTypes.ElementAt(count).DataTypeId));
+                var propertyType = propertyTypes.ElementAt(count);
+                tag.Add(new XAttribute("dataTypeGuid", propertyType.DataTypeId));
+                tag.Add(new XAttribute("dataTypeName", Services.DataTypeService.GetDataTypeDefinitionById(propertyType.DataTypeDefinitionId).Name));
 
                 var guid = propertyTypes.ElementAt(count).DataTypeId;
 
@@ -94,6 +98,7 @@
                 new XAttribute("name", media.Name),
                 new XAttribute("nodeTypeAlias", media.ContentType.Alias),
                 new XAttribute("guid", media.Key),
+                new XAttribute("sortOrder", media.SortOrder),
                 new XAttribute("parentGuid", media.Parent() == null ? "-1" : media.Parent().Key.ToString()),
                 new XAttribute("level", media.Level),
                 new XAttribute("objectType", ObjectTypes.Media));
@@ -105,7 +110,9 @@
             foreach (var property in media.Properties.Where(x => !Constants.MediaDefaultProperties.Contains(x.Alias)))
             {
                 var tag = property.ToXml();
-                tag.Add(new XAttribute("dataTypeGuid", propertyTypes.ElementAt(count).DataTypeId));
+                var propertyType = propertyTypes.ElementAt(count);
+                tag.Add(new XAttribute("dataTypeGuid", propertyType.DataTypeId));
+                tag.Add(new XAttribute("dataTypeName", Services.DataTypeService.GetDataTypeDefinitionById(propertyType.DataTypeDefinitionId).Name));
 
                 var guid = propertyTypes.ElementAt(count).DataTypeId;
                 if (guid == new Guid("5032a6e6-69e3-491d-bb28-cd31cd11086c"))

@@ -30,8 +30,12 @@
             if (!string.IsNullOrWhiteSpace(propertyTag.Value))
             {
                 var guid = new Guid(propertyTag.Value);
-                var id = Services.ContentService.GetById(guid).Id;
-                result = id.ToString();
+                var content = Services.ContentService.GetById(guid);
+                if (content != null)
+                {
+                    var id = content.Id;
+                    result = id.ToString();
+                }
             }
 
             return result;

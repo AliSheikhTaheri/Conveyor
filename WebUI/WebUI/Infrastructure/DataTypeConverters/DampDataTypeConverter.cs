@@ -1,4 +1,6 @@
-﻿namespace WebUI.Infrastructure
+﻿using System.Linq;
+
+namespace WebUI.Infrastructure
 {
     using System;
     using System.Collections.Generic;
@@ -46,12 +48,19 @@
 
                 foreach (var guid in listOfGuid)
                 {
-                    listOfIds.Add(Services.MediaService.GetById(new Guid(guid)).Id.ToString());
+                    var media = Services.MediaService.GetById(new Guid(guid));
+
+                    if (media != null)
+                    {
+                        listOfIds.Add(media.Id.ToString());
+                    }
                 }
 
-                var xml = DigibizMediaHelper.GetXML(listOfIds.ToArray());
-
-                result = HttpUtility.HtmlDecode(xml.ToString());
+                if (listOfIds.Any())
+                {
+                    var xml = DigibizMediaHelper.GetXML(listOfIds.ToArray());
+                    result = HttpUtility.HtmlDecode(xml.ToString());
+                }
             }
 
             return result;
