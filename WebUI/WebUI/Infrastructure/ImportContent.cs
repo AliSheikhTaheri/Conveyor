@@ -83,7 +83,7 @@
             content.Name = newContent.Name;
             content.CreatorId = User.GetCurrent().Id;
             content.WriterId = User.GetCurrent().Id;
-            
+
             if (content.Template != null)
             {
                 content.Template.Id = newContent.TemplateId;
@@ -104,7 +104,7 @@
                 var dataTypeGuid = new Guid(propertyTag.Attribute("dataTypeGuid").Value);
 
                 var value = propertyTag.Value;
-                if (dataTypeGuid == new Guid("5032a6e6-69e3-491d-bb28-cd31cd11086c"))
+                if (dataTypeGuid == new Guid(Constants.UploadDataTypeGuid))
                 {
                     var fileName = propertyTag.Attribute("fileName").Value;
                     var umbracoFile = propertyTag.Attribute("umbracoFile").Value;
@@ -149,7 +149,7 @@
             media.Name = node.Attribute("name").Value;
             media.ParentId = GetMediaParentId(node);
             media.Key = new Guid(node.Attribute("guid").Value);
-            
+
             int sortOrder;
             if (int.TryParse(node.Attribute("sortOrder").Value, out sortOrder))
             {
@@ -160,7 +160,7 @@
             {
                 var dataTypeGuid = new Guid(propertyTag.Attribute("dataTypeGuid").Value);
 
-                if (dataTypeGuid == new Guid("5032a6e6-69e3-491d-bb28-cd31cd11086c"))
+                if (dataTypeGuid == new Guid(Constants.UploadDataTypeGuid))
                 {
                     var fileName = propertyTag.Attribute("fileName").Value;
                     var umbracoFile = propertyTag.Attribute("umbracoFile").Value;

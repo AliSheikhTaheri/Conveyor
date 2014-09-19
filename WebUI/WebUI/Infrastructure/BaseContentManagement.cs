@@ -1,13 +1,10 @@
-﻿using System.Web.Services.Description;
-
-namespace WebUI.Infrastructure
+﻿namespace WebUI.Infrastructure
 {
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
     using System.Xml.Linq;
-    using umbraco;
     using Umbraco.Core;
     using Umbraco.Core.Models;
     using Umbraco.Core.Services;
@@ -70,7 +67,7 @@ namespace WebUI.Infrastructure
 
                 var guid = propertyTypes.ElementAt(count).DataTypeId;
 
-                if (guid == new Guid("5032a6e6-69e3-491d-bb28-cd31cd11086c"))
+                if (guid == new Guid(Constants.UploadDataTypeGuid))
                 {
                     var umbracoFile = property.Value.ToString();
                     tag.Add(
@@ -115,7 +112,7 @@ namespace WebUI.Infrastructure
                 tag.Add(new XAttribute("dataTypeName", Services.DataTypeService.GetDataTypeDefinitionById(propertyType.DataTypeDefinitionId).Name));
 
                 var guid = propertyTypes.ElementAt(count).DataTypeId;
-                if (guid == new Guid("5032a6e6-69e3-491d-bb28-cd31cd11086c"))
+                if (guid == new Guid(Constants.UploadDataTypeGuid))
                 {
                     var umbracoFile = property.Value.ToString();
                     tag.Add(
