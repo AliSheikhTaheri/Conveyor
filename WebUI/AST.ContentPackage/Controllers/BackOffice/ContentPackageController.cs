@@ -1,7 +1,6 @@
-﻿using System;
-
-namespace AST.ContentPackage.Controllers.BackOffice
+﻿namespace AST.ContentPackage.Controllers.BackOffice
 {
+    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
@@ -129,9 +128,8 @@ namespace AST.ContentPackage.Controllers.BackOffice
                     folder = true,
                     hideCheckbox = true,
                     expanded = true,
+                    children = new List<Node>(),
                 };
-
-                node.children = new List<Node>();
 
                 var contentAtRoot = Services.ContentService.GetRootContent();
 
@@ -144,12 +142,8 @@ namespace AST.ContentPackage.Controllers.BackOffice
             }
 
             var children = Services.ContentService.GetChildren(id);
-            var nodes = new List<Node>();
 
-            foreach (var n in children)
-            {
-                nodes.Add(GenerateJsonForTree(n));
-            }
+            var nodes = children.Select(GenerateJsonForTree).ToList();
 
             return Json(nodes, JsonRequestBehavior.AllowGet);
         }

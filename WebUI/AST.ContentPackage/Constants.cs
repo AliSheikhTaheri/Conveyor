@@ -6,9 +6,9 @@
 
         public const string ApplicationAlias = "ContentPackage";
 
-        public const string TreeName = "Import Export";
+        public const string TreeName = "AST Content Package";
 
-        public const string TreeAlias = "ContentPacakgeTree";
+        public const string TreeAlias = "ASTContentPacakge";
 
         public const string ContentFileName = "Content.xml";
 

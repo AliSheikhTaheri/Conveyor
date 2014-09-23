@@ -3,32 +3,26 @@
     Layout = "_Layout.cshtml";
 }
 
-@section PageHeader
-{
-
-}
-
 <div class="boxbody">
 
     <div id="body_UmbracoPanel_content" class="content">
         <div class="innerContent" id="body_UmbracoPanel_innerContent">
-            <h2 class="propertypaneTitel"></h2>
+            <div class="dashboardWrapper">
+                <div class="propertypane">
+                    <h2>Compatibility Check</h2>
 
-            @{
-                foreach (var item in Model)
-                {
-                    <div class="propertypane">
-                        <div>
-                            <div class="propertyItem">
-                                <div class="propertyItemheader">@item.DataTypeName </div>
-                                <div class="propertyItemContent">@item.Id</div>
-                            </div>
-                            <div class="propertyPaneFooter">-</div>
-                        </div>
+                    <div class="error">
+                        <p>None of the below data types have been defined in the ContentPackage.config file, in order to ignore them just add them in OtherDataTypes tag.</p>
                     </div>
-                }
-            }
 
+                    <ul>
+                        @foreach (var item in Model.OrderBy(x => x.DataTypeName).ToList())
+                        {
+                            <li>@item.DataTypeName - @item.Id</li>
+                        }
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>

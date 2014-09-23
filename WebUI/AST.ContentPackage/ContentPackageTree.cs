@@ -25,7 +25,7 @@
 
         public override void Render(ref XmlTree tree)
         {
-            CreateReportNode(ref tree, Constants.ApplicationName, "Index");
+            CreateReportNode(ref tree, "Import/Export", "Index");
         }
 
         public override void RenderJS(ref StringBuilder javascript)
