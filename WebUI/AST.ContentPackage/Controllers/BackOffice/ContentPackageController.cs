@@ -1,4 +1,6 @@
-﻿namespace AST.ContentPackage.Controllers.BackOffice
+﻿using System;
+
+namespace AST.ContentPackage.Controllers.BackOffice
 {
     using System.Collections.Generic;
     using System.IO;
@@ -18,49 +20,82 @@
 
         public ActionResult Index()
         {
-            return View("~/App_Plugins/BackOffice/ContentPackage/Views/Index.cshtml");
+            return View(string.Format(ViewsFolder, "Index"));
         }
 
-        public ActionResult ExportContent(string ids)
+        public ActionResult ExportContent(string ids, string fileName = "")
         {
+            var view = string.Format(ViewsFolder, "Index");
+
             if (string.IsNullOrEmpty(ids))
             {
-                ModelState.AddModelError("error", "please select at least one node to export");
-                return View(string.Format(ViewsFolder, "Index"));
+                ModelState.AddModelError("exportError", "please select at least one node to export");
+                return View(view);
             }
 
-            var export = new ExportContent();
-
-            var xdoc = export.SerialiseToXml(ids);
-            var files = export.GetListOfAssets(xdoc);
-
-            var ms = new MemoryStream();
-            var msXml = new MemoryStream();
-
-            using (var zip = new ZipFile())
+            if (ModelState.IsValid)
             {
-                foreach (var f in files.Distinct())
+                try
                 {
-                    zip.AddFile(HostingEnvironment.MapPath(f), f.Replace(f.Split('/').Last(), string.Empty));
+                    fileName = string.IsNullOrWhiteSpace(fileName) ? "ExportedContent" : fileName;
+
+                    var export = new ExportContent();
+
+                    var xdoc = export.SerialiseToXml(ids);
+                    var files = export.GetListOfAssets(xdoc);
+
+                    var ms = new MemoryStream();
+                    var msXml = new MemoryStream();
+
+                    using (var zip = new ZipFile())
+                    {
+                        foreach (var f in files.Distinct())
+                        {
+                            zip.AddFile(HostingEnvironment.MapPath(f), f.Replace(f.Split('/').Last(), string.Empty));
+                        }
+
+                        xdoc.Save(msXml);
+                        msXml.Position = 0;
+                        zip.AddEntry(Constants.ContentFileName, msXml);
+                        zip.Save(ms);
+
+                        ms.Position = 0;
+                        return File(ms, "application/zip", fileName);
+                    }
                 }
-
-                xdoc.Save(msXml);
-                msXml.Position = 0;
-                zip.AddEntry(Constants.ContentFileName, msXml);
-                zip.Save(ms);
-
-                ms.Position = 0;
-                return File(ms, "application/zip");
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("exportError", ex.Message);
+                }
             }
+
+            return View(view);
         }
 
         public ActionResult ImportContent(HttpPostedFileBase file)
         {
-            var ic = new ImportContent();
+            var view = string.Format(ViewsFolder, "Index");
 
-            ic.Import(file);
+            if (file == null)
+            {
+                ModelState.AddModelError("importError", "Select a file to import");
+            }
 
-            return View(string.Format(ViewsFolder, "Index"));
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var ic = new ImportContent();
+
+                    ic.Import(file);
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("importError", ex.Message);
+                }
+            }
+
+            return View(view);
         }
 
         public ActionResult CheckCompatibility()

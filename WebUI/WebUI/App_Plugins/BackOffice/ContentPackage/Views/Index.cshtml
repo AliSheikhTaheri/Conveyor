@@ -10,12 +10,26 @@
     <link href="/App_Plugins/BackOffice/ContentPackage/Style/FancyTree/skin-win7/ui.fancytree.css" rel="stylesheet" type="text/css">
     <script src="/App_Plugins/BackOffice/ContentPackage/Style/FancyTree/jquery.fancytree.js" type="text/javascript"></script>
 
+    <style>
+        ul.fancytree-container {
+            border: none;
+        }
+        .fancytree-selected .fancytree-title {
+            font-style: normal;
+        }
+        .dashboardWrapper h2 {
+            padding-left: 5px;
+        }
+    </style>
+
     <script type="text/javascript">
 
 
         $(function () {
 
-            $.getJSON("/App_Plugins/BackOffice/ContentPackage/ContentTreeAsJsonResult", function (json) {
+            var requestUrl = "/App_Plugins/BackOffice/ContentPackage/ContentTreeAsJsonResult/";
+
+            $.getJSON(requestUrl, function (json) {
                 //console.log("data = " + json);
                 myfunction(json);
             });
@@ -36,7 +50,7 @@
                         console.log('this=' + this);
                         console.log('event=' + event);
 
-                        ctx.result = { url: '/App_Plugins/BackOffice/ContentPackage/ContentTreeAsJsonResult/' + ctx.node.key, debugDelay: 1000 };
+                        ctx.result = { url: requestUrl + ctx.node.key, debugDelay: 1000 };
                     },
                     select: function (event, data) {
                         // Display list of selected nodes
@@ -98,50 +112,96 @@
 
     <div id="body_UmbracoPanel_content" class="content">
         <div class="innerContent" id="body_UmbracoPanel_innerContent">
-            <h2 class="propertypaneTitel">Content Package Export</h2>
+            <div class="dashboardWrapper">
 
-            <div class="propertypane">
-                <p>
-                    <a href="#" id="btnSelectAll">Select all</a> -
-                    <a href="#" id="btnDeselectAll">Deselect all</a> -
-                    <a href="#" id="btnToggleSelect">Toggle select</a>
-                </p>
-                <div id="tree2"></div>
-                @*<div>Selected keys: <span id="echoSelection2">-</span></div>*@
+                <div class="propertypane">
+                    <h2>Export</h2>
 
-                @using (Html.BeginForm("ExportContent", "ContentPackage"))
-                {
-                    <input type="hidden" name="ids" id="ids" />
-                    @Html.ValidationMessage("error")
-                    <input type="submit" />
-                }
+                    @using (Html.BeginForm("ExportContent", "ContentPackage"))
+                    {
+                        if (Html.ValidationMessage("exportError") != null)
+                        {
+                            <div class="error">
+                                <h3>@Html.ValidationMessage("exportError")</h3>
+                            </div>
+                        }
+                        <br />
+                        <div class="propertyItem">
+                            <div class="propertyItemheader">File name</div>
+                            <div class="propertyItemContent">
+                                <input type="text" name="fileName" id="fileName" class="umbEditorTextField" />
+                            </div>
+                        </div>
+                        <div class="propertyPaneFooter">-</div>
 
-            </div>
+                        <div class="propertyItem">
+                            <div class="propertyItemheader">Select content</div>
+                            <div class="propertyItemContent">
+                                <a href="#" id="btnSelectAll">Select all</a> -
+                                <a href="#" id="btnDeselectAll">Deselect all</a> -
+                                <a href="#" id="btnToggleSelect">Toggle select</a>
+                                <div id="tree2"></div>
+                            </div>
+                        </div>
+                        <div class="propertyPaneFooter">-</div>
 
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
+                        <div class="propertyItem">
+                            <div class="propertyItemheader"></div>
+                            <div class="propertyItemContent">
+                                <input type="hidden" name="ids" id="ids" />
+                                <input type="submit" value="Export content" />
+                            </div>
+                        </div>
+                        <div class="propertyPaneFooter">-</div>
 
-            <h2 class="propertypaneTitel">Content Package Import</h2>
+                    }
 
-            <div class="propertypane">
-                @using (Html.BeginForm("ImportContent", "ContentPackage", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                {
-                    <input type="file" name="file" id="file" />
+                </div>
 
-                    <input type="submit" />
-                }
-            </div>
+                <div class="propertypane">
+                    <h2>Import</h2>
 
-            <div class="propertypane">
+                    @using (Html.BeginForm("ImportContent", "ContentPackage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        if (Html.ValidationMessage("importError") != null)
+                        {
+                            <div class="error">
+                                <h3>@Html.ValidationMessage("importError")</h3>
+                            </div>
+                        }
+                        <br/>
+                        <div class="propertyItem">
+                            <div class="propertyItemheader">Select a zip file to import</div>
+                            <div class="propertyItemContent"><input type="file" name="file" id="file" /></div>
+                        </div>
 
-                @using (Html.BeginForm("CheckCompatibility", "ContentPackage"))
-                {
-                    <input type="submit" value="Check Compatibility" />
-                }
+                        <div class="propertyItem">
+                            <div class="propertyItemheader"></div>
+                            <div class="propertyItemContent">
+                                <input type="submit" value="Import content" />
+                            </div>
+                        </div>
 
+                        <div class="propertyPaneFooter">-</div>
+                    }
+                </div>
+
+
+                <div class="propertypane">
+                    <h2>Check compatibility</h2>
+                    @using (Html.BeginForm("CheckCompatibility", "ContentPackage"))
+                    {
+                        <div class="propertyItem">
+                            <div class="propertyItemheader"></div>
+                            <div class="propertyItemContent">
+                                <input type="submit" value="show result" />
+                            </div>
+                        </div>
+
+                        <div class="propertyPaneFooter">-</div>
+                    }
+
+                </div>
             </div>
         </div>
     </div>

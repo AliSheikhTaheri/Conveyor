@@ -22,6 +22,11 @@
 
                     var contentXmlZipEntry = zip.Entries.FirstOrDefault(x => x.FileName == Constants.ContentFileName);
 
+                    if (contentXmlZipEntry == null)
+                    {
+                        throw new Exception(string.Format("{0} was not found in the zip file.", Constants.ContentFileName));
+                    }
+
                     using (var ms = new MemoryStream())
                     {
                         contentXmlZipEntry.Extract(ms);
