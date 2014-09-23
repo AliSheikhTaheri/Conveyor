@@ -1,9 +1,10 @@
-﻿namespace WebUI.Infrastructure
+﻿namespace AST.ContentPackage.EmbeddedContent
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Xml.Linq;
+    using ContentPackage;
     using Umbraco.Core.Models;
 
     public class EmbeddedContentDataTypeConverter : BaseContentManagement, IDataTypeConverter

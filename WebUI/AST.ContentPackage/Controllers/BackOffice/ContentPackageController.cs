@@ -1,4 +1,4 @@
-﻿namespace WebUI.Controllers.BackOffice
+﻿namespace AST.ContentPackage.Controllers.BackOffice
 {
     using System.Collections.Generic;
     using System.IO;
@@ -6,8 +6,6 @@
     using System.Web;
     using System.Web.Hosting;
     using System.Web.Mvc;
-    using System.Web.Script.Serialization;
-    using Infrastructure;
     using Ionic.Zip;
     using Umbraco.Core.Models;
     using Umbraco.Web.Mvc;
@@ -71,8 +69,6 @@
 
             var allDataType = dts.GetAllDataTypes();
 
-            //var xx = IDataType
-
             var config = new Config();
             var compatibleDataTypes = config.GetSpecialDataTypes().Select(x => x.Key).ToList();
             compatibleDataTypes.AddRange(config.GetOtherDataTypes().Keys);
@@ -120,7 +116,6 @@
                 nodes.Add(GenerateJsonForTree(n));
             }
 
-
             return Json(nodes, JsonRequestBehavior.AllowGet);
         }
 
@@ -139,17 +134,6 @@
                 folder = isFolder,
                 lazy = isFolder
             };
-
-            //if (currentNode.Children() != null && currentNode.Children().Any())
-            //{
-            //    temp.children = new List<Node>();
-            //    foreach (var c in currentNode.Children())
-            //    {
-            //        var t = GenerateJsonForTree(c.Id);
-
-            //        temp.children.Add(t);
-            //    }
-            //}
 
             return temp;
         }

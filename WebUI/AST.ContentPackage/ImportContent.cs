@@ -1,4 +1,4 @@
-﻿namespace WebUI.Infrastructure
+﻿namespace AST.ContentPackage
 {
     using System;
     using System.IO;
@@ -38,7 +38,7 @@
         private void CreateOrUpdateContent(ZipFile zipFile, Guid key, XmlSerializer xmlSerialiser, XElement node)
         {
             var content = Services.ContentService.GetById(key);
-            var newContent = (Content)xmlSerialiser.Deserialize(node.CreateReader());
+            var newContent = (AST.ContentPackage.Content)xmlSerialiser.Deserialize(node.CreateReader());
             if (content != null)
             {
                 SaveContent(node, content, newContent, zipFile);
@@ -73,7 +73,7 @@
             }
         }
 
-        private void SaveContent(XElement node, IContent content, Content newContent, ZipFile zip)
+        private void SaveContent(XElement node, IContent content, AST.ContentPackage.Content newContent, ZipFile zip)
         {
             var cs = Services.ContentService;
             var dataTypes = new Config().GetSpecialDataTypes();
@@ -130,7 +130,7 @@
 
         #region Media
 
-        private int GetContentParentId(Content content)
+        private int GetContentParentId(AST.ContentPackage.Content content)
         {
             var parentId = content.ParentId == -1 ? -1 : 0;
 
@@ -213,7 +213,7 @@
                     var nodeType = node.Attribute("objectType").Value;
 
                     var xRoot = new XmlRootAttribute { ElementName = node.Name.ToString(), IsNullable = true };
-                    var xmlSerialiser = new XmlSerializer(typeof(Content), xRoot);
+                    var xmlSerialiser = new XmlSerializer(typeof(AST.ContentPackage.Content), xRoot);
 
                     if (nodeType == ObjectTypes.Document.ToString())
                     {

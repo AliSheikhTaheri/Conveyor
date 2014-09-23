@@ -1,4 +1,4 @@
-﻿namespace WebUI.Infrastructure
+﻿namespace AST.ContentPackage
 {
     using System.Web.Routing;
     using Umbraco.Core;

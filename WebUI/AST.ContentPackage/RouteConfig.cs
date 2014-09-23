@@ -1,4 +1,4 @@
-﻿namespace WebUI.Infrastructure
+﻿namespace AST.ContentPackage
 {
     using System.Web.Mvc;
     using System.Web.Routing;

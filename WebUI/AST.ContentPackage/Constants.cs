@@ -1,4 +1,4 @@
-﻿namespace WebUI.Infrastructure
+﻿namespace AST.ContentPackage
 {
     public static class Constants
     {

@@ -269,30 +269,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\BackOffice\ContentPackageController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DotMailer\ApiContact.cs" />
     <Compile Include="DotMailer\ApiContactData.cs" />
     <Compile Include="DotMailer\ApiContactEmailTypes.cs" />
     <Compile Include="DotMailer\ApiContactOptInTypes.cs" />
-    <Compile Include="Infrastructure\Constants.cs" />
-    <Compile Include="Infrastructure\Content.cs" />
-    <Compile Include="Infrastructure\BaseContentManagement.cs" />
-    <Compile Include="Infrastructure\ContentPackageApplication.cs" />
-    <Compile Include="Infrastructure\DataTypeConverters\DropdownListDataTypeConverter.cs" />
-    <Compile Include="Infrastructure\DataTypeConverters\EmbeddedContentDataTypeConverter.cs" />
-    <Compile Include="Infrastructure\DataTypeConverters\ContentPickerDataTypeConverter.cs" />
-    <Compile Include="Infrastructure\DataTypeConverters\DampDataTypeConverter.cs" />
-    <Compile Include="Infrastructure\ExportContent.cs" />
-    <Compile Include="Infrastructure\IDataTypeConverter.cs" />
-    <Compile Include="Infrastructure\ImportContent.cs" />
-    <Compile Include="Infrastructure\Config.cs" />
-    <Compile Include="Infrastructure\DataTypeConverters\MediaPickerDataTypeConverter.cs" />
-    <Compile Include="Infrastructure\DataTypeConverters\MultiNodeTreePickerDataTypeConverter.cs" />
-    <Compile Include="Infrastructure\ObjectTypes.cs" />
-    <Compile Include="Infrastructure\RouteConfig.cs" />
-    <Compile Include="Infrastructure\StartUpHandlers.cs" />
-    <Compile Include="Infrastructure\ZipFileResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1088,7 +1068,6 @@
     <Content Include="config\ContentPackage.config">
       <SubType>Designer</SubType>
     </Content>
-    <Compile Include="Infrastructure\ContentPackageTree.cs" />
     <Content Include="App_Plugins\BackOffice\ContentPackage\Views\Index.cshtml" />
     <Content Include="App_Plugins\BackOffice\ContentPackage\Views\Web.config" />
     <Content Include="config\applications.config" />
@@ -1130,6 +1109,20 @@
       <DependentUpon>web.config</DependentUpon>
     </None>
     <Content Include="xslt\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AST.ContentPackage\AST.ContentPackage.csproj">
+      <Project>{957d42e5-d4ac-4b0f-a70e-a02e2a7d788e}</Project>
+      <Name>AST.ContentPackage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AST.DampDataTypeConverter\AST.ContentPackage.Damp.csproj">
+      <Project>{03ff65ef-816e-4883-8953-6f426dc6ca10}</Project>
+      <Name>AST.ContentPackage.Damp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AST.EmbeddedContentDataTypeConverter\AST.ContentPackage.EmbeddedContent.csproj">
+      <Project>{4ce33307-3d4b-4330-ad60-e2c748f2523d}</Project>
+      <Name>AST.ContentPackage.EmbeddedContent</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

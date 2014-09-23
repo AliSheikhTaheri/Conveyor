@@ -1,6 +1,5 @@
-﻿namespace WebUI.Infrastructure
+﻿namespace AST.ContentPackage
 {
-    using System;
     using System.Collections.Generic;
     using System.Xml.Linq;
     using Umbraco.Core.Models;

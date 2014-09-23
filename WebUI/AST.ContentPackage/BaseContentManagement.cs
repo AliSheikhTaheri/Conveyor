@@ -1,4 +1,4 @@
-﻿namespace WebUI.Infrastructure
+﻿namespace AST.ContentPackage
 {
     using System;
     using System.Collections.Generic;
@@ -23,6 +23,14 @@
 
         protected IDataTypeConverter GetDataTypeConverterInterface(string type)
         {
+            if (string.IsNullOrWhiteSpace(type) || Type.GetType(type) == null)
+            {
+                throw new Exception(
+                    string.Format(
+                        "The system cannot find {0}. Make sure the assembly name is right or has been included in the config file.!",
+                        type));
+            }
+
             return (IDataTypeConverter)Activator.CreateInstance(Type.GetType(type));
         }
 
@@ -67,7 +75,7 @@
 
                 var guid = propertyTypes.ElementAt(count).DataTypeId;
 
-                if (guid == new Guid(Constants.UploadDataTypeGuid))
+                if (guid == new Guid(ContentPackage.Constants.UploadDataTypeGuid))
                 {
                     var umbracoFile = property.Value.ToString();
                     tag.Add(
@@ -101,10 +109,10 @@
                 new XAttribute("objectType", ObjectTypes.Media));
 
 
-            var propertyTypes = media.PropertyTypes.Where(x => !Constants.MediaDefaultProperties.Contains(x.Alias)).ToArray();
+            var propertyTypes = media.PropertyTypes.Where(x => !ContentPackage.Constants.MediaDefaultProperties.Contains(x.Alias)).ToArray();
             var count = 0;
 
-            foreach (var property in media.Properties.Where(x => !Constants.MediaDefaultProperties.Contains(x.Alias)))
+            foreach (var property in media.Properties.Where(x => !ContentPackage.Constants.MediaDefaultProperties.Contains(x.Alias)))
             {
                 var tag = property.ToXml();
                 var propertyType = propertyTypes.ElementAt(count);
@@ -112,7 +120,7 @@
                 tag.Add(new XAttribute("dataTypeName", Services.DataTypeService.GetDataTypeDefinitionById(propertyType.DataTypeDefinitionId).Name));
 
                 var guid = propertyTypes.ElementAt(count).DataTypeId;
-                if (guid == new Guid(Constants.UploadDataTypeGuid))
+                if (guid == new Guid(ContentPackage.Constants.UploadDataTypeGuid))
                 {
                     var umbracoFile = property.Value.ToString();
                     tag.Add(

@@ -1,4 +1,4 @@
-﻿namespace WebUI.Infrastructure
+﻿namespace AST.ContentPackage
 {
     using System;
     using System.Collections.Generic;
@@ -33,7 +33,31 @@
                     xml.Add(currentContentTag);
                 }
 
-                foreach (var node in dependentNodes.Where(x => !nodes.Contains(x.Key.ToString())))
+                var firstLevelDependentNodes = dependentNodes.Where(x => !nodes.Contains(x.Key.ToString())).ToList();
+                var secondLevelDependentNodes = new Dictionary<int, ObjectTypes>();
+
+                foreach (var node in firstLevelDependentNodes)
+                {
+                    if (node.Value == ObjectTypes.Document)
+                    {
+                        xml.Add(SerialiseContent(Services.ContentService.GetById(node.Key), secondLevelDependentNodes));
+                    }
+                    else if (node.Value == ObjectTypes.Media)
+                    {
+                        var media = Services.MediaService.GetById(node.Key);
+
+                        do
+                        {
+                            xml.Add(SerialiseMedia(media, secondLevelDependentNodes));
+                            media = media.Parent();
+                        }
+                        while (media != null);
+                    }
+                }
+
+                var secondLevelCollection = secondLevelDependentNodes.Where(x => !firstLevelDependentNodes.Select(f => f.Key).Contains(x.Key));
+
+                foreach (var node in secondLevelCollection)
                 {
                     if (node.Value == ObjectTypes.Document)
                     {
@@ -42,10 +66,10 @@
                     else if (node.Value == ObjectTypes.Media)
                     {
                         var media = Services.MediaService.GetById(node.Key);
-                        
+
                         do
                         {
-                            xml.Add(SerialiseMedia(media, dependentNodes));
+                            xml.Add(SerialiseMedia(media));
                             media = media.Parent();
                         }
                         while (media != null);

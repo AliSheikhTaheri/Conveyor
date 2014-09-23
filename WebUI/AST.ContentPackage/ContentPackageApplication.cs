@@ -1,4 +1,4 @@
-﻿namespace WebUI.Infrastructure
+﻿namespace AST.ContentPackage
 {
     using umbraco.businesslogic;
     using umbraco.interfaces;

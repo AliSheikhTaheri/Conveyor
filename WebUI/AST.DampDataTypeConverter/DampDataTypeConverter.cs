@@ -1,11 +1,11 @@
-﻿using System.Linq;
-
-namespace WebUI.Infrastructure
+﻿namespace AST.ContentPackage.Damp
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Web;
     using System.Xml.Linq;
+    using ContentPackage;
     using DigibizTree;
     using Umbraco.Core.Models;
     using DampItem = DAMP.PropertyEditorValueConverter.DAMP_Item;
@@ -24,11 +24,15 @@ namespace WebUI.Infrastructure
                 {
                     foreach (var item in items)
                     {
-                        guidList.Add(Services.MediaService.GetById(item.Id).Key);
-
-                        if (!dependantNodes.ContainsKey(item.Id))
+                        var media = Services.MediaService.GetById(item.Id);
+                        if (media != null)
                         {
-                            dependantNodes.Add(item.Id, ObjectTypes.Media);
+                            guidList.Add(Services.MediaService.GetById(item.Id).Key);
+
+                            if (!dependantNodes.ContainsKey(item.Id))
+                            {
+                                dependantNodes.Add(item.Id, ObjectTypes.Media);
+                            }
                         }
                     }
                 }
