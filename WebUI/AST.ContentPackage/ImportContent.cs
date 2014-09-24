@@ -40,6 +40,7 @@
         }
 
         #region Content
+
         private void CreateOrUpdateContent(ZipFile zipFile, Guid key, XmlSerializer xmlSerialiser, XElement node)
         {
             var content = Services.ContentService.GetById(key);
@@ -131,6 +132,7 @@
 
             cs.SaveAndPublish(content);
         }
+        
         #endregion
 
         #region Media

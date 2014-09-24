@@ -11,16 +11,31 @@
 
     public abstract class BaseContentManagement
     {
+        #region Constructor
+        
         protected BaseContentManagement()
         {
             SpecialDataTypes = new Config().GetSpecialDataTypes();
             Services = ApplicationContext.Current.Services;
-        }
+        } 
 
+        #endregion
+
+        #region Fields
+        
         public Dictionary<Guid, string> SpecialDataTypes { get; set; }
 
-        public ServiceContext Services { get; set; }
+        public ServiceContext Services { get; set; } 
 
+        #endregion
+
+        #region Methods
+        
+        /// <summary>
+        /// Load external classes and convert them into IDataTypeConverter 
+        /// </summary>
+        /// <param name="type">class name, assembly name</param>
+        /// <returns>return IDataTypeConverter</returns>
         protected IDataTypeConverter GetDataTypeConverterInterface(string type)
         {
             if (string.IsNullOrWhiteSpace(type) || Type.GetType(type) == null)
@@ -34,9 +49,15 @@
             return (IDataTypeConverter)Activator.CreateInstance(Type.GetType(type));
         }
 
-        public XElement SerialiseContent(IContent content, Dictionary<int, ObjectTypes> dependantNdoes = null)
+        /// <summary>
+        /// Serialize IContent to XElement and adds dependent nodes 
+        /// </summary>
+        /// <param name="content">Umbraco IContent object</param>
+        /// <param name="dependantNodes">this function will add dependent nodes to this collection</param>
+        /// <returns>returns serialized version of IContent as XElement</returns>
+        public XElement SerialiseContent(IContent content, Dictionary<int, ObjectTypes> dependantNodes = null)
         {
-            dependantNdoes = dependantNdoes ?? new Dictionary<int, ObjectTypes>();
+            dependantNodes = dependantNodes ?? new Dictionary<int, ObjectTypes>();
 
             var nodeName = content.ContentType.Alias.ToSafeAliasWithForcingCheck();
 
@@ -85,7 +106,7 @@
                 }
                 else if (SpecialDataTypes.ContainsKey(guid))
                 {
-                    DataTypeConverterExport(property, tag, dependantNdoes, SpecialDataTypes[guid]);
+                    DataTypeConverterExport(property, tag, dependantNodes, SpecialDataTypes[guid]);
                 }
 
                 currentContent.Add(tag);
@@ -95,7 +116,13 @@
             return currentContent;
         }
 
-        public XElement SerialiseMedia(IMedia media, Dictionary<int, ObjectTypes> dependantNdoes = null)
+        /// <summary>
+        /// Serialize IMedia to XElement and adds dependent nodes
+        /// </summary>
+        /// <param name="media">Umbraco IMedia object</param>
+        /// <param name="dependantNodes">this function will add dependent nodes to this collection</param>
+        /// <returns>returns serialized version of IMedia as XElement</returns>
+        public XElement SerialiseMedia(IMedia media, Dictionary<int, ObjectTypes> dependantNodes = null)
         {
             var nodeName = media.ContentType.Alias.ToSafeAliasWithForcingCheck();
 
@@ -130,7 +157,7 @@
                 }
                 else if (SpecialDataTypes.ContainsKey(guid))
                 {
-                    DataTypeConverterExport(property, tag, dependantNdoes, SpecialDataTypes[guid]);
+                    DataTypeConverterExport(property, tag, dependantNodes, SpecialDataTypes[guid]);
                 }
 
                 node.Add(tag);
@@ -138,13 +165,19 @@
             }
 
             return node;
-        }
+        } 
 
-        private void DataTypeConverterExport(Property property, XElement propertyTag, Dictionary<int, ObjectTypes> dependantNdoes, string type)
+        #endregion
+
+        #region Helpers
+        
+        private void DataTypeConverterExport(Property property, XElement propertyTag, Dictionary<int, ObjectTypes> dependantNodes, string type)
         {
             var t = GetDataTypeConverterInterface(type);
 
-            t.Export(property, propertyTag, dependantNdoes);
-        }
+            t.Export(property, propertyTag, dependantNodes);
+        } 
+
+        #endregion
     }
 }

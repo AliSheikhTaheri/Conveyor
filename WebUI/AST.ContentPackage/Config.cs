@@ -9,9 +9,15 @@
 
     public class Config
     {
+        #region Fields
+
         private const string ConfigFile = "/config/ContentPackage.config";
 
-        private string FileNameWithPath { get; set; }
+        private string FileNameWithPath { get; set; } 
+
+        #endregion
+
+        #region Methods
 
         public Dictionary<Guid, string> GetSpecialDataTypes()
         {
@@ -52,5 +58,7 @@
 
             return result;
         }
+ 
+        #endregion
     }
 }

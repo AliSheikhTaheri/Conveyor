@@ -8,7 +8,7 @@
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.MapRoute(
-                name: "ExampleMVCBackofficePages",
+                name: "ASTContentPackageBackofficePages",
                 url: "App_Plugins/BackOffice/ContentPackage/{action}/{id}",
                 defaults: new { controller = "ContentPackage", action = "Index", id = UrlParameter.Optional });
         }
