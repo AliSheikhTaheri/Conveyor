@@ -1110,18 +1110,21 @@
     <Content Include="xslt\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AST.ContentPackage.Damp\AST.ContentPackage.Damp.csproj">
+      <Project>{03ff65ef-816e-4883-8953-6f426dc6ca10}</Project>
+      <Name>AST.ContentPackage.Damp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AST.ContentPackage.EmbeddedContent\AST.ContentPackage.EmbeddedContent.csproj">
+      <Project>{4ce33307-3d4b-4330-ad60-e2c748f2523d}</Project>
+      <Name>AST.ContentPackage.EmbeddedContent</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AST.ContentPackage\AST.ContentPackage.csproj">
       <Project>{957d42e5-d4ac-4b0f-a70e-a02e2a7d788e}</Project>
       <Name>AST.ContentPackage</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AST.DampDataTypeConverter\AST.ContentPackage.Damp.csproj">
-      <Project>{03ff65ef-816e-4883-8953-6f426dc6ca10}</Project>
-      <Name>AST.ContentPackage.Damp</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AST.EmbeddedContentDataTypeConverter\AST.ContentPackage.EmbeddedContent.csproj">
-      <Project>{4ce33307-3d4b-4330-ad60-e2c748f2523d}</Project>
-      <Name>AST.ContentPackage.EmbeddedContent</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

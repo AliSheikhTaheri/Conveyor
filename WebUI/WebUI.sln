@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUI", "WebUI\WebUI.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AST.ContentPackage", "AST.ContentPackage\AST.ContentPackage.csproj", "{957D42E5-D4AC-4B0F-A70E-A02E2A7D788E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AST.ContentPackage.Damp", "AST.DampDataTypeConverter\AST.ContentPackage.Damp.csproj", "{03FF65EF-816E-4883-8953-6F426DC6CA10}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AST.ContentPackage.Damp", "AST.ContentPackage.Damp\AST.ContentPackage.Damp.csproj", "{03FF65EF-816E-4883-8953-6F426DC6CA10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AST.ContentPackage.EmbeddedContent", "AST.EmbeddedContentDataTypeConverter\AST.ContentPackage.EmbeddedContent.csproj", "{4CE33307-3D4B-4330-AD60-E2C748F2523D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AST.ContentPackage.EmbeddedContent", "AST.ContentPackage.EmbeddedContent\AST.ContentPackage.EmbeddedContent.csproj", "{4CE33307-3D4B-4330-AD60-E2C748F2523D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
