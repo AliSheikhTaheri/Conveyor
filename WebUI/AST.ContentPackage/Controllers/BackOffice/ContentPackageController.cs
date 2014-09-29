@@ -87,6 +87,10 @@
                     var ic = new ImportContent();
 
                     ic.Import(file);
+
+                    view = string.Format(ViewsFolder, "ImportReport");
+
+                    return View(view, ic.Report);
                 }
                 catch (Exception ex)
                 {

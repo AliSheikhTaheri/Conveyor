@@ -1,6 +1,7 @@
 ﻿namespace AST.ContentPackage
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Web;
@@ -12,6 +13,21 @@
 
     internal class ImportContent : BaseContentManagement
     {
+        #region Constructor
+        
+        public ImportContent()
+        {
+            Report = new List<Report>();
+        }
+ 
+        #endregion
+
+        #region Properties
+        
+        public List<Report> Report { get; set; } 
+
+        #endregion
+
         internal void Import(HttpPostedFileBase zipFile)
         {
             if (zipFile.ContentLength > 0)
@@ -48,6 +64,7 @@
             if (content != null)
             {
                 SaveContent(node, content, newContent, zipFile);
+                Report.Add(new Report(content.Id, ActionTypes.Update, ObjectTypes.Document));
             }
             else
             {
@@ -57,6 +74,7 @@
                     User.GetCurrent().Id);
                 newNode.Key = newContent.Key;
                 SaveContent(node, newNode, newContent, zipFile);
+                Report.Add(new Report(newNode.Id, ActionTypes.Create, ObjectTypes.Document));
             }
         }
 
@@ -67,6 +85,7 @@
             if (media != null)
             {
                 SaveMedia(node, media, zipFile);
+                Report.Add(new Report(media.Id, ActionTypes.Update, ObjectTypes.Media));
             }
             else
             {
@@ -76,6 +95,7 @@
                 var newMedia = Services.MediaService.CreateMedia(name, parentId, node.Name.ToString());
 
                 SaveMedia(node, newMedia, zipFile);
+                Report.Add(new Report(newMedia.Id, ActionTypes.Create, ObjectTypes.Media));
             }
         }
 
@@ -132,7 +152,7 @@
 
             cs.SaveAndPublish(content);
         }
-        
+
         #endregion
 
         #region Media
