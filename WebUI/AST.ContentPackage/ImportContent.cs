@@ -57,6 +57,20 @@
 
         #region Content
 
+        private int GetContentParentId(AST.ContentPackage.Content content)
+        {
+            var parentId = content.ParentId == -1 ? -1 : 0;
+
+            if (parentId == 0)
+            {
+                var m = Services.ContentService.GetById(new Guid(content.ParentGuid));
+
+                parentId = m != null ? m.Id : -1;
+            }
+
+            return parentId;
+        }
+
         private void CreateOrUpdateContent(ZipFile zipFile, Guid key, XmlSerializer xmlSerialiser, XElement node)
         {
             var content = Services.ContentService.GetById(key);
@@ -157,19 +171,6 @@
 
         #region Media
 
-        private int GetContentParentId(AST.ContentPackage.Content content)
-        {
-            var parentId = content.ParentId == -1 ? -1 : 0;
-
-            if (parentId == 0)
-            {
-                var m = Services.ContentService.GetById(new Guid(content.ParentGuid));
-
-                parentId = m != null ? m.Id : -1;
-            }
-
-            return parentId;
-        }
 
         private void SaveMedia(XElement node, IMedia media, ZipFile zip)
         {
