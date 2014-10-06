@@ -1,7 +1,4 @@
-﻿using System.Web.UI;
-using Umbraco.Core.Services;
-
-namespace AST.ContentPackage
+﻿namespace AST.ContentPackage
 {
     using System;
     using System.Collections.Generic;
