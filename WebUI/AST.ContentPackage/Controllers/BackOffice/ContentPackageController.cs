@@ -71,7 +71,7 @@
             return View(view);
         }
 
-        public ActionResult ImportContent(HttpPostedFileBase file)
+        public ActionResult ImportContent(HttpPostedFileBase file, PublishTypes publishTypes)
         {
             var view = string.Format(ViewsFolder, "Index");
 
@@ -84,7 +84,7 @@
             {
                 try
                 {
-                    var ic = new ImportContent();
+                    var ic = new ImportContent { PublishType = publishTypes };
 
                     ic.Import(file);
 

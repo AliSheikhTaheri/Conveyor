@@ -1,4 +1,7 @@
-﻿namespace AST.ContentPackage
+﻿using System.Web.UI;
+using Umbraco.Core.Services;
+
+namespace AST.ContentPackage
 {
     using System;
     using System.Collections.Generic;
@@ -14,17 +17,19 @@
     internal class ImportContent : BaseContentManagement
     {
         #region Constructor
-        
+
         public ImportContent()
         {
             Report = new List<Report>();
         }
- 
+
         #endregion
 
         #region Properties
-        
-        public List<Report> Report { get; set; } 
+
+        public List<Report> Report { get; set; }
+
+        public PublishTypes PublishType { get; set; }
 
         #endregion
 
@@ -92,27 +97,6 @@
             }
         }
 
-        private void CreateOrUpdateMedia(ZipFile zipFile, Guid key, XElement node)
-        {
-            var media = Services.MediaService.GetById(key);
-
-            if (media != null)
-            {
-                SaveMedia(node, media, zipFile);
-                Report.Add(new Report(media.Id, ActionTypes.Update, ObjectTypes.Media));
-            }
-            else
-            {
-                var name = node.Attribute("name").Value;
-                var parentId = GetMediaParentId(node);
-
-                var newMedia = Services.MediaService.CreateMedia(name, parentId, node.Name.ToString());
-
-                SaveMedia(node, newMedia, zipFile);
-                Report.Add(new Report(newMedia.Id, ActionTypes.Create, ObjectTypes.Media));
-            }
-        }
-
         private void SaveContent(XElement node, IContent content, AST.ContentPackage.Content newContent, ZipFile zip)
         {
             var cs = Services.ContentService;
@@ -164,13 +148,33 @@
                 }
             }
 
-            cs.SaveAndPublish(content);
+            SaveContent(content, bool.Parse(node.Attribute("published").Value));
         }
 
         #endregion
 
         #region Media
 
+        private void CreateOrUpdateMedia(ZipFile zipFile, Guid key, XElement node)
+        {
+            var media = Services.MediaService.GetById(key);
+
+            if (media != null)
+            {
+                SaveMedia(node, media, zipFile);
+                Report.Add(new Report(media.Id, ActionTypes.Update, ObjectTypes.Media));
+            }
+            else
+            {
+                var name = node.Attribute("name").Value;
+                var parentId = GetMediaParentId(node);
+
+                var newMedia = Services.MediaService.CreateMedia(name, parentId, node.Name.ToString());
+
+                SaveMedia(node, newMedia, zipFile);
+                Report.Add(new Report(newMedia.Id, ActionTypes.Create, ObjectTypes.Media));
+            }
+        }
 
         private void SaveMedia(XElement node, IMedia media, ZipFile zip)
         {
@@ -229,6 +233,32 @@
 
         #region Helpers
 
+        private void SaveContent(IContent content, bool published)
+        {
+            var cs = Services.ContentService;
+
+            if (PublishType == PublishTypes.Publish)
+            {
+                cs.SaveAndPublish(content);
+            }
+            else if (PublishType == PublishTypes.Unpublish)
+            {
+                cs.Save(content);
+            }
+            else if (PublishType == PublishTypes.SameAsOrigin)
+            {
+                if (published)
+                {
+                    cs.SaveAndPublish(content);
+                }
+                else
+                {
+                    cs.Save(content);
+                }
+            }
+        }
+
+
         private void ImportNodes(XDocument xml, ZipFile zipFile)
         {
             var root = xml.Root;
@@ -261,7 +291,8 @@
                             y => new
                             {
                                 Guid = y.Key,
-                                Properties = y.Select(x => x).ToList()
+                                Properties = y.Select(x => x).ToList(),
+                                IsPublished = bool.Parse(y.FirstOrDefault().Parent.Attribute("published").Value)
                             });
 
                 foreach (var node in nodesWithSpecialProperties)
@@ -275,7 +306,7 @@
                         iContent.SetValue(prop.Name.ToString(), value);
                     }
 
-                    Services.ContentService.SaveAndPublish(iContent);
+                    SaveContent(iContent, node.IsPublished);
                 }
             }
         }

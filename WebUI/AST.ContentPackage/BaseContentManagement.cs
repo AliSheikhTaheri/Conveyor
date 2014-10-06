@@ -12,25 +12,25 @@
     public abstract class BaseContentManagement
     {
         #region Constructor
-        
+
         protected BaseContentManagement()
         {
             SpecialDataTypes = new Config().GetSpecialDataTypes();
             Services = ApplicationContext.Current.Services;
-        } 
+        }
 
         #endregion
 
         #region Fields
-        
+
         public Dictionary<Guid, string> SpecialDataTypes { get; set; }
 
-        public ServiceContext Services { get; set; } 
+        public ServiceContext Services { get; set; }
 
         #endregion
 
         #region Methods
-        
+
         /// <summary>
         /// Load external classes and convert them into IDataTypeConverter 
         /// </summary>
@@ -82,7 +82,8 @@
                 new XAttribute("expireDate", content.ExpireDate != null ? content.ExpireDate.Value.ToString("s") : DateTime.MinValue.ToString("s")),
                 new XAttribute("parentGuid", content.Level > 1 ? content.Parent().Key.ToString() : string.Empty),
                 new XAttribute("guid", content.Key),
-                new XAttribute("objectType", ObjectTypes.Document));
+                new XAttribute("objectType", ObjectTypes.Document),
+                new XAttribute("published", content.Published));
 
             var propertyTypes = content.PropertyTypes.ToArray();
             var count = 0;
@@ -165,18 +166,18 @@
             }
 
             return node;
-        } 
+        }
 
         #endregion
 
         #region Helpers
-        
+
         private void DataTypeConverterExport(Property property, XElement propertyTag, Dictionary<int, ObjectTypes> dependantNodes, string type)
         {
             var t = GetDataTypeConverterInterface(type);
 
             t.Export(property, propertyTag, dependantNodes);
-        } 
+        }
 
         #endregion
     }
