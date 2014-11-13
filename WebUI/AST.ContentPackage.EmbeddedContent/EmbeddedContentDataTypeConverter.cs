@@ -49,8 +49,12 @@
                 foreach (var f in files)
                 {
                     var guid = new Guid(f.Value);
-                    var id = Services.MediaService.GetById(guid).Id;
-                    f.Value = id.ToString();
+                    var media = Services.MediaService.GetById(guid);
+
+                    if (media != null)
+                    {
+                        f.Value = media.Id.ToString();
+                    }
                 }
 
                 result = xml.ToString();

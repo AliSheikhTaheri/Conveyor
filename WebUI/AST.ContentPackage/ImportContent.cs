@@ -301,6 +301,7 @@
                         var dataTypeGuid = new Guid(prop.Attribute("dataTypeGuid").Value);
                         var value = DataTypeConverterImport(prop, dataTypeGuid);
                         iContent.SetValue(prop.Name.ToString(), value);
+                        
                     }
 
                     SaveContent(iContent, node.IsPublished);

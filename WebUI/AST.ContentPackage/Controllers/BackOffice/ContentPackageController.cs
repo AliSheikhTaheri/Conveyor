@@ -82,8 +82,8 @@
 
             if (ModelState.IsValid)
             {
-                try
-                {
+                //try
+                //{
                     var ic = new ImportContent { PublishType = publishTypes };
 
                     ic.Import(file);
@@ -91,11 +91,11 @@
                     view = string.Format(ViewsFolder, "ImportReport");
 
                     return View(view, ic.Report);
-                }
-                catch (Exception ex)
-                {
-                    ModelState.AddModelError("importError", ex.Message);
-                }
+                //}
+                //catch (Exception ex)
+                //{
+                //    ModelState.AddModelError("importError", ex.Message);
+                //}
             }
 
             return View(view);
