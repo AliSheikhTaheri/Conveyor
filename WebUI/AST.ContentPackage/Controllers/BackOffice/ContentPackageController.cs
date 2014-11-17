@@ -135,7 +135,8 @@
                     children = new List<Node>(),
                 };
 
-                var contentAtRoot = Services.ContentService.GetRootContent();
+                //var contentAtRoot = Services.ContentService.GetRootContent(); this returns root content in reverse order
+                var contentAtRoot = Services.ContentService.GetChildren(-1);
 
                 foreach (var n in contentAtRoot)
                 {
