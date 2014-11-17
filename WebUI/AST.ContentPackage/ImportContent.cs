@@ -54,6 +54,8 @@
 
                     ImportNodes(xdoc, zip);
                 }
+
+                NormaliseAllContentSortOrders();
             }
         }
 
@@ -229,6 +231,21 @@
         #endregion
 
         #region Helpers
+
+        private void NormaliseAllContentSortOrders()
+        {
+            var contentAtRoot = Services.ContentService.GetChildren(-1).ToList();
+            NormaliseSortOrdersRecursively(contentAtRoot);
+        }
+
+        private void NormaliseSortOrdersRecursively(List<IContent> contents)
+        {
+            Services.ContentService.Sort(contents);
+            foreach (var content in contents)
+            {
+                NormaliseSortOrdersRecursively(content.Children().ToList());
+            }
+        }
 
         private void SaveContent(IContent content, bool published)
         {
