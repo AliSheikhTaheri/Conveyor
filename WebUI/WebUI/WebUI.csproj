@@ -1119,10 +1119,6 @@
       <Project>{4ce33307-3d4b-4330-ad60-e2c748f2523d}</Project>
       <Name>AST.ContentPackage.EmbeddedContent</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AST.ContentPackage.UrlPicker\AST.ContentPackage.UrlPicker.csproj">
-      <Project>{d7de8749-c4bc-470f-b03c-b77a4a251b71}</Project>
-      <Name>AST.ContentPackage.UrlPicker</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AST.ContentPackage\AST.ContentPackage.csproj">
       <Project>{957d42e5-d4ac-4b0f-a70e-a02e2a7d788e}</Project>
       <Name>AST.ContentPackage</Name>
