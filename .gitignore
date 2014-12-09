@@ -64,3 +64,7 @@ WebUI/WebUI/App_Data/
 WebUI/WebUI/umbraco/Images/Umbraco/
 WebUI/WebUI/masterpages/
 WebUI/WebUI/umbraco/Images/Umbraco/
+WebUI/WebUIv7/App_Data/umbraco.config
+WebUI/WebUIv7/media
+WebUI/WebUIv7/App_Data/TEMP/
+WebUI/WebUIv7/App_Data/Logs
