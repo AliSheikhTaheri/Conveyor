@@ -15,5 +15,20 @@
             var model = new TestModel { StringOne = "first string", StringTwo = "second string" };
             return View(string.Format(ViewsFolder, "Index"), model);
         }
+
+        public ActionResult ExportContent()
+        {
+            return View();
+        }
+
+        public ActionResult CheckCompatibility()
+        {
+            return View();
+        }
+
+        public ActionResult ImportContent()
+        {
+            return View();
+        }
     }
 }
