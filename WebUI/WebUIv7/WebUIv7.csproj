@@ -238,6 +238,10 @@
     <Content Include="config\ContentPackage.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Views\___Index.cshtml" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Views\_Layout.cshtml" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Views\Index.cshtml" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Views\Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
