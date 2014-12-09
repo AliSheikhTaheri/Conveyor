@@ -1,0 +1,28 @@
+﻿@inherits UmbracoTemplatePage
+@*
+    This partial is using a concept called IsHelpers:
+    - IsFirst() determines if the node we're  rendering is the first in the list of nodes.
+      If IsFirst() is true we add id="first" to the <article> element, else we don't specify
+      an id on the article element at all (by specifying a null).
+
+    - IsEven() determines if the page count is even or odd, so for the first node IsEven() 
+      is false, for the second node IsEven() is true, etc.
+      If IsEven() is true, we add "right" to the classes on the article element, when it's 
+      false, we add "left" instead. This way, if there's multiple features, the text flips 
+      between left and right for each one of them, giving a nice effect on the page.
+    
+    Since the FeatureHeader and FeatureText properties are simple text, we need to replace
+    linebreaks with a "<br />" and since Razor tries to help you be safe, it doesn't allow 
+    direct output of the HTML here, so that's where we need to force it by using Html.Raw.
+*@
+<article id="@(CurrentPage.IsFirst() ? "first" : null)" class="container box style1 @(CurrentPage.IsEven() ? "right" : "left")">
+    <a href="@CurrentPage.Image" class="image full"><img src="@CurrentPage.Image" alt="" /></a>
+    <div class="inner">
+        <header>
+            <h2>
+                @Html.Raw(Umbraco.ReplaceLineBreaksForHtml(CurrentPage.FeatureHeader))
+            </h2>
+        </header>
+        @Html.Raw(Umbraco.ReplaceLineBreaksForHtml(CurrentPage.FeatureText))
+    </div>
+</article>

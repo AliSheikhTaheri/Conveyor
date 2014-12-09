@@ -1,4 +1,4 @@
-﻿namespace AST.ContentPackage
+﻿namespace AST.ContentPackagev7
 {
     using System.Web.Mvc;
     using System.Web.Routing;

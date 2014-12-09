@@ -1,0 +1,35 @@
+﻿@inherits UmbracoTemplatePage
+@*
+    The contact form is handled through javascript
+    See /Scripts/Overflow.js for the AJAX post
+*@
+
+<!-- Contact -->
+<article class="container box style3">
+    <header>
+        <h2>@CurrentPage.Title</h2>
+        <p>@CurrentPage.SubTitle</p>
+        <p class="sending-message">Sending your message...</p>
+        <p class="success-message">Thanks! we'll get back to you soon.</p>
+        <p class="error-message"></p>
+    </header>
+    <form>
+        <div class="row half">
+            <div class="6u"><input type="text" class="text" name="name" placeholder="Name" /></div>
+            <div class="6u"><input type="text" class="text" name="email" placeholder="Email" /></div>
+        </div>
+        <div class="row half">
+            <div class="12u">
+                <textarea name="message" placeholder="Message"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="12u">
+                <ul class="actions">
+                    <li><a href="" class="button form" rel="nofollow">Send Message</a></li>
+                </ul>
+            </div>
+        </div>
+        <input type="hidden" name="settingsNodeId" value="@CurrentPage.Id" />
+    </form>
+</article>

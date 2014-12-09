@@ -1,4 +1,4 @@
-﻿namespace AST.ContentPackage
+﻿namespace AST.ContentPackagev7
 {
     public static class Constants
     {

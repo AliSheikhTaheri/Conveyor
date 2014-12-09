@@ -1,8 +1,9 @@
-﻿namespace AST.ContentPackage
+﻿namespace AST.ContentPackagev7
 {
     using System;
     using System.Collections.Generic;
     using System.Text;
+
     using umbraco.businesslogic;
     using umbraco.cms.presentation.Trees;
     using umbraco.interfaces;
