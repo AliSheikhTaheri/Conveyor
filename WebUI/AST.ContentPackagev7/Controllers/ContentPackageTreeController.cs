@@ -6,18 +6,23 @@
     using Umbraco.Web.Mvc;
     using Umbraco.Web.Trees;
 
-    [PluginController("CustomSection")]
+    [PluginController("ContentPackage")]
     [Tree("ContentPackage", "ContentPackageTree", "AST Content Package", iconClosed: "icon-doc")]
     public class ContentPackageTreeController : TreeController
     {
         protected override TreeNodeCollection GetTreeNodes(string id, FormDataCollection queryStrings)
         {
-            throw new System.NotImplementedException();
+            var tree = new TreeNodeCollection
+            {
+                CreateTreeNode("1", id, queryStrings, "Donations", "icon-donate", false)
+            };
+
+            return tree;
         }
 
         protected override MenuItemCollection GetMenuForNode(string id, FormDataCollection queryStrings)
         {
-            throw new System.NotImplementedException();
+            return new MenuItemCollection();
         }
     }
 }
