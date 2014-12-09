@@ -207,7 +207,50 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Plugins\___Not in use ContentPackage\BackOffice\ContentPackageTree\edit.html" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Images\Icons\importDocumenttype.png" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.childcounter.js" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.clones.js" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.columnview.js" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.debug.js" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.dnd.js" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.edit.js" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.filter.js" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.glyph.js" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.gridnav.js" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.js" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.menu.js" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.persist.js" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.table.js" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.themeroller.js" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.wide.js" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jsdoc-globals.js" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-awesome\ui.fancytree.css" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-bootstrap\ui.fancytree.css" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-lion\icons.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-lion\loading.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-lion\ui.fancytree.css" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-themeroller\icons.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-themeroller\loading.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-themeroller\ui.fancytree.css" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-vista\icons.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-vista\loading.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-vista\ui.fancytree.css" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win7\icons.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win7\loading.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win7\ui.fancytree.css" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win7\vista_colors.txt" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win8-xxl\icons.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win8-xxl\loading.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win8-xxl\ui.fancytree.css" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win8\icons.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win8\loading.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win8\ui.fancytree.css" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-xp\icons-rtl.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-xp\icons.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-xp\loading.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-xp\ui.fancytree.css" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-xp\vline-rtl.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-xp\vline.gif" />
     <Content Include="packages.config" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
@@ -241,6 +284,20 @@
     <Content Include="App_Plugins\BackOffice\ContentPackage\Views\_Layout.cshtml" />
     <Content Include="App_Plugins\BackOffice\ContentPackage\Views\Index.cshtml" />
     <Content Include="App_Plugins\BackOffice\ContentPackage\Views\Web.config" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-awesome\ui.fancytree.less" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-bootstrap\ui.fancytree-w.less" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-bootstrap\ui.fancytree.less" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-common.less" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-lion\icons-lion.psp" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-lion\ui.fancytree.less" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-vista\ui.fancytree.less" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win7\ui.fancytree.less" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win8\ui.fancytree-w.less" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win8\ui.fancytree.less" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win8-xxl\ui.fancytree.less" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-xp\ui.fancytree.less" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Views\CompatibilityCheck.cshtml" />
+    <Content Include="App_Plugins\BackOffice\ContentPackage\Views\ImportReport.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -264,19 +321,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Plugins\___Not in use ContentPackage\BackOffice\ContentPackageTree\Images\Icons\" />
-    <Folder Include="App_Plugins\___Not in use ContentPackage\BackOffice\ContentPackageTree\Style\FancyTree\skin-awesome\" />
-    <Folder Include="App_Plugins\___Not in use ContentPackage\BackOffice\ContentPackageTree\Style\FancyTree\skin-bootstrap\" />
-    <Folder Include="App_Plugins\___Not in use ContentPackage\BackOffice\ContentPackageTree\Style\FancyTree\skin-lion\" />
-    <Folder Include="App_Plugins\___Not in use ContentPackage\BackOffice\ContentPackageTree\Style\FancyTree\skin-themeroller\" />
-    <Folder Include="App_Plugins\___Not in use ContentPackage\BackOffice\ContentPackageTree\Style\FancyTree\skin-vista\" />
-    <Folder Include="App_Plugins\___Not in use ContentPackage\BackOffice\ContentPackageTree\Style\FancyTree\skin-win7\" />
-    <Folder Include="App_Plugins\___Not in use ContentPackage\BackOffice\ContentPackageTree\Style\FancyTree\skin-win8-xxl\" />
-    <Folder Include="App_Plugins\___Not in use ContentPackage\BackOffice\ContentPackageTree\Style\FancyTree\skin-win8\" />
-    <Folder Include="App_Plugins\___Not in use ContentPackage\BackOffice\ContentPackageTree\Style\FancyTree\skin-xp\" />
-    <Folder Include="App_Plugins\___Not in use ContentPackage\BackOffice\ContentPackageTree\Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\AST.ContentPackagev7\AST.ContentPackagev7.csproj">
       <Project>{060c0601-b42c-4e46-9356-fcd9121978d4}</Project>

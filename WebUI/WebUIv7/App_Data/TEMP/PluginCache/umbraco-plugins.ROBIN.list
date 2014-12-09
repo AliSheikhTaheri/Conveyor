@@ -100,7 +100,7 @@
     <add type="Umbraco.Web.WebServices.ExamineManagementApiController, umbraco, Version=1.0.5451.27172, Culture=neutral, PublicKeyToken=null" />
     <add type="Umbraco.Web.WebServices.TagsController, umbraco, Version=1.0.5451.27172, Culture=neutral, PublicKeyToken=null" />
     <add type="Umbraco.Web.WebServices.XmlDataIntegrityController, umbraco, Version=1.0.5451.27172, Culture=neutral, PublicKeyToken=null" />
-    <add type="Overflow.Controllers.UmbContactController, App_Code.-tl9fi3c, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    <add type="Overflow.Controllers.UmbContactController, App_Code.gnfzb1iz, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
   </baseType>
   <baseType type="Umbraco.Core.Media.IThumbnailProvider" resolutionType="FindAllTypes">
     <add type="Umbraco.Web.Media.ThumbnailProviders.MediaTypeIconThumbnailProvider, umbraco, Version=1.0.5451.27172, Culture=neutral, PublicKeyToken=null" />
