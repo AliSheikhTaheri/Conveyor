@@ -3,12 +3,15 @@
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
+    using System.Text;
     using System.Xml.Linq;
 
     using AST.ContentPackagev7;
     using AST.ContentPackagev7.Enums;
     using Umbraco.Core.Models;
+    using Umbraco.Web.Mvc;
 
     public class DropdownListDataTypeConverter : BaseContentManagement, IDataTypeConverter
     {
@@ -28,32 +31,32 @@
         public string Import(XElement propertyTag)
         {
             var result = string.Empty;
-
-            if (!string.IsNullOrWhiteSpace(propertyTag.Value))
+            if (string.IsNullOrWhiteSpace(propertyTag.Value))
             {
-                var dtd =
-                    Services.DataTypeService.GetAllDataTypeDefinitions()
-                        .FirstOrDefault(x => x.Name == propertyTag.Attribute("dataTypeName").Value);
+                return result;
+            }
 
-                if (dtd != null)
-                {
-                    // TODO add this for v7
-                    //var values = PreValues.GetPreValues(dtd.Id);
+            var dataTypeName = propertyTag.Attribute("dataTypeName").Value;
+            var allDataTypeDefinitions = Services.DataTypeService.GetAllDataTypeDefinitions();
+            var dataTypeDefinition = allDataTypeDefinitions.FirstOrDefault(x => x.Name == dataTypeName);
 
-                    //foreach (DictionaryEntry de in values)
-                    //{
-                    //    var value = (PreValue)de.Value;
-                    //    if (string.Equals(value.Value, propertyTag.Value, StringComparison.CurrentCultureIgnoreCase))
-                    //    {
-                    //        result = value.Id.ToString();
-                    //        break;
-                    //    }
-                    //}
-                }
-                else
+            if (dataTypeDefinition != null)
+            {
+                var collection = Services.DataTypeService.GetPreValuesCollectionByDataTypeId(dataTypeDefinition.Id);
+                foreach (var preValue in collection.PreValuesAsDictionary)
                 {
-                    result = propertyTag.Value;
+                    var value = preValue.Value.Value;
+                    var id = preValue.Value.Id;
+                    if (string.Equals(value, propertyTag.Value, StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        result = id.ToString(CultureInfo.InvariantCulture);
+                        break;
+                    }
                 }
+            }
+            else
+            {
+                result = propertyTag.Value;
             }
 
             return result;

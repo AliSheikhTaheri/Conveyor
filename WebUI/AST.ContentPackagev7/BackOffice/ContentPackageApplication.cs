@@ -1,4 +1,4 @@
-﻿namespace AST.ContentPackagev7
+﻿namespace AST.ContentPackagev7.BackOffice
 {
     using umbraco.businesslogic;
     using umbraco.interfaces;

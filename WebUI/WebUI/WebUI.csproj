@@ -58,17 +58,14 @@
     <Reference Include="CookComputing.XmlRpcV2">
       <HintPath>..\packages\xmlrpcnet.2.5.0\lib\net20\CookComputing.XmlRpcV2.dll</HintPath>
     </Reference>
-    <Reference Include="DAMP.PropertyEditorValueConverter, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DAMP.PropertyEditorValueConverter.dll</HintPath>
+    <Reference Include="DAMP.PropertyEditorValueConverter">
+      <HintPath>..\Dlls\DAMP.PropertyEditorValueConverter.dll</HintPath>
     </Reference>
-    <Reference Include="DigibizAdvancedMediaPicker, Version=2.8.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DigibizAdvancedMediaPicker.dll</HintPath>
+    <Reference Include="DigibizAdvancedMediaPicker">
+      <HintPath>..\Dlls\DigibizAdvancedMediaPicker.dll</HintPath>
     </Reference>
-    <Reference Include="DigibizTree, Version=2.8.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\DigibizTree.dll</HintPath>
+    <Reference Include="DigibizTree">
+      <HintPath>..\Dlls\DigibizTree.dll</HintPath>
     </Reference>
     <Reference Include="Examine">
       <HintPath>..\packages\UmbracoCms.Core.6.1.6\lib\Examine.dll</HintPath>
@@ -279,7 +276,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="StartUpHandlers.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\" />
@@ -1025,7 +1021,9 @@
     <Content Include="xslt\dummy.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="web.config" />
+    <Content Include="web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Web.config" />
     <Content Include="config\xsltExtensions.config" />
     <Content Include="config\UrlRewriting.config" />

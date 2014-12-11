@@ -169,41 +169,47 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\UmbracoCms.Core.6.1.6\lib\TidyNet.dll</HintPath>
     </Reference>
-    <Reference Include="uComponents.Controls">
-      <HintPath>..\WebUI\bin\uComponents.Controls.dll</HintPath>
+    <Reference Include="uComponents.Controls, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\uComponents.6.0.0\lib\net40\uComponents.Controls.dll</HintPath>
     </Reference>
-    <Reference Include="uComponents.Core">
-      <HintPath>..\WebUI\bin\uComponents.Core.dll</HintPath>
+    <Reference Include="uComponents.Core, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\uComponents.6.0.0\lib\net40\uComponents.Core.dll</HintPath>
     </Reference>
-    <Reference Include="uComponents.DataTypes">
-      <HintPath>..\WebUI\bin\uComponents.DataTypes.dll</HintPath>
+    <Reference Include="uComponents.DataTypes, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\uComponents.6.0.0\lib\net40\uComponents.DataTypes.dll</HintPath>
     </Reference>
-    <Reference Include="uComponents.DataTypes.RazorDataTypeModels">
-      <HintPath>..\WebUI\bin\uComponents.DataTypes.RazorDataTypeModels.dll</HintPath>
+    <Reference Include="uComponents.DataTypes.RazorDataTypeModels, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\uComponents.6.0.0\lib\net40\uComponents.DataTypes.RazorDataTypeModels.dll</HintPath>
     </Reference>
-    <Reference Include="uComponents.Installer">
-      <HintPath>..\WebUI\bin\uComponents.Installer.dll</HintPath>
+    <Reference Include="uComponents.Installer, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\uComponents.6.0.0\lib\net40\uComponents.Installer.dll</HintPath>
     </Reference>
-    <Reference Include="uComponents.Legacy">
-      <HintPath>..\WebUI\bin\uComponents.Legacy.dll</HintPath>
+    <Reference Include="uComponents.Legacy, Version=6.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\uComponents.6.0.0\lib\net40\uComponents.Legacy.dll</HintPath>
     </Reference>
     <Reference Include="uComponents.MacroEngines">
-      <HintPath>..\WebUI\bin\uComponents.MacroEngines.dll</HintPath>
+      <HintPath>..\packages\uComponents.6.0.0\lib\net40\uComponents.MacroEngines.dll</HintPath>
     </Reference>
     <Reference Include="uComponents.Mapping">
-      <HintPath>..\WebUI\bin\uComponents.Mapping.dll</HintPath>
+      <HintPath>..\packages\uComponents.6.0.0\lib\net40\uComponents.Mapping.dll</HintPath>
     </Reference>
     <Reference Include="uComponents.NotFoundHandlers">
-      <HintPath>..\WebUI\bin\uComponents.NotFoundHandlers.dll</HintPath>
+      <HintPath>..\packages\uComponents.6.0.0\lib\net40\uComponents.NotFoundHandlers.dll</HintPath>
     </Reference>
     <Reference Include="uComponents.PropertyEditors.ValueConverters">
-      <HintPath>..\WebUI\bin\uComponents.PropertyEditors.ValueConverters.dll</HintPath>
+      <HintPath>..\packages\uComponents.6.0.0\lib\net40\uComponents.PropertyEditors.ValueConverters.dll</HintPath>
     </Reference>
     <Reference Include="uComponents.UI">
-      <HintPath>..\WebUI\bin\uComponents.UI.dll</HintPath>
+      <HintPath>..\packages\uComponents.6.0.0\lib\net40\uComponents.UI.dll</HintPath>
     </Reference>
     <Reference Include="uComponents.XsltExtensions">
-      <HintPath>..\WebUI\bin\uComponents.XsltExtensions.dll</HintPath>
+      <HintPath>..\packages\uComponents.6.0.0\lib\net40\uComponents.XsltExtensions.dll</HintPath>
     </Reference>
     <Reference Include="umbraco, Version=1.0.5021.24870, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -258,6 +264,9 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="umbraco\plugins\uComponents\uComponentsInstaller.ascx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

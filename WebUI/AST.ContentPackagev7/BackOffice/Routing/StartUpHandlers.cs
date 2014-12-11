@@ -1,4 +1,4 @@
-﻿namespace AST.ContentPackagev7
+﻿namespace AST.ContentPackagev7.BackOffice.Routing
 {
     using System.Web.Routing;
 

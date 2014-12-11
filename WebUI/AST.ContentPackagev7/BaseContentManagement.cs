@@ -6,6 +6,7 @@
     using System.Linq;
     using System.Xml.Linq;
 
+    using AST.ContentPackagev7.DataTypeConverters;
     using AST.ContentPackagev7.Enums;
 
     using Umbraco.Core;

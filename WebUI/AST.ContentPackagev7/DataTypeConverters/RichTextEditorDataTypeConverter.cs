@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text.RegularExpressions;
     using System.Xml.Linq;
 
@@ -88,6 +89,7 @@
                 {
                     var url = match.Groups["url"].Value;
 
+                    url = url.Remove(url.IndexOf("?"));
                     var media = Services.MediaService.GetMediaByPath(url);
 
                     if (media != null)

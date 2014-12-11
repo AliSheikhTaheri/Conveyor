@@ -1,4 +1,4 @@
-﻿namespace AST.ContentPackagev7.Controllers
+﻿namespace AST.ContentPackagev7.BackOffice
 {
     using System;
     using System.Collections.Generic;

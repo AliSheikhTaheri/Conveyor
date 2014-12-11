@@ -67,9 +67,9 @@
     <Compile Include="Config.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Content.cs" />
-    <Compile Include="ContentPackageApplication.cs" />
-    <Compile Include="ContentPackageTree.cs" />
-    <Compile Include="Controllers\ContentPackageController.cs" />
+    <Compile Include="BackOffice\ContentPackageApplication.cs" />
+    <Compile Include="BackOffice\ContentPackageTree.cs" />
+    <Compile Include="BackOffice\ContentPackageController.cs" />
     <Compile Include="DataTypeConverters\ContentPickerDataTypeConverter.cs" />
     <Compile Include="DataTypeConverters\DropdownListDataTypeConverter.cs" />
     <Compile Include="DataTypeConverters\MediaPickerDataTypeConverter.cs" />
@@ -79,18 +79,19 @@
     <Compile Include="Enums\ObjectTypes.cs" />
     <Compile Include="Enums\PublishTypes.cs" />
     <Compile Include="ExportContent.cs" />
-    <Compile Include="IDataTypeConverter.cs" />
+    <Compile Include="DataTypeConverters\IDataTypeConverter.cs" />
     <Compile Include="ImportContent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Report.cs" />
-    <Compile Include="RouteConfig.cs" />
-    <Compile Include="StartUpHandlers.cs" />
+    <Compile Include="BackOffice\Routing\RouteConfig.cs" />
+    <Compile Include="BackOffice\Routing\StartUpHandlers.cs" />
     <Compile Include="ZipFileResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

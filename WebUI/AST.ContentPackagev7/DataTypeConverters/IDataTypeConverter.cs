@@ -1,4 +1,4 @@
-﻿namespace AST.ContentPackagev7
+﻿namespace AST.ContentPackagev7.DataTypeConverters
 {
     using System.Collections.Generic;
     using System.Xml.Linq;
