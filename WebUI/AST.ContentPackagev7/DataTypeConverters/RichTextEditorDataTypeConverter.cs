@@ -89,7 +89,12 @@
                 {
                     var url = match.Groups["url"].Value;
 
-                    url = url.Remove(url.IndexOf("?"));
+                    var filename = url.Split('/').LastOrDefault();
+                    if (filename != null && filename.Contains("?"))
+                    {
+                        url = url.Remove(url.IndexOf("?", StringComparison.Ordinal));
+                    }
+
                     var media = Services.MediaService.GetMediaByPath(url);
 
                     if (media != null)
