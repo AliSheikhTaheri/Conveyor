@@ -9,6 +9,7 @@
     using System.Web.Mvc;
 
     using AST.ContentPackagev7.Enums;
+    using AST.ContentPackagev7.Utilities;
 
     using Ionic.Zip;
 
@@ -54,7 +55,12 @@
                     {
                         foreach (var f in files.Distinct())
                         {
-                            zip.AddFile(HostingEnvironment.MapPath(f), f.Replace(f.Split('/').Last(), string.Empty));
+                            // TODO for v6
+                            if (FileHelpers.FileExists(f))
+                            {
+                                var fileAndParent = f.Replace(f.Split('/').Last(), string.Empty);
+                                zip.AddFile(HostingEnvironment.MapPath(f), fileAndParent);
+                            }
                         }
 
                         xdoc.Save(msXml);

@@ -6,6 +6,7 @@
 
     using AST.ContentPackagev7;
     using AST.ContentPackagev7.Enums;
+    using AST.ContentPackagev7.Utilities;
 
     using Umbraco.Core.Models;
 
@@ -17,11 +18,16 @@
             {
                 var id = int.Parse(property.Value.ToString());
                 var media = Services.MediaService.GetById(id);
-                propertyTag.Value = media.Key.ToString();
 
-                if (!dependantNodes.ContainsKey(media.Id))
+                // TODO for v6
+                if (media != null && FileHelpers.FileExists(media.GetValue("umbracoFile").ToString())) 
                 {
-                    dependantNodes.Add(media.Id, ObjectTypes.Media);
+                    propertyTag.Value = media.Key.ToString();
+
+                    if (!dependantNodes.ContainsKey(media.Id))
+                    {
+                        dependantNodes.Add(media.Id, ObjectTypes.Media);
+                    }
                 }
             }
         }

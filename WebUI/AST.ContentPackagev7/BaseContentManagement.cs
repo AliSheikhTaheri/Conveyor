@@ -101,7 +101,8 @@
 
                 var guid = propertyTypes.ElementAt(count).DataTypeId;
 
-                if (guid == new Guid(Constants.UploadDataTypeGuid))
+                // TODO for v6
+                if (guid == new Guid(Constants.UploadDataTypeGuid) && property.Value != null)
                 {
                     var umbracoFile = property.Value.ToString();
                     tag.Add(
