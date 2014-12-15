@@ -132,7 +132,11 @@
                 var dataTypeGuid = new Guid(propertyTag.Attribute("dataTypeGuid").Value);
 
                 var value = propertyTag.Value;
-                if (dataTypeGuid == new Guid(Constants.UploadDataTypeGuid))
+
+                // The null check here is necessary. Blank content exports into the xml, which is fine, since on
+                // import the blank value gets mapped across. However, for upload datatypes, this blank value
+                // causes an exception here - unless we perform the null check.
+                if (dataTypeGuid == new Guid(Constants.UploadDataTypeGuid) && propertyTag.Attribute("fileName") != null)
                 {
                     var fileName = propertyTag.Attribute("fileName").Value;
                     var umbracoFile = propertyTag.Attribute("umbracoFile").Value;
