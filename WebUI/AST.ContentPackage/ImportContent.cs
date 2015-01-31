@@ -55,13 +55,14 @@
                     ImportNodes(xdoc, zip);
                 }
 
-                NormaliseAllContentSortOrders();
+                // this function make everything so slow because it trys to sort all the nodes which is not ideal
+                ////NormaliseAllContentSortOrders();
             }
         }
 
         #region Content
 
-        private int GetContentParentId(AST.ContentPackage.Content content)
+        private int GetContentParentId(Content content)
         {
             var parentId = content.ParentId == -1 ? -1 : 0;
 
@@ -78,7 +79,7 @@
         private void CreateOrUpdateContent(ZipFile zipFile, Guid key, XmlSerializer xmlSerialiser, XElement node)
         {
             var content = Services.ContentService.GetById(key);
-            var newContent = (AST.ContentPackage.Content)xmlSerialiser.Deserialize(node.CreateReader());
+            var newContent = (Content)xmlSerialiser.Deserialize(node.CreateReader());
             if (content != null)
             {
                 SaveContent(node, content, newContent, zipFile);
@@ -96,9 +97,8 @@
             }
         }
 
-        private void SaveContent(XElement node, IContent content, AST.ContentPackage.Content newContent, ZipFile zip)
+        private void SaveContent(XElement node, IContent content, Content newContent, ZipFile zip)
         {
-            var cs = Services.ContentService;
             var dataTypes = new Config().GetSpecialDataTypes();
 
             content.ParentId = GetContentParentId(newContent);
