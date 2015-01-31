@@ -60,7 +60,8 @@
                     ImportNodes(xdoc, zip);
                 }
 
-                NormaliseAllContentSortOrders();
+                // this function make everything so slow because it trys to sort all the nodes which is not ideal
+                ////NormaliseAllContentSortOrders();
             }
         }
 
@@ -103,7 +104,6 @@
 
         private void SaveContent(XElement node, IContent content, Content newContent, ZipFile zip)
         {
-            var cs = Services.ContentService;
             var dataTypes = new Config().GetSpecialDataTypes();
 
             content.ParentId = GetContentParentId(newContent);
@@ -280,7 +280,6 @@
                 }
             }
         }
-
 
         private void ImportNodes(XDocument xml, ZipFile zipFile)
         {
