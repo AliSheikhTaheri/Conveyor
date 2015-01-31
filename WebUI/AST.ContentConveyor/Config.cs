@@ -11,7 +11,7 @@
     {
         #region Fields
 
-        private const string ConfigFile = "/config/ContentPackage.config";
+        private const string ConfigFile = "/config/" + Constants.ApplicationAlias + ".config";
 
         private string FileNameWithPath { get; set; } 
 

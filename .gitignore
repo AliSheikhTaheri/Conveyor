@@ -68,3 +68,5 @@ WebUI/WebUIv7/App_Data/umbraco.config
 WebUI/WebUIv7/media
 WebUI/WebUIv7/App_Data/TEMP/
 WebUI/WebUIv7/App_Data/Logs
+WebUI/WebUIv7/App_Data/cache/*
+WebUI/WebUIv7/App_Data/umbraco.config
