@@ -31,13 +31,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DAMP.PropertyEditorValueConverter">
-      <HintPath>..\WebUI\bin\DAMP.PropertyEditorValueConverter.dll</HintPath>
+      <HintPath>..\Dlls\DAMP.PropertyEditorValueConverter.dll</HintPath>
     </Reference>
     <Reference Include="DigibizAdvancedMediaPicker">
-      <HintPath>..\WebUI\bin\DigibizAdvancedMediaPicker.dll</HintPath>
+      <HintPath>..\Dlls\DigibizAdvancedMediaPicker.dll</HintPath>
     </Reference>
     <Reference Include="DigibizTree">
-      <HintPath>..\WebUI\bin\DigibizTree.dll</HintPath>
+      <HintPath>..\Dlls\DigibizTree.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

@@ -1,0 +1,15 @@
+﻿@inherits UmbracoTemplatePage
+
+@if (CurrentPage.HideBanner == false)
+{
+    <!-- Banner -->
+	<section id="banner">
+		<header>
+			<h2>@Umbraco.Field("bannerHeader")</h2>
+		</header>
+		@Umbraco.Field("bannerText")
+		<footer>
+			<a href="#first" class="button style2 scrolly">@Umbraco.Field("bannerLinkText")</a>
+		</footer>
+	</section>
+}

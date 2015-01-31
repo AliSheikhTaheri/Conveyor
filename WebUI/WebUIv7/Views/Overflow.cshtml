@@ -1,0 +1,69 @@
+@inherits UmbracoTemplatePage
+@{
+    Layout = null;
+}<!DOCTYPE HTML>
+<!--
+	Overflow 1.0 by HTML5 UP
+	html5up.net | twitter.com/n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>@Umbraco.Field("pageName") | @Umbraco.Field("siteName", recursive: true)</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,300italic" rel="stylesheet" type="text/css" />
+		<!--[if lte IE 8]><script src="/css/ie/html5shiv.js"></script><![endif]-->
+		<script src="/scripts/jquery.min.js"></script>
+        <script src="/scripts/jquery.poptrox-2.2.js"></script>
+        <script src="/scripts/skel.min.js"></script>
+        <script src="/scripts/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="/css/skel-noscript.css" />
+			<link rel="stylesheet" href="/css/style.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="/css/ie/v8.css" /><![endif]-->
+	</head>
+<body>
+
+    <!-- Header -->
+    <section id="header">
+        <header>
+            <h1>@Umbraco.Field("siteName", recursive: true)</h1>
+            <p>@Umbraco.Field("byline", recursive: true)</p>
+        </header>
+        <footer>
+            <a href="#banner" class="button style2 scrolly">@Umbraco.Field("continueButtonText")</a>
+        </footer>
+    </section>
+
+    @{ Html.RenderPartial("umbBanner"); }
+
+    @*
+        The template is a single page website, but we still want to be able to add block of content in a 
+        variable way in there. This is being done by adding children under the homepage and looping through
+        them and then rendering them with a specific partial view. In this foreach loop we dynamically find
+        the appropriate parial based on the alias of the document type for the child.
+        So if the child node has a document type with the alias "umbTextPage", we would Render the partial
+        "umbTextPage" for that child node. This way we can easily add multiple "umbTextPage" children, or
+        multiple "umbFeature" children, and so on.
+    *@
+    @foreach (var child in Model.Content.Children)
+    {
+        Html.RenderPartial(child.DocumentTypeAlias, child);
+    }
+
+    <section id="footer">
+        @{ Html.RenderPartial("umbSocial"); }
+        <div class="copyright">
+            <ul class="menu">
+                <li>&copy; @DateTime.Now.Year @Umbraco.Field("copyright", recursive: true).</li>
+                <li>Design &amp; template: <a href="http://html5up.net/">HTML5 UP</a></li>
+            </ul>
+        </div>
+    </section>
+    <script src="~/scripts/Overflow.min.js"></script>
+</body>
+
+</html>

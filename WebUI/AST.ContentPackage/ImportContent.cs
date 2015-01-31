@@ -54,12 +54,15 @@
 
                     ImportNodes(xdoc, zip);
                 }
+
+                // this function make everything so slow because it trys to sort all the nodes which is not ideal
+                ////NormaliseAllContentSortOrders();
             }
         }
 
         #region Content
 
-        private int GetContentParentId(AST.ContentPackage.Content content)
+        private int GetContentParentId(Content content)
         {
             var parentId = content.ParentId == -1 ? -1 : 0;
 
@@ -76,7 +79,7 @@
         private void CreateOrUpdateContent(ZipFile zipFile, Guid key, XmlSerializer xmlSerialiser, XElement node)
         {
             var content = Services.ContentService.GetById(key);
-            var newContent = (AST.ContentPackage.Content)xmlSerialiser.Deserialize(node.CreateReader());
+            var newContent = (Content)xmlSerialiser.Deserialize(node.CreateReader());
             if (content != null)
             {
                 SaveContent(node, content, newContent, zipFile);
@@ -94,9 +97,8 @@
             }
         }
 
-        private void SaveContent(XElement node, IContent content, AST.ContentPackage.Content newContent, ZipFile zip)
+        private void SaveContent(XElement node, IContent content, Content newContent, ZipFile zip)
         {
-            var cs = Services.ContentService;
             var dataTypes = new Config().GetSpecialDataTypes();
 
             content.ParentId = GetContentParentId(newContent);
@@ -229,6 +231,21 @@
         #endregion
 
         #region Helpers
+
+        private void NormaliseAllContentSortOrders()
+        {
+            var contentAtRoot = Services.ContentService.GetChildren(-1).ToList();
+            NormaliseSortOrdersRecursively(contentAtRoot);
+        }
+
+        private void NormaliseSortOrdersRecursively(List<IContent> contents)
+        {
+            Services.ContentService.Sort(contents);
+            foreach (var content in contents)
+            {
+                NormaliseSortOrdersRecursively(content.Children().ToList());
+            }
+        }
 
         private void SaveContent(IContent content, bool published)
         {

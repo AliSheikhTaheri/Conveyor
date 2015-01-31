@@ -29,30 +29,29 @@
 
         $(function () {
 
-            var requestUrl = "/App_Plugins/BackOffice/ContentPackage/ContentTreeAsJsonResult/";
+            var requestUrl = '@Url.Action("ContentTreeAsJsonResult","ContentPackage")' + '/';
 
             $.getJSON(requestUrl, function (json) {
-                //console.log("data = " + json);
                 myfunction(json);
             });
 
-            //console.log("outside  = " + data);
-
             function myfunction(jsondata) {
-                //console.log("outside  = ", jsondata);
 
-                $("#tree2").fancytree({
+                var tree = $('#tree');
+
+                tree.fancytree({
                     //      extensions: ["select"],
                     checkbox: true,
                     selectMode: 2,
                     source: jsondata,
+                    debugLevel:0,
                     lazyLoad: function (event, ctx) {
 
                         console.log('ctx=' + ctx);
                         console.log('this=' + this);
                         console.log('event=' + event);
 
-                        ctx.result = { url: requestUrl + ctx.node.key, debugDelay: 1000 };
+                        ctx.result = { url: requestUrl + ctx.node.key, debugDelay: 0 };
                     },
                     select: function (event, data) {
                         // Display list of selected nodes
@@ -61,7 +60,7 @@
                         var selKeys = $.map(selNodes, function (node) {
                             return node.key;
                         });
-                        $("#echoSelection2").text(selKeys.join(","));
+                        $("#echoSelection").text('Selected node(s) : ' + selKeys.length);
 
                         var selectedIds = selKeys.join(",");
 
@@ -86,25 +85,42 @@
                 });
 
                 $("#btnToggleSelect").click(function () {
-                    $("#tree2").fancytree("getRootNode").visit(function (node) {
+                    tree.fancytree("getRootNode").visit(function (node) {
                         node.toggleSelected();
                     });
                     return false;
                 });
                 $("#btnDeselectAll").click(function () {
-                    $("#tree2").fancytree("getTree").visit(function (node) {
+                    tree.fancytree("getTree").visit(function (node) {
                         node.setSelected(false);
                     });
                     return false;
                 });
                 $("#btnSelectAll").click(function () {
-                    $("#tree2").fancytree("getTree").visit(function (node) {
+                    tree.fancytree("getTree").visit(function (node) {
                         node.setSelected(true);
                     });
                     return false;
                 });
-            };
 
+                $('#btnSelectChildren').click(function () {
+
+                    var node = tree.fancytree("getActiveNode");
+                    if (node) {
+                        if (node.hasChildren()) {
+
+                            node.setExpanded(true);
+
+                            node.children.forEach(function (n) {
+                                n.setSelected(true);
+                            });
+                        }
+                    } else {
+                        alert("No active node.");
+                    }
+
+                });
+            };
 
         });
     </script>
@@ -140,10 +156,11 @@
                             <div class="propertyItem">
                                 <div class="propertyItemheader">Select content</div>
                                 <div class="propertyItemContent">
-                                    <a href="#" id="btnSelectAll">Select all</a> -
-                                    <a href="#" id="btnDeselectAll">Deselect all</a> -
-                                    <a href="#" id="btnToggleSelect">Toggle select</a>
-                                    <div id="tree2"></div>
+                                    <a href="#" id="btnSelectAll">Select all</a> |
+                                    <a href="#" id="btnDeselectAll">Deselect all</a> |
+                                    <a href="#" id="btnToggleSelect">Toggle select</a> |
+                                    <a href="#" id="btnSelectChildren">Select children</a>
+                                    <div id="tree"></div>
                                 </div>
                             </div>
                             <div class="propertyPaneFooter">-</div>
@@ -153,6 +170,7 @@
                                 <div class="propertyItemContent">
                                     <input type="hidden" name="ids" id="ids" />
                                     <input type="submit" value="Export content" />
+                                    <span id="echoSelection"></span>
                                 </div>
                             </div>
                             <div class="propertyPaneFooter">-</div>
@@ -173,7 +191,7 @@
                                 </div>
                             }
                             <br />
-                            
+
                             <div class="propertyItem">
                                 <div class="propertyItemheader">Select import option</div>
                                 <div class="propertyItemContent">
@@ -184,7 +202,7 @@
                                     </select>
                                 </div>
                             </div>
-                            
+
                             <div class="propertyItem">
                                 <div class="propertyItemheader">Select a zip file to import</div>
                                 <div class="propertyItemContent"><input type="file" name="file" id="file" /></div>
@@ -214,7 +232,6 @@
 
                             <div class="propertyPaneFooter">-</div>
                         }
-
                     </div>
                 </div>
             </div>

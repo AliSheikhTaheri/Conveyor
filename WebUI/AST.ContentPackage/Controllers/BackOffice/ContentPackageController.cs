@@ -37,6 +37,7 @@
                 try
                 {
                     fileName = string.IsNullOrWhiteSpace(fileName) ? "ExportedContent" : fileName;
+                    fileName += ".zip";
 
                     var export = new ExportContent();
 
@@ -135,7 +136,8 @@
                     children = new List<Node>(),
                 };
 
-                var contentAtRoot = Services.ContentService.GetRootContent();
+                var contentAtRoot = Services.ContentService.GetRootContent(); // this returns root content in reverse order
+                ////var contentAtRoot = Services.ContentService.GetChildren(-1); // this seems to making things slow.
 
                 foreach (var n in contentAtRoot)
                 {

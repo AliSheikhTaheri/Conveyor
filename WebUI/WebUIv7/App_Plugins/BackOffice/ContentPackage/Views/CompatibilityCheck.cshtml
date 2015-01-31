@@ -1,0 +1,28 @@
+﻿@model System.Collections.Generic.IEnumerable<umbraco.interfaces.IDataType>
+@{
+    Layout = "_Layout.cshtml";
+}
+
+<div class="boxbody">
+
+    <div id="body_UmbracoPanel_content" class="content">
+        <div class="innerContent" id="body_UmbracoPanel_innerContent">
+            <div class="dashboardWrapper">
+                <div class="propertypane">
+                    <h2>Compatibility Check</h2>
+
+                    <div class="error">
+                        <p>None of the below data types have been defined in the ContentPackage.config file, in order to ignore them just add them in OtherDataTypes tag.</p>
+                    </div>
+
+                    <ul>
+                        @foreach (var item in Model.OrderBy(x => x.DataTypeName).ToList())
+                        {
+                            <li>@item.DataTypeName - @item.Id</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
