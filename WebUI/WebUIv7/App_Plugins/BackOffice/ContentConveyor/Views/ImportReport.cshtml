@@ -1,0 +1,26 @@
+﻿@using AST.ContentConveyor7
+@using AST.ContentConveyor7.Enums
+@model IEnumerable<Report>
+@{
+    Layout = "_Layout.cshtml";
+}
+
+<div class="boxbody">
+
+    <div id="body_UmbracoPanel_content" class="content">
+        <div class="innerContent" id="body_UmbracoPanel_innerContent">
+            <div class="dashboardWrapper">
+                <div class="propertypane">
+                    <h2>Report</h2>
+
+                    <ul>
+                        <li>@Model.Count(x => x.ActionType == ActionTypes.Create && x.ObjectType == ObjectTypes.Document) page(s) created.</li>
+                        <li>@Model.Count(x => x.ActionType == ActionTypes.Update && x.ObjectType == ObjectTypes.Document) page(s) updated.</li>
+                        <li>@Model.Count(x => x.ActionType == ActionTypes.Create && x.ObjectType == ObjectTypes.Media) media(s) created.</li>
+                        <li>@Model.Count(x => x.ActionType == ActionTypes.Update && x.ObjectType == ObjectTypes.Media) media(s) updated.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

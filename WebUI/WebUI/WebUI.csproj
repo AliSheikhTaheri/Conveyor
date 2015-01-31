@@ -283,7 +283,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Umbraco.sdf" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Images\Icons\importDocumenttype.png" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Images\Icons\importDocumenttype.png" />
     <Content Include="bin\amd64\Microsoft.VC90.CRT\msvcr90.dll" />
     <Content Include="bin\amd64\Microsoft.VC90.CRT\README_ENU.txt" />
     <Content Include="bin\amd64\sqlceca40.dll" />
@@ -310,49 +310,49 @@
     <Content Include="bin\x86\sqlceme40.dll" />
     <Content Include="bin\x86\sqlceqp40.dll" />
     <Content Include="bin\x86\sqlcese40.dll" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.childcounter.js" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.clones.js" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.columnview.js" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.debug.js" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.dnd.js" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.edit.js" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.filter.js" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.glyph.js" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.gridnav.js" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.js" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.menu.js" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.persist.js" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.table.js" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.themeroller.js" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jquery.fancytree.wide.js" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\jsdoc-globals.js" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-awesome\ui.fancytree.css" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-bootstrap\ui.fancytree.css" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-lion\icons.gif" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-lion\loading.gif" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-lion\ui.fancytree.css" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-themeroller\icons.gif" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-themeroller\loading.gif" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-themeroller\ui.fancytree.css" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-vista\icons.gif" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-vista\loading.gif" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-vista\ui.fancytree.css" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win7\icons.gif" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win7\loading.gif" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win7\ui.fancytree.css" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win7\vista_colors.txt" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win8-xxl\icons.gif" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win8-xxl\loading.gif" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win8-xxl\ui.fancytree.css" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win8\icons.gif" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win8\loading.gif" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win8\ui.fancytree.css" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-xp\icons-rtl.gif" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-xp\icons.gif" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-xp\loading.gif" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-xp\ui.fancytree.css" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-xp\vline-rtl.gif" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-xp\vline.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\jquery.fancytree.childcounter.js" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\jquery.fancytree.clones.js" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\jquery.fancytree.columnview.js" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\jquery.fancytree.debug.js" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\jquery.fancytree.dnd.js" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\jquery.fancytree.edit.js" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\jquery.fancytree.filter.js" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\jquery.fancytree.glyph.js" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\jquery.fancytree.gridnav.js" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\jquery.fancytree.js" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\jquery.fancytree.menu.js" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\jquery.fancytree.persist.js" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\jquery.fancytree.table.js" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\jquery.fancytree.themeroller.js" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\jquery.fancytree.wide.js" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\jsdoc-globals.js" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-awesome\ui.fancytree.css" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-bootstrap\ui.fancytree.css" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-lion\icons.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-lion\loading.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-lion\ui.fancytree.css" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-themeroller\icons.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-themeroller\loading.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-themeroller\ui.fancytree.css" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-vista\icons.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-vista\loading.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-vista\ui.fancytree.css" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-win7\icons.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-win7\loading.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-win7\ui.fancytree.css" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-win7\vista_colors.txt" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-win8-xxl\icons.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-win8-xxl\loading.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-win8-xxl\ui.fancytree.css" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-win8\icons.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-win8\loading.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-win8\ui.fancytree.css" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-xp\icons-rtl.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-xp\icons.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-xp\loading.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-xp\ui.fancytree.css" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-xp\vline-rtl.gif" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-xp\vline.gif" />
     <Content Include="default.aspx" />
     <Content Include="macroScripts\dummy.txt" />
     <Content Include="masterpages\dummy.txt" />
@@ -1051,27 +1051,27 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </Content>
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-awesome\ui.fancytree.less" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-bootstrap\ui.fancytree-w.less" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-bootstrap\ui.fancytree.less" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-common.less" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-lion\icons-lion.psp" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-lion\ui.fancytree.less" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-vista\ui.fancytree.less" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win7\ui.fancytree.less" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win8-xxl\ui.fancytree.less" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win8\ui.fancytree-w.less" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-win8\ui.fancytree.less" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Style\FancyTree\skin-xp\ui.fancytree.less" />
-    <Content Include="config\ContentPackage.config">
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-awesome\ui.fancytree.less" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-bootstrap\ui.fancytree-w.less" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-bootstrap\ui.fancytree.less" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-common.less" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-lion\icons-lion.psp" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-lion\ui.fancytree.less" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-vista\ui.fancytree.less" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-win7\ui.fancytree.less" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-win8-xxl\ui.fancytree.less" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-win8\ui.fancytree-w.less" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-win8\ui.fancytree.less" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-xp\ui.fancytree.less" />
+    <Content Include="config\ContentConveyor.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Views\Index.cshtml" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Views\Web.config" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Views\Index.cshtml" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Views\Web.config" />
     <Content Include="config\applications.config" />
     <Content Include="config\trees.config" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Views\_Layout.cshtml" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Views\CompatibilityCheck.cshtml" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Views\_Layout.cshtml" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Views\CompatibilityCheck.cshtml" />
     <Content Include="umbraco\Dashboard\Air\DesktopMediaUploader.air" />
     <Content Include="umbraco\Masterpages\default.Master" />
     <Content Include="umbraco\Masterpages\umbracoDialog.Master" />
@@ -1100,7 +1100,7 @@
     <Content Include="umbraco\Webservices\UltimatePickerAutoCompleteHandler.ashx" />
     <Content Include="umbraco\Xslt\Web.config" />
     <Content Include="App_Data\umbraco.config" />
-    <Content Include="App_Plugins\BackOffice\ContentPackage\Views\ImportReport.cshtml" />
+    <Content Include="App_Plugins\BackOffice\ContentConveyor\Views\ImportReport.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -1110,25 +1110,25 @@
     <Content Include="xslt\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AST.ContentPackage.Damp\AST.ContentPackage.Damp.csproj">
-      <Project>{03ff65ef-816e-4883-8953-6f426dc6ca10}</Project>
-      <Name>AST.ContentPackage.Damp</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AST.ContentPackage.EmbeddedContent\AST.ContentPackage.EmbeddedContent.csproj">
-      <Project>{4ce33307-3d4b-4330-ad60-e2c748f2523d}</Project>
-      <Name>AST.ContentPackage.EmbeddedContent</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AST.ContentPackage.UrlPicker\AST.ContentPackage.UrlPicker.csproj">
-      <Project>{d7de8749-c4bc-470f-b03c-b77a4a251b71}</Project>
-      <Name>AST.ContentPackage.UrlPicker</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AST.ContentPackage\AST.ContentPackage.csproj">
-      <Project>{957d42e5-d4ac-4b0f-a70e-a02e2a7d788e}</Project>
-      <Name>AST.ContentPackage</Name>
-    </ProjectReference>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
+    <ProjectReference Include="..\AST.ContentConveyor.Damp\AST.ContentConveyor.Damp.csproj">
+      <Project>{03ff65ef-816e-4883-8953-6f426dc6ca10}</Project>
+      <Name>AST.ContentConveyor.Damp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AST.ContentConveyor.EmbeddedContent\AST.ContentConveyor.EmbeddedContent.csproj">
+      <Project>{4ce33307-3d4b-4330-ad60-e2c748f2523d}</Project>
+      <Name>AST.ContentConveyor.EmbeddedContent</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AST.ContentConveyor.UrlPicker\AST.ContentConveyor.UrlPicker.csproj">
+      <Project>{d7de8749-c4bc-470f-b03c-b77a4a251b71}</Project>
+      <Name>AST.ContentConveyor.UrlPicker</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AST.ContentConveyor\AST.ContentConveyor.csproj">
+      <Project>{957d42e5-d4ac-4b0f-a70e-a02e2a7d788e}</Project>
+      <Name>AST.ContentConveyor</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
