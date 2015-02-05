@@ -138,6 +138,8 @@
 
                         @using (Html.BeginForm("ExportContent", "ContentConveyor"))
                         {
+                            @Html.AntiForgeryToken()
+                            
                             if (Html.ValidationMessage("exportError") != null)
                             {
                                 <div class="error">
@@ -184,6 +186,8 @@
 
                         @using (Html.BeginForm("ImportContent", "ContentConveyor", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
+                            @Html.AntiForgeryToken()
+                            
                             if (Html.ValidationMessage("importError") != null)
                             {
                                 <div class="error">
@@ -223,6 +227,8 @@
                         <h2>Check compatibility</h2>
                         @using (Html.BeginForm("CheckCompatibility", "ContentConveyor"))
                         {
+                            @Html.AntiForgeryToken()
+
                             <div class="propertyItem">
                                 <div class="propertyItemheader">Generate report</div>
                                 <div class="propertyItemContent">

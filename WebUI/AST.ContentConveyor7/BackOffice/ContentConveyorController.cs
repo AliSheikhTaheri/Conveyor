@@ -5,6 +5,7 @@
     using System.IO;
     using System.Linq;
     using System.Web;
+    using System.Web.Configuration;
     using System.Web.Hosting;
     using System.Web.Mvc;
 
@@ -27,6 +28,7 @@
             return View(string.Format(ViewsFolder, "Index"));
         }
 
+        [ValidateAntiForgeryToken]
         public ActionResult ExportContent(string ids, string fileName = "")
         {
             var view = string.Format(ViewsFolder, "Index");
@@ -82,6 +84,7 @@
             return View(view);
         }
 
+        [ValidateAntiForgeryToken]
         public ActionResult ImportContent(HttpPostedFileBase file, PublishTypes publishTypes)
         {
             var view = string.Format(ViewsFolder, "Index");
@@ -101,6 +104,8 @@
 
                     view = string.Format(ViewsFolder, "ImportReport");
 
+                    IncreaseConveyorCounter();
+
                     return View(view, ic.Report);
                 }
                 catch (Exception ex)
@@ -109,9 +114,11 @@
                 }
             }
 
+
             return View(view);
         }
 
+        [ValidateAntiForgeryToken]
         public ActionResult CheckCompatibility()
         {
             var dts = Services.DataTypeService;
@@ -147,8 +154,8 @@
                 };
 
                 //var contentAtRoot = Services.ContentService.GetRootContent(); // this returns root content in reverse order
-                var contentAtRoot = Services.ContentService.GetChildren(-1); 
-                 
+                var contentAtRoot = Services.ContentService.GetChildren(-1);
+
                 foreach (var n in contentAtRoot)
                 {
                     node.children.Add(GenerateJsonForTree(n));
@@ -167,6 +174,29 @@
         #endregion
 
         #region Helpers
+
+        private static void IncreaseConveyorCounter()
+        {
+            var webConfigApp = WebConfigurationManager.OpenWebConfiguration("~");
+
+            if (webConfigApp.AppSettings.Settings["conveyorCounter"] != null)
+            {
+                int counter;
+
+                if (int.TryParse(webConfigApp.AppSettings.Settings["conveyorCounter"].Value, out counter))
+                {
+                    counter++;
+                }
+
+                webConfigApp.AppSettings.Settings["conveyorCounter"].Value = counter.ToString();
+            }
+            else
+            {
+                webConfigApp.AppSettings.Settings.Add("conveyorCounter", "1");
+            }
+
+            webConfigApp.Save();
+        }
 
         private Node GenerateJsonForTree(IContent content)
         {

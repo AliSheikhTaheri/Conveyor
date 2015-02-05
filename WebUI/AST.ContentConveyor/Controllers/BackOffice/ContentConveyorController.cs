@@ -5,6 +5,7 @@
     using System.IO;
     using System.Linq;
     using System.Web;
+    using System.Web.Configuration;
     using System.Web.Hosting;
     using System.Web.Mvc;
     using Ionic.Zip;
@@ -91,6 +92,8 @@
 
                     view = string.Format(ViewsFolder, "ImportReport");
 
+                    IncreaseConveyorCounter();
+
                     return View(view, ic.Report);
                 }
                 catch (Exception ex)
@@ -157,6 +160,29 @@
         #endregion
 
         #region Helpers
+
+        private static void IncreaseConveyorCounter()
+        {
+            var webConfigApp = WebConfigurationManager.OpenWebConfiguration("~");
+
+            if (webConfigApp.AppSettings.Settings["conveyorCounter"] != null)
+            {
+                int counter;
+
+                if (int.TryParse(webConfigApp.AppSettings.Settings["conveyorCounter"].Value, out counter))
+                {
+                    counter++;
+                }
+
+                webConfigApp.AppSettings.Settings["conveyorCounter"].Value = counter.ToString();
+            }
+            else
+            {
+                webConfigApp.AppSettings.Settings.Add("conveyorCounter", "1");
+            }
+
+            webConfigApp.Save();
+        }
 
         private Node GenerateJsonForTree(IContent content)
         {

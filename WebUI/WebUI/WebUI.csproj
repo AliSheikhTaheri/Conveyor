@@ -343,7 +343,6 @@
     <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-win7\icons.gif" />
     <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-win7\loading.gif" />
     <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-win7\ui.fancytree.css" />
-    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-win7\vista_colors.txt" />
     <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-win8-xxl\icons.gif" />
     <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-win8-xxl\loading.gif" />
     <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-win8-xxl\ui.fancytree.css" />
@@ -1061,7 +1060,6 @@
     <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-lion\icons-lion.psp" />
     <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-lion\ui.fancytree.less" />
     <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-vista\ui.fancytree.less" />
-    <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-win7\ui.fancytree.less" />
     <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-win8-xxl\ui.fancytree.less" />
     <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-win8\ui.fancytree-w.less" />
     <Content Include="App_Plugins\BackOffice\ContentConveyor\Style\FancyTree\skin-win8\ui.fancytree.less" />
