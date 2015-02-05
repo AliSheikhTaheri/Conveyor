@@ -93,20 +93,20 @@
 
             if (ModelState.IsValid)
             {
-                //try
-                //{
-                var ic = new ImportContent { PublishType = publishTypes };
+                try
+                {
+                    var ic = new ImportContent { PublishType = publishTypes };
 
-                ic.Import(file);
+                    ic.Import(file);
 
-                view = string.Format(ViewsFolder, "ImportReport");
+                    view = string.Format(ViewsFolder, "ImportReport");
 
-                return View(view, ic.Report);
-                //}
-                //catch (Exception ex)
-                //{
-                //    ModelState.AddModelError("importError", ex.Message);
-                //}
+                    return View(view, ic.Report);
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("importError", ex.Message);
+                }
             }
 
             return View(view);

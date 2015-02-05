@@ -6,7 +6,7 @@
 
         public const string ApplicationAlias = "ContentConveyor";
 
-        public const string TreeName = "AST Content Conveyor";
+        public const string TreeName = "Conveyor";
 
         public const string TreeAlias = "ASTContentConveyor";
 

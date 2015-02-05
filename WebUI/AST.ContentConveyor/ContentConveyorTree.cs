@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Text;
+
     using umbraco.businesslogic;
     using umbraco.BusinessLogic.Actions;
     using umbraco.cms.presentation.Trees;
@@ -18,35 +19,35 @@
 
         protected override void CreateRootNode(ref XmlTreeNode rootNode)
         {
-            rootNode.NodeType = "example";
+            rootNode.NodeType = "ContentConveyor";
             rootNode.NodeID = "init";
             rootNode.Menu = new List<IAction> { ActionRefresh.Instance };
         }
 
         public override void Render(ref XmlTree tree)
         {
-            CreateReportNode(ref tree, "Import/Export", "Index");
+            CreateNode(ref tree, "Import/Export", "Index");
         }
 
         public override void RenderJS(ref StringBuilder javascript)
         {
             javascript.Append(
                 @"
-                function openMemberReporting(report) {
+                function openDashboard(action) {
                     document.getElementById('right').scrolling = 'auto';
-                    UmbClientMgr.contentFrame('../App_Plugins/BackOffice/" + Constants.ApplicationAlias + @"/' + report);
+                    UmbClientMgr.contentFrame('../App_Plugins/BackOffice/" + Constants.ApplicationAlias + @"/' + action);
                 }");
         }
 
-        private void CreateReportNode(ref XmlTree tree, string name, string action)
+        private void CreateNode(ref XmlTree tree, string name, string action)
         {
             var node = XmlTreeNode.Create(this);
             node.NodeID = 1.ToString();
-            node.NodeType = "report";
+            node.NodeType = "ContentConveyor";
             node.Text = name;
-            node.Action = "javascript:openMemberReporting('" + action + "');";
-            node.Icon = "../../../App_Plugins/BackOffice/ContentPackage/Images/Icons/importDocumenttype.png";
-            node.OpenIcon = "../../../App_Plugins/BackOffice/ContentPackage/Images/Icons/importDocumenttype.png";
+            node.Action = "javascript:openDashboard('" + action + "');";
+            node.Icon = "../../../App_Plugins/BackOffice/ContentConveyor/Images/Icons/importDocumenttype.png";
+            node.OpenIcon = "../../../App_Plugins/BackOffice/ContentConveyor/Images/Icons/importDocumenttype.png";
             node.HasChildren = false;
             node.Menu = new List<IAction>();
             OnBeforeNodeRender(ref tree, ref node, EventArgs.Empty);

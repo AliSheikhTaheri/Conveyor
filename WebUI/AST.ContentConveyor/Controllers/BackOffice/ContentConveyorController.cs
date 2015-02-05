@@ -83,8 +83,8 @@
 
             if (ModelState.IsValid)
             {
-                //try
-                //{
+                try
+                {
                     var ic = new ImportContent { PublishType = publishTypes };
 
                     ic.Import(file);
@@ -92,11 +92,11 @@
                     view = string.Format(ViewsFolder, "ImportReport");
 
                     return View(view, ic.Report);
-                //}
-                //catch (Exception ex)
-                //{
-                //    ModelState.AddModelError("importError", ex.Message);
-                //}
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("importError", ex.Message);
+                }
             }
 
             return View(view);
@@ -136,8 +136,8 @@
                     children = new List<Node>(),
                 };
 
-                var contentAtRoot = Services.ContentService.GetRootContent(); // this returns root content in reverse order
-                ////var contentAtRoot = Services.ContentService.GetChildren(-1); // this seems to making things slow.
+                //var contentAtRoot = Services.ContentService.GetRootContent(); // this returns root content in reverse order
+                var contentAtRoot = Services.ContentService.GetChildren(-1); 
 
                 foreach (var n in contentAtRoot)
                 {

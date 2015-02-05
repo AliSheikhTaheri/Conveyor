@@ -5,6 +5,7 @@
     using System.Text;
 
     using umbraco.businesslogic;
+    using umbraco.BusinessLogic.Actions;
     using umbraco.cms.presentation.Trees;
     using umbraco.interfaces;
 
@@ -20,7 +21,7 @@
         {
             rootNode.NodeType = "ContentConveyor";
             rootNode.NodeID = "init";
-            rootNode.Menu = new List<IAction>();
+            rootNode.Menu = new List<IAction> { ActionRefresh.Instance };
         }
 
         public override void Render(ref XmlTree tree)
