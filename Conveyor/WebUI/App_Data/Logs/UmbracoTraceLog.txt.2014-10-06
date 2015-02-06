@@ -1,0 +1,424 @@
+2014-10-06 10:47:59,212 [6] INFO  Umbraco.Core.PluginManager - [Thread 1] Determining hash of code files on disk
+2014-10-06 10:47:59,220 [6] INFO  Umbraco.Core.PluginManager - [Thread 1] Hash determined (took 5ms)
+2014-10-06 10:47:59,224 [6] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of umbraco.interfaces.IApplicationStartupHandler
+2014-10-06 10:47:59,328 [6] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.IApplicationStartupHandler, found 19 (took 114ms)
+2014-10-06 10:47:59,343 [6] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter
+2014-10-06 10:47:59,359 [6] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter, found 12 (took 10ms)
+2014-10-06 10:47:59,359 [6] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Web.Mvc.SurfaceController
+2014-10-06 10:47:59,359 [6] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Web.Mvc.SurfaceController, found 0 (took 5ms)
+2014-10-06 10:47:59,359 [6] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Web.WebApi.UmbracoApiController
+2014-10-06 10:47:59,359 [6] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Web.WebApi.UmbracoApiController, found 3 (took 5ms)
+2014-10-06 10:47:59,375 [6] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.Media.IThumbnailProvider
+2014-10-06 10:47:59,375 [6] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.Media.IThumbnailProvider, found 3 (took 6ms)
+2014-10-06 10:47:59,375 [6] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.Media.IImageUrlProvider
+2014-10-06 10:47:59,375 [6] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.Media.IImageUrlProvider, found 1 (took 5ms)
+2014-10-06 10:47:59,500 [6] INFO  Umbraco.Web.Search.ExamineEvents - [Thread 1] Initializing Examine and binding to business logic events
+2014-10-06 10:47:59,734 [6] INFO  Umbraco.Web.Search.ExamineEvents - [Thread 1] Adding examine event handlers for index providers: 3
+2014-10-06 10:47:59,750 [6] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of umbraco.interfaces.IApplication
+2014-10-06 10:47:59,750 [6] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.IApplication, found 8 (took 9ms)
+2014-10-06 10:47:59,797 [6] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of umbraco.interfaces.ITree
+2014-10-06 10:47:59,812 [6] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.ITree, found 28 (took 21ms)
+2014-10-06 10:48:00,078 [6] INFO  umbraco.content - [Thread 10] Loading content from disk cache...
+2014-10-06 10:48:00,187 [6] INFO  Umbraco.Core.PluginManager - [Thread 10] Starting resolution types of Umbraco.Core.Persistence.Mappers.BaseMapper
+2014-10-06 10:48:00,187 [6] INFO  Umbraco.Core.PluginManager - [Thread 10] Completed resolution of types of Umbraco.Core.Persistence.Mappers.BaseMapper, found 17 (took 7ms)
+2014-10-06 10:48:00,359 [6] ERROR Umbraco.Core.UmbracoApplicationBase - [Thread 10] An unhandled exception occurred
+System.InvalidOperationException: The template with Id 1064 does not exist, the page cannot render
+   at Umbraco.Web.Routing.PublishedContentRequestEngine.FindTemplate()
+   at Umbraco.Web.Routing.PublishedContentRequestEngine.FindPublishedContentAndTemplate()
+   at Umbraco.Web.Routing.PublishedContentRequestEngine.PrepareRequest()
+   at Umbraco.Web.Routing.PublishedContentRequest.Prepare()
+   at Umbraco.Web.UmbracoModule.ProcessRequest(HttpContextBase httpContext)
+   at Umbraco.Web.UmbracoModule.<Init>b__7(Object sender, EventArgs e)
+   at System.Web.HttpApplication.SyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2014-10-06 10:48:09,371 [6] INFO  umbraco.BasePages.BasePage - [Thread 11] User admin (Id: 0) logged in
+2014-10-06 10:48:09,462 [6] INFO  Umbraco.Core.PluginManager - [Thread 11] Starting resolution types of umbraco.BusinessLogic.Actions.IActionHandler
+2014-10-06 10:48:09,469 [6] INFO  Umbraco.Core.PluginManager - [Thread 11] Completed resolution of types of umbraco.BusinessLogic.Actions.IActionHandler, found 1 (took 6ms)
+2014-10-06 10:48:09,522 [6] INFO  Umbraco.Core.PluginManager - [Thread 11] Starting resolution types of umbraco.interfaces.ITree
+2014-10-06 10:48:09,542 [6] INFO  Umbraco.Core.PluginManager - [Thread 11] Completed resolution of types of umbraco.interfaces.ITree, found 40 (took 20ms)
+2014-10-06 10:49:41,431 [6] INFO  umbraco.BusinessLogic.Log - [Thread 10] Log scrubbed.  Removed all items older than 2014-08-07 10:49:41
+2014-10-06 10:49:41,433 [6] INFO  Umbraco.Core.UmbracoApplicationBase - [Thread 10] Application shutdown. Reason: ConfigurationChange
+2014-10-06 10:49:47,140 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Determining hash of code files on disk
+2014-10-06 10:49:47,156 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Hash determined (took 15ms)
+2014-10-06 10:49:47,187 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of umbraco.interfaces.IApplicationStartupHandler
+2014-10-06 10:49:47,343 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.IApplicationStartupHandler, found 19 (took 166ms)
+2014-10-06 10:49:47,359 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter
+2014-10-06 10:49:47,359 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter, found 12 (took 9ms)
+2014-10-06 10:49:47,375 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Web.Mvc.SurfaceController
+2014-10-06 10:49:47,375 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Web.Mvc.SurfaceController, found 0 (took 6ms)
+2014-10-06 10:49:47,375 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Web.WebApi.UmbracoApiController
+2014-10-06 10:49:47,375 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Web.WebApi.UmbracoApiController, found 3 (took 5ms)
+2014-10-06 10:49:47,390 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.Media.IThumbnailProvider
+2014-10-06 10:49:47,390 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.Media.IThumbnailProvider, found 3 (took 6ms)
+2014-10-06 10:49:47,390 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.Media.IImageUrlProvider
+2014-10-06 10:49:47,390 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.Media.IImageUrlProvider, found 1 (took 5ms)
+2014-10-06 10:49:47,500 [8] INFO  Umbraco.Web.Search.ExamineEvents - [Thread 1] Initializing Examine and binding to business logic events
+2014-10-06 10:49:47,671 [8] INFO  Umbraco.Web.Search.ExamineEvents - [Thread 1] Adding examine event handlers for index providers: 3
+2014-10-06 10:49:47,671 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of umbraco.interfaces.IApplication
+2014-10-06 10:49:47,687 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.IApplication, found 8 (took 10ms)
+2014-10-06 10:49:47,718 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of umbraco.interfaces.ITree
+2014-10-06 10:49:47,734 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.ITree, found 28 (took 21ms)
+2014-10-06 10:49:57,369 [8] INFO  umbraco.BasePages.BasePage - [Thread 10] User zdeveloper (Id: 0) logged in
+2014-10-06 10:49:57,401 [8] INFO  Umbraco.Core.PluginManager - [Thread 12] Starting resolution types of umbraco.BusinessLogic.Actions.IActionHandler
+2014-10-06 10:49:57,411 [8] INFO  Umbraco.Core.PluginManager - [Thread 12] Completed resolution of types of umbraco.BusinessLogic.Actions.IActionHandler, found 1 (took 9ms)
+2014-10-06 10:49:57,470 [8] INFO  Umbraco.Core.PluginManager - [Thread 12] Starting resolution types of umbraco.interfaces.ITree
+2014-10-06 10:49:57,491 [8] INFO  Umbraco.Core.PluginManager - [Thread 12] Completed resolution of types of umbraco.interfaces.ITree, found 40 (took 20ms)
+2014-10-06 10:49:57,961 [8] INFO  Umbraco.Core.PluginManager - [Thread 20] Starting resolution types of Umbraco.Core.Persistence.Mappers.BaseMapper
+2014-10-06 10:49:57,969 [8] INFO  Umbraco.Core.PluginManager - [Thread 20] Completed resolution of types of Umbraco.Core.Persistence.Mappers.BaseMapper, found 17 (took 8ms)
+2014-10-06 10:50:19,268 [8] INFO  Umbraco.Core.PluginManager - [Thread 10] Starting resolution types of umbraco.interfaces.IDataType
+2014-10-06 10:50:19,315 [8] INFO  Umbraco.Core.PluginManager - [Thread 10] Completed resolution of types of umbraco.interfaces.IDataType, found 83 (took 42ms)
+2014-10-06 10:50:21,603 [8] INFO  umbraco.content - [Thread 10] Loading content from disk cache...
+2014-10-06 10:50:29,949 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 11] Content 'Knife' with Id '11395' has been unpublished.
+2014-10-06 10:50:30,016 [8] INFO  Umbraco.Core.PluginManager - [Thread 11] Starting resolution types of umbraco.interfaces.ICacheRefresher
+2014-10-06 10:50:30,027 [8] INFO  Umbraco.Core.PluginManager - [Thread 11] Completed resolution of types of umbraco.interfaces.ICacheRefresher, found 22 (took 10ms)
+2014-10-06 10:51:56,462 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 10] Content 'Chopping board' with Id '11394' has been unpublished.
+2014-10-06 10:51:56,855 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 11] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11394
+2014-10-06 10:52:01,661 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 14] Content 'Knife' with Id '11395' has been unpublished.
+2014-10-06 10:52:01,744 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 10] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11395
+2014-10-06 10:52:25,139 [8] ERROR Umbraco.Core.UmbracoApplicationBase - [Thread 14] An unhandled exception occurred
+System.ArgumentException: The parameters dictionary contains a null entry for parameter 'publishTypes' of non-nullable type 'AST.ContentPackage.PublishTypes' for method 'System.Web.Mvc.ActionResult ImportContent(System.Web.HttpPostedFileBase, AST.ContentPackage.PublishTypes)' in 'AST.ContentPackage.Controllers.BackOffice.ContentPackageController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+   at System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   at System.Web.Mvc.ReflectedActionDescriptor.<>c__DisplayClass1.<Execute>b__0(ParameterInfo parameterInfo)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass13.<InvokeActionMethodWithFilters>b__10()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass13.<>c__DisplayClass15.<InvokeActionMethodWithFilters>b__12()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodFilter(IActionFilter filter, ActionExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass13.<>c__DisplayClass15.<InvokeActionMethodWithFilters>b__12()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+   at System.Web.Mvc.Controller.<>c__DisplayClass1d.<BeginExecuteCore>b__19()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass1.<MakeVoidDelegate>b__0()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.<>c__DisplayClass8.<BeginProcessRequest>b__3(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass4.<MakeVoidDelegate>b__3(IAsyncResult ar)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2014-10-06 10:53:41,711 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 30] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11384
+2014-10-06 10:53:41,756 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 29] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11384
+2014-10-06 10:53:41,844 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 30] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11384
+2014-10-06 10:53:41,854 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 29] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11384
+2014-10-06 10:53:41,988 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 13] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11386
+2014-10-06 10:53:41,991 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 13] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11387
+2014-10-06 10:53:42,980 [8] INFO  Umbraco.Core.Services.ContentService - [Thread 11] Content 'Chopping board' with Id '0' could not be published because of invalid properties.
+2014-10-06 10:53:43,403 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 29] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11386
+2014-10-06 10:53:43,405 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 29] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11387
+2014-10-06 10:53:43,858 [8] INFO  Umbraco.Core.Services.ContentService - [Thread 11] Content 'Knife' with Id '0' could not be published because of invalid properties.
+2014-10-06 10:53:44,408 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 13] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11426
+2014-10-06 10:53:44,541 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 13] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11427
+2014-10-06 10:53:44,835 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 11] Content 'Chopping board' with Id '11426' has been published.
+2014-10-06 10:53:45,326 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 11] Content 'Knife' with Id '11427' has been published.
+2014-10-06 10:53:45,678 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 13] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11426
+2014-10-06 10:53:45,734 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 13] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11427
+2014-10-06 10:53:46,642 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 29] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11426
+2014-10-06 10:53:46,644 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 29] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11427
+2014-10-06 10:59:07,728 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 13] Content 'Chopping board' with Id '11426' has been unpublished.
+2014-10-06 10:59:07,904 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 21] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11426
+2014-10-06 10:59:14,019 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 13] Content 'Knife' with Id '11427' has been unpublished.
+2014-10-06 10:59:14,227 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 21] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11427
+2014-10-06 10:59:34,360 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 9] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11384
+2014-10-06 10:59:34,362 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 21] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11384
+2014-10-06 10:59:34,453 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 9] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11384
+2014-10-06 10:59:34,458 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 21] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11384
+2014-10-06 10:59:34,549 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 9] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11386
+2014-10-06 10:59:34,555 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 21] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11386
+2014-10-06 10:59:34,560 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 21] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11387
+2014-10-06 10:59:34,635 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 9] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11387
+2014-10-06 10:59:34,663 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 21] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11428
+2014-10-06 10:59:34,749 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 32] Content 'Chopping board' with Id '11428' has been published.
+2014-10-06 10:59:34,791 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 21] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11429
+2014-10-06 10:59:34,794 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 21] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11428
+2014-10-06 10:59:34,795 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 7] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11428
+2014-10-06 10:59:34,835 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 32] Content 'Knife' with Id '11429' has been published.
+2014-10-06 10:59:34,867 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 15] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11429
+2014-10-06 10:59:35,052 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 21] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11429
+2014-10-06 10:59:57,999 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 7] Content 'Chopping board' with Id '11428' has been unpublished.
+2014-10-06 10:59:58,158 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 21] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11428
+2014-10-06 11:00:02,131 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 26] Content 'Knife' with Id '11429' has been unpublished.
+2014-10-06 11:00:02,301 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 21] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11429
+2014-10-06 11:01:52,168 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 7] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11384
+2014-10-06 11:01:52,168 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 32] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11384
+2014-10-06 11:01:57,449 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 7] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11384
+2014-10-06 11:02:01,892 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 15] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11386
+2014-10-06 11:02:06,260 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 9] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11387
+2014-10-06 11:02:20,504 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 32] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11384
+2014-10-06 11:02:20,520 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 32] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11386
+2014-10-06 11:02:30,825 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 32] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11387
+2014-10-06 11:02:42,520 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 7] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11430
+2014-10-06 11:02:45,365 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 7] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11431
+2014-10-06 11:02:45,446 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 21] Content 'Chopping board' with Id '11430' has been published.
+2014-10-06 11:02:46,545 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 21] Content 'Knife' with Id '11431' has been published.
+2014-10-06 11:02:47,313 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 7] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11430
+2014-10-06 11:02:47,354 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 7] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11431
+2014-10-06 11:02:47,951 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 32] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11430
+2014-10-06 11:02:47,953 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 32] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11431
+2014-10-06 11:05:19,605 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 49] Content 'Knife' with Id '11431' has been unpublished.
+2014-10-06 11:05:19,719 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 46] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11431
+2014-10-06 11:05:23,202 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 36] Content 'Chopping board' with Id '11430' has been unpublished.
+2014-10-06 11:05:23,292 [8] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 25] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11430
+2014-10-06 11:14:08,279 [8] INFO  umbraco.BusinessLogic.Log - [Thread 11] Log scrubbed.  Removed all items older than 2014-08-07 11:14:08
+2014-10-06 11:14:08,281 [8] INFO  Umbraco.Core.UmbracoApplicationBase - [Thread 11] Application shutdown. Reason: BinDirChangeOrDirectoryRename
+2014-10-06 11:14:10,856 [41] INFO  Umbraco.Core.PluginManager - [Thread 44] Determining hash of code files on disk
+2014-10-06 11:14:10,862 [41] INFO  Umbraco.Core.PluginManager - [Thread 44] Hash determined (took 4ms)
+2014-10-06 11:14:10,867 [41] INFO  Umbraco.Core.PluginManager - [Thread 44] Starting resolution types of umbraco.interfaces.IApplicationStartupHandler
+2014-10-06 11:14:10,975 [41] INFO  Umbraco.Core.PluginManager - [Thread 44] Completed resolution of types of umbraco.interfaces.IApplicationStartupHandler, found 19 (took 106ms)
+2014-10-06 11:14:10,983 [41] INFO  Umbraco.Core.PluginManager - [Thread 44] Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter
+2014-10-06 11:14:10,993 [41] INFO  Umbraco.Core.PluginManager - [Thread 44] Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter, found 12 (took 9ms)
+2014-10-06 11:14:10,995 [41] INFO  Umbraco.Core.PluginManager - [Thread 44] Starting resolution types of Umbraco.Web.Mvc.SurfaceController
+2014-10-06 11:14:11,001 [41] INFO  Umbraco.Core.PluginManager - [Thread 44] Completed resolution of types of Umbraco.Web.Mvc.SurfaceController, found 0 (took 5ms)
+2014-10-06 11:14:11,001 [41] INFO  Umbraco.Core.PluginManager - [Thread 44] Starting resolution types of Umbraco.Web.WebApi.UmbracoApiController
+2014-10-06 11:14:11,007 [41] INFO  Umbraco.Core.PluginManager - [Thread 44] Completed resolution of types of Umbraco.Web.WebApi.UmbracoApiController, found 3 (took 5ms)
+2014-10-06 11:14:11,009 [41] INFO  Umbraco.Core.PluginManager - [Thread 44] Starting resolution types of Umbraco.Core.Media.IThumbnailProvider
+2014-10-06 11:14:11,015 [41] INFO  Umbraco.Core.PluginManager - [Thread 44] Completed resolution of types of Umbraco.Core.Media.IThumbnailProvider, found 3 (took 5ms)
+2014-10-06 11:14:11,015 [41] INFO  Umbraco.Core.PluginManager - [Thread 44] Starting resolution types of Umbraco.Core.Media.IImageUrlProvider
+2014-10-06 11:14:11,022 [41] INFO  Umbraco.Core.PluginManager - [Thread 44] Completed resolution of types of Umbraco.Core.Media.IImageUrlProvider, found 1 (took 6ms)
+2014-10-06 11:14:11,119 [41] INFO  Umbraco.Web.Search.ExamineEvents - [Thread 44] Initializing Examine and binding to business logic events
+2014-10-06 11:14:11,243 [41] INFO  Umbraco.Web.Search.ExamineEvents - [Thread 44] Adding examine event handlers for index providers: 3
+2014-10-06 11:14:11,248 [41] INFO  Umbraco.Core.PluginManager - [Thread 44] Starting resolution types of umbraco.interfaces.IApplication
+2014-10-06 11:14:11,257 [41] INFO  Umbraco.Core.PluginManager - [Thread 44] Completed resolution of types of umbraco.interfaces.IApplication, found 8 (took 9ms)
+2014-10-06 11:14:11,271 [41] INFO  Umbraco.Core.PluginManager - [Thread 44] Starting resolution types of umbraco.interfaces.ITree
+2014-10-06 11:14:11,292 [41] INFO  Umbraco.Core.PluginManager - [Thread 44] Completed resolution of types of umbraco.interfaces.ITree, found 28 (took 20ms)
+2014-10-06 11:14:11,373 [41] INFO  umbraco.content - [Thread 9] Loading content from disk cache...
+2014-10-06 11:14:11,452 [41] INFO  Umbraco.Core.PluginManager - [Thread 9] Starting resolution types of Umbraco.Core.Persistence.Mappers.BaseMapper
+2014-10-06 11:14:11,460 [41] INFO  Umbraco.Core.PluginManager - [Thread 9] Completed resolution of types of Umbraco.Core.Persistence.Mappers.BaseMapper, found 17 (took 8ms)
+2014-10-06 11:14:11,882 [41] WARN  Umbraco.Web.Mvc.RenderMvcController - [Thread 9] No physical template file was found for template ContentPageTextPage
+2014-10-06 11:14:24,579 [41] INFO  Umbraco.Core.PluginManager - [Thread 21] Starting resolution types of umbraco.interfaces.IDataType
+2014-10-06 11:14:24,613 [41] INFO  Umbraco.Core.PluginManager - [Thread 21] Completed resolution of types of umbraco.interfaces.IDataType, found 83 (took 33ms)
+2014-10-06 11:14:24,622 [41] INFO  Umbraco.Core.PluginManager - [Thread 21] Starting resolution types of umbraco.interfaces.ITree
+2014-10-06 11:14:24,643 [41] INFO  Umbraco.Core.PluginManager - [Thread 21] Completed resolution of types of umbraco.interfaces.ITree, found 40 (took 21ms)
+2014-10-06 11:14:24,673 [41] INFO  Umbraco.Core.PluginManager - [Thread 21] Starting resolution types of umbraco.interfaces.ICacheRefresher
+2014-10-06 11:14:24,686 [41] INFO  Umbraco.Core.PluginManager - [Thread 21] Completed resolution of types of umbraco.interfaces.ICacheRefresher, found 22 (took 13ms)
+2014-10-06 11:14:24,867 [41] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 9] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11384
+2014-10-06 11:14:24,867 [41] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 45] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11384
+2014-10-06 11:14:24,919 [41] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 9] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11384
+2014-10-06 11:14:24,919 [41] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 45] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11384
+2014-10-06 11:14:24,921 [41] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 9] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11386
+2014-10-06 11:14:24,922 [41] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 45] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11386
+2014-10-06 11:14:24,923 [41] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 9] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11387
+2014-10-06 11:14:24,925 [41] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 45] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11387
+2014-10-06 11:14:25,016 [41] INFO  Umbraco.Core.Services.ContentService - [Thread 21] Content 'Chopping board' with Id '0' could not be published because of invalid properties.
+2014-10-06 11:14:25,250 [41] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 47] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11432
+2014-10-06 11:18:41,601 [41] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 12] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11433
+2014-10-06 11:18:41,727 [41] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 21] Content 'Chopping board' with Id '11432' has been published.
+2014-10-06 11:18:41,844 [41] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 47] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11432
+2014-10-06 11:18:41,846 [41] INFO  Umbraco.Core.PluginManager - [Thread 21] Starting resolution types of umbraco.BusinessLogic.Actions.IActionHandler
+2014-10-06 11:18:41,854 [41] INFO  Umbraco.Core.PluginManager - [Thread 21] Completed resolution of types of umbraco.BusinessLogic.Actions.IActionHandler, found 1 (took 8ms)
+2014-10-06 11:18:41,885 [41] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 9] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11432
+2014-10-06 11:18:41,936 [41] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 21] Content 'Knife' with Id '11433' has been published.
+2014-10-06 11:18:41,982 [41] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 47] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11433
+2014-10-06 11:18:41,985 [41] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 9] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11433
+2014-10-06 11:23:22,188 [41] INFO  umbraco.BusinessLogic.Log - [Thread 29] Log scrubbed.  Removed all items older than 2014-08-07 11:23:22
+2014-10-06 11:23:22,188 [41] INFO  Umbraco.Core.UmbracoApplicationBase - [Thread 29] Application shutdown. Reason: BinDirChangeOrDirectoryRename
+2014-10-06 11:23:31,250 [52] INFO  Umbraco.Core.PluginManager - [Thread 1] Determining hash of code files on disk
+2014-10-06 11:23:31,257 [52] INFO  Umbraco.Core.PluginManager - [Thread 1] Hash determined (took 3ms)
+2014-10-06 11:23:31,263 [52] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of umbraco.interfaces.IApplicationStartupHandler
+2014-10-06 11:23:31,366 [52] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.IApplicationStartupHandler, found 19 (took 102ms)
+2014-10-06 11:23:31,376 [52] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter
+2014-10-06 11:23:31,386 [52] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter, found 12 (took 10ms)
+2014-10-06 11:23:31,388 [52] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Web.Mvc.SurfaceController
+2014-10-06 11:23:31,396 [52] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Web.Mvc.SurfaceController, found 0 (took 8ms)
+2014-10-06 11:23:31,396 [52] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Web.WebApi.UmbracoApiController
+2014-10-06 11:23:31,402 [52] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Web.WebApi.UmbracoApiController, found 3 (took 5ms)
+2014-10-06 11:23:31,403 [52] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.Media.IThumbnailProvider
+2014-10-06 11:23:31,410 [52] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.Media.IThumbnailProvider, found 3 (took 7ms)
+2014-10-06 11:23:31,411 [52] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.Media.IImageUrlProvider
+2014-10-06 11:23:31,417 [52] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.Media.IImageUrlProvider, found 1 (took 6ms)
+2014-10-06 11:23:31,495 [52] INFO  Umbraco.Web.Search.ExamineEvents - [Thread 1] Initializing Examine and binding to business logic events
+2014-10-06 11:23:31,566 [52] INFO  Umbraco.Web.Search.ExamineEvents - [Thread 1] Adding examine event handlers for index providers: 3
+2014-10-06 11:23:31,573 [52] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of umbraco.interfaces.IApplication
+2014-10-06 11:23:31,584 [52] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.IApplication, found 8 (took 10ms)
+2014-10-06 11:23:31,602 [52] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of umbraco.interfaces.ITree
+2014-10-06 11:23:31,624 [52] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.ITree, found 28 (took 21ms)
+2014-10-06 11:23:31,776 [52] INFO  Umbraco.Core.PluginManager - [Thread 17] Starting resolution types of umbraco.interfaces.ITree
+2014-10-06 11:23:31,799 [52] INFO  Umbraco.Core.PluginManager - [Thread 17] Completed resolution of types of umbraco.interfaces.ITree, found 40 (took 22ms)
+2014-10-06 11:23:31,815 [52] INFO  Umbraco.Core.PluginManager - [Thread 17] Starting resolution types of Umbraco.Core.Persistence.Mappers.BaseMapper
+2014-10-06 11:23:31,822 [52] INFO  Umbraco.Core.PluginManager - [Thread 17] Completed resolution of types of Umbraco.Core.Persistence.Mappers.BaseMapper, found 17 (took 6ms)
+2014-10-06 11:23:31,866 [52] INFO  Umbraco.Core.PluginManager - [Thread 17] Starting resolution types of umbraco.BusinessLogic.Actions.IActionHandler
+2014-10-06 11:23:31,872 [52] INFO  Umbraco.Core.PluginManager - [Thread 17] Completed resolution of types of umbraco.BusinessLogic.Actions.IActionHandler, found 1 (took 5ms)
+2014-10-06 11:23:37,451 [52] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 29] Content 'Knife' with Id '11433' has been unpublished.
+2014-10-06 11:23:37,492 [52] INFO  Umbraco.Core.PluginManager - [Thread 29] Starting resolution types of umbraco.interfaces.ICacheRefresher
+2014-10-06 11:23:37,502 [52] INFO  Umbraco.Core.PluginManager - [Thread 29] Completed resolution of types of umbraco.interfaces.ICacheRefresher, found 22 (took 9ms)
+2014-10-06 11:23:37,513 [52] INFO  umbraco.content - [Thread 29] Loading content from disk cache...
+2014-10-06 11:23:37,732 [52] INFO  Umbraco.Core.PluginManager - [Thread 29] Starting resolution types of umbraco.interfaces.IDataType
+2014-10-06 11:23:37,769 [52] INFO  Umbraco.Core.PluginManager - [Thread 29] Completed resolution of types of umbraco.interfaces.IDataType, found 83 (took 37ms)
+2014-10-06 11:23:37,847 [52] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 11] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11433
+2014-10-06 11:23:41,790 [52] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 11] Content 'Chopping board' with Id '11432' has been unpublished.
+2014-10-06 11:23:41,885 [52] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 29] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11432
+2014-10-06 11:24:08,399 [52] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 29] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11384
+2014-10-06 11:24:08,425 [52] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 6] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11384
+2014-10-06 11:24:08,481 [52] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 29] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11384
+2014-10-06 11:24:08,491 [52] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 6] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11384
+2014-10-06 11:24:08,536 [52] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 18] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11386
+2014-10-06 11:24:08,578 [52] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 13] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11386
+2014-10-06 11:24:08,580 [52] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 13] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11387
+2014-10-06 11:24:08,650 [52] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 19] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11387
+2014-10-06 11:24:08,651 [52] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 19] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11434
+2014-10-06 11:24:08,694 [52] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 19] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11435
+2014-10-06 11:24:08,742 [52] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 19] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11434
+2014-10-06 11:24:08,751 [52] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 26] Content 'Chopping board' with Id '11434' has been published.
+2014-10-06 11:24:08,776 [52] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 19] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11434
+2014-10-06 11:24:08,780 [52] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 11] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11434
+2014-10-06 11:24:08,814 [52] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 19] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11435
+2014-10-06 11:24:08,826 [52] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 26] Content 'Knife' with Id '11435' has been published.
+2014-10-06 11:24:08,865 [52] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 11] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11435
+2014-10-06 11:24:09,043 [52] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 19] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11435
+2014-10-06 11:24:37,178 [52] INFO  umbraco.BusinessLogic.Log - [Thread 6] Log scrubbed.  Removed all items older than 2014-08-07 11:24:37
+2014-10-06 11:24:37,180 [52] INFO  Umbraco.Core.UmbracoApplicationBase - [Thread 6] Application shutdown. Reason: BinDirChangeOrDirectoryRename
+2014-10-06 11:24:44,315 [31] INFO  Umbraco.Core.PluginManager - [Thread 37] Determining hash of code files on disk
+2014-10-06 11:24:44,321 [31] INFO  Umbraco.Core.PluginManager - [Thread 37] Hash determined (took 3ms)
+2014-10-06 11:24:44,327 [31] INFO  Umbraco.Core.PluginManager - [Thread 37] Starting resolution types of umbraco.interfaces.IApplicationStartupHandler
+2014-10-06 11:24:44,429 [31] INFO  Umbraco.Core.PluginManager - [Thread 37] Completed resolution of types of umbraco.interfaces.IApplicationStartupHandler, found 19 (took 101ms)
+2014-10-06 11:24:44,442 [31] INFO  Umbraco.Core.PluginManager - [Thread 37] Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter
+2014-10-06 11:24:44,453 [31] INFO  Umbraco.Core.PluginManager - [Thread 37] Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter, found 12 (took 11ms)
+2014-10-06 11:24:44,454 [31] INFO  Umbraco.Core.PluginManager - [Thread 37] Starting resolution types of Umbraco.Web.Mvc.SurfaceController
+2014-10-06 11:24:44,461 [31] INFO  Umbraco.Core.PluginManager - [Thread 37] Completed resolution of types of Umbraco.Web.Mvc.SurfaceController, found 0 (took 6ms)
+2014-10-06 11:24:44,461 [31] INFO  Umbraco.Core.PluginManager - [Thread 37] Starting resolution types of Umbraco.Web.WebApi.UmbracoApiController
+2014-10-06 11:24:44,468 [31] INFO  Umbraco.Core.PluginManager - [Thread 37] Completed resolution of types of Umbraco.Web.WebApi.UmbracoApiController, found 3 (took 6ms)
+2014-10-06 11:24:44,469 [31] INFO  Umbraco.Core.PluginManager - [Thread 37] Starting resolution types of Umbraco.Core.Media.IThumbnailProvider
+2014-10-06 11:24:44,476 [31] INFO  Umbraco.Core.PluginManager - [Thread 37] Completed resolution of types of Umbraco.Core.Media.IThumbnailProvider, found 3 (took 7ms)
+2014-10-06 11:24:44,477 [31] INFO  Umbraco.Core.PluginManager - [Thread 37] Starting resolution types of Umbraco.Core.Media.IImageUrlProvider
+2014-10-06 11:24:44,483 [31] INFO  Umbraco.Core.PluginManager - [Thread 37] Completed resolution of types of Umbraco.Core.Media.IImageUrlProvider, found 1 (took 6ms)
+2014-10-06 11:24:44,590 [31] INFO  Umbraco.Web.Search.ExamineEvents - [Thread 37] Initializing Examine and binding to business logic events
+2014-10-06 11:24:44,658 [31] INFO  Umbraco.Web.Search.ExamineEvents - [Thread 37] Adding examine event handlers for index providers: 3
+2014-10-06 11:24:44,662 [31] INFO  Umbraco.Core.PluginManager - [Thread 37] Starting resolution types of umbraco.interfaces.IApplication
+2014-10-06 11:24:44,672 [31] INFO  Umbraco.Core.PluginManager - [Thread 37] Completed resolution of types of umbraco.interfaces.IApplication, found 8 (took 9ms)
+2014-10-06 11:24:44,687 [31] INFO  Umbraco.Core.PluginManager - [Thread 37] Starting resolution types of umbraco.interfaces.ITree
+2014-10-06 11:24:44,709 [31] INFO  Umbraco.Core.PluginManager - [Thread 37] Completed resolution of types of umbraco.interfaces.ITree, found 28 (took 21ms)
+2014-10-06 11:24:45,011 [31] INFO  Umbraco.Core.PluginManager - [Thread 43] Starting resolution types of umbraco.BusinessLogic.Actions.IActionHandler
+2014-10-06 11:24:45,017 [31] INFO  Umbraco.Core.PluginManager - [Thread 43] Completed resolution of types of umbraco.BusinessLogic.Actions.IActionHandler, found 1 (took 6ms)
+2014-10-06 11:24:45,027 [31] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 43] Content 'Knife' with Id '11435' has been unpublished.
+2014-10-06 11:24:45,061 [31] INFO  Umbraco.Core.PluginManager - [Thread 43] Starting resolution types of umbraco.interfaces.ICacheRefresher
+2014-10-06 11:24:45,070 [31] INFO  Umbraco.Core.PluginManager - [Thread 43] Completed resolution of types of umbraco.interfaces.ICacheRefresher, found 22 (took 9ms)
+2014-10-06 11:24:45,080 [31] INFO  umbraco.content - [Thread 43] Loading content from disk cache...
+2014-10-06 11:24:45,218 [31] INFO  Umbraco.Core.PluginManager - [Thread 43] Starting resolution types of Umbraco.Core.Persistence.Mappers.BaseMapper
+2014-10-06 11:24:45,224 [31] INFO  Umbraco.Core.PluginManager - [Thread 43] Completed resolution of types of Umbraco.Core.Persistence.Mappers.BaseMapper, found 17 (took 6ms)
+2014-10-06 11:24:45,271 [31] INFO  Umbraco.Core.PluginManager - [Thread 43] Starting resolution types of umbraco.interfaces.IDataType
+2014-10-06 11:24:45,304 [31] INFO  Umbraco.Core.PluginManager - [Thread 43] Completed resolution of types of umbraco.interfaces.IDataType, found 83 (took 32ms)
+2014-10-06 11:24:45,310 [31] INFO  Umbraco.Core.PluginManager - [Thread 43] Starting resolution types of umbraco.interfaces.ITree
+2014-10-06 11:24:45,330 [31] INFO  Umbraco.Core.PluginManager - [Thread 43] Completed resolution of types of umbraco.interfaces.ITree, found 40 (took 19ms)
+2014-10-06 11:24:45,404 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 29] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11435
+2014-10-06 11:26:24,587 [31] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 27] Content 'Chopping board' with Id '11434' has been unpublished.
+2014-10-06 11:26:24,680 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 48] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11434
+2014-10-06 11:38:48,396 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 19] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11384
+2014-10-06 11:38:48,401 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 26] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11384
+2014-10-06 11:38:48,438 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 19] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11384
+2014-10-06 11:38:48,442 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 26] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11384
+2014-10-06 11:38:48,495 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 10] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11386
+2014-10-06 11:38:48,495 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 42] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11386
+2014-10-06 11:38:48,538 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 10] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11387
+2014-10-06 11:38:48,538 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 42] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11387
+2014-10-06 11:38:48,616 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 40] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11436
+2014-10-06 11:38:48,683 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 13] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11437
+2014-10-06 11:38:48,894 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 13] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11436
+2014-10-06 11:38:48,896 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 13] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11437
+2014-10-06 11:39:00,839 [31] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 45] Content 'Chopping board' with Id '11436' has been unpublished.
+2014-10-06 11:39:00,895 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 24] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11436
+2014-10-06 11:39:03,961 [31] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 13] Content 'Knife' with Id '11437' has been unpublished.
+2014-10-06 11:39:04,015 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 43] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11437
+2014-10-06 11:39:33,718 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 45] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11384
+2014-10-06 11:39:33,720 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 39] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11384
+2014-10-06 11:39:33,768 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 45] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11384
+2014-10-06 11:39:33,769 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 39] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11384
+2014-10-06 11:39:33,809 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 45] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11386
+2014-10-06 11:39:33,812 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 39] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11386
+2014-10-06 11:39:33,850 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 45] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11387
+2014-10-06 11:39:33,858 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 39] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11387
+2014-10-06 11:39:33,884 [31] INFO  Umbraco.Core.Services.ContentService - [Thread 33] Content 'Chopping board' with Id '0' could not be published because of invalid properties.
+2014-10-06 11:39:33,946 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 20] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11438
+2014-10-06 11:39:33,947 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 20] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11439
+2014-10-06 11:39:33,970 [31] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 33] Content 'Chopping board' with Id '11438' has been published.
+2014-10-06 11:39:34,000 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 19] Field "template" is listed multiple times in the index set "ExternalIndexSet". Please ensure all names are unique, Provider=ExternalIndexer, NodeId=11438
+2014-10-06 11:39:34,033 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 14] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11438
+2014-10-06 11:39:34,036 [31] INFO  UmbracoExamine.DataServices.UmbracoLogService - [Thread 14] Field "template" is listed multiple times in the index set "InternalIndexSet". Please ensure all names are unique, Provider=InternalIndexer, NodeId=11439
+2014-10-06 11:41:12,335 [31] INFO  umbraco.BusinessLogic.Log - [Thread 6] Log scrubbed.  Removed all items older than 2014-08-07 11:41:12
+2014-10-06 11:41:12,337 [31] INFO  Umbraco.Core.UmbracoApplicationBase - [Thread 6] Application shutdown. Reason: ConfigurationChange
+2014-10-06 11:41:16,786 [9] INFO  Umbraco.Core.PluginManager - [Thread 1] Determining hash of code files on disk
+2014-10-06 11:41:16,789 [9] INFO  Umbraco.Core.PluginManager - [Thread 1] Hash determined (took 2ms)
+2014-10-06 11:41:16,796 [9] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of umbraco.interfaces.IApplicationStartupHandler
+2014-10-06 11:41:16,916 [9] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.IApplicationStartupHandler, found 19 (took 120ms)
+2014-10-06 11:41:16,918 [9] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter
+2014-10-06 11:41:16,931 [9] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter, found 12 (took 13ms)
+2014-10-06 11:41:16,931 [9] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Web.Mvc.SurfaceController
+2014-10-06 11:41:16,939 [9] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Web.Mvc.SurfaceController, found 0 (took 7ms)
+2014-10-06 11:41:16,939 [9] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Web.WebApi.UmbracoApiController
+2014-10-06 11:41:16,947 [9] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Web.WebApi.UmbracoApiController, found 3 (took 7ms)
+2014-10-06 11:41:16,947 [9] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.Media.IThumbnailProvider
+2014-10-06 11:41:16,954 [9] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.Media.IThumbnailProvider, found 3 (took 6ms)
+2014-10-06 11:41:16,954 [9] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.Media.IImageUrlProvider
+2014-10-06 11:41:16,963 [9] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.Media.IImageUrlProvider, found 1 (took 8ms)
+2014-10-06 11:41:17,027 [9] INFO  Umbraco.Web.Search.ExamineEvents - [Thread 1] Initializing Examine and binding to business logic events
+2014-10-06 11:41:17,134 [9] INFO  Umbraco.Web.Search.ExamineEvents - [Thread 1] Adding examine event handlers for index providers: 3
+2014-10-06 11:41:17,138 [9] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of umbraco.interfaces.IApplication
+2014-10-06 11:41:17,150 [9] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.IApplication, found 8 (took 12ms)
+2014-10-06 11:41:17,180 [9] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of umbraco.interfaces.ITree
+2014-10-06 11:41:17,204 [9] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.ITree, found 28 (took 23ms)
+2014-10-06 11:41:36,857 [9] INFO  umbraco.BasePages.BasePage - [Thread 11] User admin (Id: 0) logged in
+2014-10-06 11:41:36,874 [9] INFO  Umbraco.Core.PluginManager - [Thread 26] Starting resolution types of umbraco.BusinessLogic.Actions.IActionHandler
+2014-10-06 11:41:36,880 [9] INFO  Umbraco.Core.PluginManager - [Thread 26] Completed resolution of types of umbraco.BusinessLogic.Actions.IActionHandler, found 1 (took 5ms)
+2014-10-06 11:41:36,932 [9] INFO  Umbraco.Core.PluginManager - [Thread 26] Starting resolution types of umbraco.interfaces.ITree
+2014-10-06 11:41:36,951 [9] INFO  Umbraco.Core.PluginManager - [Thread 26] Completed resolution of types of umbraco.interfaces.ITree, found 40 (took 19ms)
+2014-10-06 11:41:37,762 [9] INFO  Umbraco.Core.PluginManager - [Thread 39] Starting resolution types of Umbraco.Core.Persistence.Mappers.BaseMapper
+2014-10-06 11:41:37,769 [9] INFO  Umbraco.Core.PluginManager - [Thread 39] Completed resolution of types of Umbraco.Core.Persistence.Mappers.BaseMapper, found 17 (took 6ms)
+2014-10-06 11:47:17,729 [9] INFO  umbraco.content - [Thread 22] Loading content from disk cache...
+2014-10-06 16:21:24,946 [10] INFO  Umbraco.Core.PluginManager - [Thread 1] Determining hash of code files on disk
+2014-10-06 16:21:24,959 [10] INFO  Umbraco.Core.PluginManager - [Thread 1] Hash determined (took 9ms)
+2014-10-06 16:21:24,968 [10] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of umbraco.interfaces.IApplicationStartupHandler
+2014-10-06 16:21:25,200 [10] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.IApplicationStartupHandler, found 19 (took 231ms)
+2014-10-06 16:21:25,218 [10] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter
+2014-10-06 16:21:25,232 [10] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter, found 12 (took 13ms)
+2014-10-06 16:21:25,233 [10] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Web.Mvc.SurfaceController
+2014-10-06 16:21:25,241 [10] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Web.Mvc.SurfaceController, found 0 (took 7ms)
+2014-10-06 16:21:25,242 [10] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Web.WebApi.UmbracoApiController
+2014-10-06 16:21:25,252 [10] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Web.WebApi.UmbracoApiController, found 3 (took 9ms)
+2014-10-06 16:21:25,258 [10] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.Media.IThumbnailProvider
+2014-10-06 16:21:25,268 [10] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.Media.IThumbnailProvider, found 3 (took 9ms)
+2014-10-06 16:21:25,269 [10] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.Media.IImageUrlProvider
+2014-10-06 16:21:25,283 [10] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.Media.IImageUrlProvider, found 1 (took 14ms)
+2014-10-06 16:21:25,502 [10] INFO  Umbraco.Web.Search.ExamineEvents - [Thread 1] Initializing Examine and binding to business logic events
+2014-10-06 16:21:25,814 [10] INFO  Umbraco.Web.Search.ExamineEvents - [Thread 1] Adding examine event handlers for index providers: 3
+2014-10-06 16:21:25,822 [10] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of umbraco.interfaces.IApplication
+2014-10-06 16:21:25,836 [10] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.IApplication, found 8 (took 13ms)
+2014-10-06 16:21:25,899 [10] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of umbraco.interfaces.ITree
+2014-10-06 16:21:25,942 [10] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.ITree, found 28 (took 42ms)
+2014-10-06 16:21:26,114 [10] INFO  umbraco.content - [Thread 5] Loading content from disk cache...
+2014-10-06 16:21:26,268 [10] INFO  Umbraco.Core.PluginManager - [Thread 5] Starting resolution types of Umbraco.Core.Persistence.Mappers.BaseMapper
+2014-10-06 16:21:26,278 [10] INFO  Umbraco.Core.PluginManager - [Thread 5] Completed resolution of types of Umbraco.Core.Persistence.Mappers.BaseMapper, found 17 (took 9ms)
+2014-10-06 16:21:26,481 [10] ERROR Umbraco.Core.UmbracoApplicationBase - [Thread 5] An unhandled exception occurred
+System.InvalidOperationException: The template with Id 1064 does not exist, the page cannot render
+   at Umbraco.Web.Routing.PublishedContentRequestEngine.FindTemplate()
+   at Umbraco.Web.Routing.PublishedContentRequestEngine.FindPublishedContentAndTemplate()
+   at Umbraco.Web.Routing.PublishedContentRequestEngine.PrepareRequest()
+   at Umbraco.Web.Routing.PublishedContentRequest.Prepare()
+   at Umbraco.Web.UmbracoModule.ProcessRequest(HttpContextBase httpContext)
+   at Umbraco.Web.UmbracoModule.<Init>b__7(Object sender, EventArgs e)
+   at System.Web.HttpApplication.SyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2014-10-06 16:22:28,261 [10] ERROR Umbraco.Core.UmbracoApplicationBase - [Thread 5] An unhandled exception occurred
+System.InvalidOperationException: The template with Id 1064 does not exist, the page cannot render
+   at Umbraco.Web.Routing.PublishedContentRequestEngine.FindTemplate()
+   at Umbraco.Web.Routing.PublishedContentRequestEngine.FindPublishedContentAndTemplate()
+   at Umbraco.Web.Routing.PublishedContentRequestEngine.PrepareRequest()
+   at Umbraco.Web.Routing.PublishedContentRequest.Prepare()
+   at Umbraco.Web.UmbracoModule.ProcessRequest(HttpContextBase httpContext)
+   at Umbraco.Web.UmbracoModule.<Init>b__7(Object sender, EventArgs e)
+   at System.Web.HttpApplication.SyncEventExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2014-10-06 16:22:48,627 [10] INFO  umbraco.BasePages.BasePage - [Thread 6] User admin (Id: 0) logged in
+2014-10-06 16:22:48,707 [10] INFO  Umbraco.Core.PluginManager - [Thread 7] Starting resolution types of umbraco.BusinessLogic.Actions.IActionHandler
+2014-10-06 16:22:48,715 [10] INFO  Umbraco.Core.PluginManager - [Thread 7] Completed resolution of types of umbraco.BusinessLogic.Actions.IActionHandler, found 1 (took 8ms)
+2014-10-06 16:22:48,830 [10] INFO  Umbraco.Core.PluginManager - [Thread 7] Starting resolution types of umbraco.interfaces.ITree
+2014-10-06 16:22:48,889 [10] INFO  Umbraco.Core.PluginManager - [Thread 7] Completed resolution of types of umbraco.interfaces.ITree, found 40 (took 58ms)

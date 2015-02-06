@@ -1,0 +1,76 @@
+@model NewsPagesViewModel
+@{
+    Layout = "WebPage.cshtml";
+}
+
+<div class="article article-grid grid" role="main">
+
+    <div class="section section-header">
+        <div class="wrapper-inner">
+            <div class="header">
+                <h1 class="page-heading">@Model.HeaderText</h1>
+                <h2 class="standfirst">@Html.Raw(Model.Standfirst.ConvertLineBreaksToHTML())</h2>
+
+                @if (!string.IsNullOrWhiteSpace(Model.TagLabel))
+                {
+                    <div class="results-count">
+                        <p>@Model.NewsCount news items are tagged as '@Model.TagLabel'</p>
+                        <div class="tag-content">
+                            <ul class="tag-list-alt">
+                                <li>
+                                    <a href="@Model.Url">
+                                        @Model.TagLabel
+                                        <span class="icon">
+                                            <!--[if lt IE 9]>
+                                                <img src="/images/icons/tag_cross.png" alt="Close" />
+                                            <![endif]-->
+                                            @Html.LoadSvg("/images/icons/tag_cross.svg")
+                                        </span>
+                                    </a>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                }
+
+                @if (Model.Pagination.TotalItems == 0)
+                {
+                    <p>
+                        We're sorry but we can't find any News with selected tag.
+                    </p>
+                }
+
+            </div>
+        </div>
+    </div>
+
+    <div class="section section-grid">
+        <div class="wrapper-inner">
+
+            <ul class="article-list paged-content">
+
+                @if (Model.Pagination.Page == 1 && Model.HeroNewsBox > 0)
+                {
+                    <li class="list-item hero-item">
+                        @Html.Template(Model.HeroNewsBox, new[] { "HeroNewsBox" })
+                    </li>
+                }
+
+                @foreach (var item in Model.Items)
+                {
+
+                    <li class="list-item">
+
+                        @Html.Template(item, new[] { "SummaryItem" })
+
+                    </li>
+                }
+
+            </ul>
+            @Html.Partial("_Paging", Model.Pagination)
+
+        </div>
+    </div>
+
+</div>

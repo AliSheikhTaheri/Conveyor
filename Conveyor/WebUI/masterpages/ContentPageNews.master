@@ -1,0 +1,108 @@
+@model NewsPageViewModel
+@{
+    Layout = "WebPage.cshtml";
+}
+
+<div class="article article-with-aside article-news" role="main" id="content">
+
+    <div class="wrapper-inner">
+
+        <div class="section section-header @(Model.HasHeroVideo ? "video": string.Empty)">
+
+            <div class="text-content">
+
+                @if (Model.HasVideo)
+                {
+                    <div class="alert video-alert">
+                        <span class="text">video icon</span>
+                        <span class="image">
+                            <!--[if lt IE 9]>
+                                <img src="/images/icons/camera.png" alt="Video" />
+                            <![endif]-->
+                            @Html.LoadSvg("/images/icons/camera.svg")
+                        </span>
+                    </div>
+                }
+
+                <h1 class="page-heading">@Html.Raw(Model.HeaderText.ConvertLineBreaksToHTML())</h1>
+
+                <div class="news-meta">
+                    @if (Model.HasAuthor)
+                    {
+                        <span>By @Model.Author</span>
+                    }
+
+                    @if (Model.Date != DateTime.MinValue)
+                    {
+                        <span>@Model.Date.ToString("d MMMM yy")</span>
+                    }
+                </div>
+
+                @if (Model.Tags.IsAndAny())
+                {
+                    <div class="tag-content">
+                        <ul class="tag-list-alt">
+                            @foreach (var tag in Model.Tags)
+                            {
+                                <li>
+                                    <a href="@Model.SearchPageUrl?@tag.GetQuery()">@tag.HeaderText</a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
+
+            @if (Model.HasHeroVideo)
+            {
+                <div class="video-content">
+                    @Html.EmbedVideo(Model.VideoUrl)
+                </div>
+            }
+            else
+            {
+                <div class="figure figure-content">
+                    @GlobalHelpers.DisplayImage(Model.Image, width: 300, height: 300)
+                </div>
+            }
+        </div>
+
+        <div class="section section-main-content">
+
+            <div class="text-content">
+                @Model.BodyText
+            </div>
+
+            @if (Model.MaterialsList.IsAndAny())
+            {
+                <div class="downloads">
+                    <h2 class="heading">Download recipes materials</h2>
+                    <ul class="list-download">
+                        @foreach (var item in Model.MaterialsList)
+                        {
+                            <li class="list-item">
+                                <span class="icon"></span>
+                                <div class="text">
+                                    <a href="@GlobalHelpers.DownloadMediaFileUrl(item.File)">@item.File.Name</a>
+                                    <p>@item.Description</p>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+        </div>
+
+        <div class="section aside">
+            @Html.Action("RenderSidebars", "SharedElements")
+        </div>
+
+    </div>
+
+    <div class="section article-grid section-related-resource">
+        <div class="wrapper-inner">
+            @Html.Action("RelatedNews", "ContentPageNews")
+        </div>
+    </div>
+
+</div>

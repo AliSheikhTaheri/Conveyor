@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DocumentType>
+  <Info>
+    <Name>Sidebar Folder</Name>
+    <Alias>SidebarFolder</Alias>
+    <Icon>folder-horizontal.png</Icon>
+    <Thumbnail>folder.png</Thumbnail>
+    <Description></Description>
+    <AllowAtRoot>False</AllowAtRoot>
+    <Master>Sidebar</Master>
+    <AllowedTemplates />
+    <DefaultTemplate></DefaultTemplate>
+  </Info>
+  <Structure>
+    <DocumentType>SidebarGooglePlusGuide</DocumentType>
+    <DocumentType>SidebarPartnersList</DocumentType>
+    <DocumentType>SidebarQuote</DocumentType>
+    <DocumentType>SidebarRichText</DocumentType>
+    <DocumentType>SidebarFolder</DocumentType>
+    <DocumentType>SidebarQuoteWithIcon</DocumentType>
+    <DocumentType>SidebarSocialQuote</DocumentType>
+    <DocumentType>SidebarCallToAction</DocumentType>
+    <DocumentType>SidebarSocialNetworks</DocumentType>
+    <DocumentType>SidebarNextOnlineFieldTrip</DocumentType>
+    <DocumentType>SidebarSurvey</DocumentType>
+  </Structure>
+  <GenericProperties />
+  <Tabs />
+</DocumentType>

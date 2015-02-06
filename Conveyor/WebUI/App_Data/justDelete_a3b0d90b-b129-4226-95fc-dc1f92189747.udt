@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DocumentType>
+  <Info>
+    <Name>Sidebar - Social Quote</Name>
+    <Alias>SidebarSocialQuote</Alias>
+    <Icon>universal.png</Icon>
+    <Thumbnail>folder.png</Thumbnail>
+    <Description></Description>
+    <AllowAtRoot>False</AllowAtRoot>
+    <Master>Sidebar</Master>
+    <AllowedTemplates />
+    <DefaultTemplate></DefaultTemplate>
+  </Info>
+  <Structure />
+  <GenericProperties>
+    <GenericProperty>
+      <Name>Social Network Icon</Name>
+      <Alias>socialNetworkIcon</Alias>
+      <Type>a74ea9c9-8e18-4d2a-8cf6-73c6206c5da6</Type>
+      <Definition>9a3705ad-4604-40a4-b559-b2e12fc06be7</Definition>
+      <Tab>Content</Tab>
+      <Mandatory>True</Mandatory>
+      <Validation></Validation>
+      <Description><![CDATA[]]></Description>
+    </GenericProperty>
+    <GenericProperty>
+      <Name>Body Text</Name>
+      <Alias>bodyText</Alias>
+      <Type>67db8357-ef57-493e-91ac-936d305e0f2a</Type>
+      <Definition>c6bac0dd-4ab9-45b1-8e30-e4b619ee5da3</Definition>
+      <Tab>Content</Tab>
+      <Mandatory>True</Mandatory>
+      <Validation></Validation>
+      <Description><![CDATA[]]></Description>
+    </GenericProperty>
+    <GenericProperty>
+      <Name>Link</Name>
+      <Alias>link</Alias>
+      <Type>22c6f52c-5d41-45b8-845e-c16354cfdd7b</Type>
+      <Definition>934bd123-dafb-4cc3-8762-c51114ffea4e</Definition>
+      <Tab>Content</Tab>
+      <Mandatory>False</Mandatory>
+      <Validation></Validation>
+      <Description><![CDATA[]]></Description>
+    </GenericProperty>
+  </GenericProperties>
+  <Tabs>
+    <Tab>
+      <Id>153</Id>
+      <Caption>Content</Caption>
+    </Tab>
+  </Tabs>
+</DocumentType>

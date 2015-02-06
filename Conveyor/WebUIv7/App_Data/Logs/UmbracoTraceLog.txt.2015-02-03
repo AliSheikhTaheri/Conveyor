@@ -1,0 +1,144 @@
+﻿2015-02-03 12:15:04,940 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Determining hash of code files on disk
+2015-02-03 12:15:04,952 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Hash determined (took 8ms)
+2015-02-03 12:15:04,958 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of umbraco.interfaces.IApplicationStartupHandler
+2015-02-03 12:15:05,123 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.IApplicationStartupHandler, found 37 (took 165ms)
+2015-02-03 12:15:05,209 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter
+2015-02-03 12:15:05,210 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter, found 0 (took 0ms)
+2015-02-03 12:15:05,210 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyValueConverter
+2015-02-03 12:15:05,212 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyValueConverter, found 16 (took 2ms)
+2015-02-03 12:15:05,232 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Web.Mvc.SurfaceController
+2015-02-03 12:15:05,233 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Web.Mvc.SurfaceController, found 4 (took 1ms)
+2015-02-03 12:15:05,233 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Web.WebApi.UmbracoApiController
+2015-02-03 12:15:05,238 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Web.WebApi.UmbracoApiController, found 36 (took 4ms)
+2015-02-03 12:15:05,284 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.Media.IThumbnailProvider
+2015-02-03 12:15:05,285 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.Media.IThumbnailProvider, found 3 (took 0ms)
+2015-02-03 12:15:05,285 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.Media.IImageUrlProvider
+2015-02-03 12:15:05,285 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.Media.IImageUrlProvider, found 1 (took 0ms)
+2015-02-03 12:15:06,274 [8] INFO  Umbraco.Web.Search.ExamineEvents - [Thread 1] Initializing Examine and binding to business logic events
+2015-02-03 12:15:06,455 [8] INFO  Umbraco.Web.Search.ExamineEvents - [Thread 1] Adding examine event handlers for index providers: 3
+2015-02-03 12:15:07,487 [8] INFO  Umbraco.Web.UmbracoModule - [Thread 9] Setting OriginalRequestUrl: localhost:53137/umbraco
+2015-02-03 12:15:07,557 [8] INFO  umbraco.content - [Thread 9] Loading content from disk cache...
+2015-02-03 12:15:07,672 [8] INFO  Umbraco.Core.PluginManager - [Thread 9] Starting resolution types of Umbraco.Core.Persistence.Mappers.BaseMapper
+2015-02-03 12:15:07,674 [8] INFO  Umbraco.Core.PluginManager - [Thread 9] Completed resolution of types of Umbraco.Core.Persistence.Mappers.BaseMapper, found 23 (took 1ms)
+2015-02-03 12:15:08,189 [8] INFO  Umbraco.Core.PluginManager - [Thread 9] Starting resolution types of Umbraco.Core.PropertyEditors.IParameterEditor
+2015-02-03 12:15:08,190 [8] INFO  Umbraco.Core.PluginManager - [Thread 9] Completed resolution of types of Umbraco.Core.PropertyEditors.IParameterEditor, found 44 (took 0ms)
+2015-02-03 12:16:08,820 [8] INFO  umbraco.BusinessLogic.Log - [Thread 9] Log scrubbed.  Removed all items older than 2014-12-05 12:16:08
+2015-02-03 12:17:35,216 [8] INFO  umbraco.BusinessLogic.Log - [Thread 14] Log scrubbed.  Removed all items older than 2014-12-05 12:17:35
+2015-02-03 12:19:01,630 [8] INFO  umbraco.BusinessLogic.Log - [Thread 15] Log scrubbed.  Removed all items older than 2014-12-05 12:19:01
+2015-02-03 12:20:28,042 [8] INFO  umbraco.BusinessLogic.Log - [Thread 19] Log scrubbed.  Removed all items older than 2014-12-05 12:20:28
+2015-02-03 12:21:54,449 [8] INFO  umbraco.BusinessLogic.Log - [Thread 19] Log scrubbed.  Removed all items older than 2014-12-05 12:21:54
+2015-02-03 12:23:20,866 [8] INFO  umbraco.BusinessLogic.Log - [Thread 17] Log scrubbed.  Removed all items older than 2014-12-05 12:23:20
+2015-02-03 12:24:47,277 [8] INFO  umbraco.BusinessLogic.Log - [Thread 23] Log scrubbed.  Removed all items older than 2014-12-05 12:24:47
+2015-02-03 12:26:13,691 [8] INFO  umbraco.BusinessLogic.Log - [Thread 20] Log scrubbed.  Removed all items older than 2014-12-05 12:26:13
+2015-02-03 12:26:50,416 [8] INFO  Umbraco.Web.Security.WebSecurity - [Thread 28] User Id: 0 logged in
+2015-02-03 12:26:50,623 [8] INFO  Umbraco.Core.PluginManager - [Thread 28] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-02-03 12:26:50,624 [8] INFO  Umbraco.Core.PluginManager - [Thread 28] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-02-03 12:26:50,766 [8] INFO  Umbraco.Core.PluginManager - [Thread 26] Starting resolution types of umbraco.interfaces.IApplication
+2015-02-03 12:26:50,769 [8] INFO  Umbraco.Core.PluginManager - [Thread 26] Completed resolution of types of umbraco.interfaces.IApplication, found 8 (took 2ms)
+2015-02-03 12:26:50,875 [8] INFO  Umbraco.Core.PluginManager - [Thread 28] Starting resolution types of umbraco.interfaces.ITree
+2015-02-03 12:26:50,877 [8] INFO  Umbraco.Core.PluginManager - [Thread 28] Completed resolution of types of umbraco.interfaces.ITree, found 36 (took 1ms)
+2015-02-03 12:26:50,892 [8] WARN  Umbraco.Core.Services.ApplicationTreeService - [Thread 28] The tree definition: <add initialize="true" sortOrder="0" alias="ASTContentPacakge" application="ContentPackage" title="AST Content Package" iconClosed=".sprTreeFolder" iconOpen=".sprTreeFolder_o" type="AST.ContentPackage.ContentPackageTree, AST.ContentPackage" /> could not be resolved to a .Net object type
+2015-02-03 12:26:50,893 [8] WARN  Umbraco.Core.Services.ApplicationTreeService - [Thread 28] The tree definition: <add initialize="true" sortOrder="0" alias="ContentPackageTree" application="ContentPackage" title="AST Content Package" iconClosed="icon-doc" iconOpen="icon-folder-open" type="AST.ContentPackagev7.Controllers.ContentPackageTreeController, AST.ContentPackagev7" /> could not be resolved to a .Net object type
+2015-02-03 12:26:50,893 [8] WARN  Umbraco.Core.Services.ApplicationTreeService - [Thread 28] The tree definition: <add initialize="true" sortOrder="0" alias="ASTContentPacakge" application="ContentPackage" title="AST Content Package" iconClosed=".sprTreeFolder" iconOpen=".sprTreeFolder_o" type="AST.ContentPackage.ContentPackageTree, AST.ContentPackagev7" /> could not be resolved to a .Net object type
+2015-02-03 12:26:50,893 [8] WARN  Umbraco.Core.Services.ApplicationTreeService - [Thread 28] The tree definition: <add initialize="true" sortOrder="0" alias="ASTContentPacakge" application="ContentPackage" title="AST Content Package" iconClosed=".sprTreeFolder" iconOpen=".sprTreeFolder_o" type="AST.ContentPackagev7.ContentPackageTree, AST.ContentPackagev7" /> could not be resolved to a .Net object type
+2015-02-03 12:26:50,893 [8] WARN  Umbraco.Core.Services.ApplicationTreeService - [Thread 28] The tree definition: <add initialize="true" sortOrder="0" alias="ASTContentPacakge" application="ContentPackage" title="AST Content Package" iconClosed=".sprTreeFolder" iconOpen=".sprTreeFolder_o" type="AST.ContentPackagev7.BackOffice.ContentPackageTree, AST.ContentPackagev7" /> could not be resolved to a .Net object type
+2015-02-03 12:26:50,894 [8] WARN  Umbraco.Core.Services.ApplicationTreeService - [Thread 28] The tree definition: <add initialize="true" sortOrder="0" alias="ASTContentConveyor" application="ContentConveyor" title="AST Content Conveyor" iconClosed=".sprTreeFolder" iconOpen=".sprTreeFolder_o" type="AST.ContentConveyor7.BackOffice.ContentPackageTree, AST.ContentConveyorv7" /> could not be resolved to a .Net object type
+2015-02-03 12:26:50,895 [8] WARN  Umbraco.Core.Services.ApplicationTreeService - [Thread 28] The tree definition: <add initialize="true" sortOrder="0" alias="ASTContentConveyor" application="ContentConveyor" title="AST Content Conveyor" iconClosed="icon-doc" iconOpen=".sprTreeFolder_o" type="AST.ContentConveyor7.BackOffice.ContentConveyorTree, AST.ContentConveyorv7" /> could not be resolved to a .Net object type
+2015-02-03 12:26:50,924 [8] INFO  Umbraco.Core.PluginManager - [Thread 28] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-02-03 12:26:50,925 [8] INFO  Umbraco.Core.PluginManager - [Thread 28] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-02-03 12:26:50,928 [8] INFO  Umbraco.Core.PluginManager - [Thread 28] Starting resolution types of umbraco.interfaces.ITree
+2015-02-03 12:26:50,929 [8] INFO  Umbraco.Core.PluginManager - [Thread 28] Completed resolution of types of umbraco.interfaces.ITree, found 20 (took 0ms)
+2015-02-03 12:27:40,105 [8] INFO  umbraco.BusinessLogic.Log - [Thread 28] Log scrubbed.  Removed all items older than 2014-12-05 12:27:40
+2015-02-03 12:29:06,510 [8] INFO  umbraco.BusinessLogic.Log - [Thread 30] Log scrubbed.  Removed all items older than 2014-12-05 12:29:06
+2015-02-03 12:30:32,916 [8] INFO  umbraco.BusinessLogic.Log - [Thread 20] Log scrubbed.  Removed all items older than 2014-12-05 12:30:32
+2015-02-03 12:31:59,323 [8] INFO  umbraco.BusinessLogic.Log - [Thread 20] Log scrubbed.  Removed all items older than 2014-12-05 12:31:59
+2015-02-03 12:33:25,731 [8] INFO  umbraco.BusinessLogic.Log - [Thread 21] Log scrubbed.  Removed all items older than 2014-12-05 12:33:25
+2015-02-03 12:34:52,146 [8] INFO  umbraco.BusinessLogic.Log - [Thread 5] Log scrubbed.  Removed all items older than 2014-12-05 12:34:52
+2015-02-03 12:36:18,552 [8] INFO  umbraco.BusinessLogic.Log - [Thread 18] Log scrubbed.  Removed all items older than 2014-12-05 12:36:18
+2015-02-03 12:37:44,952 [8] INFO  umbraco.BusinessLogic.Log - [Thread 14] Log scrubbed.  Removed all items older than 2014-12-05 12:37:44
+2015-02-03 12:38:37,480 [8] INFO  Umbraco.Core.PluginManager - [Thread 14] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-02-03 12:38:37,480 [8] INFO  Umbraco.Core.PluginManager - [Thread 14] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-02-03 12:39:11,366 [8] INFO  umbraco.BusinessLogic.Log - [Thread 10] Log scrubbed.  Removed all items older than 2014-12-05 12:39:11
+2015-02-03 12:39:25,507 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 18] Content 'Overflow' with Id '1155' has been unpublished.
+2015-02-03 12:39:25,831 [8] INFO  Umbraco.Core.PluginManager - [Thread 18] Starting resolution types of umbraco.interfaces.ICacheRefresher
+2015-02-03 12:39:25,854 [8] INFO  Umbraco.Core.PluginManager - [Thread 18] Completed resolution of types of umbraco.interfaces.ICacheRefresher, found 20 (took 22ms)
+2015-02-03 12:39:26,382 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 18] Content 'Contact' with Id '1161' has been unpublished.
+2015-02-03 12:39:26,459 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 18] Content 'Text' with Id '1160' has been unpublished.
+2015-02-03 12:39:26,491 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 18] Content 'Pick me!' with Id '1162' has been unpublished.
+2015-02-03 12:39:26,614 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 18] Content 'Another Feature' with Id '1159' has been unpublished.
+2015-02-03 12:39:26,667 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 18] Content 'Feature' with Id '1158' has been unpublished.
+2015-02-03 12:39:34,063 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 11] Content 'Other home for test' with Id '1156' has been unpublished.
+2015-02-03 12:40:15,651 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 15] Content 'Overflow' with Id '0' has been published.
+2015-02-03 12:40:16,021 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 15] Content 'Other home for test' with Id '0' has been published.
+2015-02-03 12:40:16,617 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 15] Content 'Feature' with Id '0' has been published.
+2015-02-03 12:40:17,078 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 15] Content 'Another Feature' with Id '0' has been published.
+2015-02-03 12:40:17,421 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 15] Content 'Text' with Id '0' has been published.
+2015-02-03 12:40:17,723 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 15] Content 'Contact' with Id '0' has been published.
+2015-02-03 12:40:18,224 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 15] Content 'Pick me!' with Id '0' has been published.
+2015-02-03 12:40:19,187 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 15] Content 'Overflow' with Id '1164' has been published.
+2015-02-03 12:40:19,523 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 15] Content 'Feature' with Id '1167' has been published.
+2015-02-03 12:40:19,875 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 15] Content 'Another Feature' with Id '1168' has been published.
+2015-02-03 12:40:20,281 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 15] Content 'Text' with Id '1169' has been published.
+2015-02-03 12:40:20,770 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 15] Content 'Contact' with Id '1170' has been published.
+2015-02-03 12:40:21,008 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 15] Content 'Pick me!' with Id '1171' has been published.
+2015-02-03 12:40:21,193 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 15] Content 'Other home for test' with Id '1165' has been published.
+2015-02-03 12:40:37,777 [8] INFO  umbraco.BusinessLogic.Log - [Thread 33] Log scrubbed.  Removed all items older than 2014-12-05 12:40:37
+2015-02-03 12:41:04,080 [8] INFO  umbraco.content - [Thread 5] Loading content from database...
+2015-02-03 12:42:04,187 [8] INFO  umbraco.BusinessLogic.Log - [Thread 14] Log scrubbed.  Removed all items older than 2014-12-05 12:42:04
+2015-02-03 12:43:30,604 [8] INFO  umbraco.BusinessLogic.Log - [Thread 20] Log scrubbed.  Removed all items older than 2014-12-05 12:43:30
+2015-02-03 12:44:57,017 [8] INFO  umbraco.BusinessLogic.Log - [Thread 5] Log scrubbed.  Removed all items older than 2014-12-05 12:44:57
+2015-02-03 12:46:23,424 [8] INFO  umbraco.BusinessLogic.Log - [Thread 20] Log scrubbed.  Removed all items older than 2014-12-05 12:46:23
+2015-02-03 12:47:49,824 [8] INFO  umbraco.BusinessLogic.Log - [Thread 18] Log scrubbed.  Removed all items older than 2014-12-05 12:47:49
+2015-02-03 12:49:16,233 [8] INFO  umbraco.BusinessLogic.Log - [Thread 32] Log scrubbed.  Removed all items older than 2014-12-05 12:49:16
+2015-02-03 12:50:42,640 [8] INFO  umbraco.BusinessLogic.Log - [Thread 21] Log scrubbed.  Removed all items older than 2014-12-05 12:50:42
+2015-02-03 12:52:09,040 [8] INFO  umbraco.BusinessLogic.Log - [Thread 23] Log scrubbed.  Removed all items older than 2014-12-05 12:52:09
+2015-02-03 12:53:35,441 [8] INFO  umbraco.BusinessLogic.Log - [Thread 21] Log scrubbed.  Removed all items older than 2014-12-05 12:53:35
+2015-02-03 12:55:01,849 [8] INFO  umbraco.BusinessLogic.Log - [Thread 14] Log scrubbed.  Removed all items older than 2014-12-05 12:55:01
+2015-02-03 12:56:28,252 [8] INFO  umbraco.BusinessLogic.Log - [Thread 10] Log scrubbed.  Removed all items older than 2014-12-05 12:56:28
+2015-02-03 12:57:54,667 [8] INFO  umbraco.BusinessLogic.Log - [Thread 23] Log scrubbed.  Removed all items older than 2014-12-05 12:57:54
+2015-02-03 12:59:21,080 [8] INFO  umbraco.BusinessLogic.Log - [Thread 21] Log scrubbed.  Removed all items older than 2014-12-05 12:59:21
+2015-02-03 13:00:47,500 [8] INFO  umbraco.BusinessLogic.Log - [Thread 24] Log scrubbed.  Removed all items older than 2014-12-05 13:00:47
+2015-02-03 13:02:13,905 [8] INFO  umbraco.BusinessLogic.Log - [Thread 14] Log scrubbed.  Removed all items older than 2014-12-05 13:02:13
+2015-02-03 13:03:40,310 [8] INFO  umbraco.BusinessLogic.Log - [Thread 14] Log scrubbed.  Removed all items older than 2014-12-05 13:03:40
+2015-02-03 13:05:06,719 [8] INFO  umbraco.BusinessLogic.Log - [Thread 10] Log scrubbed.  Removed all items older than 2014-12-05 13:05:06
+2015-02-03 13:06:33,127 [8] INFO  umbraco.BusinessLogic.Log - [Thread 10] Log scrubbed.  Removed all items older than 2014-12-05 13:06:33
+2015-02-03 13:07:59,545 [8] INFO  umbraco.BusinessLogic.Log - [Thread 24] Log scrubbed.  Removed all items older than 2014-12-05 13:07:59
+2015-02-03 13:09:25,961 [8] INFO  umbraco.BusinessLogic.Log - [Thread 24] Log scrubbed.  Removed all items older than 2014-12-05 13:09:25
+2015-02-03 13:10:52,370 [8] INFO  umbraco.BusinessLogic.Log - [Thread 23] Log scrubbed.  Removed all items older than 2014-12-05 13:10:52
+2015-02-03 13:11:50,219 [8] INFO  umbraco.BusinessLogic.Log - [Thread 22] Log scrubbed.  Removed all items older than 2014-12-05 13:11:50
+2015-02-03 13:13:16,632 [8] INFO  umbraco.BusinessLogic.Log - [Thread 17] Log scrubbed.  Removed all items older than 2014-12-05 13:13:16
+2015-02-03 13:14:43,032 [8] INFO  umbraco.BusinessLogic.Log - [Thread 26] Log scrubbed.  Removed all items older than 2014-12-05 13:14:43
+2015-02-03 13:16:09,441 [8] INFO  umbraco.BusinessLogic.Log - [Thread 27] Log scrubbed.  Removed all items older than 2014-12-05 13:16:09
+2015-02-03 13:17:35,851 [8] INFO  umbraco.BusinessLogic.Log - [Thread 24] Log scrubbed.  Removed all items older than 2014-12-05 13:17:35
+2015-02-03 13:19:02,266 [8] INFO  umbraco.BusinessLogic.Log - [Thread 23] Log scrubbed.  Removed all items older than 2014-12-05 13:19:02
+2015-02-03 13:20:28,687 [8] INFO  umbraco.BusinessLogic.Log - [Thread 23] Log scrubbed.  Removed all items older than 2014-12-05 13:20:28
+2015-02-03 13:21:55,093 [8] INFO  umbraco.BusinessLogic.Log - [Thread 26] Log scrubbed.  Removed all items older than 2014-12-05 13:21:55
+2015-02-03 13:23:21,516 [8] INFO  umbraco.BusinessLogic.Log - [Thread 27] Log scrubbed.  Removed all items older than 2014-12-05 13:23:21
+2015-02-03 13:24:47,926 [8] INFO  umbraco.BusinessLogic.Log - [Thread 32] Log scrubbed.  Removed all items older than 2014-12-05 13:24:47
+2015-02-03 13:26:14,329 [8] INFO  umbraco.BusinessLogic.Log - [Thread 25] Log scrubbed.  Removed all items older than 2014-12-05 13:26:14
+2015-02-03 13:27:40,739 [8] INFO  umbraco.BusinessLogic.Log - [Thread 21] Log scrubbed.  Removed all items older than 2014-12-05 13:27:40
+2015-02-03 13:29:07,145 [8] INFO  umbraco.BusinessLogic.Log - [Thread 21] Log scrubbed.  Removed all items older than 2014-12-05 13:29:07
+2015-02-03 13:30:15,906 [8] INFO  Umbraco.Web.Security.WebSecurity - [Thread 24] User Id: 0 logged in
+2015-02-03 13:30:15,922 [8] INFO  Umbraco.Core.PluginManager - [Thread 27] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-02-03 13:30:15,922 [8] INFO  Umbraco.Core.PluginManager - [Thread 27] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-02-03 13:30:33,553 [8] INFO  umbraco.BusinessLogic.Log - [Thread 25] Log scrubbed.  Removed all items older than 2014-12-05 13:30:33
+2015-02-03 13:31:59,956 [8] INFO  umbraco.BusinessLogic.Log - [Thread 26] Log scrubbed.  Removed all items older than 2014-12-05 13:31:59
+2015-02-03 13:33:26,369 [8] INFO  umbraco.BusinessLogic.Log - [Thread 24] Log scrubbed.  Removed all items older than 2014-12-05 13:33:26
+2015-02-03 13:34:52,796 [8] INFO  umbraco.BusinessLogic.Log - [Thread 26] Log scrubbed.  Removed all items older than 2014-12-05 13:34:52
+2015-02-03 13:36:19,210 [8] INFO  umbraco.BusinessLogic.Log - [Thread 24] Log scrubbed.  Removed all items older than 2014-12-05 13:36:19
+2015-02-03 13:37:45,615 [8] INFO  umbraco.BusinessLogic.Log - [Thread 26] Log scrubbed.  Removed all items older than 2014-12-05 13:37:45
+2015-02-03 13:39:12,023 [8] INFO  umbraco.BusinessLogic.Log - [Thread 14] Log scrubbed.  Removed all items older than 2014-12-05 13:39:12
+2015-02-03 13:40:38,428 [8] INFO  umbraco.BusinessLogic.Log - [Thread 23] Log scrubbed.  Removed all items older than 2014-12-05 13:40:38
+2015-02-03 13:42:04,835 [8] INFO  umbraco.BusinessLogic.Log - [Thread 21] Log scrubbed.  Removed all items older than 2014-12-05 13:42:04
+2015-02-03 13:43:31,257 [8] INFO  umbraco.BusinessLogic.Log - [Thread 22] Log scrubbed.  Removed all items older than 2014-12-05 13:43:31
+2015-02-03 13:44:57,671 [8] INFO  umbraco.BusinessLogic.Log - [Thread 26] Log scrubbed.  Removed all items older than 2014-12-05 13:44:57
+2015-02-03 13:46:24,079 [8] INFO  umbraco.BusinessLogic.Log - [Thread 21] Log scrubbed.  Removed all items older than 2014-12-05 13:46:24
+2015-02-03 13:47:50,481 [8] INFO  umbraco.BusinessLogic.Log - [Thread 32] Log scrubbed.  Removed all items older than 2014-12-05 13:47:50
+2015-02-03 13:49:16,892 [8] INFO  umbraco.BusinessLogic.Log - [Thread 27] Log scrubbed.  Removed all items older than 2014-12-05 13:49:16
+2015-02-03 13:50:43,301 [8] INFO  umbraco.BusinessLogic.Log - [Thread 21] Log scrubbed.  Removed all items older than 2014-12-05 13:50:43
+2015-02-03 13:52:09,705 [8] INFO  umbraco.BusinessLogic.Log - [Thread 26] Log scrubbed.  Removed all items older than 2014-12-05 13:52:09
+2015-02-03 13:53:36,112 [8] INFO  umbraco.BusinessLogic.Log - [Thread 25] Log scrubbed.  Removed all items older than 2014-12-05 13:53:36
+2015-02-03 13:55:02,519 [8] INFO  umbraco.BusinessLogic.Log - [Thread 21] Log scrubbed.  Removed all items older than 2014-12-05 13:55:02
+2015-02-03 13:56:28,928 [8] INFO  umbraco.BusinessLogic.Log - [Thread 14] Log scrubbed.  Removed all items older than 2014-12-05 13:56:28
+2015-02-03 13:57:55,342 [8] INFO  umbraco.BusinessLogic.Log - [Thread 21] Log scrubbed.  Removed all items older than 2014-12-05 13:57:55
+2015-02-03 13:59:21,753 [8] INFO  umbraco.BusinessLogic.Log - [Thread 27] Log scrubbed.  Removed all items older than 2014-12-05 13:59:21

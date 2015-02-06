@@ -1,0 +1,76 @@
+﻿2015-02-01 00:00:46,882 [32] INFO  umbraco.BusinessLogic.Log - [Thread 23] Log scrubbed.  Removed all items older than 2014-12-03 00:00:46
+2015-02-01 00:02:13,295 [32] INFO  umbraco.BusinessLogic.Log - [Thread 7] Log scrubbed.  Removed all items older than 2014-12-03 00:02:13
+2015-02-01 00:03:39,706 [32] INFO  umbraco.BusinessLogic.Log - [Thread 5] Log scrubbed.  Removed all items older than 2014-12-03 00:03:39
+2015-02-01 19:28:04,034 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Determining hash of code files on disk
+2015-02-01 19:28:04,042 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Hash determined (took 5ms)
+2015-02-01 19:28:04,055 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of umbraco.interfaces.IApplicationStartupHandler
+2015-02-01 19:28:04,304 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of umbraco.interfaces.IApplicationStartupHandler, found 37 (took 247ms)
+2015-02-01 19:28:04,374 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter
+2015-02-01 19:28:04,386 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter, found 0 (took 11ms)
+2015-02-01 19:28:04,387 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.PropertyEditors.IPropertyValueConverter
+2015-02-01 19:28:04,395 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.PropertyEditors.IPropertyValueConverter, found 16 (took 8ms)
+2015-02-01 19:28:04,417 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Web.Mvc.SurfaceController
+2015-02-01 19:28:04,422 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Web.Mvc.SurfaceController, found 4 (took 5ms)
+2015-02-01 19:28:04,422 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Web.WebApi.UmbracoApiController
+2015-02-01 19:28:04,431 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Web.WebApi.UmbracoApiController, found 36 (took 8ms)
+2015-02-01 19:28:04,472 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.Media.IThumbnailProvider
+2015-02-01 19:28:04,480 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.Media.IThumbnailProvider, found 3 (took 8ms)
+2015-02-01 19:28:04,480 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Starting resolution types of Umbraco.Core.Media.IImageUrlProvider
+2015-02-01 19:28:04,488 [8] INFO  Umbraco.Core.PluginManager - [Thread 1] Completed resolution of types of Umbraco.Core.Media.IImageUrlProvider, found 1 (took 7ms)
+2015-02-01 19:28:05,335 [8] INFO  Umbraco.Web.Search.ExamineEvents - [Thread 1] Initializing Examine and binding to business logic events
+2015-02-01 19:28:05,505 [8] INFO  Umbraco.Web.Search.ExamineEvents - [Thread 1] Adding examine event handlers for index providers: 3
+2015-02-01 19:28:05,866 [8] INFO  Umbraco.Web.UmbracoModule - [Thread 9] Setting OriginalRequestUrl: localhost:53137/umbraco
+2015-02-01 19:28:05,938 [8] INFO  umbraco.content - [Thread 9] Loading content from disk cache...
+2015-02-01 19:28:06,051 [8] INFO  Umbraco.Core.PluginManager - [Thread 9] Starting resolution types of Umbraco.Core.Persistence.Mappers.BaseMapper
+2015-02-01 19:28:06,059 [8] INFO  Umbraco.Core.PluginManager - [Thread 9] Completed resolution of types of Umbraco.Core.Persistence.Mappers.BaseMapper, found 23 (took 7ms)
+2015-02-01 19:28:06,553 [8] INFO  Umbraco.Core.PluginManager - [Thread 9] Starting resolution types of Umbraco.Core.PropertyEditors.IParameterEditor
+2015-02-01 19:28:06,568 [8] INFO  Umbraco.Core.PluginManager - [Thread 9] Completed resolution of types of Umbraco.Core.PropertyEditors.IParameterEditor, found 44 (took 15ms)
+2015-02-01 19:28:14,403 [8] INFO  Umbraco.Web.Security.WebSecurity - [Thread 10] User Id: 0 logged in
+2015-02-01 19:28:14,521 [8] INFO  Umbraco.Core.PluginManager - [Thread 10] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-02-01 19:28:14,526 [8] INFO  Umbraco.Core.PluginManager - [Thread 10] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 5ms)
+2015-02-01 19:28:14,609 [8] INFO  Umbraco.Core.PluginManager - [Thread 10] Starting resolution types of umbraco.interfaces.IApplication
+2015-02-01 19:28:14,629 [8] INFO  Umbraco.Core.PluginManager - [Thread 10] Completed resolution of types of umbraco.interfaces.IApplication, found 8 (took 19ms)
+2015-02-01 19:28:14,642 [8] INFO  Umbraco.Core.PluginManager - [Thread 12] Starting resolution types of umbraco.interfaces.ITree
+2015-02-01 19:28:14,668 [8] INFO  Umbraco.Core.PluginManager - [Thread 12] Completed resolution of types of umbraco.interfaces.ITree, found 36 (took 25ms)
+2015-02-01 19:28:14,701 [8] WARN  Umbraco.Core.Services.ApplicationTreeService - [Thread 12] The tree definition: <add initialize="true" sortOrder="0" alias="ASTContentPacakge" application="ContentPackage" title="AST Content Package" iconClosed=".sprTreeFolder" iconOpen=".sprTreeFolder_o" type="AST.ContentPackage.ContentPackageTree, AST.ContentPackage" /> could not be resolved to a .Net object type
+2015-02-01 19:28:14,702 [8] WARN  Umbraco.Core.Services.ApplicationTreeService - [Thread 12] The tree definition: <add initialize="true" sortOrder="0" alias="ContentPackageTree" application="ContentPackage" title="AST Content Package" iconClosed="icon-doc" iconOpen="icon-folder-open" type="AST.ContentPackagev7.Controllers.ContentPackageTreeController, AST.ContentPackagev7" /> could not be resolved to a .Net object type
+2015-02-01 19:28:14,702 [8] WARN  Umbraco.Core.Services.ApplicationTreeService - [Thread 12] The tree definition: <add initialize="true" sortOrder="0" alias="ASTContentPacakge" application="ContentPackage" title="AST Content Package" iconClosed=".sprTreeFolder" iconOpen=".sprTreeFolder_o" type="AST.ContentPackage.ContentPackageTree, AST.ContentPackagev7" /> could not be resolved to a .Net object type
+2015-02-01 19:28:14,702 [8] WARN  Umbraco.Core.Services.ApplicationTreeService - [Thread 12] The tree definition: <add initialize="true" sortOrder="0" alias="ASTContentPacakge" application="ContentPackage" title="AST Content Package" iconClosed=".sprTreeFolder" iconOpen=".sprTreeFolder_o" type="AST.ContentPackagev7.ContentPackageTree, AST.ContentPackagev7" /> could not be resolved to a .Net object type
+2015-02-01 19:28:14,702 [8] WARN  Umbraco.Core.Services.ApplicationTreeService - [Thread 12] The tree definition: <add initialize="true" sortOrder="0" alias="ASTContentPacakge" application="ContentPackage" title="AST Content Package" iconClosed=".sprTreeFolder" iconOpen=".sprTreeFolder_o" type="AST.ContentPackagev7.BackOffice.ContentPackageTree, AST.ContentPackagev7" /> could not be resolved to a .Net object type
+2015-02-01 19:28:14,704 [8] WARN  Umbraco.Core.Services.ApplicationTreeService - [Thread 12] The tree definition: <add initialize="true" sortOrder="0" alias="ASTContentConveyor" application="ContentConveyor" title="AST Content Conveyor" iconClosed=".sprTreeFolder" iconOpen=".sprTreeFolder_o" type="AST.ContentConveyor7.BackOffice.ContentPackageTree, AST.ContentConveyorv7" /> could not be resolved to a .Net object type
+2015-02-01 19:28:14,704 [8] WARN  Umbraco.Core.Services.ApplicationTreeService - [Thread 12] The tree definition: <add initialize="true" sortOrder="0" alias="ASTContentConveyor" application="ContentConveyor" title="AST Content Conveyor" iconClosed="icon-doc" iconOpen=".sprTreeFolder_o" type="AST.ContentConveyor7.BackOffice.ContentConveyorTree, AST.ContentConveyorv7" /> could not be resolved to a .Net object type
+2015-02-01 19:28:14,710 [8] INFO  Umbraco.Core.PluginManager - [Thread 12] Starting resolution types of Umbraco.Web.Trees.TreeController
+2015-02-01 19:28:14,710 [8] INFO  Umbraco.Core.PluginManager - [Thread 12] Completed resolution of types of Umbraco.Web.Trees.TreeController, found 4 (took 0ms)
+2015-02-01 19:28:14,712 [8] INFO  Umbraco.Core.PluginManager - [Thread 12] Starting resolution types of umbraco.interfaces.ITree
+2015-02-01 19:28:14,737 [8] INFO  Umbraco.Core.PluginManager - [Thread 12] Completed resolution of types of umbraco.interfaces.ITree, found 20 (took 25ms)
+2015-02-01 19:29:08,000 [8] INFO  umbraco.BusinessLogic.Log - [Thread 13] Log scrubbed.  Removed all items older than 2014-12-03 19:29:07
+2015-02-01 19:29:50,418 [8] WARN  Umbraco.Web.Routing.DefaultUrlProvider - [Thread 9] Couldn't find any page with nodeId=1155. This is most likely caused by the page not being published.
+2015-02-01 19:29:54,646 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 10] Content 'Overflow' with Id '1155' has been unpublished.
+2015-02-01 19:29:54,923 [8] INFO  Umbraco.Core.PluginManager - [Thread 10] Starting resolution types of umbraco.interfaces.ICacheRefresher
+2015-02-01 19:29:54,973 [8] INFO  Umbraco.Core.PluginManager - [Thread 10] Completed resolution of types of umbraco.interfaces.ICacheRefresher, found 20 (took 50ms)
+2015-02-01 19:29:55,557 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 10] Content 'Contact' with Id '1161' has been unpublished.
+2015-02-01 19:29:55,622 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 10] Content 'Text' with Id '1160' has been unpublished.
+2015-02-01 19:29:55,726 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 10] Content 'Pick me!' with Id '1162' has been unpublished.
+2015-02-01 19:29:55,790 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 10] Content 'Another Feature' with Id '1159' has been unpublished.
+2015-02-01 19:29:55,916 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 10] Content 'Feature' with Id '1158' has been unpublished.
+2015-02-01 19:29:57,407 [8] WARN  Umbraco.Web.Routing.DefaultUrlProvider - [Thread 17] Couldn't find any page with nodeId=1156. This is most likely caused by the page not being published.
+2015-02-01 19:30:00,796 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 5] Content 'Other home for test' with Id '1156' has been unpublished.
+2015-02-01 19:30:21,518 [8] INFO  umbraco.content - [Thread 10] Loading content from database...
+2015-02-01 19:30:24,649 [8] WARN  Umbraco.Web.UmbracoModule - [Thread 17] Umbraco has no content
+2015-02-01 19:30:34,388 [8] INFO  umbraco.BusinessLogic.Log - [Thread 17] Log scrubbed.  Removed all items older than 2014-12-03 19:30:34
+2015-02-01 19:30:45,965 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 13] Content 'Overflow' with Id '0' has been published.
+2015-02-01 19:30:46,246 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 13] Content 'Other home for test' with Id '0' has been published.
+2015-02-01 19:30:46,865 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 13] Content 'Feature' with Id '0' has been published.
+2015-02-01 19:30:47,215 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 13] Content 'Another Feature' with Id '0' has been published.
+2015-02-01 19:30:47,500 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 13] Content 'Text' with Id '0' has been published.
+2015-02-01 19:30:47,793 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 13] Content 'Contact' with Id '0' has been published.
+2015-02-01 19:30:48,108 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 13] Content 'Pick me!' with Id '0' has been published.
+2015-02-01 19:30:48,671 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 13] Content 'Overflow' with Id '1164' has been published.
+2015-02-01 19:30:48,988 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 13] Content 'Feature' with Id '1166' has been published.
+2015-02-01 19:30:49,196 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 13] Content 'Another Feature' with Id '1167' has been published.
+2015-02-01 19:30:49,526 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 13] Content 'Text' with Id '1168' has been published.
+2015-02-01 19:30:49,989 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 13] Content 'Contact' with Id '1169' has been published.
+2015-02-01 19:30:50,203 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 13] Content 'Pick me!' with Id '1170' has been published.
+2015-02-01 19:30:50,379 [8] INFO  Umbraco.Core.Publishing.PublishingStrategy - [Thread 13] Content 'Other home for test' with Id '1165' has been published.
+2015-02-01 19:31:08,979 [8] INFO  umbraco.content - [Thread 19] Loading content from database...
+2015-02-01 19:32:00,792 [8] INFO  umbraco.BusinessLogic.Log - [Thread 10] Log scrubbed.  Removed all items older than 2014-12-03 19:32:00
