@@ -35,7 +35,7 @@
                 @"
                 function openDashboard(action) {
                     document.getElementById('contentwrapper').scrolling = 'auto';
-                    UmbClientMgr.contentFrame('../App_Plugins/BackOffice/" + Constants.ApplicationAlias + @"/' + action);
+                    UmbClientMgr.contentFrame('../umbraco/BackOffice/" + Constants.ApplicationAlias + @"/' + action);
                 }");
         }
 
