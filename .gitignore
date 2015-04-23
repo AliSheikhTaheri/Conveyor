@@ -70,3 +70,6 @@ WebUI/WebUIv7/App_Data/TEMP/
 WebUI/WebUIv7/App_Data/Logs
 WebUI/WebUIv7/App_Data/cache/*
 WebUI/WebUIv7/App_Data/umbraco.config
+
+# NuGet
+Conveyor/packages
