@@ -59,13 +59,13 @@
       <HintPath>..\packages\xmlrpcnet.2.5.0\lib\net20\CookComputing.XmlRpcV2.dll</HintPath>
     </Reference>
     <Reference Include="DAMP.PropertyEditorValueConverter">
-      <HintPath>..\Dlls\DAMP.PropertyEditorValueConverter.dll</HintPath>
+      <HintPath>..\..\ExternalDependencies\DAMP.PropertyEditorValueConverter.dll</HintPath>
     </Reference>
     <Reference Include="DigibizAdvancedMediaPicker">
-      <HintPath>..\Dlls\DigibizAdvancedMediaPicker.dll</HintPath>
+      <HintPath>..\..\ExternalDependencies\DigibizAdvancedMediaPicker.dll</HintPath>
     </Reference>
     <Reference Include="DigibizTree">
-      <HintPath>..\Dlls\DigibizTree.dll</HintPath>
+      <HintPath>..\..\ExternalDependencies\DigibizTree.dll</HintPath>
     </Reference>
     <Reference Include="Examine">
       <HintPath>..\packages\UmbracoCms.Core.6.1.6\lib\Examine.dll</HintPath>
@@ -114,7 +114,7 @@
       <HintPath>..\packages\UmbracoCms.Core.6.1.6\lib\Our.Umbraco.uGoLive.Checks.dll</HintPath>
     </Reference>
     <Reference Include="PackageActionsContrib">
-      <HintPath>..\Dlls\PackageActionsContrib.dll</HintPath>
+      <HintPath>..\..\ExternalDependencies\PackageActionsContrib.dll</HintPath>
     </Reference>
     <Reference Include="SQLCE4Umbraco">
       <HintPath>..\packages\UmbracoCms.Core.6.1.6\lib\SQLCE4Umbraco.dll</HintPath>

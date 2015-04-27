@@ -123,7 +123,7 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PackageActionsContrib">
-      <HintPath>..\Dlls\PackageActionsContrib.dll</HintPath>
+      <HintPath>..\..\ExternalDependencies\PackageActionsContrib.dll</HintPath>
     </Reference>
     <Reference Include="SQLCE4Umbraco">
       <HintPath>..\packages\UmbracoCms.Core.7.2.4\lib\SQLCE4Umbraco.dll</HintPath>
@@ -2925,7 +2925,9 @@
     <Content Include="umbraco\Xslt\Web.config" />
     <Content Include="umbraco_client\CodeMirror\Js\Mode\Razor\LICENSE" />
     <Content Include="umbraco_client\CodeMirror\Js\Mode\Sieve\LICENSE" />
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
     <Content Include="Views\Partials\Grid\Editors\Rte.cshtml" />
     <Content Include="Views\Partials\Grid\Editors\Media.cshtml" />
@@ -2961,12 +2963,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AST.ContentConveyor7\AST.ContentConveyor7.csproj">
-      <Project>{060c0601-b42c-4e46-9356-fcd9121978d4}</Project>
-      <Name>AST.ContentConveyor7</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="css\" />
