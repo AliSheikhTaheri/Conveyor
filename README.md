@@ -1,5 +1,7 @@
 #####What is Conveyor?
 
+[![Join the chat at https://gitter.im/AliSheikhTaheri/Conveyor](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/AliSheikhTaheri/Conveyor?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Conveyor allows editors and developers to transfer content (media and content) of a website from one environment to another.  
 
 For a full demonstration please view the screencast. www.screenr.com/05tN
