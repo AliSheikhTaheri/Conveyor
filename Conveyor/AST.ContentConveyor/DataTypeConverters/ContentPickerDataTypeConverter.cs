@@ -1,10 +1,10 @@
-﻿namespace AST.ContentConveyor
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Linq;
-    using Umbraco.Core.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Xml.Linq;
+using Umbraco.Core.Models;
 
+namespace AST.ContentConveyor.DataTypeConverters
+{
     public class ContentPickerDataTypeConverter : BaseContentManagement, IDataTypeConverter
     {
         public void Export(Property property, XElement propertyTag, Dictionary<int, ObjectTypes> dependantNodes)

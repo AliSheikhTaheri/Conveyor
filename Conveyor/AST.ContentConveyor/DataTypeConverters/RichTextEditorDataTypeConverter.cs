@@ -1,15 +1,13 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Text.RegularExpressions;
 using System.Xml;
+using System.Xml.Linq;
+using Umbraco.Core.Models;
 
-namespace AST.ContentConveyor
+namespace AST.ContentConveyor.DataTypeConverters
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text.RegularExpressions;
-    using System.Xml.Linq;
-
-    using Umbraco.Core.Models;
-
     public class RichTextEditorDataTypeConverter : BaseContentManagement, IDataTypeConverter
     {
         public void Export(Property property, XElement propertyTag, Dictionary<int, ObjectTypes> dependantNodes)

@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseContentManagement.cs" />
+    <Compile Include="DataTypeConverters\ImageCropperDataTypeConverter.cs" />
     <Compile Include="DataTypeConverters\RichTextEditorDataTypeConverter.cs" />
     <Compile Include="DataTypeConverters\UploadDataTypeConverter.cs" />
     <Compile Include="Enums\PublishTypes.cs" />

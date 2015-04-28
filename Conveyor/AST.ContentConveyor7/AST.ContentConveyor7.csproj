@@ -77,6 +77,7 @@
     <Compile Include="BackOffice\ContentConveyorController.cs" />
     <Compile Include="DataTypeConverters\ContentPickerDataTypeConverter.cs" />
     <Compile Include="DataTypeConverters\DropdownListDataTypeConverter.cs" />
+    <Compile Include="DataTypeConverters\ImageCropperDataTypeConverter.cs" />
     <Compile Include="DataTypeConverters\MediaPickerDataTypeConverter.cs" />
     <Compile Include="DataTypeConverters\MultiNodeTreePickerDataTypeConverter.cs" />
     <Compile Include="DataTypeConverters\RichTextEditorDataTypeConverter.cs" />
