@@ -148,7 +148,7 @@ namespace AST.ContentConveyor
 
                     if (media != null)
                     {
-                        var uploadFieldAlias = GetUploadFieldAlias();
+                        var uploadFieldAlias = GetUploadFieldAlias(media);
                         var outputLink = string.Format(@"<a href=""{0}"">", media.Properties[uploadFieldAlias].Value);
                         input = input.Replace(match.Value, outputLink);
                     }
@@ -172,7 +172,7 @@ namespace AST.ContentConveyor
 
                     if (media != null)
                     {
-                        var uploadFieldAlias = GetUploadFieldAlias();
+                        var uploadFieldAlias = GetUploadFieldAlias(media);
                         var outputLink = string.Format(
                             @"<img{0}src=""{1}""{2} />",
                             match.Groups["attr1"].Value,
@@ -208,8 +208,13 @@ namespace AST.ContentConveyor
             return input;
         }
 
-        private string GetUploadFieldAlias()
+        private string GetUploadFieldAlias(IContentBase node)
         {
+            if (node == null)
+            {
+                throw new ArgumentNullException("node");
+            }
+
             var uploadFieldNodes = umbraco.UmbracoSettings._umbracoSettings.SelectNodes("/content/imaging/autoFillImageProperties/uploadField");
             if (uploadFieldNodes == null)
             {
@@ -218,13 +223,17 @@ namespace AST.ContentConveyor
 
             foreach (XmlNode uploadFieldNode in uploadFieldNodes)
             {
-                if (uploadFieldNode.Attributes["alias"] != null)
+                if (uploadFieldNode.Attributes != null && uploadFieldNode.Attributes["alias"] != null)
                 {
-                    return uploadFieldNode.Attributes["alias"].Value;
+                    var alias = uploadFieldNode.Attributes["alias"].Value;
+                    if (node.HasProperty(alias))
+                    {
+                        return uploadFieldNode.Attributes["alias"].Value;
+                    }
                 }
             }
 
-            throw new ConfigurationErrorsException("Expected /content/imaging/autoFillImageProperties/uploadField alias attribute");
+            throw new Exception(string.Format("Could not determine uploadField alias for node with id: {0}. Either something went wrong with the Conveyor export/import or the uploadField alias could not be determined from the umbracoSettings.config", node.Id));
         }
     }
 }

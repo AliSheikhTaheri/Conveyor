@@ -158,7 +158,7 @@ namespace AST.ContentConveyor7.DataTypeConverters
 
                     if (media != null)
                     {
-                        var uploadFieldAlias = GetUploadFieldAlias();
+                        var uploadFieldAlias = GetUploadFieldAlias(media);
                         var outputLink = string.Format(@"<a href=""{0}"">", media.Properties[uploadFieldAlias].Value);
                         input = input.Replace(match.Value, outputLink);
                     }
@@ -182,7 +182,7 @@ namespace AST.ContentConveyor7.DataTypeConverters
 
                     if (media != null)
                     {
-                        var uploadFieldAlias = GetUploadFieldAlias();
+                        var uploadFieldAlias = GetUploadFieldAlias(media);
                         var outputLink = string.Format(
                             @"<img{0}src=""{1}""{2} />",
                             match.Groups["attr1"].Value,
@@ -218,15 +218,25 @@ namespace AST.ContentConveyor7.DataTypeConverters
             return input;
         }
 
-        private string GetUploadFieldAlias()
+        private string GetUploadFieldAlias(IContentBase node)
         {
+            if (node == null)
+            {
+                throw new ArgumentNullException("node");
+            }
+
             var uploadFields = UmbracoConfig.For.UmbracoSettings().Content.ImageAutoFillProperties.ToList();
-            if (uploadFields == null || !uploadFields.Any(f => string.IsNullOrEmpty(f.Alias)))
+            if (uploadFields == null || uploadFields.All(f => string.IsNullOrEmpty(f.Alias)))
             {
                 throw new ConfigurationErrorsException("Expected /content/imaging/autoFillImageProperties/uploadField alias attribute");
             }
 
-            return uploadFields.FirstOrDefault(f => !string.IsNullOrEmpty(f.Alias)).Alias;
+            if (!uploadFields.Any(f => !string.IsNullOrEmpty(f.Alias) && node.HasProperty(f.Alias)))
+            {
+                throw new Exception(string.Format("Could not determine uploadField alias for node with id: {0}", node.Id));
+            }
+
+            return uploadFields.First(f => !string.IsNullOrEmpty(f.Alias) && node.HasProperty(f.Alias)).Alias;
         }
     }
 }
