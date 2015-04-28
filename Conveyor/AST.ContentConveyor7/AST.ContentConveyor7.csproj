@@ -80,6 +80,7 @@
     <Compile Include="DataTypeConverters\MediaPickerDataTypeConverter.cs" />
     <Compile Include="DataTypeConverters\MultiNodeTreePickerDataTypeConverter.cs" />
     <Compile Include="DataTypeConverters\RichTextEditorDataTypeConverter.cs" />
+    <Compile Include="DataTypeConverters\UploadDataTypeConverter.cs" />
     <Compile Include="Enums\ActionTypes.cs" />
     <Compile Include="Enums\ObjectTypes.cs" />
     <Compile Include="Enums\PublishTypes.cs" />

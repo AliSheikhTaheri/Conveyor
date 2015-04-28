@@ -55,7 +55,7 @@
         /// <param name="content">Umbraco IContent object</param>
         /// <param name="dependantNodes">this function will add dependent nodes to this collection</param>
         /// <returns>returns serialized version of IContent as XElement</returns>
-        public XElement SerialiseContent(IContent content, Dictionary<int, ObjectTypes> dependantNodes = null)
+        public XElement SerializeContent(IContent content, Dictionary<int, ObjectTypes> dependantNodes = null)
         {
             dependantNodes = dependantNodes ?? new Dictionary<int, ObjectTypes>();
 
@@ -96,16 +96,7 @@
                 tag.Add(new XAttribute("dataTypeName", Services.DataTypeService.GetDataTypeDefinitionById(propertyType.DataTypeDefinitionId).Name));
 
                 var guid = propertyTypes.ElementAt(count).DataTypeId;
-
-                if (guid == new Guid(Constants.UploadDataTypeGuid))
-                {
-                    var umbracoFile = property.Value.ToString();
-                    tag.Add(
-                        new XAttribute("umbracoFile", umbracoFile),
-                        new XAttribute("fileName", umbracoFile.Split('/').Last()),
-                        new XAttribute("objectType", ObjectTypes.File));
-                }
-                else if (SpecialDataTypes.ContainsKey(guid))
+                if (SpecialDataTypes.ContainsKey(guid))
                 {
                     DataTypeConverterExport(property, tag, dependantNodes, SpecialDataTypes[guid]);
                 }
@@ -123,7 +114,7 @@
         /// <param name="media">Umbraco IMedia object</param>
         /// <param name="dependantNodes">this function will add dependent nodes to this collection</param>
         /// <returns>returns serialized version of IMedia as XElement</returns>
-        public XElement SerialiseMedia(IMedia media, Dictionary<int, ObjectTypes> dependantNodes = null)
+        public XElement SerializeMedia(IMedia media, Dictionary<int, ObjectTypes> dependantNodes = null)
         {
             var nodeName = media.ContentType.Alias.ToSafeAliasWithForcingCheck();
 
@@ -148,15 +139,7 @@
                 tag.Add(new XAttribute("dataTypeName", Services.DataTypeService.GetDataTypeDefinitionById(propertyType.DataTypeDefinitionId).Name));
 
                 var guid = propertyTypes.ElementAt(count).DataTypeId;
-                if (guid == new Guid(Constants.UploadDataTypeGuid))
-                {
-                    var umbracoFile = property.Value.ToString();
-                    tag.Add(
-                        new XAttribute("umbracoFile", umbracoFile),
-                        new XAttribute("fileName", umbracoFile.Split('/').Last()),
-                        new XAttribute("objectType", ObjectTypes.File));
-                }
-                else if (SpecialDataTypes.ContainsKey(guid))
+                if (SpecialDataTypes.ContainsKey(guid))
                 {
                     DataTypeConverterExport(property, tag, dependantNodes, SpecialDataTypes[guid]);
                 }

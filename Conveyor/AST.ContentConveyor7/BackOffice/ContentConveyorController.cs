@@ -48,7 +48,7 @@
 
                     var export = new ExportContent();
 
-                    var xdoc = export.SerialiseToXml(ids);
+                    var xdoc = export.SerializeToXml(ids);
                     var files = export.GetListOfAssets(xdoc);
 
                     var ms = new MemoryStream();

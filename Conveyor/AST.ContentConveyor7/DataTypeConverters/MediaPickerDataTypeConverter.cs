@@ -1,4 +1,8 @@
-﻿namespace AST.ContentConveyor7.DataTypeConverters
+﻿using System.Configuration;
+using System.Linq;
+using Umbraco.Core.Configuration;
+
+namespace AST.ContentConveyor7.DataTypeConverters
 {
     using System;
     using System.Collections.Generic;
@@ -19,8 +23,10 @@
                 var id = int.Parse(property.Value.ToString());
                 var media = Services.MediaService.GetById(id);
 
+                var uploadFieldAlias = GetUploadFieldAlias();
+
                 // TODO for v6
-                if (media != null && FileHelpers.FileExists(media.GetValue("umbracoFile").ToString())) 
+                if (media != null && FileHelpers.FileExists(media.GetValue(uploadFieldAlias).ToString())) 
                 {
                     propertyTag.Value = media.Key.ToString();
 
@@ -44,6 +50,17 @@
             }
 
             return result;
+        }
+
+        private string GetUploadFieldAlias()
+        {
+            var uploadFields = UmbracoConfig.For.UmbracoSettings().Content.ImageAutoFillProperties.ToList();
+            if (uploadFields == null || !uploadFields.Any(f => string.IsNullOrEmpty(f.Alias)))
+            {
+                throw new ConfigurationErrorsException("Expected /content/imaging/autoFillImageProperties/uploadField alias attribute");
+            }
+
+            return uploadFields.FirstOrDefault(f => !string.IsNullOrEmpty(f.Alias)).Alias;
         }
     }
 }

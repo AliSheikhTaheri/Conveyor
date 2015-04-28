@@ -1,4 +1,7 @@
-﻿namespace AST.ContentConveyor
+﻿using System.Configuration;
+using System.Xml;
+
+namespace AST.ContentConveyor
 {
     using System;
     using System.Collections.Generic;
@@ -145,7 +148,8 @@
 
                     if (media != null)
                     {
-                        var outputLink = string.Format(@"<a href=""{0}"">", media.Properties["umbracoFile"].Value);
+                        var uploadFieldAlias = GetUploadFieldAlias();
+                        var outputLink = string.Format(@"<a href=""{0}"">", media.Properties[uploadFieldAlias].Value);
                         input = input.Replace(match.Value, outputLink);
                     }
                 }
@@ -168,10 +172,11 @@
 
                     if (media != null)
                     {
+                        var uploadFieldAlias = GetUploadFieldAlias();
                         var outputLink = string.Format(
                             @"<img{0}src=""{1}""{2} />",
                             match.Groups["attr1"].Value,
-                            media.Properties["umbracoFile"].Value,
+                            media.Properties[uploadFieldAlias].Value,
                             match.Groups["attr2"].Value);
                         input = input.Replace(match.Value, outputLink);
                     }
@@ -201,6 +206,25 @@
             }
 
             return input;
+        }
+
+        private string GetUploadFieldAlias()
+        {
+            var uploadFieldNodes = umbraco.UmbracoSettings._umbracoSettings.SelectNodes("/content/imaging/autoFillImageProperties/uploadField");
+            if (uploadFieldNodes == null)
+            {
+                throw new ConfigurationErrorsException("Expected /content/imaging/autoFillImageProperties/uploadField element");
+            }
+
+            foreach (XmlNode uploadFieldNode in uploadFieldNodes)
+            {
+                if (uploadFieldNode.Attributes["alias"] != null)
+                {
+                    return uploadFieldNode.Attributes["alias"].Value;
+                }
+            }
+
+            throw new ConfigurationErrorsException("Expected /content/imaging/autoFillImageProperties/uploadField alias attribute");
         }
     }
 }

@@ -13,7 +13,7 @@
     {
         #region Methods
 
-        public XDocument SerialiseToXml(string ids)
+        public XDocument SerializeToXml(string ids)
         {
             if (ids.Length > 0)
             {
@@ -31,7 +31,7 @@
 
                     var content = Services.ContentService.GetById(id);
 
-                    var currentContentTag = SerialiseContent(content, dependentNodes);
+                    var currentContentTag = SerializeContent(content, dependentNodes);
 
                     xml.Add(currentContentTag);
                 }
@@ -43,7 +43,7 @@
                 {
                     if (node.Value == ObjectTypes.Document)
                     {
-                        xml.Add(SerialiseContent(Services.ContentService.GetById(node.Key), secondLevelDependentNodes));
+                        xml.Add(SerializeContent(Services.ContentService.GetById(node.Key), secondLevelDependentNodes));
                     }
                     else if (node.Value == ObjectTypes.Media)
                     {
@@ -51,7 +51,7 @@
 
                         do
                         {
-                            xml.Add(SerialiseMedia(media, secondLevelDependentNodes));
+                            xml.Add(SerializeMedia(media, secondLevelDependentNodes));
                             media = media.Parent();
                         }
                         while (media != null);
@@ -64,7 +64,7 @@
                 {
                     if (node.Value == ObjectTypes.Document)
                     {
-                        xml.Add(SerialiseContent(Services.ContentService.GetById(node.Key)));
+                        xml.Add(SerializeContent(Services.ContentService.GetById(node.Key)));
                     }
                     else if (node.Value == ObjectTypes.Media)
                     {
@@ -72,7 +72,7 @@
 
                         do
                         {
-                            xml.Add(SerialiseMedia(media));
+                            xml.Add(SerializeMedia(media));
                             media = media.Parent();
                         }
                         while (media != null);
@@ -90,8 +90,8 @@
         public IEnumerable<string> GetListOfAssets(XDocument xdoc)
         {
             return xdoc.Descendants()
-                .Where(x => x.Attribute("umbracoFile") != null && !string.IsNullOrWhiteSpace(x.Attribute("umbracoFile").Value))
-                .Select(x => x.Attribute("umbracoFile").Value);
+                .Where(x => x.Attribute("dependentAsset") != null && !string.IsNullOrWhiteSpace(x.Attribute("dependentAsset").Value))
+                .Select(x => x.Attribute("dependentAsset").Value);
         }
 
         #endregion

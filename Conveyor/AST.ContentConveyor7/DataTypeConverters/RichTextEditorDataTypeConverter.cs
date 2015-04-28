@@ -1,4 +1,7 @@
-﻿namespace AST.ContentConveyor7.DataTypeConverters
+﻿using System.Configuration;
+using Umbraco.Core.Configuration;
+
+namespace AST.ContentConveyor7.DataTypeConverters
 {
     using System;
     using System.Collections.Generic;
@@ -155,7 +158,8 @@
 
                     if (media != null)
                     {
-                        var outputLink = string.Format(@"<a href=""{0}"">", media.Properties["umbracoFile"].Value);
+                        var uploadFieldAlias = GetUploadFieldAlias();
+                        var outputLink = string.Format(@"<a href=""{0}"">", media.Properties[uploadFieldAlias].Value);
                         input = input.Replace(match.Value, outputLink);
                     }
                 }
@@ -178,10 +182,11 @@
 
                     if (media != null)
                     {
+                        var uploadFieldAlias = GetUploadFieldAlias();
                         var outputLink = string.Format(
                             @"<img{0}src=""{1}""{2} />",
                             match.Groups["attr1"].Value,
-                            media.Properties["umbracoFile"].Value,
+                            media.Properties[uploadFieldAlias].Value,
                             match.Groups["attr2"].Value);
                         input = input.Replace(match.Value, outputLink);
                     }
@@ -211,6 +216,17 @@
             }
 
             return input;
+        }
+
+        private string GetUploadFieldAlias()
+        {
+            var uploadFields = UmbracoConfig.For.UmbracoSettings().Content.ImageAutoFillProperties.ToList();
+            if (uploadFields == null || !uploadFields.Any(f => string.IsNullOrEmpty(f.Alias)))
+            {
+                throw new ConfigurationErrorsException("Expected /content/imaging/autoFillImageProperties/uploadField alias attribute");
+            }
+
+            return uploadFields.FirstOrDefault(f => !string.IsNullOrEmpty(f.Alias)).Alias;
         }
     }
 }
