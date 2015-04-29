@@ -2,19 +2,16 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using AST.ContentConveyor7.Enums;
 using AST.ContentConveyor7.Utilities;
 using Newtonsoft.Json.Linq;
 using Umbraco.Core.Configuration;
 using Umbraco.Core.Models;
-using Umbraco.Web;
-using Umbraco.Web.Models;
 
 namespace AST.ContentConveyor7.DataTypeConverters
 {
-    public class ImageCropperDataTypeConverter : BaseContentManagement, IDataTypeConverter
+    public class ImageCropperDataTypeConverter : BaseContentManagement, IDataTypeConverter, IUploadDataTypeConverter
     {
         public void Export(Property property, XElement propertyTag, Dictionary<int, ObjectTypes> dependantNodes)
         {
@@ -52,6 +49,17 @@ namespace AST.ContentConveyor7.DataTypeConverters
             }
 
             return result;
+        }
+
+        public string GetUrl(string propertyData)
+        {
+            if (string.IsNullOrEmpty(propertyData))
+            {
+                throw new ArgumentNullException("propertyData");
+            }
+
+            var jMedia = JObject.Parse(propertyData);
+            return (string)jMedia["src"];
         }
 
         #region Helpers
@@ -125,8 +133,7 @@ namespace AST.ContentConveyor7.DataTypeConverters
                 {
                     var uploadFieldAlias = GetUploadFieldAlias(media);
                     var mediaJson = media.Properties[uploadFieldAlias].Value.ToString();
-                    var jMedia = JObject.Parse(mediaJson);
-                    jImageCropperData["src"] = (string)jMedia["src"];
+                    jImageCropperData["src"] = GetUrl(mediaJson);
                 }
             }
 

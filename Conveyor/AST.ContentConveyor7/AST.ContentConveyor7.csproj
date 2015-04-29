@@ -87,6 +87,7 @@
     <Compile Include="Enums\PublishTypes.cs" />
     <Compile Include="ExportContent.cs" />
     <Compile Include="DataTypeConverters\IDataTypeConverter.cs" />
+    <Compile Include="IUploadDataTypeConverter.cs" />
     <Compile Include="Utilities\FileHelpers.cs" />
     <Compile Include="ImportContent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

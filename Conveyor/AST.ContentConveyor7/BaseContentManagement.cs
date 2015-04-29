@@ -54,6 +54,24 @@
         }
 
         /// <summary>
+        /// Load external classes and convert them into IUploadDataTypeConverter
+        /// </summary>
+        /// <param name="type">class name, assembly name</param>
+        /// <returns>return IUploadDataTypeConverter</returns>
+        protected IUploadDataTypeConverter GetUploadDataTypeConverterInterface(string type)
+        {
+            if (string.IsNullOrWhiteSpace(type) || Type.GetType(type) == null)
+            {
+                throw new Exception(
+                    string.Format(
+                        "The system cannot find {0}. Make sure the assembly name is right or has been included in the config file.!",
+                        type));
+            }
+
+            return (IUploadDataTypeConverter)Activator.CreateInstance(Type.GetType(type));
+        }
+
+        /// <summary>
         /// Serialize IContent to XElement and adds dependent nodes 
         /// </summary>
         /// <param name="content">Umbraco IContent object</param>

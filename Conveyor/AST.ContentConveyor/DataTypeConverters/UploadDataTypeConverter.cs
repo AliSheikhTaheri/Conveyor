@@ -7,7 +7,7 @@ using Umbraco.Core.Models;
 
 namespace AST.ContentConveyor.DataTypeConverters
 {
-    public class UploadDataTypeConverter : BaseContentManagement, IDataTypeConverter
+    public class UploadDataTypeConverter : BaseContentManagement, IDataTypeConverter, IUploadDataTypeConverter
     {
         public void Export(Property property, XElement propertyTag, Dictionary<int, ObjectTypes> dependantNodes)
         {
@@ -37,6 +37,11 @@ namespace AST.ContentConveyor.DataTypeConverters
             }
 
             return result;
+        }
+
+        public string GetUrl(string propertyData)
+        {
+            return propertyData;
         }
     }
 }

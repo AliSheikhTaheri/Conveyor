@@ -1,5 +1,6 @@
 ﻿using System.Configuration;
 using Umbraco.Core.Configuration;
+using Umbraco.Web;
 
 namespace AST.ContentConveyor7.DataTypeConverters
 {
@@ -54,6 +55,8 @@ namespace AST.ContentConveyor7.DataTypeConverters
             return result;
         }
 
+        #region Export Helpers
+
         private string ConvertInternalLinkToGuid(Dictionary<int, ObjectTypes> dependantNodes, string input)
         {
             var matchesUrls = Regex.Matches(input, @"<a href=""/{localLink:(\d+)}""");
@@ -69,12 +72,6 @@ namespace AST.ContentConveyor7.DataTypeConverters
                     {
                         var content = Services.ContentService.GetById(id);
                         input = input.Replace(match.Value, @"<a href=""/{localLink:" + content.Key + @"}"" ");
-
-                        ////if (!dependantNodes.ContainsKey(content.Id))
-                        ////{
-                        ////    // at the moment there is no support for object types document. 
-                        ////    dependantNodes.Add(id, ObjectTypes.Document);
-                        ////}
                     }
                 }
             }
@@ -84,31 +81,32 @@ namespace AST.ContentConveyor7.DataTypeConverters
 
         private string ConvertMediaUrlToGuidOnImageTag(Dictionary<int, ObjectTypes> dependantNodes, string input)
         {
-            var matchesImages = Regex.Matches(input, @"<img(?<attr1>.*?)src=""(?<url>/media/.*?)""(?<attr2>.*?)/>");
+            var matchesImages = Regex.Matches(input, @"<img(?<attr1>.*?)src=""(?<url>/media/.*?)""(?<attr2>.*?)rel=""(?<rel>\d+)"".*/>");
 
             if (matchesImages.Count > 0)
             {
                 foreach (Match match in matchesImages)
                 {
-                    var url = match.Groups["url"].Value;
-
-                    var filename = url.Split('/').LastOrDefault();
-                    if (filename != null && filename.Contains("?"))
+                    int mediaId;
+                    var mediaIdString = match.Groups["rel"].Value;
+                    if (!Int32.TryParse(mediaIdString, out mediaId))
                     {
-                        url = url.Remove(url.IndexOf("?", StringComparison.Ordinal));
+                        throw new Exception("RTE media link was not properly linked to a media item via the rel attribute. rel should point to the media id.");
                     }
 
-                    var media = Services.MediaService.GetMediaByPath(url);
+                    var media = Services.MediaService.GetById(mediaId);
 
-                    if (media != null)
+                    if (media == null)
                     {
-                        var outputLink = string.Format(@"<img{0}src=""{1}""{2} />", match.Groups["attr1"].Value, media.Key, match.Groups["attr2"].Value);
-                        input = input.Replace(match.Value, outputLink);
+                        throw new Exception(string.Format("Could not find media by id, {0}", mediaId));
+                    }
 
-                        if (!dependantNodes.ContainsKey(media.Id))
-                        {
-                            dependantNodes.Add(media.Id, ObjectTypes.Media);
-                        }
+                    var outputLink = string.Format(@"<img{0}src=""{1}""{2} />", match.Groups["attr1"].Value, media.Key, match.Groups["attr2"].Value);
+                    input = input.Replace(match.Value, outputLink);
+
+                    if (!dependantNodes.ContainsKey(media.Id))
+                    {
+                        dependantNodes.Add(media.Id, ObjectTypes.Media);
                     }
                 }
             }
@@ -118,25 +116,33 @@ namespace AST.ContentConveyor7.DataTypeConverters
 
         private string ConvertMediaUrlToGuidOnAnchorTag(Dictionary<int, ObjectTypes> dependantNodes, string input)
         {
-            var matchesImages = Regex.Matches(input, @"<a href=""(/media/.*)"">");
+            // TODO: This isn't working right now. There is no rel tag on the anchor inserts
+            var matchesImages = Regex.Matches(input, @"<a href=""(/media/.*)""rel=""(?<rel>\d+)"".*>");
 
             if (matchesImages.Count > 0)
             {
                 foreach (Match match in matchesImages)
                 {
-                    var url = match.Groups[1].Value;
-
-                    var media = Services.MediaService.GetMediaByPath(url);
-
-                    if (media != null)
+                    int mediaId;
+                    var mediaIdString = match.Groups["rel"].Value;
+                    if (!Int32.TryParse(mediaIdString, out mediaId))
                     {
-                        var outputLink = string.Format(@"<a href=""{0}"">",  media.Key);
-                        input = input.Replace(match.Value, outputLink);
+                        throw new Exception("RTE media link was not properly linked to a media item via the rel attribute. rel should point to the media id.");
+                    }
 
-                        if (!dependantNodes.ContainsKey(media.Id))
-                        {
-                            dependantNodes.Add(media.Id, ObjectTypes.Media);
-                        }
+                    var media = Services.MediaService.GetById(mediaId);
+
+                    if (media == null)
+                    {
+                        throw new Exception(string.Format("Could not find media by id, {0}", mediaId));
+                    }
+
+                    var outputLink = string.Format(@"<img{0}src=""{1}""{2} />", match.Groups["attr1"].Value, media.Key, match.Groups["attr2"].Value);
+                    input = input.Replace(match.Value, outputLink);
+
+                    if (!dependantNodes.ContainsKey(media.Id))
+                    {
+                        dependantNodes.Add(media.Id, ObjectTypes.Media);
                     }
                 }
             }
@@ -144,57 +150,9 @@ namespace AST.ContentConveyor7.DataTypeConverters
             return input;
         }
 
-        private string ConvertGuidToMediaUrlOnAnchorTag(string input)
-        {
-            var matchesImages = Regex.Matches(input, @"<a href=""(\b[A-F0-9]{8}(?:-[A-F0-9]{4}){3}-[A-F0-9]{12}\b)"">", RegexOptions.IgnoreCase);
+        #endregion
 
-            if (matchesImages.Count > 0)
-            {
-                foreach (Match match in matchesImages)
-                {
-                    var guid = match.Groups[1].Value;
-
-                    var media = Services.MediaService.GetById(new Guid(guid));
-
-                    if (media != null)
-                    {
-                        var uploadFieldAlias = GetUploadFieldAlias(media);
-                        var outputLink = string.Format(@"<a href=""{0}"">", media.Properties[uploadFieldAlias].Value);
-                        input = input.Replace(match.Value, outputLink);
-                    }
-                }
-            }
-
-            return input;
-        }
-
-        private string ConvertGuidToMediaUrlOnImageTag(string input)
-        {
-            var matchesImages = Regex.Matches(input, @"<img(?<attr1>.*?)src=""(\b[A-F0-9]{8}(?:-[A-F0-9]{4}){3}-[A-F0-9]{12}\b)""(?<attr2>.*?)/>", RegexOptions.IgnoreCase);
-
-            if (matchesImages.Count > 0)
-            {
-                foreach (Match match in matchesImages)
-                {
-                    var guid = match.Groups[1].Value;
-
-                    var media = Services.MediaService.GetById(new Guid(guid));
-
-                    if (media != null)
-                    {
-                        var uploadFieldAlias = GetUploadFieldAlias(media);
-                        var outputLink = string.Format(
-                            @"<img{0}src=""{1}""{2} />",
-                            match.Groups["attr1"].Value,
-                            media.Properties[uploadFieldAlias].Value,
-                            match.Groups["attr2"].Value);
-                        input = input.Replace(match.Value, outputLink);
-                    }
-                }
-            }
-
-            return input;
-        }
+        #region Import Helpers
 
         private string ConvertGuidToInternalLink(string input)
         {
@@ -218,6 +176,78 @@ namespace AST.ContentConveyor7.DataTypeConverters
             return input;
         }
 
+        private string ConvertGuidToMediaUrlOnImageTag(string input)
+        {
+            var matchesImages = Regex.Matches(input, @"<img(?<attr1>.*?)src=""(?<guid>\b[A-F0-9]{8}(?:-[A-F0-9]{4}){3}-[A-F0-9]{12}\b)""(?<attr2>.*?)/>", RegexOptions.IgnoreCase);
+
+            if (matchesImages.Count > 0)
+            {
+                foreach (Match match in matchesImages)
+                {
+                    var guid = match.Groups["guid"].Value;
+
+                    var media = Services.MediaService.GetById(new Guid(guid));
+
+                    if (media != null)
+                    {
+                        // import media url. Need to leverage the DataTypeConverter for this (ex. media data is stored as JSON for ImageCropper)
+                        var uploadFieldAlias = GetUploadFieldAlias(media);
+                        var uploadPropertyIdx = media.Properties.IndexOfKey(uploadFieldAlias);
+                        var uploadPropertyType = media.PropertyTypes.ElementAt(uploadPropertyIdx);
+                        var converterTypeKey = SpecialDataTypes[uploadPropertyType.DataTypeId];
+                        var dataTypeConverter = GetUploadDataTypeConverterInterface(converterTypeKey);
+
+                        var mediaUrl = dataTypeConverter.GetUrl(media.Properties[uploadFieldAlias].Value.ToString());
+
+                        var outputLink = string.Format(@"<img{0}src=""{1}""{2}rel=""{3}"" />",
+                            match.Groups["attr1"].Value,
+                            mediaUrl,
+                            match.Groups["attr2"].Value,
+                            media.Id);
+                        input = input.Replace(match.Value, outputLink);
+                    }
+                }
+            }
+
+            return input;
+        }
+
+        private string ConvertGuidToMediaUrlOnAnchorTag(string input)
+        {
+            var matchesImages = Regex.Matches(input, @"<a href=""(?<guid>\b[A-F0-9]{8}(?:-[A-F0-9]{4}){3}-[A-F0-9]{12}\b)"">", RegexOptions.IgnoreCase);
+
+            if (matchesImages.Count > 0)
+            {
+                foreach (Match match in matchesImages)
+                {
+                    var guid = match.Groups["guid"].Value;
+
+                    var media = Services.MediaService.GetById(new Guid(guid));
+
+                    if (media != null)
+                    {
+                        // import media url. Need to leverage the DataTypeConverter for this (ex. media data is stored as JSON for ImageCropper)
+                        var uploadFieldAlias = GetUploadFieldAlias(media);
+                        var uploadPropertyIdx = media.Properties.IndexOfKey(uploadFieldAlias);
+                        var uploadPropertyType = media.PropertyTypes.ElementAt(uploadPropertyIdx);
+                        var converterTypeKey = SpecialDataTypes[uploadPropertyType.DataTypeId];
+                        var dataTypeConverter = GetUploadDataTypeConverterInterface(converterTypeKey);
+
+                        var mediaUrl = dataTypeConverter.GetUrl(media.Properties[uploadFieldAlias].Value.ToString());
+
+                        var outputLink = string.Format(@"<a href=""{0}""rel=""{1}"">", mediaUrl, media.Id);
+                        input = input.Replace(match.Value, outputLink);
+                    }
+                }
+            }
+
+            return input;
+        }
+
+        #endregion
+
+        #region Helpers
+
         private string GetUploadFieldAlias(IContentBase node)
         {
             if (node == null)
@@ -238,5 +268,7 @@ namespace AST.ContentConveyor7.DataTypeConverters
 
             return uploadFields.First(f => !string.IsNullOrEmpty(f.Alias) && node.HasProperty(f.Alias)).Alias;
         }
+
+        #endregion
     }
 }
