@@ -314,10 +314,25 @@
                             {
                                 Guid = y.Key,
                                 Properties = y.Select(x => x).ToList(),
-                                IsPublished = bool.Parse(y.FirstOrDefault().Parent.Attribute("published").Value)
-                            });
+                                IsPublished = y.First().Parent.Attribute("published") != null && bool.Parse(y.First().Parent.Attribute("published").Value),
+                                IsMedia = y.First().Parent.Attribute("objectType") != null && y.First().Parent.Attribute("objectType").Value == "Media"
+                            }).ToList();
 
-                foreach (var node in nodesWithSpecialProperties)
+                foreach (var node in nodesWithSpecialProperties.Where(n => n.IsMedia))
+                {
+                    var iMedia = Services.MediaService.GetById(new Guid(node.Guid));
+
+                    foreach (var prop in node.Properties)
+                    {
+                        var dataTypeGuid = new Guid(prop.Attribute("dataTypeGuid").Value);
+                        var value = DataTypeConverterImport(prop, dataTypeGuid);
+                        iMedia.SetValue(prop.Name.ToString(), value);
+                    }
+
+                    Services.MediaService.Save(iMedia);
+                }
+
+                foreach(var node in nodesWithSpecialProperties.Where(n => !n.IsMedia))
                 {
                     var iContent = Services.ContentService.GetById(new Guid(node.Guid));
 
@@ -326,7 +341,6 @@
                         var dataTypeGuid = new Guid(prop.Attribute("dataTypeGuid").Value);
                         var value = DataTypeConverterImport(prop, dataTypeGuid);
                         iContent.SetValue(prop.Name.ToString(), value);
-                        
                     }
 
                     SaveContent(iContent, node.IsPublished);

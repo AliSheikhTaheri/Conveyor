@@ -23,17 +23,13 @@ namespace AST.ContentConveyor7.DataTypeConverters
                 var id = int.Parse(property.Value.ToString());
                 var media = Services.MediaService.GetById(id);
 
-                var uploadFieldAlias = GetUploadFieldAlias(media);
+                if (media == null) return;
 
-                // TODO for v6
-                if (media != null && FileHelpers.FileExists(media.GetValue(uploadFieldAlias).ToString())) 
+                propertyTag.Value = media.Key.ToString();
+
+                if (!dependantNodes.ContainsKey(media.Id))
                 {
-                    propertyTag.Value = media.Key.ToString();
-
-                    if (!dependantNodes.ContainsKey(media.Id))
-                    {
-                        dependantNodes.Add(media.Id, ObjectTypes.Media);
-                    }
+                    dependantNodes.Add(media.Id, ObjectTypes.Media);
                 }
             }
         }
@@ -50,27 +46,6 @@ namespace AST.ContentConveyor7.DataTypeConverters
             }
 
             return result;
-        }
-
-        private string GetUploadFieldAlias(IContentBase node)
-        {
-            if (node == null)
-            {
-                throw new ArgumentNullException("node");
-            }
-
-            var uploadFields = UmbracoConfig.For.UmbracoSettings().Content.ImageAutoFillProperties.ToList();
-            if (uploadFields == null || uploadFields.All(f => string.IsNullOrEmpty(f.Alias)))
-            {
-                throw new ConfigurationErrorsException("Expected /content/imaging/autoFillImageProperties/uploadField alias attribute");
-            }
-
-            if (!uploadFields.Any(f => !string.IsNullOrEmpty(f.Alias) && node.HasProperty(f.Alias)))
-            {
-                throw new Exception(string.Format("Could not determine uploadField alias for node with id: {0}", node.Id));
-            }
-
-            return uploadFields.First(f => !string.IsNullOrEmpty(f.Alias) && node.HasProperty(f.Alias)).Alias;
         }
     }
 }

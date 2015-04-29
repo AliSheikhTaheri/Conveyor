@@ -1,8 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Linq;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 using AST.ContentConveyor7.Enums;
+using AST.ContentConveyor7.Utilities;
+using Newtonsoft.Json.Linq;
+using Umbraco.Core.Configuration;
 using Umbraco.Core.Models;
+using Umbraco.Web;
+using Umbraco.Web.Models;
 
 namespace AST.ContentConveyor7.DataTypeConverters
 {
@@ -10,12 +18,147 @@ namespace AST.ContentConveyor7.DataTypeConverters
     {
         public void Export(Property property, XElement propertyTag, Dictionary<int, ObjectTypes> dependantNodes)
         {
-            throw new NotImplementedException();
+            if (property.Value != null && !string.IsNullOrWhiteSpace(property.Value.ToString()))
+            {
+                var imageCropperJson = property.Value.ToString();
+                var jImageCropperData = JObject.Parse(imageCropperJson);
+                var file = (string)jImageCropperData["src"];
+
+                if (FileHelpers.FileExists(file))
+                {
+                    propertyTag.Add(
+                    new XAttribute(property.Alias, file),
+                    new XAttribute("fileName", file.Split('/').Last()),
+                    new XAttribute("objectType", ObjectTypes.File),
+                    new XAttribute("dependentAsset", file));            // special attribute used to retrieve dependent assets
+                }
+
+                jImageCropperData = ConvertMediaUrlToGuid(property.Version, jImageCropperData);
+
+                propertyTag.Value = jImageCropperData.ToString();
+            }
         }
 
         public string Import(XElement propertyTag)
         {
-            throw new NotImplementedException();
+            var result = string.Empty;
+
+            if (!string.IsNullOrWhiteSpace(propertyTag.Value))
+            {
+                var imageCropperJson = propertyTag.Value;
+                var jImageCropperData = JObject.Parse(imageCropperJson);
+
+                result = ConvertGuidToMediaUrl(jImageCropperData).ToString();
+            }
+
+            return result;
         }
+
+        #region Helpers
+
+        /// <summary>
+        /// Converts media urls in the JSON to the corresponding media GUID.
+        /// </summary>
+        /// <param name="mediaVersionGuid"></param>
+        /// <param name="jImageCropperData">Image Cropper Json</param>
+        /// <returns>Adjusted Image Cropper Json</returns>
+        private JObject ConvertMediaUrlToGuid(Guid mediaVersionGuid, JObject jImageCropperData)
+        {
+            if (jImageCropperData == null)
+            {
+                throw new ArgumentNullException("jImageCropperData");
+            }
+
+            var file = (string)jImageCropperData["src"];
+
+            if (string.IsNullOrEmpty(file))
+            {
+                throw new ArgumentException("Expected src attribute in ImageCropper json but could not find it");
+            }
+
+            if (!string.IsNullOrEmpty(file) && FileHelpers.FileExists(file))
+            {
+                var filename = file.Split('/').LastOrDefault();
+                if (filename != null && filename.Contains("?"))
+                {
+                    file = file.Remove(file.IndexOf("?", StringComparison.Ordinal));
+                }
+
+                // get the media associated with the property
+                var mediaVersion = Services.MediaService.GetByVersion(mediaVersionGuid);
+                var media = Services.MediaService.GetById(mediaVersion.Id);
+
+                if (media != null)
+                {
+                    jImageCropperData["src"] = media.Key;
+                }
+            }
+
+            return jImageCropperData;
+        }
+
+        /// <summary>
+        /// Converts media GUID in the JSON to the corresponding media GUID
+        /// </summary>
+        /// <param name="jImageCropperData">Image Cropper Json</param>
+        /// <returns>Adjusted Image Cropper Json</returns>
+        private JObject ConvertGuidToMediaUrl(JObject jImageCropperData)
+        {
+            if (jImageCropperData == null)
+            {
+                throw new ArgumentNullException("jImageCropperData");
+            }
+
+            Guid mediaGuid;
+            var mediaGuidString = (string)jImageCropperData["src"];
+            
+            if (string.IsNullOrEmpty(mediaGuidString) || !Guid.TryParse(mediaGuidString, out mediaGuid))
+            {
+                throw new ArgumentException("Expected src attribute in ImageCropper json but could not find it");
+            }
+
+            if (mediaGuid != Guid.Empty)
+            {
+                var media = Services.MediaService.GetById(mediaGuid);
+
+                if (media != null)
+                {
+                    var uploadFieldAlias = GetUploadFieldAlias(media);
+                    var mediaJson = media.Properties[uploadFieldAlias].Value.ToString();
+                    var jMedia = JObject.Parse(mediaJson);
+                    jImageCropperData["src"] = (string)jMedia["src"];
+                }
+            }
+
+            return jImageCropperData;
+        }
+
+        /// <summary>
+        /// Finds the property alias of the property where files are uploaded
+        /// </summary>
+        /// <param name="node"></param>
+        /// <returns></returns>
+        private string GetUploadFieldAlias(IContentBase node)
+        {
+            if (node == null)
+            {
+                throw new ArgumentNullException("node");
+            }
+
+            var uploadFields = UmbracoConfig.For.UmbracoSettings().Content.ImageAutoFillProperties.ToList();
+            if (uploadFields == null || uploadFields.All(f => string.IsNullOrEmpty(f.Alias)))
+            {
+                throw new ConfigurationErrorsException("Expected /content/imaging/autoFillImageProperties/uploadField alias attribute");
+            }
+
+            if (!uploadFields.Any(f => !string.IsNullOrEmpty(f.Alias) && node.HasProperty(f.Alias)))
+            {
+                throw new Exception(string.Format("Could not determine uploadField alias for node with id: {0}", node.Id));
+            }
+
+            return uploadFields.First(f => !string.IsNullOrEmpty(f.Alias) && node.HasProperty(f.Alias)).Alias;
+        }
+
+        #endregion
     }
 }

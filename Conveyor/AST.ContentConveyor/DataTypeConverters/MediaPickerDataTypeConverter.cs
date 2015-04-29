@@ -13,6 +13,9 @@ namespace AST.ContentConveyor.DataTypeConverters
             {
                 var id = int.Parse(property.Value.ToString());
                 var media = Services.MediaService.GetById(id);
+
+                if (media == null) return;
+
                 propertyTag.Value = media.Key.ToString();
 
                 if (!dependantNodes.ContainsKey(media.Id))
