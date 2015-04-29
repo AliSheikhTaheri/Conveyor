@@ -110,25 +110,19 @@ namespace AST.ContentConveyor.DataTypeConverters
 
         private string ConvertMediaUrlToGuidOnAnchorTag(Dictionary<int, ObjectTypes> dependantNodes, string input)
         {
-            // TODO: This isn't working right now. There is no rel tag on the anchor inserts
-            var matchesImages = Regex.Matches(input, @"<a href=""(/media/.*)""rel=""(?<rel>\d+)"".*>");
+            var matchesImages = Regex.Matches(input, @"<a(?<attr1>.*?)href=""(?<url>/media/.*?)""(?<attr2>.*?)>");
 
             if (matchesImages.Count > 0)
             {
                 foreach (Match match in matchesImages)
                 {
-                    int mediaId;
-                    var mediaIdString = match.Groups["rel"].Value;
-                    if (!Int32.TryParse(mediaIdString, out mediaId))
-                    {
-                        throw new Exception("RTE media link was not properly linked to a media item via the rel attribute. rel should point to the media id.");
-                    }
+                    var mediaUrl = match.Groups["url"].Value;
 
-                    var media = Services.MediaService.GetById(mediaId);
+                    var media = Services.MediaService.GetMediaByPath(mediaUrl);
 
                     if (media == null)
                     {
-                        throw new Exception(string.Format("Could not find media by id, {0}", mediaId));
+                        throw new Exception(string.Format("Could not find media by url, {0}", mediaUrl));
                     }
 
                     var outputLink = string.Format(@"<img{0}src=""{1}""{2} />", match.Groups["attr1"].Value, media.Key, match.Groups["attr2"].Value);

@@ -1,19 +1,16 @@
 ﻿using System.Configuration;
 using Umbraco.Core.Configuration;
-using Umbraco.Web;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Xml.Linq;
+using AST.ContentConveyor7.Enums;
+using Umbraco.Core.Models;
 
 namespace AST.ContentConveyor7.DataTypeConverters
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text.RegularExpressions;
-    using System.Xml.Linq;
 
-    using AST.ContentConveyor7;
-    using AST.ContentConveyor7.Enums;
-
-    using Umbraco.Core.Models;
 
     public class RichTextEditorDataTypeConverter : BaseContentManagement, IDataTypeConverter
     {
@@ -116,25 +113,19 @@ namespace AST.ContentConveyor7.DataTypeConverters
 
         private string ConvertMediaUrlToGuidOnAnchorTag(Dictionary<int, ObjectTypes> dependantNodes, string input)
         {
-            // TODO: This isn't working right now. There is no rel tag on the anchor inserts
-            var matchesImages = Regex.Matches(input, @"<a href=""(/media/.*)""rel=""(?<rel>\d+)"".*>");
+            var matchesImages = Regex.Matches(input, @"<a(?<attr1>.*?)href=""(?<url>/media/.*?)""(?<attr2>.*?)>");
 
             if (matchesImages.Count > 0)
             {
                 foreach (Match match in matchesImages)
                 {
-                    int mediaId;
-                    var mediaIdString = match.Groups["rel"].Value;
-                    if (!Int32.TryParse(mediaIdString, out mediaId))
-                    {
-                        throw new Exception("RTE media link was not properly linked to a media item via the rel attribute. rel should point to the media id.");
-                    }
+                    var mediaUrl = match.Groups["url"].Value;
 
-                    var media = Services.MediaService.GetById(mediaId);
+                    var media = Services.MediaService.GetMediaByPath(mediaUrl);
 
                     if (media == null)
                     {
-                        throw new Exception(string.Format("Could not find media by id, {0}", mediaId));
+                        throw new Exception(string.Format("Could not find media by url, {0}", mediaUrl));
                     }
 
                     var outputLink = string.Format(@"<img{0}src=""{1}""{2} />", match.Groups["attr1"].Value, media.Key, match.Groups["attr2"].Value);
@@ -248,6 +239,17 @@ namespace AST.ContentConveyor7.DataTypeConverters
 
         #region Helpers
 
+        private IEnumerable<string> GetUploadFieldAliases()
+        {
+            var uploadFields = UmbracoConfig.For.UmbracoSettings().Content.ImageAutoFillProperties.ToList();
+            if (uploadFields == null || uploadFields.All(f => string.IsNullOrEmpty(f.Alias)))
+            {
+                throw new ConfigurationErrorsException("Expected /content/imaging/autoFillImageProperties/uploadField alias attribute");
+            }
+
+            return uploadFields.Where(f => !string.IsNullOrEmpty(f.Alias)).Select(f => f.Alias);
+        }
+
         private string GetUploadFieldAlias(IContentBase node)
         {
             if (node == null)
@@ -255,18 +257,14 @@ namespace AST.ContentConveyor7.DataTypeConverters
                 throw new ArgumentNullException("node");
             }
 
-            var uploadFields = UmbracoConfig.For.UmbracoSettings().Content.ImageAutoFillProperties.ToList();
-            if (uploadFields == null || uploadFields.All(f => string.IsNullOrEmpty(f.Alias)))
-            {
-                throw new ConfigurationErrorsException("Expected /content/imaging/autoFillImageProperties/uploadField alias attribute");
-            }
+            var uploadFields = GetUploadFieldAliases().ToList();
 
-            if (!uploadFields.Any(f => !string.IsNullOrEmpty(f.Alias) && node.HasProperty(f.Alias)))
+            if (!uploadFields.Any(f => !string.IsNullOrEmpty(f) && node.HasProperty(f)))
             {
                 throw new Exception(string.Format("Could not determine uploadField alias for node with id: {0}", node.Id));
             }
 
-            return uploadFields.First(f => !string.IsNullOrEmpty(f.Alias) && node.HasProperty(f.Alias)).Alias;
+            return uploadFields.First(f => !string.IsNullOrEmpty(f) && node.HasProperty(f));
         }
 
         #endregion
