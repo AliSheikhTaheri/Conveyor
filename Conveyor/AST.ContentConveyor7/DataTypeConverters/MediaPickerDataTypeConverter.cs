@@ -1,4 +1,8 @@
-﻿namespace AST.ContentConveyor7.DataTypeConverters
+﻿using System.Configuration;
+using System.Linq;
+using Umbraco.Core.Configuration;
+
+namespace AST.ContentConveyor7.DataTypeConverters
 {
     using System;
     using System.Collections.Generic;
@@ -19,15 +23,13 @@
                 var id = int.Parse(property.Value.ToString());
                 var media = Services.MediaService.GetById(id);
 
-                // TODO for v6
-                if (media != null && FileHelpers.FileExists(media.GetValue("umbracoFile").ToString())) 
-                {
-                    propertyTag.Value = media.Key.ToString();
+                if (media == null) return;
 
-                    if (!dependantNodes.ContainsKey(media.Id))
-                    {
-                        dependantNodes.Add(media.Id, ObjectTypes.Media);
-                    }
+                propertyTag.Value = media.Key.ToString();
+
+                if (!dependantNodes.ContainsKey(media.Id))
+                {
+                    dependantNodes.Add(media.Id, ObjectTypes.Media);
                 }
             }
         }

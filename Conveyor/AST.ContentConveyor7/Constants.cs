@@ -19,5 +19,16 @@
             "umbracoWidth", "umbracoHeight", "umbracoBytes",
             "umbracoExtension"
         };
+
+        public static class Examine
+        {
+            public const string InternalIndexer = "InternalIndexer";
+            public const string ExternalIndexer = "ExternalIndexer";
+            public const string InternalMemberIndexer = "InternalMemberIndexer";
+
+            public const string InternalSearcher = "InternalSearcher";
+            public const string ExternalSearcher = "ExternalSearcher";
+            public const string InternalMemberSearcher = "InternalMemberSearcher";
+        }
     }
 }

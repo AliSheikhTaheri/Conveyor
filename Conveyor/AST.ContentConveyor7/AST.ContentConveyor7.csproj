@@ -38,6 +38,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\UmbracoCms.Core.7.2.4\lib\cms.dll</HintPath>
     </Reference>
+    <Reference Include="Examine, Version=0.1.60.2941, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Examine.0.1.60.2941\lib\Examine.dll</HintPath>
+    </Reference>
     <Reference Include="interfaces">
       <HintPath>..\packages\UmbracoCms.Core.7.2.4\lib\interfaces.dll</HintPath>
     </Reference>
@@ -77,14 +81,17 @@
     <Compile Include="BackOffice\ContentConveyorController.cs" />
     <Compile Include="DataTypeConverters\ContentPickerDataTypeConverter.cs" />
     <Compile Include="DataTypeConverters\DropdownListDataTypeConverter.cs" />
+    <Compile Include="DataTypeConverters\ImageCropperDataTypeConverter.cs" />
     <Compile Include="DataTypeConverters\MediaPickerDataTypeConverter.cs" />
     <Compile Include="DataTypeConverters\MultiNodeTreePickerDataTypeConverter.cs" />
     <Compile Include="DataTypeConverters\RichTextEditorDataTypeConverter.cs" />
+    <Compile Include="DataTypeConverters\UploadDataTypeConverter.cs" />
     <Compile Include="Enums\ActionTypes.cs" />
     <Compile Include="Enums\ObjectTypes.cs" />
     <Compile Include="Enums\PublishTypes.cs" />
     <Compile Include="ExportContent.cs" />
     <Compile Include="DataTypeConverters\IDataTypeConverter.cs" />
+    <Compile Include="IUploadDataTypeConverter.cs" />
     <Compile Include="Utilities\FileHelpers.cs" />
     <Compile Include="ImportContent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

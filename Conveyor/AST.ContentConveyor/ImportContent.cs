@@ -77,10 +77,10 @@
             return parentId;
         }
 
-        private void CreateOrUpdateContent(ZipFile zipFile, Guid key, XmlSerializer xmlSerialiser, XElement node)
+        private void CreateOrUpdateContent(ZipFile zipFile, Guid key, XmlSerializer xmlSerializer, XElement node)
         {
             var content = Services.ContentService.GetById(key);
-            var newContent = (Content)xmlSerialiser.Deserialize(node.CreateReader());
+            var newContent = (Content)xmlSerializer.Deserialize(node.CreateReader());
             if (content != null)
             {
                 SaveContent(node, content, newContent, zipFile);
@@ -135,11 +135,11 @@
                 if (dataTypeGuid == new Guid(Constants.UploadDataTypeGuid) && propertyTag.Attribute("fileName") != null)
                 {
                     var fileName = propertyTag.Attribute("fileName").Value;
-                    var umbracoFile = propertyTag.Attribute("umbracoFile").Value;
+                    var file = propertyTag.Attribute("dependentAsset").Value;
 
-                    if (!string.IsNullOrWhiteSpace(umbracoFile))
+                    if (!string.IsNullOrWhiteSpace(file))
                     {
-                        content.SetValue(propertyTag.Name.ToString(), fileName, GetFileStream(umbracoFile, zip));
+                        content.SetValue(propertyTag.Name.ToString(), fileName, GetFileStream(file, zip));
                     }
                     else
                     {
@@ -199,11 +199,11 @@
                 if (dataTypeGuid == new Guid(Constants.UploadDataTypeGuid))
                 {
                     var fileName = propertyTag.Attribute("fileName").Value;
-                    var umbracoFile = propertyTag.Attribute("umbracoFile").Value;
+                    var file = propertyTag.Attribute("dependentAsset").Value;
 
-                    if (!string.IsNullOrWhiteSpace(umbracoFile))
+                    if (!string.IsNullOrWhiteSpace(file))
                     {
-                        media.SetValue(propertyTag.Name.ToString(), fileName, GetFileStream(umbracoFile, zip));
+                        media.SetValue(propertyTag.Name.ToString(), fileName, GetFileStream(file, zip));
                     }
                     else
                     {
@@ -289,11 +289,11 @@
                     var nodeType = node.Attribute("objectType").Value;
 
                     var xRoot = new XmlRootAttribute { ElementName = node.Name.ToString(), IsNullable = true };
-                    var xmlSerialiser = new XmlSerializer(typeof(Content), xRoot);
+                    var xmlSerializer = new XmlSerializer(typeof(Content), xRoot);
 
                     if (nodeType == ObjectTypes.Document.ToString())
                     {
-                        CreateOrUpdateContent(zipFile, key, xmlSerialiser, node);
+                        CreateOrUpdateContent(zipFile, key, xmlSerializer, node);
                     }
                     else if (nodeType == ObjectTypes.Media.ToString())
                     {
@@ -330,13 +330,13 @@
             }
         }
 
-        private MemoryStream GetFileStream(string umbracoFile, ZipFile zip)
+        private MemoryStream GetFileStream(string file, ZipFile zip)
         {
-            umbracoFile = umbracoFile.Remove(0, 1);
+            file = file.Remove(0, 1);
 
             var memoryStream = new MemoryStream();
 
-            var zipEntry = zip.Entries.SingleOrDefault(x => x.FileName == umbracoFile);
+            var zipEntry = zip.Entries.SingleOrDefault(x => x.FileName == file);
             zipEntry.Extract(memoryStream);
 
             memoryStream.Seek(0, SeekOrigin.Begin);
