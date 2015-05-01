@@ -1,4 +1,7 @@
-﻿namespace AST.ContentConveyor7.BackOffice
+﻿using Examine;
+using Umbraco.Core.Models.EntityBase;
+
+namespace AST.ContentConveyor7.BackOffice
 {
     using System;
     using System.Collections.Generic;
@@ -154,7 +157,10 @@
                 };
 
                 //var contentAtRoot = Services.ContentService.GetRootContent(); // this returns root content in reverse order
-                var contentAtRoot = Services.ContentService.GetChildren(-1);
+                //var contentAtRoot = Services.ContentService.GetChildren(-1);
+
+                var contentAtRoot = Services.EntityService.GetRootEntities(UmbracoObjectTypes.Document);
+                
 
                 foreach (var n in contentAtRoot)
                 {
@@ -164,7 +170,7 @@
                 return Json(node, JsonRequestBehavior.AllowGet);
             }
 
-            var children = Services.ContentService.GetChildren(id);
+            var children = Services.EntityService.GetChildren(id);
 
             var nodes = children.Select(GenerateJsonForTree).ToList();
 
@@ -198,9 +204,10 @@
             webConfigApp.Save();
         }
 
-        private Node GenerateJsonForTree(IContent content)
+        private Node GenerateJsonForTree(IUmbracoEntity content)
         {
-            var isFolder = content.Children().Any();
+            var children = Services.EntityService.GetChildren(content.Id);
+            var isFolder = children.Any();
 
             var temp = new Node
             {
