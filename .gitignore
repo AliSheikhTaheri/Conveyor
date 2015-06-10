@@ -73,3 +73,5 @@ WebUI/WebUIv7/App_Data/umbraco.config
 
 # NuGet
 Conveyor/packages
+Conveyor/WebUI/App_Data/Logs/*
+Conveyor/WebUI/App_Data/TEMP/*
