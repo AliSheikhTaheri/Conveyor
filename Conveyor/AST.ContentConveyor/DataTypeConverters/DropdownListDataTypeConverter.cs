@@ -1,4 +1,4 @@
-﻿namespace AST.ContentConveyor
+﻿namespace AST.ContentConveyor.DataTypeConverters
 {
     using System;
     using System.Collections;
