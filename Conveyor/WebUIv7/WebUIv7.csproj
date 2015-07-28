@@ -349,6 +349,12 @@
     <Folder Include="css\" />
     <Folder Include="scripts\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AST.ContentConveyor7\AST.ContentConveyor7.csproj">
+      <Project>{060c0601-b42c-4e46-9356-fcd9121978d4}</Project>
+      <Name>AST.ContentConveyor7</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
