@@ -29,7 +29,7 @@
 
         $(function () {
 
-            var requestUrl = '@Url.Action("ContentTreeAsJsonResult", "ContentConveyor")' + '/';
+            var requestUrl = '@Url.RouteUrl("ASTContentConveyorBackofficePages", new { action = "ContentTreeAsJsonResult", controller="ContentConveyor"})' + '/';
 
             $.getJSON(requestUrl, function (json) {
                 myfunction(json);

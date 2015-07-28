@@ -73,3 +73,8 @@ WebUI/WebUIv7/App_Data/umbraco.config
 
 # NuGet
 Conveyor/packages
+
+# Umbraco
+Conveyor/*/App_Data/*
+!Conveyor/WebUI/App_Data/access.config
+!Conveyor/WebUI/App_Data/packages/
