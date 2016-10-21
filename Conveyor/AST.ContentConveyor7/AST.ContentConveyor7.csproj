@@ -79,6 +79,7 @@
     <Compile Include="DataTypeConverters\DropdownListDataTypeConverter.cs" />
     <Compile Include="DataTypeConverters\MediaPickerDataTypeConverter.cs" />
     <Compile Include="DataTypeConverters\MultiNodeTreePickerDataTypeConverter.cs" />
+    <Compile Include="DataTypeConverters\MultipleMediaPickerDataTypeConverter.cs" />
     <Compile Include="DataTypeConverters\RichTextEditorDataTypeConverter.cs" />
     <Compile Include="Enums\ActionTypes.cs" />
     <Compile Include="Enums\ObjectTypes.cs" />
