@@ -43,15 +43,5 @@
             XElement propertyTag = new XElement("Property", new XText(value));
             return typeConverter.Import(propertyTag);
         }
-
-        /// <summary>
-        /// Operation type flag, to use in shared processing methods
-        /// </summary>
-        protected enum OperationType
-        {
-            Export,
-            Import
-        }
-
     }
 }

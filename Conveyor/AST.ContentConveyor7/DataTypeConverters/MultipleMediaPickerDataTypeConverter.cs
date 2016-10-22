@@ -11,13 +11,29 @@
 
     using Umbraco.Core.Models;
 
+    /// <summary>
+    /// Type Converter for the MultipleMediaPicker editor (u7)
+    /// Converts a list of one or several media ids into Guids (Export) or from Guids (Import) 
+    /// </summary>
     public class MultipleMediaPickerDataTypeConverter : BaseContentManagement, IDataTypeConverter
     {
+        /// <summary>
+        /// Export - generic IDataTypeConverter interface
+        /// </summary>
         public void Export(Property property, XElement propertyTag, Dictionary<int, ObjectTypes> dependantNodes)
         {
-            if (property.Value != null && !string.IsNullOrWhiteSpace(property.Value.ToString()))
+            string value = (property.Value ?? "").ToString();
+            propertyTag.Value = ExportValue(value, dependantNodes);
+        }
+
+        /// <summary>
+        /// Export - Inner method available to other Type Converters
+        /// </summary>
+        public string ExportValue(string value, Dictionary<int, ObjectTypes> dependantNodes)
+        {
+            if (!string.IsNullOrWhiteSpace(value.ToString()))
             {
-                var ids = property.Value.ToString().Split(',').Select(s => int.Parse(s));
+                var ids = value.ToString().Split(',').Select(s => int.Parse(s));
                 List<string> guids = new List<string>(ids.Count());
 
                 foreach (int id in ids)
@@ -32,17 +48,29 @@
                         }
                     }
                 }
-                propertyTag.Value = String.Join(",", guids);
+                return String.Join(",", guids);
             }
+            return value;
         }
 
+        /// <summary>
+        /// Import - generic IDataTypeConverter interface
+        /// </summary>
         public string Import(XElement propertyTag)
+        {
+            return ImportValue(propertyTag.Value);
+        }
+
+        /// <summary>
+        /// Import - Inner method available to other Type Converters
+        /// </summary>
+        public string ImportValue(string value)
         {
             var result = string.Empty;
 
-            if (!string.IsNullOrWhiteSpace(propertyTag.Value))
+            if (!string.IsNullOrWhiteSpace(value))
             {
-                var guids = propertyTag.Value.Split(',').Select(s => new Guid(s));
+                var guids = value.Split(',').Select(s => new Guid(s));
                 List<string> ids = new List<string>(guids.Count());
 
                 foreach (Guid guid in guids)
