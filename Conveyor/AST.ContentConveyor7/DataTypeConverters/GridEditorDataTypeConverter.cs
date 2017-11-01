@@ -108,7 +108,10 @@
                                                         // using a public method of the Nested Content type converter
                                                         var converter = new NestedContentDataTypeConverter();
                                                         string contentTypeAlias = jProp.Value.ToString();
-                                                        converter.ProcessDocument(contentTypeAlias, jInnerValue, operation, dependantNodes);
+                                                        if (contentTypeAlias != String.Empty)
+                                                        {
+                                                            converter.ProcessDocument(contentTypeAlias, jInnerValue, operation, dependantNodes);
+                                                        }
                                                     }
                                                     else
                                                     {
