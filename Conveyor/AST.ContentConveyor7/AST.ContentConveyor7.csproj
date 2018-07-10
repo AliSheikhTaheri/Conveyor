@@ -77,11 +77,16 @@
     <Compile Include="BackOffice\ContentConveyorController.cs" />
     <Compile Include="DataTypeConverters\ContentPickerDataTypeConverter.cs" />
     <Compile Include="DataTypeConverters\DropdownListDataTypeConverter.cs" />
+    <Compile Include="DataTypeConverters\GridEditorDataTypeConverter.cs" />
     <Compile Include="DataTypeConverters\MediaPickerDataTypeConverter.cs" />
     <Compile Include="DataTypeConverters\MultiNodeTreePickerDataTypeConverter.cs" />
+    <Compile Include="DataTypeConverters\BaseNestedDataTypeConverter.cs" />
+    <Compile Include="DataTypeConverters\NestedContentDataTypeConverter.cs" />
+    <Compile Include="DataTypeConverters\MultipleMediaPickerDataTypeConverter.cs" />
     <Compile Include="DataTypeConverters\RichTextEditorDataTypeConverter.cs" />
     <Compile Include="Enums\ActionTypes.cs" />
     <Compile Include="Enums\ObjectTypes.cs" />
+    <Compile Include="Enums\OperationTypes.cs" />
     <Compile Include="Enums\PublishTypes.cs" />
     <Compile Include="ExportContent.cs" />
     <Compile Include="DataTypeConverters\IDataTypeConverter.cs" />
